@@ -1,403 +1,468 @@
 "use strict";
-(() => {
-  const REPO = "zrhtop/ZZS-IPA-Store";
-  const BRANCH = "main";
-  const ROOT = "docs/";
-  const API = "https://api.github.com/repos/" + REPO;
-  const SOURCE_PATH = ROOT + "source.json";
-  const SOURCE_URL = "https://repo.zrh.jp/source.json";
-  const DEFAULT_ICON = "https://avatars.githubusercontent.com/u/101614537?v=4";
-  const MAX_UPLOAD_BYTES = 20 * 1024 * 1024;
-  const CATEGORIES = new Set(["developer","entertainment","games","lifestyle","other","photo-video","social","utilities"]);
-  const $ = (id) => document.getElementById(id);
-  const state = {token:null,source:null,sha:null,mode:"new-app",bundle:null,index:-1,file:null,busy:false,selectedTab:"dashboard"};
-  function node(tag, className, value) {const el=document.createElement(tag);if(className)el.className=className;if(value !== undefined)el.textContent=String(value);return el;}
-  function friendlyError(err) {return err && err.message ? err.message : String(err);}
-  let toastTimeout;
-  function toast(message, error=false) {const el=$("toast");el.textContent=message;el.classList.toggle("error",error);el.hidden=false;clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>{el.hidden=true;},6000);}
-  function inline(message) {$("editorMessage").textContent=message || "";}
-  function bytesToBase64(bytes) {
-    const chunks=[];const step=16384;
-    for(let i=0;i<bytes.length;i+=step)chunks.push(String.fromCharCode(...bytes.subarray(i,i+step)));
-    return btoa(chunks.join(""));
+import {inspectIPA} from "./ipa-reader.js";
+
+const REPO = "zrhtop/ZZS-IPA-Store";
+const API = "https://api.github.com";
+const SOURCE_PATH = "docs/source.json";
+const SOURCE_URL = "https://repo.zrh.jp/source.json";
+const SITE_URL = "https://repo.zrh.jp/";
+const DEFAULT_ICON = "https://avatars.githubusercontent.com/u/101614537?v=4";
+const MAX_DIRECT_SIZE = 40 * 1024 * 1024;
+const CATEGORIES = new Set(["developer","entertainment","games","lifestyle","other","photo-video","social","utilities"]);
+const $ = id => document.getElementById(id);
+const elem = (tag,cls,txt) => {const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=String(txt);return n;};
+const val = id => $(id).value.trim();
+
+let token = "";
+let actor = "";
+let source = {name:"ZZS IPA Store",apps:[],news:[]};
+let sourceSHA = null;
+let editor = {mode:"new",bundle:null,index:-1};
+let inspected = null;
+let scanning = false;
+let busy = false;
+
+function alertUser(msg,isError=false) {
+  const n=$("notice");n.className=isError?"notice error":"notice";n.textContent=msg;n.hidden=false;
+  clearTimeout(alertUser.timer);alertUser.timer=setTimeout(()=>{n.hidden=true;},isError?10000:6000);
+}
+function validURL(s,optional=false) {
+  if(!s&&optional)return "";
+  try {
+    const u=new URL(s);
+    if(u.protocol!=="https:"||u.username||u.password)throw Error();
+    return u.href;
+  } catch {throw new Error("请填写完整的 HTTPS 地址："+(s||"(空)"));}
+}
+function iconURL(s){try{return validURL(s);}catch{return DEFAULT_ICON;}}
+function encode64(bytes) {
+  const blocks=[];
+  for(let p=0;p<bytes.length;p+=16384){
+    let binary="";
+    for(let j=p;j<Math.min(p+16384,bytes.length);j++)binary+=String.fromCharCode(bytes[j]);
+    blocks.push(binary);
   }
-  function toBase64(str){return bytesToBase64(new TextEncoder().encode(str));}
-  function decodeBase64(encoded) {
-    const clean=String(encoded).replace(/\s+/g,"");
-    const raw=atob(clean),bytes=new Uint8Array(raw.length);
-    for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);
-    return new TextDecoder().decode(bytes);
+  return btoa(blocks.join(""));
+}
+function decodeJSON(b64){
+  const binary=atob(String(b64).replace(/\s/g,""));
+  const b=new Uint8Array(binary.length);
+  for(let i=0;i<binary.length;i++)b[i]=binary.charCodeAt(i);
+  return JSON.parse(new TextDecoder().decode(b));
+}
+async function api(url,method="GET",body=undefined) {
+  const headers={"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};
+  if(token)headers.Authorization="Bearer "+token;
+  if(body!==undefined)headers["Content-Type"]="application/json";
+  const r=await fetch(url,{method,headers,cache:"no-store",referrerPolicy:"no-referrer",body:body===undefined?undefined:JSON.stringify(body)});
+  const payload=await r.json().catch(()=>({}));
+  if(!r.ok){
+    const detail=String(payload.message||r.statusText||"请求失败").slice(0,400);
+    throw new Error("GitHub HTTP "+r.status+"："+detail);
   }
-  function safeHTTPS(value) {
-    if(!value)return "";
-    try {const url=new URL(String(value));return url.protocol === "https:" ? url.href : "";} catch {return "";}
-  }
-  function safeURLOrThrow(value,field) {
-    const clean=String(value||"").trim();if(!clean)return "";
-    const url=safeHTTPS(clean);if(!url)throw new Error(field+" 必须是完整的 HTTPS 地址");
-    return url;
-  }
-  function escSlug(str) {return String(str).replace(/[^a-zA-Z0-9._-]+/g,"_").replace(/^\.+/,"").slice(0,90)||"app";}
-  function shortSize(num){if(!Number.isFinite(+num)||+num<=0)return "未知大小";return +num > 1048576 ? (+num/1048576).toFixed(1)+" MiB" : (+num/1024).toFixed(0)+" KiB";}
-  async function request(endpoint, options={}) {
-    const {method="GET",body,auth=true}=options;
-    const headers={"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"};
-    if(auth && state.token)headers.Authorization="Bearer "+state.token;
-    if(body!==undefined)headers["Content-Type"]="application/json";
-    let response;
-    try {response=await fetch(API+endpoint,{method,headers,body:body===undefined?undefined:JSON.stringify(body),cache:"no-store",referrerPolicy:"no-referrer"});}
-    catch {throw new Error("无法连接 GitHub API。请检查网络连接或浏览器限制。");}
-    if(!response.ok) {
-      let message="";
-      try{const payload=await response.json();message=payload.message||"";}catch{}
-      if(response.status===401)throw new Error("令牌无效或已过期，请重新连接。");
-      if(response.status===403)throw new Error("GitHub 拒绝访问（403）。请确认 Token 对本仓库具有 Contents 读写权限，且没有触发 API 限流。"+(message ? " "+message:""));
-      if(response.status===404)throw new Error("未找到目标仓库或文件（404）。请确认 GitHub Token 已授权 ZZS-IPA-Store。");
-      if(response.status===409)throw new Error("仓库内容发生冲突，请刷新页面后再提交。");
-      if(response.status===422)throw new Error("GitHub 拒绝保存文件（422）："+message);
-      throw new Error("GitHub API "+response.status+"："+(message||"请求失败"));
+  return payload;
+}
+function githubPath(p){return API+"/repos/"+REPO+"/contents/"+p.split("/").map(encodeURIComponent).join("/");}
+async function getGithubSource(){
+  const file=await api(githubPath(SOURCE_PATH)+"?ref=main");
+  if(!file.sha||file.encoding!=="base64")throw new Error("无法获取 GitHub 软件源文件及版本 SHA。");
+  return {data:decodeJSON(file.content),sha:file.sha};
+}
+async function putFile(path,bytes,message,sha=undefined){
+  const request={branch:"main",message,content:encode64(bytes)};
+  if(sha)request.sha=sha;
+  return api(githubPath(path),"PUT",request);
+}
+async function ensureFresh(){
+  const current=await getGithubSource();
+  if(current.sha!==sourceSHA)throw new Error("软件源已被其他操作更新，请先刷新，不要覆盖他人的修改。");
+}
+async function saveSource(draft,message){
+  await ensureFresh();
+  const content=new TextEncoder().encode(JSON.stringify(draft,null,2)+"\n");
+  const outcome=await putFile(SOURCE_PATH,content,message,sourceSHA);
+  if(!outcome.content?.sha)throw new Error("GitHub 未返回新版本号，请刷新检查文件是否保存成功。");
+  sourceSHA=outcome.content.sha;
+  acceptSource(draft);
+}
+function acceptSource(data){
+  if(!data||typeof data!=="object"||!Array.isArray(data.apps))throw new Error("source.json 必须包含 apps 数组。");
+  if(!Array.isArray(data.news))data.news=[];
+  source=data;render();populateSettings();
+}
+async function loadSource(){
+  if(busy)return;
+  $("repoStatus").textContent="正在加载";$("repoStatus").className="state-loading";
+  try{
+    if(token){
+      const s=await getGithubSource();sourceSHA=s.sha;acceptSource(s.data);
+    }else{
+      const r=await fetch("../source.json?t="+Date.now(),{cache:"no-store"});
+      if(!r.ok)throw new Error("HTTP "+r.status);
+      acceptSource(await r.json());sourceSHA=null;
     }
-    if(response.status===204)return {};
-    return response.json();
+    $("repoStatus").textContent=token?"GitHub 已连接":"公开可读";
+    $("repoStatus").className="state-ok";
+  }catch(e){
+    $("repoStatus").textContent="读取失败";$("repoStatus").className="state-error";
+    alertUser("读取软件源失败："+e.message,true);
   }
-  async function loadSource({silent=false}={}) {
-    try {
-      const file=await request("/contents/"+SOURCE_PATH+"?ref="+BRANCH);
-      const source=JSON.parse(decodeBase64(file.content));
-      if(!source||!Array.isArray(source.apps)||!Array.isArray(source.news))throw new Error("source.json 不是有效的 AltStore 软件源");
-      state.source=source;state.sha=file.sha;
-      render(); populateSettings();
-      if(!silent)toast("已读取最新软件源");
-      $("syncStatus").textContent="软件源读取成功";
-    } catch(e) {
-      $("syncStatus").textContent="读取失败";
-      if(!silent)toast(friendlyError(e),true);
-      if(!state.source)render();
-      throw e;
+}
+function setAuthUI(){
+  $("authPanel").hidden=!!token;$("identityPanel").hidden=!token;
+  $("connectionText").textContent=token?"GitHub 已连接":"未连接 GitHub";
+  $("connectionDot").classList.toggle("online",!!token);
+  $("accountName").textContent=actor||"GitHub";
+  render();
+}
+async function connect(){
+  if(busy)return;
+  const candidate=val("patInput");
+  if(!candidate)return alertUser("请填写 GitHub 访问令牌。",true);
+  busy=true;token=candidate;$("connectBtn").disabled=true;$("connectBtn").textContent="正在验证…";
+  try{
+    const s=await getGithubSource();
+    try{const profile=await api(API+"/user");actor=profile.login||"GitHub";}catch{actor="GitHub";}
+    sourceSHA=s.sha;acceptSource(s.data);
+    $("patInput").value="";setAuthUI();
+    $("repoStatus").textContent="GitHub 已连接";$("repoStatus").className="state-ok";
+    alertUser("连接成功，可以编辑并发布 IPA。");
+  }catch(e){
+    token="";sourceSHA=null;actor="";setAuthUI();
+    alertUser("GitHub 连接失败："+e.message+"。请确认 Token 授权到本仓库且 Contents 为 Read and write。",true);
+  }finally{busy=false;$("connectBtn").disabled=false;$("connectBtn").textContent="验证并连接";}
+}
+function disconnect(){token="";actor="";sourceSHA=null;$("patInput").value="";setAuthUI();loadSource();alertUser("已清除当前页面内存里的 Token。");}
+function authorized(){
+  if(token)return true;
+  alertUser("请先连接仓库专属 GitHub Token。",true);$("patInput").focus();return false;
+}
+function getApp(bundle){return source.apps.find(a=>a.bundleIdentifier===bundle);}
+function button(title,cb,danger=false) {
+  const n=elem("button",danger?"small-btn critical":"small-btn",title);
+  n.type="button";n.disabled=!token||busy;n.addEventListener("click",cb);return n;
+}
+function render(){
+  $("appCount").textContent=source.apps.length;
+  $("versionCount").textContent=source.apps.reduce((n,a)=>n+(Array.isArray(a.versions)?a.versions.length:0),0);
+  const root=$("appList");root.replaceChildren();
+  const q=val("appSearch").toLowerCase();
+  const filtered=source.apps.filter(a=>((a.name||"")+" "+(a.bundleIdentifier||"")).toLowerCase().includes(q));
+  if(!filtered.length){
+    const box=elem("div","empty");
+    box.append(elem("div","empty-symbol","◇"),elem("strong","",q?"没有搜索结果":"尚未发布应用"),elem("p","",q?"试试其他关键词。":"连接 GitHub 后点击「添加应用」即可发布第一款 IPA。"));
+    root.append(box);return;
+  }
+  for(const app of filtered){
+    const versions=Array.isArray(app.versions)?app.versions:[];
+    const outer=elem("article","app-item"),main=elem("div","app-main"),image=elem("img","app-icon");
+    image.alt="";image.loading="lazy";image.src=iconURL(app.iconURL);
+    image.addEventListener("error",()=>{image.src=DEFAULT_ICON;},{once:true});
+    const info=elem("div","app-meta");
+    info.append(elem("b","",app.name||"未命名"),elem("span","",app.bundleIdentifier||""));
+    const v=versions[0];
+    const actions=elem("div","row-buttons");
+    actions.append(
+      button("＋ 新版本",()=>openEditor("version",app.bundleIdentifier)),
+      button("编辑",()=>openEditor("edit-app",app.bundleIdentifier)),
+      button("删除",()=>removeApp(app.bundleIdentifier),true)
+    );
+    main.append(image,info,elem("span","version-tag",v?"v"+v.version+" · Build "+v.buildVersion:"无版本"),actions);
+    outer.append(main);
+    if(versions.length){
+      const detail=elem("details","history");
+      detail.append(elem("summary","", "版本历史（"+versions.length+"）"));
+      versions.forEach((entry,index)=>{
+        const line=elem("div","history-row");
+        line.append(elem("span","release-name",(index===0?"最新版 · ":"")+"v"+entry.version+" ("+entry.buildVersion+") · "+(entry.date||"")));
+        try{
+          const a=elem("a","","IPA ↗");a.href=validURL(entry.downloadURL);a.target="_blank";a.rel="noopener noreferrer";line.append(a);
+        }catch{}
+        line.append(
+          button("编辑",()=>openEditor("edit-version",app.bundleIdentifier,index)),
+          button("设为最新",()=>promoteVersion(app.bundleIdentifier,index)),
+          button("删除",()=>removeVersion(app.bundleIdentifier,index),true)
+        );
+        detail.append(line);
+      });
+      outer.append(detail);
     }
+    root.append(outer);
   }
-  function connectedUI() {
-    const yes=!!state.token;
-    $("authBtn").textContent=yes?"已连接 GitHub":"连接 GitHub";
-    $("authBtn").disabled=yes;
-    $("logoutBtn").hidden=!yes;
-    $("onlineLight").classList.toggle("connected",yes);
-    $("onlineLabel").textContent=yes?"GitHub 已连接":"只读模式";
-    $("authState").textContent=yes?"已连接":"未连接";
-    $("authState").style.color=yes?"#32a784":"#5f6885";
+}
+function populateSettings(){
+  const form=$("settingsForm");
+  for(const key of ["name","subtitle","description","website","iconURL","tintColor"]){
+    const field=form.elements.namedItem(key);
+    if(field)field.value=source[key]||(key==="tintColor"?"#6559e8":"");
   }
-  function ensureConnected() {if(state.busy){toast("操作进行中",true);return false;}if(!state.token){$("authDialog").showModal();return false;}return true;}
-  async function connect(evt) {
-    evt.preventDefault();
-    const candidate=$("token").value.trim();
-    if(!candidate){toast("请输入 GitHub Token",true);return;}
-    const btn=$("authForm").querySelector("button[type=submit]");
-    btn.disabled=true;btn.textContent="验证中…";
-    state.token=candidate;
-    try {
-      const meta=await request("");
-      if(meta.full_name !== REPO)throw new Error("GitHub 仓库名称不匹配");
-      if(meta.permissions && meta.permissions.push === false)throw new Error("此 Token 只能读取仓库，缺少写入权限。请将 Contents 设置为 Read and write。");
-      await loadSource({silent:true});
-      $("token").value="";$("tokenConfirm").checked=false;
-      $("authDialog").close();connectedUI();toast("已连接仓库："+REPO);
-    }catch(e){state.token=null;connectedUI();toast(friendlyError(e),true);}
-    finally{btn.disabled=false;btn.textContent="验证并连接";}
+}
+async function mutate(change,message){
+  if(!authorized()||busy)return;
+  busy=true;
+  try{
+    await ensureFresh();
+    const draft=structuredClone(source);
+    change(draft);
+    await saveSource(draft,message);
+    alertUser("修改已保存。GitHub Pages 可能需要短暂时间刷新。");
+  }catch(e){alertUser(e.message,true);}
+  finally{busy=false;render();}
+}
+function removeApp(bundle){
+  const app=getApp(bundle);
+  if(!app||!authorized()||!confirm("确定下架「"+app.name+"」及其全部历史版本吗？\n已上传的 IPA 文件不会自动删除。"))return;
+  mutate(d=>{d.apps=d.apps.filter(a=>a.bundleIdentifier!==bundle);},"Remove app "+bundle);
+}
+function removeVersion(bundle,index){
+  const a=getApp(bundle),v=a?.versions?.[index];
+  if(!v||!authorized()||!confirm("删除版本 v"+v.version+" 的软件源记录？\nIPA 文件不会自动删除。"))return;
+  mutate(d=>{
+    const app=d.apps.find(a=>a.bundleIdentifier===bundle);
+    app.versions.splice(index,1);
+    if(!app.versions.length)d.apps=d.apps.filter(a=>a.bundleIdentifier!==bundle);
+  },"Remove release "+bundle+" "+v.version);
+}
+function promoteVersion(bundle,index){
+  if(index===0)return alertUser("这个版本已经是最新版。");
+  if(!authorized()||!getApp(bundle)?.versions?.[index])return;
+  const v=getApp(bundle).versions[index];
+  if(!confirm("将版本 v"+v.version+" 设置成最新版？AltStore 根据版本列表第一项判断更新。"))return;
+  mutate(d=>{
+    const versions=d.apps.find(a=>a.bundleIdentifier===bundle).versions;
+    versions.unshift(versions.splice(index,1)[0]);
+  },"Promote release "+bundle+" "+v.version);
+}
+async function saveSettings(evt){
+  evt.preventDefault();if(!authorized()||busy)return;
+  const f=$("settingsForm");
+  if(!f.reportValidity())return;
+  busy=true;
+  try{
+    const next={...source,
+      name:f.elements.namedItem("name").value.trim(),
+      subtitle:f.elements.namedItem("subtitle").value.trim(),
+      description:f.elements.namedItem("description").value.trim(),
+      website:validURL(f.elements.namedItem("website").value.trim(),true),
+      iconURL:validURL(f.elements.namedItem("iconURL").value.trim(),true),
+      tintColor:f.elements.namedItem("tintColor").value
+    };
+    await saveSource(next,"Update ZZS IPA Store settings");
+    alertUser("软件源设置已保存。");
+  }catch(e){alertUser(e.message,true);}
+  finally{busy=false;}
+}
+function openEditor(mode="new",bundle=null,index=-1){
+  if(!authorized()||busy)return;
+  editor={mode,bundle,index};inspected=null;
+  const form=$("editorForm");form.reset();$("ipaFile").value="";
+  $("ipaResult").textContent="选择 IPA 后会自动尝试读取应用名称、Bundle ID、版本号、图标和隐私权限。";
+  $("ipaResult").style.whiteSpace="pre-line";
+  const now=new Date();
+  $("releaseDate").value=[now.getFullYear(),String(now.getMonth()+1).padStart(2,"0"),String(now.getDate()).padStart(2,"0")].join("-");
+  $("privacy").value="{}";$("entitlements").value="";$("appTint").value="#6559e8";
+  const app=bundle?getApp(bundle):null;
+  const release=app&&index>=0?app.versions?.[index]:null;
+  const labels={
+    new:["NEW APPLICATION","发布 IPA 应用","上传并发布"],
+    version:["NEW RELEASE","发布新版本","发布新版本"],
+    "edit-app":["EDIT APPLICATION","编辑应用信息","保存应用资料"],
+    "edit-version":["EDIT VERSION","编辑历史版本","保存版本记录"]
+  };
+  $("editorEyebrow").textContent=labels[mode][0];$("editorTitle").textContent=labels[mode][1];$("saveEditor").textContent=labels[mode][2];
+  $("appFields").hidden=mode==="version"||mode==="edit-version";
+  $("releaseFields").hidden=mode==="edit-app";
+  $("permissionsFields").hidden=mode==="edit-app";
+  if(app){
+    $("appName").value=app.name||"";$("bundleID").value=app.bundleIdentifier||"";
+    $("developer").value=app.developerName||"ZZS";
+    $("category").value=CATEGORIES.has(app.category)?app.category:"other";
+    $("appSubtitle").value=app.subtitle||"";$("description").value=app.localizedDescription||"";
+    $("iconURL").value=app.iconURL||"";
+    $("appTint").value=/^#[0-9a-f]{6}$/i.test(app.tintColor||"")?app.tintColor:"#6559e8";
+    $("entitlements").value=(app.appPermissions?.entitlements||[]).join("\n");
+    $("privacy").value=JSON.stringify(app.appPermissions?.privacy||{},null,2);
   }
-  function logout(){state.token=null;state.file=null;$("ipaFile").value="";connectedUI();toast("已退出当前 GitHub 管理会话");}
-  async function publish(data,message) {
-    if(!state.sha)throw new Error("尚未获取软件源的 GitHub SHA，请先刷新");
-    if(!data||!Array.isArray(data.apps)||!Array.isArray(data.news))throw new Error("软件源结构无效");
-    const response=await request("/contents/"+SOURCE_PATH,{method:"PUT",body:{
-      message,branch:BRANCH,sha:state.sha,content:toBase64(JSON.stringify(data,null,2)+"\n")
-    }});
-    state.sha=response.content.sha;state.source=data;render();populateSettings();
-    $("syncStatus").textContent="刚刚保存，等待 Pages 更新";
+  if(release){
+    $("downloadURL").value=release.downloadURL||"";
+    $("version").value=release.version||"";
+    $("buildVersion").value=release.buildVersion||"";
+    $("releaseDate").value=(release.date||"").slice(0,10);
+    $("size").value=release.size||"";
+    $("releaseNotes").value=release.localizedDescription||"";
+    $("minOS").value=release.minOSVersion||"";
+    $("maxOS").value=release.maxOSVersion||"";
   }
-  async function uploadIPA(file,bundle,version,build) {
-    if(!file||!/\.ipa$/i.test(file.name))throw new Error("请选择 .ipa 文件");
-    if(file.size > MAX_UPLOAD_BYTES)throw new Error("IPA 超过 20 MiB，请在 GitHub Releases 发布后粘贴链接");
-    if(file.size < 100)throw new Error("IPA 文件太小，可能无效");
-    const filename=escSlug(version)+"-"+escSlug(build)+"-"+Date.now()+".ipa";
-    const path=ROOT+"files/"+escSlug(bundle)+"/"+filename;
-    const bytes=new Uint8Array(await file.arrayBuffer());
-    const content=bytesToBase64(bytes);
-    await request("/contents/"+path.split("/").map(encodeURIComponent).join("/"),{
-      method:"PUT",body:{message:"Publish IPA "+bundle+" "+version+" ("+build+")",branch:BRANCH,content}
-    });
-    return "https://repo.zrh.jp/files/"+escSlug(bundle)+"/"+filename;
-  }
-  function showTab(tab) {
-    if(!["dashboard","settings","guide"].includes(tab))return;
-    state.selectedTab=tab;
-    for(const name of ["dashboard","settings","guide"])$(name).hidden=name!==tab;
-    for(const button of document.querySelectorAll(".sidebar button[data-tab]"))button.classList.toggle("active",button.dataset.tab===tab);
-    $("pageTitle").textContent={dashboard:"应用管理",settings:"软件源设置",guide:"使用指南"}[tab];
-  }
-  function render() {
-    const list=$("appList");list.replaceChildren();
-    const apps=(state.source && state.source.apps)||[];
-    $("appCount").textContent=apps.length;
-    $("versionCount").textContent=apps.reduce((sum,app)=>sum+(Array.isArray(app.versions)?app.versions.length:0),0);
-    if(!apps.length) {
-      const empty=node("div","empty");
-      empty.append(node("div","illustration","◇"),node("h3","",state.source?"暂无发布应用":"尚未加载软件源"),node("p","",state.source?"连接 GitHub 后，点击“添加应用 / IPA”即可发布第一个版本。":"请检查仓库 Pages 部署状态，或点击右上角刷新。"));
-      list.append(empty);return;
+  $("editor").showModal();
+}
+function closeEditor(){if(!busy)$("editor").close();}
+async function parseSelection(file){
+  inspected=null;
+  if(!file)return;
+  $("ipaResult").textContent="正在读取 IPA Info.plist…";scanning=true;
+  try{
+    if(file.size>MAX_DIRECT_SIZE){
+      $("ipaResult").textContent="文件为 "+(file.size/1048576).toFixed(1)+" MiB，超过 40 MiB 网页上传上限。请使用 GitHub Releases 并清除本地文件选择。";
+      return;
     }
-    for(const app of apps) {
-      const versions=Array.isArray(app.versions)?app.versions:[];
-      const outer=node("article","app-row"),top=node("div","app-top"),icon=node("img","app-icon");
-      icon.alt="";icon.loading="lazy";icon.src=safeHTTPS(app.iconURL)||"../icon.svg";icon.addEventListener("error",()=>{icon.src="../icon.svg";},{once:true});
-      const info=node("div","app-info");
-      info.append(node("div","app-name",app.name||"未命名应用"),node("div","app-id",app.bundleIdentifier||""));
-      top.append(icon,info,node("span","chip",versions.length?"最新版本 "+versions[0].version:"暂无版本"));
-      outer.append(top);
-      const actions=node("div","row-actions");
-      for(const [label,action] of [["＋ 添加版本","add-version"],["编辑资料","edit-app"],["删除应用","remove-app"]]){
-        const button=node("button",action==="remove-app"?"danger":"",label);button.type="button";button.dataset.action=action;button.dataset.bundle=app.bundleIdentifier;actions.append(button);
+    const data=await inspectIPA(file);
+    if($("ipaFile").files[0]!==file)return;
+    inspected=data;
+    if(editor.mode==="new"){
+      if(data.name)$("appName").value=data.name;
+      if(data.bundleID)$("bundleID").value=data.bundleID;
+    }
+    if(data.version)$("version").value=data.version;
+    if(data.buildVersion)$("buildVersion").value=data.buildVersion;
+    if(data.minOSVersion)$("minOS").value=data.minOSVersion;
+    $("size").value=file.size;
+    $("privacy").value=JSON.stringify(data.privacy,null,2);
+    $("entitlements").value=data.entitlements.join("\n");
+    $("ipaResult").textContent=[
+      "✓ 已识别："+data.name+" · "+(data.bundleID||"未知 Bundle ID"),
+      "v"+(data.version||"?")+" (Build "+(data.buildVersion||"?")+") · "+(file.size/1048576).toFixed(2)+" MiB",
+      data.iconBytes?"已发现 PNG 应用图标。":"没有提取到独立 PNG 图标。",
+      ...data.warnings
+    ].join("\n");
+  }catch(e){
+    $("ipaResult").textContent="自动解析失败："+e.message+"。仍可手动填写信息，但请仔细核对 Bundle ID、版本和权限。";
+  }finally{scanning=false;}
+}
+function permissions(){
+  let privacy;
+  try{privacy=JSON.parse(val("privacy")||"{}");}catch{throw new Error("Privacy 必须是有效 JSON 对象。");}
+  if(!privacy||Array.isArray(privacy)||typeof privacy!=="object")throw new Error("Privacy 必须是 JSON 对象。");
+  for(const [k,v] of Object.entries(privacy))if(!k.endsWith("UsageDescription")||typeof v!=="string")throw new Error("Privacy 应包含 UsageDescription 字符串键值。");
+  const entitlements=[...new Set($("entitlements").value.split(/[\r\n,]+/).map(s=>s.trim()).filter(Boolean))];
+  return {entitlements,privacy};
+}
+function newApp(versions=[]){
+  const name=val("appName"),bundleIdentifier=val("bundleID"),developerName=val("developer"),description=val("description");
+  if(!name||!bundleIdentifier||!developerName||!description)throw new Error("请填写应用名称、Bundle ID、开发者和详细描述。");
+  if(!/^[a-zA-Z0-9_-]+(?:\.[a-zA-Z0-9_-]+)+$/.test(bundleIdentifier))throw new Error("Bundle ID 格式错误，示例 com.example.app。");
+  return {
+    name,bundleIdentifier,developerName,
+    subtitle:val("appSubtitle"),localizedDescription:description,
+    iconURL:validURL(val("iconURL"),true)||DEFAULT_ICON,
+    tintColor:$("appTint").value,
+    category:CATEGORIES.has($("category").value)?$("category").value:"other",
+    versions,appPermissions:permissions()
+  };
+}
+function newRelease(download,size){
+  const version=val("version"),buildVersion=val("buildVersion");
+  if(!version||!buildVersion)throw new Error("必须填写版本号和 Build Version。");
+  if(!Number.isSafeInteger(size)||size<1)throw new Error("IPA 大小必须是准确的字节数。");
+  return {
+    version,buildVersion,date:val("releaseDate")||new Date().toISOString().slice(0,10),
+    localizedDescription:val("releaseNotes"),
+    downloadURL:validURL(download),size,
+    ...(val("minOS")?{minOSVersion:val("minOS")}:{}),
+    ...(val("maxOS")?{maxOSVersion:val("maxOS")}:{}),
+  };
+}
+function slug(s){return String(s).replace(/[^a-zA-Z0-9._-]+/g,"-").slice(0,90)||"app";}
+async function uploadIPA(file,bundle,version,build){
+  const filename=slug(bundle)+"-"+slug(version)+"-"+slug(build)+"-"+Date.now()+".ipa";
+  await putFile("docs/ipas/"+filename,new Uint8Array(await file.arrayBuffer()),"Upload "+filename);
+  return SITE_URL+"ipas/"+encodeURIComponent(filename);
+}
+async function uploadIcon(bundle){
+  if(!inspected?.iconBytes)return null;
+  const filename=slug(bundle)+"-"+Date.now()+".png";
+  await putFile("docs/icons/"+filename,inspected.iconBytes,"Add icon "+filename);
+  return SITE_URL+"icons/"+encodeURIComponent(filename);
+}
+async function saveEditor(evt){
+  evt.preventDefault();if(!authorized()||busy||scanning)return;
+  const mode=editor.mode,bundle=editor.bundle,index=editor.index,file=$("ipaFile").files[0]||null;
+  if(file&&file.size>MAX_DIRECT_SIZE)return alertUser("IPA 超过 40 MiB。请先上传到 Releases，清空文件选项后使用下载链接。",true);
+  busy=true;$("saveEditor").disabled=true;$("saveEditor").textContent="正在保存…";
+  try{
+    await ensureFresh();
+    const draft=structuredClone(source);
+    const app=bundle?draft.apps.find(a=>a.bundleIdentifier===bundle):null;
+    if(bundle&&!app)throw new Error("目标应用不存在，请刷新。");
+    if(mode==="edit-app"){
+      const next=newApp(app.versions);
+      if(next.bundleIdentifier!==bundle&&draft.apps.some(a=>a.bundleIdentifier===next.bundleIdentifier))throw new Error("这个 Bundle ID 已被其他应用使用。");
+      Object.assign(app,next);
+    }else{
+      const target=mode==="new"?newApp([]):app;
+      if(mode==="new"&&draft.apps.some(a=>a.bundleIdentifier===target.bundleIdentifier))throw new Error("相同 Bundle ID 已存在，请使用「新版本」。");
+      if(file&&inspected?.bundleID&&inspected.bundleID!==target.bundleIdentifier)throw new Error("IPA 内的 Bundle ID 与目标应用不一致。");
+      let url=val("downloadURL");
+      if(!file&&!url)throw new Error("请选择 IPA 文件，或填写可公开下载的 IPA HTTPS 链接。");
+      const size=file?file.size:Number(val("size"));
+      const release=newRelease(file?SITE_URL+"ipas/pending.ipa":url,size);
+      if(mode==="edit-version"){
+        if(!target.versions?.[index])throw new Error("找不到原版本记录。");
+        if(target.versions.some((v,i)=>i!==index&&v.version===release.version&&v.buildVersion===release.buildVersion))throw new Error("版本号和 Build Version 与已有记录重复。");
+      }else if(target.versions.some(v=>v.version===release.version&&v.buildVersion===release.buildVersion))throw new Error("此版本号与 Build Version 已存在。");
+      target.appPermissions=permissions();
+      if(file){
+        alertUser("正在上传 IPA 文件，请不要关闭此页面。");
+        release.downloadURL=await uploadIPA(file,target.bundleIdentifier,release.version,release.buildVersion);
       }
-      outer.append(actions);
-      if(versions.length) {
-        const rows=node("div","version-list");
-        versions.forEach((v,i)=>{
-          const row=node("div","version-row"),info=node("div","version-info");
-          info.append(node("strong","",(i===0?"★ 最新 · ":"")+"v"+v.version+" ("+v.buildVersion+") · "+(v.date||"日期未填写")+" · "+shortSize(v.size)));
-          const url=safeHTTPS(v.downloadURL);if(url){const a=node("a","","查看 IPA ↗");a.href=url;a.target="_blank";a.rel="noopener noreferrer";info.append(a);}
-          row.append(info);
-          for(const [label,act] of [["编辑","edit-version"],["设为最新","latest-version"],["删除","remove-version"]]){
-            if(act==="latest-version"&&i===0)continue;
-            const b=node("button",act==="remove-version"?"danger":"",label);b.type="button";b.dataset.action=act;b.dataset.bundle=app.bundleIdentifier;b.dataset.index=String(i);row.append(b);
-          }
-          rows.append(row);
-        });
-        outer.append(rows);
-      }
-      list.append(outer);
-    }
-  }
-  function populateSettings() {
-    const s=state.source;if(!s)return;
-    const f=$("settingsForm");
-    for(const name of ["name","subtitle","description","website","iconURL"]){const ctrl=f.elements.namedItem(name);if(ctrl)ctrl.value=s[name]||"";}
-    f.elements.namedItem("tintColor").value=/^#[a-fA-F0-9]{6}$/.test(s.tintColor||"")?s.tintColor:"#6559e8";
-  }
-  async function saveSettings(evt) {
-    evt.preventDefault();if(!ensureConnected())return;
-    const f=$("settingsForm"),copy=structuredClone(state.source);
-    copy.name=f.elements.namedItem("name").value.trim();
-    copy.subtitle=f.elements.namedItem("subtitle").value.trim();
-    copy.description=f.elements.namedItem("description").value.trim();
-    copy.website=safeURLOrThrow(f.elements.namedItem("website").value,"官网地址")||"https://repo.zrh.jp/";
-    copy.iconURL=safeURLOrThrow(f.elements.namedItem("iconURL").value,"源图标")||DEFAULT_ICON;
-    copy.tintColor=f.elements.namedItem("tintColor").value;
-    if(!copy.name)throw new Error("请填写软件源名称");
-    await busyAction(async()=>{await publish(copy,"Update ZZS IPA Store source settings");toast("软件源设置已保存");});
-  }
-  function getApp(bundle) {return state.source?.apps.find(a=>a.bundleIdentifier===bundle);}
-  function value(id){return $(id).value.trim();}
-  function setValue(id,v){$(id).value=v===undefined||v===null?"":String(v);}
-  function toggleFields(id,visible) {
-    const el=$(id);el.hidden=!visible;
-    for(const control of el.querySelectorAll("input,textarea,select"))control.disabled=!visible;
-  }
-  function openEditor(mode="new-app",bundle=null,index=-1) {
-    if(!ensureConnected())return;
-    if(mode!=="new-app"&&!getApp(bundle)){toast("应用不存在，请刷新",true);return;}
-    state.mode=mode;state.bundle=bundle;state.index=index;state.file=null;
-    $("editorForm").reset();$("ipaFile").value="";$("fileInfo").textContent="尚未选择文件";inline("");
-    const app=mode==="new-app"?null:getApp(bundle);
-    toggleFields("appFields",mode==="new-app"||mode==="edit-app");
-    toggleFields("releaseFields",mode!=="edit-app");
-    const titles={"new-app":["NEW APP","添加应用与首个版本"],"edit-app":["EDIT APP","编辑应用资料"],"new-version":["NEW RELEASE","添加新版本 · "+(app?.name||"")],"edit-version":["EDIT RELEASE","编辑历史版本 · "+(app?.name||"")]};
-    $("editModeLabel").textContent=titles[mode][0];$("editTitle").textContent=titles[mode][1];
-    $("saveBtn").textContent=mode==="edit-app"?"保存应用资料":"保存并发布";
-    const now=new Date();setValue("fieldDate",[now.getFullYear(),String(now.getMonth()+1).padStart(2,"0"),String(now.getDate()).padStart(2,"0")].join("-"));
-    setValue("fieldDeveloper","ZZS");setValue("fieldPrivacy","{}");setValue("fieldCategory","utilities");
-    if(app) {
-      setValue("fieldName",app.name);setValue("fieldBundle",app.bundleIdentifier);
-      setValue("fieldDeveloper",app.developerName);setValue("fieldCategory",app.category||"other");
-      setValue("fieldIcon",app.iconURL||"");setValue("fieldDescription",app.localizedDescription||"");
-      setValue("fieldSubtitle",app.subtitle||"");
-      setValue("fieldEntitlements",(app.appPermissions?.entitlements||[]).join("\n"));
-      setValue("fieldPrivacy",JSON.stringify(app.appPermissions?.privacy||{},null,2));
-      if(mode==="edit-app")$("permissionsDetails").open=true;
-    }
-    if(mode==="edit-version") {
-      const v=app.versions[index];if(!v){toast("历史版本不存在",true);return;}
-      setValue("fieldVersion",v.version);setValue("fieldBuild",v.buildVersion);setValue("fieldDate",v.date?.slice(0,10));
-      setValue("fieldSize",v.size);setValue("fieldDownload",v.downloadURL);setValue("fieldNotes",v.localizedDescription);
-      setValue("fieldMinOS",v.minOSVersion);setValue("fieldMaxOS",v.maxOSVersion);
-    }
-    $("editorDialog").showModal();
-  }
-  async function fileChanged() {
-    const file=$("ipaFile").files[0];state.file=file||null;
-    if(!file){$("fileInfo").textContent="尚未选择文件";return;}
-    $("fileInfo").textContent=file.name+" · "+shortSize(file.size);
-    if(file.size>MAX_UPLOAD_BYTES){state.file=null;$("ipaFile").value="";$("fileInfo").textContent="文件过大，已取消本地选择："+file.name;inline("此文件超过 20 MiB。请通过 GitHub Releases 上传，再在这里使用 HTTPS 下载链接。");return;}
-    setValue("fieldSize",file.size);
-    try {
-      inline("正在从 IPA 读取 Info.plist …");
-      const data=await window.ZZSIPA.inspect(file);
-      if(state.file!==file)return;
-      if(state.mode==="new-app") {
-        setValue("fieldName",data.name||"未命名应用");
-        setValue("fieldBundle",data.bundleIdentifier);
-        if(Object.keys(data.privacy).length)setValue("fieldPrivacy",JSON.stringify(data.privacy,null,2));
-        $("permissionsDetails").open=Object.keys(data.privacy).length>0;
-      } else if(state.mode==="new-version"||state.mode==="edit-version") {
-        if(data.bundleIdentifier!==state.bundle)throw new Error("IPA Bundle ID（"+data.bundleIdentifier+"）与选中应用（"+state.bundle+"）不一致");
-      }
-      setValue("fieldVersion",data.version);setValue("fieldBuild",data.buildVersion);
-      if(data.minOSVersion)setValue("fieldMinOS",data.minOSVersion);
-      inline("已读取 Info.plist 元数据。请核对签名 Entitlements，自动解析无法保证读取全部权限。");
-    } catch(e) {
-      inline("提示："+friendlyError(e)+"。你可以手动填写应用资料，但务必校验实际 Bundle ID、版本和权限。");
-    }
-  }
-  function collectAppInfo(original) {
-    const name=value("fieldName"),bundle=value("fieldBundle");
-    if(!name)throw new Error("请输入应用名称");
-    if(!/^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(bundle))throw new Error("Bundle ID 格式不正确，示例 com.example.app");
-    const developerName=value("fieldDeveloper")||"ZZS";
-    const iconURL=safeURLOrThrow(value("fieldIcon"),"图标 URL")||DEFAULT_ICON;
-    const category=value("fieldCategory");
-    if(!CATEGORIES.has(category))throw new Error("应用分类无效");
-    let privacy;
-    try{privacy=JSON.parse(value("fieldPrivacy")||"{}");}catch{throw new Error("隐私权限必须是合法的 JSON 对象");}
-    if(!privacy||Array.isArray(privacy)||typeof privacy!=="object")throw new Error("隐私权限 JSON 必须是一个对象");
-    for(const [k,v] of Object.entries(privacy)){
-      if(!/^NS[A-Za-z0-9]+UsageDescription$/.test(k)||typeof v!=="string")throw new Error("隐私权限必须使用 NS...UsageDescription 字符串键值");
-    }
-    const entitlements=[...new Set(value("fieldEntitlements").split(/\r?\n/).map(x=>x.trim()).filter(Boolean))];
-    const app={...(original||{}),name,bundleIdentifier:bundle,developerName,
-      subtitle:value("fieldSubtitle"),localizedDescription:value("fieldDescription")||name,
-      iconURL,category,appPermissions:{entitlements,privacy}};
-    if(!Array.isArray(app.versions))app.versions=[];
-    return app;
-  }
-  function collectRelease(existing) {
-    const version=value("fieldVersion"),buildVersion=value("fieldBuild"),date=value("fieldDate");
-    const size=Number(value("fieldSize"));
-    if(!version||!buildVersion||!date)throw new Error("版本号、Build 和发布日期不能为空");
-    if(!Number.isSafeInteger(size)||size<=0)throw new Error("请输入准确的 IPA 文件字节数");
-    if(!/^\d{4}-\d{2}-\d{2}$/.test(date))throw new Error("发布日期必须是 YYYY-MM-DD");
-    const downloadURL=value("fieldDownload");
-    if(!state.file&&!downloadURL)throw new Error("请选择 IPA 文件，或者填写 HTTPS 下载链接");
-    if(!state.file&&!safeHTTPS(downloadURL))throw new Error("IPA 下载链接必须是完整的 HTTPS URL");
-    if(state.file&&state.file.size>MAX_UPLOAD_BYTES)throw new Error("本地上传上限为 20 MiB，请使用 GitHub Releases");
-    if(state.file&&state.file.size!==size)throw new Error("文件字节数与选中的 IPA 不一致，请重新选择文件");
-    const release={...(existing||{}),version,buildVersion,date,
-      localizedDescription:value("fieldNotes"),size};
-    if(!state.file)release.downloadURL=safeURLOrThrow(downloadURL,"IPA 下载链接");
-    if(value("fieldMinOS"))release.minOSVersion=value("fieldMinOS");else delete release.minOSVersion;
-    if(value("fieldMaxOS"))release.maxOSVersion=value("fieldMaxOS");else delete release.maxOSVersion;
-    return release;
-  }
-  async function busyAction(callback) {
-    if(state.busy)return;
-    state.busy=true;
-    const submit=$("saveBtn");submit.disabled=true;
-    const initialText=submit.textContent;submit.textContent="保存中…";
-    try{await callback();}
-    catch(e){const message=friendlyError(e);toast(message,true);inline(message);}
-    finally{state.busy=false;submit.disabled=false;submit.textContent=initialText;}
-  }
-  async function saveEditor(evt) {
-    evt.preventDefault();if(!ensureConnected())return;
-    const mode=state.mode;const original=getApp(state.bundle);
-    const next=structuredClone(state.source);
-    const at=next.apps.findIndex(a=>a.bundleIdentifier===state.bundle);
-    let app,release=null;
-    try {
-      if(mode==="new-app") {
-        app=collectAppInfo();if(next.apps.some(a=>a.bundleIdentifier===app.bundleIdentifier))throw new Error("此 Bundle ID 已经存在，请通过添加版本操作更新");
-        release=collectRelease(null);
-        app.versions.unshift(release);next.apps.push(app);
-      } else if(mode==="edit-app") {
-        if(at<0)throw new Error("目标应用已经不存在");
-        app=collectAppInfo(original);
-        if(next.apps.some((a,i)=>i!==at && a.bundleIdentifier===app.bundleIdentifier))throw new Error("修改后的 Bundle ID 已被其他应用使用");
-        next.apps[at]=app;
-      } else {
-        if(at<0)throw new Error("目标应用已经不存在");
-        app=next.apps[at];
-        release=collectRelease(mode==="edit-version" ? app.versions[state.index] : null);
-        if(app.versions.some((v,i)=>(mode!=="edit-version"||i!==state.index)&&v.version===release.version&&v.buildVersion===release.buildVersion))
-          throw new Error("此版本号和 Build 号的组合已存在");
-        if(mode==="new-version")app.versions.unshift(release);
-        else {
-          if(!app.versions[state.index])throw new Error("目标历史版本已经不存在");
-          app.versions[state.index]=release;
+      if(mode==="edit-version")target.versions[index]=release;
+      else target.versions.unshift(release);
+      if(mode==="new"){
+        if(file&&inspected?.iconBytes&&!val("iconURL")){
+          const extracted=await uploadIcon(target.bundleIdentifier);
+          if(extracted)target.iconURL=extracted;
         }
+        draft.apps.unshift(target);
       }
-    } catch(e){inline(friendlyError(e));return;}
-    await busyAction(async()=>{
-      if(release && state.file) {
-        try{const parsed=await window.ZZSIPA.inspect(state.file);
-          if(parsed.bundleIdentifier!==app.bundleIdentifier)throw new Error("IPA Bundle ID 不匹配（IPA: "+parsed.bundleIdentifier+"，表单: "+app.bundleIdentifier+"），已取消上传");
-          if(parsed.version!==release.version||parsed.buildVersion!==release.buildVersion)throw new Error("IPA 版本与表单不匹配（IPA: "+parsed.version+" / "+parsed.buildVersion+"），已取消上传");
-        }catch(e){
-          if(/不匹配/.test(friendlyError(e)))throw e;
-          if(!confirm("无法完整验证 IPA 元数据："+friendlyError(e)+"\n仍要使用手动填写的资料发布吗？"))return;
-        }
-        inline("正在向 GitHub 上传 IPA 文件。文件较大时可能需要一点时间。");
-        release.downloadURL=await uploadIPA(state.file,app.bundleIdentifier,release.version,release.buildVersion);
-      }
-      inline("正在更新 source.json …");
-      await publish(next,mode==="edit-app"?"Edit AltStore app details":"Publish AltStore app "+app.bundleIdentifier);
-      $("editorDialog").close();state.file=null;$("ipaFile").value="";
-      toast("发布成功！GitHub Pages 更新后将显示在网站和 AltStore 中。");
-      showTab("dashboard");
-    });
-  }
-  async function modifyApp(action,bundle,index) {
-    if(!ensureConnected())return;
-    if(["add-version","edit-app","edit-version"].includes(action)) {
-      openEditor(action==="add-version"?"new-version":action,bundle,index);return;
     }
-    const source=structuredClone(state.source),appIndex=source.apps.findIndex(a=>a.bundleIdentifier===bundle);
-    if(appIndex<0){toast("应用不存在，请刷新",true);return;}
-    const app=source.apps[appIndex];
-    if(action==="remove-app") {
-      if(!confirm("确定从软件源移除「"+app.name+"」及全部版本吗？\n已上传的 IPA 文件不会自动删除。"))return;
-      source.apps.splice(appIndex,1);
-    } else if(action==="remove-version") {
-      if(!app.versions[index])return;
-      if(!confirm("删除版本 "+app.versions[index].version+" 的软件源记录吗？\nIPA 文件不会自动删除。"))return;
-      app.versions.splice(index,1);
-      if(!app.versions.length)source.apps.splice(appIndex,1);
-    } else if(action==="latest-version") {
-      if(index<=0||!app.versions[index])return;
-      app.versions.unshift(app.versions.splice(index,1)[0]);
-    } else return;
-    await busyAction(async()=>{
-      await publish(source,"Manage AltStore app "+bundle+" ("+action+")");
-      toast("软件源已更新");
-    });
+    await saveSource(draft,"Update ZZS IPA Store "+(mode==="new"?val("bundleID"):bundle));
+    $("editor").close();
+    alertUser("提交成功，GitHub Pages 更新后会在 AltStore 中显示。");
+  }catch(e){
+    alertUser("保存失败："+e.message+"。若 IPA 已上传而 JSON 更新失败，可能留下未关联的文件。",true);
+  }finally{
+    busy=false;$("saveEditor").disabled=false;
+    $("saveEditor").textContent={new:"上传并发布",version:"发布新版本","edit-app":"保存应用资料","edit-version":"保存版本记录"}[mode];render();
   }
-  async function copySource() {
-    try{await navigator.clipboard.writeText(SOURCE_URL);toast("软件源地址已复制");}
-    catch{toast("请手动复制："+SOURCE_URL);}
-  }
-  function wire() {
-    document.querySelectorAll(".sidebar button[data-tab]").forEach(b=>b.addEventListener("click",()=>showTab(b.dataset.tab)));
-    $("authBtn").addEventListener("click",()=>{$("authDialog").showModal();});
-    $("logoutBtn").addEventListener("click",logout);
-    $("authForm").addEventListener("submit",connect);
-    $("refreshBtn").addEventListener("click",()=>{loadSource().catch(()=>{});});
-    $("settingsForm").addEventListener("submit",evt=>{saveSettings(evt).catch(e=>toast(friendlyError(e),true));});
-    $("addAppBtn").addEventListener("click",()=>openEditor("new-app"));
-    $("addAppBtn2").addEventListener("click",()=>openEditor("new-app"));
-    $("editorForm").addEventListener("submit",evt=>{saveEditor(evt).catch(e=>toast(friendlyError(e),true));});
-    $("ipaFile").addEventListener("change",()=>fileChanged().catch(e=>inline(friendlyError(e))));
-    $("copySource").addEventListener("click",copySource);
-    $("appList").addEventListener("click",evt=>{
-      const b=evt.target.closest("button[data-action]");
-      if(b)modifyApp(b.dataset.action,b.dataset.bundle,Number(b.dataset.index||0)).catch(e=>toast(friendlyError(e),true));
-    });
-    document.querySelectorAll("button[data-close]").forEach(b=>b.addEventListener("click",()=>{const d=$(b.dataset.close);if(d instanceof HTMLDialogElement)d.close();}));
-    for(const dialog of document.querySelectorAll("dialog"))dialog.addEventListener("click",event=>{if(event.target===dialog)dialog.close();});
-  }
-  wire();connectedUI();showTab("dashboard");loadSource({silent:true}).catch(err=>{console.error("Could not load GitHub repository source",err);toast(friendlyError(err),true);});
-})();
+}
+function tab(name){
+  const titles={overview:["应用管理","上传 IPA、管理版本，实时维护 AltStore Classic 软件源。"],settings:["软件源设置","修改商店名称、介绍与主题。"],guide:["部署与帮助","GitHub Pages、DNS 和令牌授权说明。"]};
+  if(!titles[name])return;
+  for(const key of Object.keys(titles))$("view-"+key).hidden=key!==name;
+  document.querySelectorAll(".menu-item[data-view]").forEach(b=>b.classList.toggle("selected",b.dataset.view===name));
+  $("pageTitle").textContent=titles[name][0];$("pageSubtitle").textContent=titles[name][1];
+  location.hash=name==="overview"?"":name;
+}
+async function copyURL(){
+  try{await navigator.clipboard.writeText(SOURCE_URL);alertUser("软件源地址已复制。");}
+  catch{alertUser("请手动复制："+SOURCE_URL);}
+}
+function backup(){
+  const file=new Blob([JSON.stringify(source,null,2)+"\n"],{type:"application/json"});
+  const url=URL.createObjectURL(file);
+  const a=document.createElement("a");a.href=url;a.download="zzs-source-"+new Date().toISOString().slice(0,10)+".json";document.body.append(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
+$("connectBtn").addEventListener("click",connect);
+$("patInput").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();connect();}});
+$("disconnectBtn").addEventListener("click",disconnect);
+$("refreshBtn").addEventListener("click",loadSource);
+for(const id of ["newAppBtn","heroNew","listNew"])$(id).addEventListener("click",()=>openEditor());
+$("appSearch").addEventListener("input",render);
+$("settingsForm").addEventListener("submit",saveSettings);
+$("copySource").addEventListener("click",copyURL);
+$("downloadJSON").addEventListener("click",backup);
+$("editorForm").addEventListener("submit",saveEditor);
+$("closeEditor").addEventListener("click",closeEditor);
+$("cancelEditor").addEventListener("click",closeEditor);
+$("editor").addEventListener("cancel",e=>{if(busy)e.preventDefault();});
+$("ipaFile").addEventListener("change",e=>parseSelection(e.target.files[0]));
+$("dropZone").addEventListener("dragover",e=>{e.preventDefault();$("dropZone").classList.add("dragging");});
+$("dropZone").addEventListener("dragleave",()=>$("dropZone").classList.remove("dragging"));
+$("dropZone").addEventListener("drop",e=>{
+  e.preventDefault();$("dropZone").classList.remove("dragging");
+  const file=e.dataTransfer?.files?.[0];if(!file)return;
+  const list=new DataTransfer();list.items.add(file);$("ipaFile").files=list.files;parseSelection(file);
+});
+document.querySelectorAll(".menu-item[data-view]").forEach(b=>b.addEventListener("click",()=>tab(b.dataset.view)));
+tab(location.hash.replace("#","")||"overview");
+setAuthUI();loadSource();
