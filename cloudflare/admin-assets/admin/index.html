@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111a32">
+<meta name="description" content="ZZS IPA Store management dashboard">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https: data:; connect-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'">
+<title>管理后台 · ZZS IPA Store</title>
+<link rel="icon" type="image/svg+xml" href="../icon.svg">
+<link rel="stylesheet" href="./admin.css">
+<script type="module" src="./app.js"></script>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="../"><img src="../icon.svg" alt="" width="43" height="43"><span><b>ZZS IPA Store</b><small>MANAGEMENT CONSOLE</small></span></a>
+<div class="menu-label">工作台</div>
+<nav class="menu" aria-label="管理导航">
+<button type="button" data-view="overview" class="menu-item selected"><span class="symbol">▦</span>应用管理</button>
+<button type="button" data-view="settings" class="menu-item"><span class="symbol">◈</span>软件源设置</button>
+<button type="button" data-view="guide" class="menu-item"><span class="symbol">☷</span>部署与帮助</button>
+</nav>
+<div class="sidebar-bottom"><div class="connection"><span id="connectionDot" class="status-dot"></span><span id="connectionText">安全登录已启用</span></div><div class="sidebar-note">账号密码经过 Cloudflare 服务端验证。首次登录需要修改默认密码。</div><a class="site-back" href="../">↗ 返回商店首页</a></div>
+</aside>
+<main class="main">
+<header class="topbar">
+<div><span class="eyebrow">ZZS CONTROL PANEL</span><h1 id="pageTitle">应用管理</h1><p id="pageSubtitle">上传 IPA、管理版本，实时维护 AltStore Classic 软件源。</p></div>
+<div class="top-actions"><button class="button outline" id="refreshBtn" type="button">↻ 刷新</button><button class="button primary" id="newAppBtn" type="button">＋ 添加应用</button></div>
+</header>
+<div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+<section id="identityPanel" class="identity-panel"><span class="status-dot online"></span><span>已登录 <strong id="accountName">ZZS 管理员</strong> · Cloudflare 安全会话</span><a class="button outline" href="/admin/change">修改账号密码</a><form method="post" action="/admin/logout"><button type="submit" class="button outline">退出登录</button></form></section>
+<section id="view-overview" class="view">
+<div class="hero"><div><div class="hero-label">YOUR PERSONAL APP DISTRIBUTION</div><h2>一个控制台，<br>管理所有 IPA。</h2><p>应用、版本与软件源在同一处管理。发布新版本后，AltStore 会在下次检查软件源时发现更新。</p><div class="hero-buttons"><button class="button white" type="button" id="heroNew">＋ 发布应用</button><a class="button glass" target="_blank" rel="noopener noreferrer" href="https://github.com/zrhtop/ZZS-IPA-Store/releases/new">上传大型 IPA ↗</a></div></div><div class="hero-art" aria-hidden="true"><div class="orbit orbit1"></div><div class="orbit orbit2"></div><div class="hero-icon">IPA</div></div></div>
+<div class="stats"><article class="stat"><span>应用数量</span><strong id="appCount">0</strong><small>已上架应用</small></article><article class="stat"><span>版本总数</span><strong id="versionCount">0</strong><small>包含历史版本</small></article><article class="stat"><span>源文件状态</span><strong id="repoStatus" class="state-loading">加载中</strong><small>GitHub Pages · source.json</small></article></div>
+<div class="section-heading"><div><h2>已发布应用</h2><p>你可以编辑应用信息、添加新版本或设置最新版。</p></div><div class="section-actions"><input id="appSearch" type="search" placeholder="搜索应用…" aria-label="搜索应用"><button id="listNew" class="button outline" type="button">＋ 新应用</button></div></div>
+<div id="appList" class="app-list"><div class="empty"><div class="empty-symbol">◇</div><strong>正在加载</strong><p>读取最新的软件源。</p></div></div>
+</section>
+<section id="view-settings" class="view" hidden>
+<div class="section-heading"><div><h2>软件源设置</h2><p>这里保存的是 AltStore 所展示的商店信息。</p></div></div>
+<form id="settingsForm" class="sheet">
+<div class="two"><label>软件源名称 *<input name="name" required maxlength="100"></label><label>副标题<input name="subtitle" maxlength="200"></label></div>
+<label>详细描述<textarea name="description" rows="3"></textarea></label>
+<div class="two"><label>官网 URL<input name="website" type="url" placeholder="https://repo.zrh.jp/"></label><label>商店图标 URL<input name="iconURL" type="url"></label></div>
+<div class="two"><label>主题色<input name="tintColor" type="color" value="#6559e8"></label><div class="field-note">修改后将同步写入 <code>docs/source.json</code>。</div></div>
+<div class="sheet-actions"><button type="submit" class="button primary">保存源信息</button><button type="button" class="button outline" id="downloadJSON">下载 JSON 备份</button></div>
+</form>
+<div class="sheet extra"><div class="section-heading"><div><h3>公开 AltStore 地址</h3><p>在 AltStore Classic 的 Sources 中添加。</p></div><button type="button" class="button outline" id="copySource">复制地址</button></div><code class="address">https://repo.zrh.jp/source.json</code></div>
+</section>
+<section id="view-guide" class="view" hidden>
+<div class="section-heading"><div><h2>部署与使用说明</h2><p>静态前端放在 GitHub Pages，IPA 可由 Pages 或 Releases 提供下载。</p></div></div>
+<div class="guides">
+<article class="guide"><span>01 / PUBLISH</span><h3>启用 GitHub Pages</h3><p>打开仓库 Settings → Pages。Source 选 Deploy from a branch，Branch 选 main，Folder 选 /docs。保存并检查 Custom domain 为 repo.zrh.jp。</p><a href="https://github.com/zrhtop/ZZS-IPA-Store/settings/pages" target="_blank" rel="noopener noreferrer">Pages 设置 ↗</a></article>
+<article class="guide"><span>02 / DNS</span><h3>设置 Cloudflare DNS</h3><p>创建 CNAME，名称为 repo，目标为 zrhtop.github.io。初次部署建议 DNS only（灰云），GitHub 可验证并颁发 HTTPS 证书。</p></article>
+<article class="guide"><span>03 / ACCESS</span><h3>用户名与密码登录</h3><p>后台需要通过 Cloudflare Worker 登录。首次登录必须修改默认密码；密码要求 10–12 位，且包含大写字母、小写字母和数字。</p><a href="/admin/change">修改账号密码 ↗</a></article>
+<article class="guide"><span>04 / APPS</span><h3>上架 IPA 和添加版本</h3><p>20 MiB 以内的 IPA 可以在此页面上传；较大的 IPA 先上传到仓库 GitHub Releases，再复制 .ipa 文件的直链并输入准确文件大小。系统尝试读取 IPA 的 Info.plist，并自动识别应用信息。</p><a href="https://github.com/zrhtop/ZZS-IPA-Store/releases/new" target="_blank" rel="noopener noreferrer">创建 Release ↗</a></article>
+</div>
+<div class="warning"><strong>安全与兼容性提醒</strong><p>管理后台已移至 Cloudflare Worker，未经登录不能读取后台文件或执行修改。登录页仍公开可见。不要上传敏感或无分发授权的 IPA。AltStore 会核对 IPA 实际权限与 source.json 中的 appPermissions，必须确保权限信息完整准确。</p></div>
+</section>
+<footer>ZZS IPA Store · <a href="https://github.com/zrhtop/ZZS-IPA-Store" target="_blank" rel="noopener noreferrer">GitHub Repository ↗</a></footer>
+</main>
+</div>
+<dialog id="editor">
+<form id="editorForm" novalidate>
+<header class="modal-header"><div><span class="eyebrow" id="editorEyebrow">NEW APP</span><h2 id="editorTitle">发布 IPA 应用</h2></div><button id="closeEditor" type="button" class="close" aria-label="关闭">✕</button></header>
+<div class="modal-body">
+<section id="appFields" class="fields">
+<h3>应用资料</h3>
+<div class="two"><label>应用名称 *<input id="appName" required maxlength="140"></label><label>Bundle ID *<input id="bundleID" required placeholder="com.example.myapp" spellcheck="false"></label></div>
+<div class="two"><label>开发者名称 *<input id="developer" value="ZZS" required></label><label>应用分类<select id="category"><option value="utilities">工具</option><option value="developer">开发者</option><option value="entertainment">娱乐</option><option value="games">游戏</option><option value="lifestyle">生活</option><option value="photo-video">照片和视频</option><option value="social">社交</option><option value="other">其他</option></select></label></div>
+<label>一句话介绍<input id="appSubtitle" maxlength="200" placeholder="可选"></label>
+<label>应用详细描述 *<textarea id="description" rows="3" required placeholder="介绍应用功能"></textarea></label>
+<div class="two"><label>图标 HTTPS URL<input type="url" id="iconURL" placeholder="从 IPA 提取，或手动填写"></label><label>主题颜色<input type="color" id="appTint" value="#6559e8"></label></div>
+</section>
+<section id="releaseFields" class="fields">
+<h3>IPA 与版本</h3>
+<div class="drop-area" id="dropZone"><label for="ipaFile"><b>↑ 选择 IPA 文件</b><span>或将 IPA 拖进此区域</span><small>直接上传最大 40 MiB，大文件请使用 GitHub Releases。</small></label><input type="file" id="ipaFile" accept=".ipa,application/octet-stream"></div>
+<div id="ipaResult" class="ipa-result">选择 IPA 后会自动尝试读取名称、Bundle ID、版本、图标和权限信息。</div>
+<label>也可以粘贴现有 IPA 的 HTTPS 下载地址<input id="downloadURL" type="url" placeholder="https://github.com/.../releases/download/.../app.ipa"></label>
+<div class="two"><label>版本号 *<input id="version" required placeholder="1.0.0" spellcheck="false"></label><label>Build Version *<input id="buildVersion" required placeholder="1" spellcheck="false"></label></div>
+<div class="two"><label>发布日期<input id="releaseDate" type="date"></label><label>IPA 大小（字节） *<input id="size" type="number" min="1" required placeholder="选择 IPA 后自动填入"></label></div>
+<label>更新说明<textarea id="releaseNotes" rows="2" placeholder="当前版本的更新内容"></textarea></label>
+<div class="two"><label>最低 iOS 版本<input id="minOS" placeholder="例如 15.0"></label><label>最高 iOS 版本（可留空）<input id="maxOS" placeholder="例如 27.0"></label></div>
+</section>
+<section id="permissionsFields" class="fields">
+<h3>AltStore 权限申明 <small>必须与实际 IPA 一致</small></h3>
+<label>Entitlements（每行一个，含所有扩展）<textarea id="entitlements" rows="4" spellcheck="false" placeholder="com.apple.security.application-groups"></textarea></label>
+<label>Privacy 权限 JSON <textarea id="privacy" rows="4" spellcheck="false" placeholder='{"NSCameraUsageDescription":"用途描述"}'></textarea></label>
+<p class="tip">自动提取主要应用的 Info.plist 隐私说明；签名 Entitlements 或扩展权限可能无法完全提取。保存前请核对签名包，否则 AltStore 可能拒绝安装。</p>
+</section>
+</div>
+<footer class="modal-footer"><button class="button outline" id="cancelEditor" type="button">取消</button><button class="button primary" id="saveEditor" type="submit">发布应用</button></footer>
+</form>
+</dialog>
+</body></html>

@@ -1,0 +1,22 @@
+name = "zzs-ipa-admin"
+main = "./worker.js"
+compatibility_date = "2026-10-23"
+workers_dev = false
+
+# DNS for repo.zrh.jp MUST be proxied through Cloudflare (orange cloud).
+# GitHub Pages still hosts the public homepage and source.json.
+routes = [
+  { pattern = "repo.zrh.jp/admin", zone_name = "zrh.jp" },
+  { pattern = "repo.zrh.jp/admin/*", zone_name = "zrh.jp" }
+]
+
+[assets]
+directory = "./admin-assets"
+binding = "ASSETS"
+run_worker_first = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "zzs-ipa-auth"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+migrations_dir = "./migrations"
