@@ -385,7 +385,7 @@ async function saveEditor(evt){
     if(bundle&&!app)throw new Error("目标应用不存在，请刷新。");
     if(mode==="edit-app"){
       const next=newApp(app.versions);
-      if(next.bundleIdentifier!==bundle&&draft.apps.some(a=>a.bundleIdentifier===next.bundleIdentifier))throw new Error("这个 Bundle ID 已被其他应用使用。");
+      if(next.bundleIdentifier!==bundle)throw new Error("已发布应用的 Bundle ID 不能直接修改。请创建新应用，以免历史 IPA 标识不一致。");
       Object.assign(app,next);
     }else{
       const target=mode==="new"?newApp([]):app;
