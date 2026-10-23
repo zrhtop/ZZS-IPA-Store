@@ -211,7 +211,7 @@
     const titles={"new-app":["NEW APP","添加应用与首个版本"],"edit-app":["EDIT APP","编辑应用资料"],"new-version":["NEW RELEASE","添加新版本 · "+(app?.name||"")],"edit-version":["EDIT RELEASE","编辑历史版本 · "+(app?.name||"")]};
     $("editModeLabel").textContent=titles[mode][0];$("editTitle").textContent=titles[mode][1];
     $("saveBtn").textContent=mode==="edit-app"?"保存应用资料":"保存并发布";
-    setValue("fieldDate",new Date().toLocaleDateString("en-CA"));
+    const now=new Date();setValue("fieldDate",[now.getFullYear(),String(now.getMonth()+1).padStart(2,"0"),String(now.getDate()).padStart(2,"0")].join("-"));
     setValue("fieldDeveloper","ZZS");setValue("fieldPrivacy","{}");setValue("fieldCategory","utilities");
     if(app) {
       setValue("fieldName",app.name);setValue("fieldBundle",app.bundleIdentifier);
@@ -234,7 +234,7 @@
     const file=$("ipaFile").files[0];state.file=file||null;
     if(!file){$("fileInfo").textContent="尚未选择文件";return;}
     $("fileInfo").textContent=file.name+" · "+shortSize(file.size);
-    if(file.size>MAX_UPLOAD_BYTES){inline("此文件超过 20 MiB。请通过 GitHub Releases 上传，再在这里使用 HTTPS 下载链接。");return;}
+    if(file.size>MAX_UPLOAD_BYTES){state.file=null;$("ipaFile").value="";$("fileInfo").textContent="文件过大，已取消本地选择："+file.name;inline("此文件超过 20 MiB。请通过 GitHub Releases 上传，再在这里使用 HTTPS 下载链接。");return;}
     setValue("fieldSize",file.size);
     try {
       inline("正在从 IPA 读取 Info.plist …");
@@ -334,11 +334,12 @@
     } catch(e){inline(friendlyError(e));return;}
     await busyAction(async()=>{
       if(release && state.file) {
-        if(mode==="new-version"||mode==="edit-version") {
-          try{const parsed=await window.ZZSIPA.inspect(state.file);if(parsed.bundleIdentifier!==app.bundleIdentifier)throw new Error("IPA Bundle ID 不匹配，取消上传");}catch(e) {
-            if(/Bundle ID 不匹配/.test(friendlyError(e)))throw e;
-            if(!confirm("无法完整验证 IPA 元数据："+friendlyError(e)+"\n仍要使用手动填写的资料发布吗？"))return;
-          }
+        try{const parsed=await window.ZZSIPA.inspect(state.file);
+          if(parsed.bundleIdentifier!==app.bundleIdentifier)throw new Error("IPA Bundle ID 不匹配（IPA: "+parsed.bundleIdentifier+"，表单: "+app.bundleIdentifier+"），已取消上传");
+          if(parsed.version!==release.version||parsed.buildVersion!==release.buildVersion)throw new Error("IPA 版本与表单不匹配（IPA: "+parsed.version+" / "+parsed.buildVersion+"），已取消上传");
+        }catch(e){
+          if(/不匹配/.test(friendlyError(e)))throw e;
+          if(!confirm("无法完整验证 IPA 元数据："+friendlyError(e)+"\n仍要使用手动填写的资料发布吗？"))return;
         }
         inline("正在向 GitHub 上传 IPA 文件。文件较大时可能需要一点时间。");
         release.downloadURL=await uploadIPA(state.file,app.bundleIdentifier,release.version,release.buildVersion);
