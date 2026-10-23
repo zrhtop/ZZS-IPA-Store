@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101832">
+  <meta name="description" content="ZZS IPA Store · 个人 AltStore Classic 软件源">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https: data:; connect-src 'self'; base-uri 'none'; object-src 'none'">
+  <title>ZZS IPA Store · 独立 IPA 软件源</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./public.js" defer></script>
+</head>
+<body>
+<div class="noise"></div>
+<div class="layout">
+  <nav class="nav">
+    <a href="/" class="brand"><img src="./icon.svg" width="40" height="40" alt=""><span><strong>ZZS IPA Store</strong><small>ALTSTORE CLASSIC REPOSITORY</small></span></a>
+    <div class="nav-links"><a class="selected" href="/">应用</a><a href="./source.json" target="_blank" rel="noopener">JSON 软件源</a><a class="admin-link" href="./admin/">管理后台 <span aria-hidden="true">↗</span></a></div>
+  </nav>
+  <main>
+    <section class="hero">
+      <div class="hero-content"><div class="chip"><span class="dot"></span> PERSONAL iOS APP REPOSITORY</div>
+        <h1>一个地方，<br><em>管理所有 IPA。</em></h1>
+        <p>专属于 ZZS 的 AltStore Classic 软件源。清晰查看应用、历史版本和每次更新，直接通过 AltStore 安装。</p>
+        <div class="hero-actions">
+          <button type="button" class="button primary" id="copySource">复制软件源地址 <span>↗</span></button>
+          <a class="button secondary" href="./source.json">查看 JSON <span>→</span></a>
+        </div>
+        <div class="source-address"><span>ALTSTORE SOURCE</span><code id="sourceURL">https://repo.zrh.jp/source.json</code></div>
+      </div>
+      <div class="art" aria-hidden="true"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="visual-card left"><div class="mini-icon blue">Z</div><div><b>Source</b><small>Always up to date</small></div><span class="check">✓</span></div><div class="visual-main"><div class="glyph"><span>Z</span></div><div class="visual-line wide"></div><div class="visual-line short"></div><div class="bottom-bar"><span class="app-dots"><i></i><i></i><i></i></span><span class="pill">iOS</span></div></div><div class="visual-card right"><div class="mini-icon purple">↑</div><div><b>Versions</b><small>Release history</small></div></div></div>
+    </section>
+    <section class="summary" aria-label="软件源统计"><div><span class="number" id="appCount">0</span><span>已发布应用</span></div><div><span class="number" id="versionCount">0</span><span>历史版本</span></div><div><span class="number good" id="status">加载中</span><span>软件源状态</span></div></section>
+    <section class="catalog"><div class="section-heading"><div><span class="kicker">THE COLLECTION</span><h2>应用列表</h2><p>浏览 ZZS IPA Store 公开发布的应用。</p></div><label class="search-wrap"><span aria-hidden="true">⌕</span><input type="search" id="searchApps" placeholder="搜索应用名称或 Bundle ID" aria-label="搜索应用" autocomplete="off"></label></div><div class="apps" id="apps"><div class="empty"><span class="empty-illustration">◇</span><h3>正在读取软件源</h3><p>尝试连接最新应用列表…</p></div></div></section>
+    <section class="howto"><div class="howto-number">01 / GET STARTED</div><h2>如何添加到 AltStore？</h2><p>在 iPhone 上打开 AltStore Classic，进入 <strong>Sources</strong>，点击 <strong>+</strong>，粘贴下面的地址即可。</p><div class="address-row"><code>https://repo.zrh.jp/source.json</code><button id="copyBottom" type="button">复制地址</button></div></section>
+  </main>
+  <footer><span>© ZZS IPA Store · Powered by GitHub Pages</span><span><a href="https://github.com/zrhtop/ZZS-IPA-Store" target="_blank" rel="noopener">GitHub</a> · <a href="./admin/">Admin</a></span></footer>
+</div>
+<div id="toast" role="status" aria-live="polite" hidden></div>
+</body></html>
