@@ -6,5 +6,6 @@
   "website": "https://repo.zrh.jp/",
   "tintColor": "#6559E8",
   "apps": [],
-  "news": []
+  "news": [],
+  "nsfw": false
 }
