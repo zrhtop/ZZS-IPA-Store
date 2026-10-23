@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111a36">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https: data:; connect-src 'self' https://api.github.com; base-uri 'none'; object-src 'none'; form-action 'none'; frame-ancestors 'none'">
+  <meta name="description" content="ZZS IPA Store · 版本与 IPA 管理">
+  <title>ZZS IPA Store · 管理控制台</title>
+  <link rel="icon" href="../icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./admin.css">
+  <script src="./ipa.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <a class="brand" href="../"><img alt="" src="../icon.svg" width="41" height="41"><span><strong>ZZS IPA Store</strong><small>MANAGEMENT CONSOLE</small></span></a>
+    <div class="nav-eyebrow">WORKSPACE</div>
+    <nav aria-label="后台导航">
+      <button class="nav active" type="button" data-tab="dashboard">▦ <span>应用管理</span></button>
+      <button class="nav" type="button" data-tab="settings">◈ <span>软件源设置</span></button>
+      <button class="nav" type="button" data-tab="guide">☷ <span>使用指南</span></button>
+    </nav>
+    <div class="sidebar-bottom"><div class="connection"><span id="onlineLight" class="online-light"></span><span id="onlineLabel">只读模式</span><button id="logoutBtn" type="button" hidden>退出</button></div><p>管理页面公开可访问，但修改仓库必须通过 GitHub 授权。令牌只保存在当前页面内存中。</p></div>
+  </aside>
+  <main>
+    <header class="topbar"><div><div class="eyebrow">PERSONAL APP REPOSITORY</div><h1 id="pageTitle">应用管理</h1></div><div class="top-actions"><button id="refreshBtn" class="button outline" type="button">↻ 刷新</button><button id="authBtn" class="button primary" type="button">连接 GitHub</button></div></header>
+    <div role="status" aria-live="polite" id="toast" hidden></div>
+    <section id="dashboard" class="panel">
+      <div class="hero"><div><span class="eyebrow">PERSONAL ALTSTORE SOURCE</span><h2>更轻松地<br>发布你的 iOS 应用。</h2><p>IPA 上传、历史版本管理、自动更新 AltStore 软件源。你的文件与数据都由 GitHub 托管。</p><div class="hero-actions"><button id="addAppBtn" class="button light" type="button">＋ 添加应用 / IPA</button><a class="button ghost" target="_blank" rel="noopener" href="https://github.com/zrhtop/ZZS-IPA-Store/releases/new">上传大型 IPA ↗</a></div></div><div class="decoration" aria-hidden="true"><div class="halo one"></div><div class="halo two"></div><div class="decoration-icon">Z</div></div></div>
+      <div class="metrics"><article><span>应用数量</span><strong id="appCount">0</strong><small>已发布</small></article><article><span>版本数量</span><strong id="versionCount">0</strong><small>全部历史版本</small></article><article><span>GitHub 连接</span><strong id="authState" class="smaller">未连接</strong><small id="syncStatus">可公开读取软件源</small></article></div>
+      <div class="heading"><div><h2>已发布应用</h2><p>更新应用资料、添加版本，或调整哪个版本作为最新版本。</p></div><button class="button outline" type="button" id="addAppBtn2">＋ 添加应用</button></div>
+      <div id="appList" class="app-list"></div>
+    </section>
+    <section id="settings" class="panel" hidden>
+      <div class="heading"><div><h2>软件源设置</h2><p>修改 AltStore 中显示的软件源名称、描述和主题色。</p></div></div>
+      <form id="settingsForm" class="form-card">
+        <div class="two"><label>源名称 *<input name="name" required maxlength="90"></label><label>副标题<input name="subtitle" maxlength="160"></label></div>
+        <label>详细描述<textarea name="description" rows="3" maxlength="3000"></textarea></label>
+        <div class="two"><label>网站链接<input name="website" type="url" placeholder="https://repo.zrh.jp/"></label><label>软件源图标 URL<input name="iconURL" type="url" placeholder="https://example.com/icon.png"></label></div>
+        <label>主题颜色<input name="tintColor" type="color" value="#6559e8"></label>
+        <div class="form-actions"><button class="button primary" type="submit">保存并更新软件源</button></div>
+      </form>
+      <div class="form-card source-card"><div class="heading"><h3>AltStore Source URL</h3><button class="button outline small" id="copySource" type="button">复制地址</button></div><code>https://repo.zrh.jp/source.json</code><p>修改保存后 GitHub Pages 会发布更新，AltStore 会在下次获取该地址时读取新内容。</p></div>
+    </section>
+    <section id="guide" class="panel" hidden>
+      <div class="heading"><div><h2>使用指南</h2><p>几分钟就能配置好这个个人 IPA 管理后台。</p></div></div>
+      <div class="guides">
+        <article><span class="step">01</span><h3>开启 GitHub Pages</h3><p>在仓库 Settings → Pages → Build and deployment 中，选择 Deploy from a branch、main、/docs，然后 Save。</p><a target="_blank" rel="noopener" href="https://github.com/zrhtop/ZZS-IPA-Store/settings/pages">打开 Pages 设置 ↗</a></article>
+        <article><span class="step">02</span><h3>连接 GitHub 令牌</h3><p>创建 Fine-grained personal access token，Repository access 只选择 ZZS-IPA-Store，Contents 授予 Read and write。点击右上角「连接 GitHub」，粘贴令牌。</p><a target="_blank" rel="noopener" href="https://github.com/settings/personal-access-tokens/new">创建 GitHub Token ↗</a></article>
+        <article><span class="step">03</span><h3>添加 IPA 或外部下载地址</h3><p>本地 IPA 小于等于 20 MiB 时可直接上传；大型 IPA 请在 GitHub Releases 上传后粘贴下载链接。后台会尝试读取 Info.plist 中的应用名称、Bundle ID、版本和隐私权限。</p></article>
+        <article><span class="step">04</span><h3>通过 AltStore Classic 安装</h3><p>进入 Sources，点击 + 并添加 <code>https://repo.zrh.jp/source.json</code>。发布更新时，新版本会自动排列在列表最前面。</p></article>
+      </div>
+      <div class="notice"><strong>安全与格式提醒</strong><p>这个静态后台不是账号登录系统。任何人都可以打开 /admin/，但只有持有对该仓库具有 Contents 写入权限的 GitHub Token 才能修改源文件。Token 不会上传到 ZZS 自建服务器，也不会保存在浏览器 localStorage。公开 IPA 任何人都能下载，请只发布你有分发权的文件。</p><p>AltStore Classic 会比对 IPA 实际的 entitlements 和 Info.plist 隐私权限。解析器不能可靠读取应用签名中的所有 entitlement，请在上传前核对「高级权限」字段。</p></div>
+    </section>
+    <footer><a href="../">← 返回软件源首页</a><span>ZZS IPA Store · GitHub Pages</span><a href="https://github.com/zrhtop/ZZS-IPA-Store" target="_blank" rel="noopener">GitHub ↗</a></footer>
+  </main>
+</div>
+
+<dialog id="authDialog">
+  <div class="dialog-head"><div><span class="eyebrow">SECURE SESSION</span><h2>连接 GitHub</h2></div><button class="x" aria-label="关闭" type="button" data-close="authDialog">✕</button></div>
+  <form id="authForm" class="dialog-body">
+    <p class="muted">使用仅授予 <strong>zrhtop/ZZS-IPA-Store</strong> 仓库 Contents: Read and write 的 Fine-grained token。不要使用账户密码，也不要将 token 发送给其他人。</p>
+    <label>GitHub Fine-grained Token<input id="token" type="password" required autocomplete="off" spellcheck="false" placeholder="github_pat_..."></label>
+    <label class="checkboxline"><input id="tokenConfirm" type="checkbox" required><span>我确认此令牌只授权 ZZS-IPA-Store 仓库</span></label>
+    <div class="dialog-actions"><a target="_blank" rel="noopener" href="https://github.com/settings/personal-access-tokens/new">创建新令牌 ↗</a><button class="button primary" type="submit">验证并连接</button></div>
+  </form>
+</dialog>
+
+<dialog id="editorDialog" class="editor-dialog">
+  <div class="dialog-head"><div><span id="editModeLabel" class="eyebrow">NEW APP</span><h2 id="editTitle">添加应用</h2></div><button class="x" type="button" aria-label="关闭" data-close="editorDialog">✕</button></div>
+  <form id="editorForm" class="dialog-body">
+    <div id="appFields">
+      <div class="two"><label>应用名称 *<input id="fieldName" required maxlength="100" placeholder="AltStore"></label><label>Bundle Identifier *<input id="fieldBundle" required maxlength="250" placeholder="com.example.app"></label></div>
+      <div class="two"><label>开发者名称 *<input id="fieldDeveloper" required maxlength="100" value="ZZS"></label><label>应用分类<select id="fieldCategory"><option value="utilities">工具</option><option value="developer">开发工具</option><option value="entertainment">娱乐</option><option value="games">游戏</option><option value="lifestyle">生活</option><option value="photo-video">照片与视频</option><option value="social">社交</option><option value="other">其他</option></select></label></div>
+      <label>图标 URL（推荐 PNG）<input id="fieldIcon" type="url" placeholder="https://example.com/icon.png"></label>
+      <label>应用描述<textarea id="fieldDescription" rows="3" maxlength="5000" placeholder="介绍这款应用"></textarea></label>
+      <label>应用副标题<input id="fieldSubtitle" maxlength="150" placeholder="简短一句话"></label>
+      <details class="permissions" id="permissionsDetails"><summary>应用权限（AltStore 校验需要）</summary><div class="permission-inside"><label>Entitlements（每行一个 entitlement 键）<textarea id="fieldEntitlements" rows="3" placeholder="com.apple.security.application-groups"></textarea></label><label>Info.plist Privacy（JSON 对象）<textarea id="fieldPrivacy" rows="4" spellcheck="false" placeholder='{"NSCameraUsageDescription":"用于扫描二维码"}'></textarea></label><p class="muted">应用隐私描述可由 IPA 自动填入，但签名 entitlements 必须自行核实。不要将未验证的权限列表当成完整列表。</p></div></details>
+    </div>
+    <div id="releaseFields">
+      <div class="file-area"><label class="upload" for="ipaFile"><span class="upload-symbol">⇧</span><span><strong>选择本地 IPA</strong><small>不超过 20 MiB 可直接发布。自动读取 Info.plist 元数据。</small></span></label><input id="ipaFile" accept=".ipa,application/octet-stream" type="file"><p id="fileInfo" class="muted">尚未选择文件</p></div>
+      <label>或者填入现有 IPA 下载地址（HTTPS）<input id="fieldDownload" type="url" placeholder="https://github.com/.../releases/download/.../example.ipa"></label>
+      <div class="two"><label>版本号 *<input id="fieldVersion" maxlength="80" placeholder="1.0.0"></label><label>Build 号 *<input id="fieldBuild" maxlength="80" placeholder="1"></label></div>
+      <div class="two"><label>发布日期 *<input id="fieldDate" type="date"></label><label>IPA 文件大小（字节） *<input id="fieldSize" type="number" min="1" step="1" placeholder="12345678"></label></div>
+      <label>本次更新内容<textarea id="fieldNotes" rows="2" maxlength="5000" placeholder="新增功能、更新说明"></textarea></label>
+      <div class="two"><label>最低 iOS 版本<input id="fieldMinOS" maxlength="20" placeholder="例如 15.0"></label><label>最高 iOS 版本<input id="fieldMaxOS" maxlength="20" placeholder="通常留空"></label></div>
+    </div>
+    <div id="editorMessage" class="inline-message" role="status" aria-live="polite"></div>
+    <div class="dialog-actions"><button type="button" class="button outline" data-close="editorDialog">取消</button><button class="button primary" id="saveBtn" type="submit">保存并发布</button></div>
+  </form>
+</dialog>
+</body></html>
