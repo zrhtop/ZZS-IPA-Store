@@ -22,8 +22,7 @@ import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SOURCE_FILE = ROOT / "docs" / "source.json"
-MAX_SOURCE_BYTES = 6 * 1024 * 1024
-MAX_APPS = 150
+MAX_SOURCE_BYTES = 64 * 1024 * 1024
 MAX_VERSIONS_PER_APP = 60
 ALLOWED_CATEGORIES = {
     "developer", "entertainment", "games", "lifestyle",
@@ -100,10 +99,10 @@ def fetch_source(url: str) -> dict:
             raise ValueError(f"上游返回 HTTP {response.status}")
         content_length = response.headers.get("Content-Length")
         if content_length and int(content_length) > MAX_SOURCE_BYTES:
-            raise ValueError("来源 JSON 大于 6 MiB 上限")
+            raise ValueError("来源 JSON 大于 64 MiB 安全上限")
         data = response.read(MAX_SOURCE_BYTES + 1)
         if len(data) > MAX_SOURCE_BYTES:
-            raise ValueError("来源 JSON 大于 6 MiB 上限")
+            raise ValueError("来源 JSON 大于 64 MiB 安全上限")
     try:
         document = json.loads(data.decode("utf-8-sig"))
     except json.JSONDecodeError:
@@ -114,8 +113,6 @@ def fetch_source(url: str) -> dict:
             raise ValueError("不是有效的 JSON/JSON5 软件源") from error
     if not isinstance(document, dict) or not isinstance(document.get("apps"), list):
         raise ValueError("不是 AltStore 格式，缺少 apps 数组")
-    if len(document["apps"]) > 2000:
-        raise ValueError("来源超过 2,000 个应用，请选择更小的软件源")
     return document
 
 
@@ -306,8 +303,6 @@ def import_apps(existing: dict, external: dict, *, mode: str, bundles: set[str])
             else:
                 counters["skipped"] += 1
         else:
-            if len(new["apps"]) >= MAX_APPS:
-                raise ValueError(f"已达到每次最多 {MAX_APPS} 款应用的保护上限")
             new["apps"].append(app)
             current[bundle] = app
             counters["added"] += 1
@@ -347,8 +342,6 @@ def main() -> None:
     parser.add_argument("--preview", action="store_true")
     args = parser.parse_args()
     selected = {part.strip() for part in args.bundle_ids.replace("\n", ",").split(",") if part.strip()}
-    if len(selected) > MAX_APPS:
-        raise ValueError("选择的应用数量过多")
     external = fetch_source(args.url)
     existing = json.loads(SOURCE_FILE.read_text(encoding="utf-8"))
     updated, counters = import_apps(existing, external, mode=args.mode, bundles=selected)
