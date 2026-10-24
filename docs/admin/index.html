@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111a32">
+<meta name="description" content="ZZS IPA Store management dashboard">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https: data:; connect-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'">
+<title>管理后台 · ZZS IPA Store</title>
+<link rel="icon" type="image/svg+xml" href="../icon.svg">
+<link rel="stylesheet" href="./admin.css">
+<script type="module" src="./app.js"></script>
+</head>
+<body>
+
+<div id="authPanel" class="auth-shell">
+  <div class="auth-card">
+    <header class="auth-header"><img src="../icon.svg" alt="" width="50" height="50"><div><strong>ZZS IPA Store</strong><small>PRIVATE ADMIN CONSOLE</small></div></header>
+    <div id="loginView" hidden>
+      <span class="auth-eyebrow">WELCOME BACK</span><h1>登录管理后台</h1>
+      <p class="auth-desc">使用你在当前浏览器设置的账号密码解锁加密的 GitHub 凭据。</p>
+      <form id="loginForm">
+        <label>管理员用户名<input id="loginUsername" autocomplete="username" required></label>
+        <label>密码（10–12 位）<input id="loginPassword" type="password" autocomplete="current-password" minlength="10" maxlength="12" required></label>
+        <button type="submit" id="loginBtn" class="button primary auth-submit">解锁并登录 →</button>
+      </form>
+      <button id="forgotBtn" type="button" class="auth-text-button">忘记密码 / 重新绑定 GitHub Token</button>
+    </div>
+    <div id="setupView" hidden>
+      <span class="auth-eyebrow">FIRST TIME SETUP</span><h1>创建管理员账号</h1>
+      <p class="auth-desc">只需配置一次。GitHub Token 会使用密码进行 AES-256-GCM 加密，仅保存在<strong>当前浏览器</strong>。</p>
+      <form id="setupForm">
+        <label>管理员用户名<input id="setupUsername" value="zzsadmin" autocomplete="username" minlength="3" maxlength="32" required></label>
+        <label>密码（10–12 位）<input id="setupPassword" type="password" minlength="10" maxlength="12" autocomplete="new-password" placeholder="包含大小写字母和数字" required></label>
+        <label>确认密码<input id="setupConfirm" type="password" minlength="10" maxlength="12" autocomplete="new-password" required></label>
+        <label>GitHub Fine-grained Token<input id="setupToken" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_..." required></label>
+        <a class="auth-help" href="https://github.com/settings/personal-access-tokens/new" rel="noopener noreferrer" target="_blank">创建仅授权 ZZS-IPA-Store 且 Contents 可读写的 Token ↗</a>
+        <button type="submit" id="setupBtn" class="button primary auth-submit">创建本机账户并进入后台 →</button>
+      </form>
+    </div>
+    <div class="auth-bottom">
+      <div class="auth-alert" id="authMessage" role="status" aria-live="polite" hidden></div>
+      <div class="auth-tools">
+        <button type="button" id="importVaultBtn">导入加密账户备份</button>
+        <input id="importVaultFile" type="file" accept=".json,application/json" hidden>
+        <a href="../">返回公开商店 ↗</a>
+      </div>
+      <p class="auth-footnote">此版本完全由 GitHub Pages 托管，属于<strong>本地密码解锁</strong>，并非服务器身份验证。页面源码仍是公开的；没有有效 GitHub 写入令牌的人不能修改软件源。</p>
+    </div>
+  </div>
+</div>
+<div class="layout" id="appLayout" hidden>
+<aside class="sidebar">
+<a class="brand" href="../"><img src="../icon.svg" alt="" width="43" height="43"><span><b>ZZS IPA Store</b><small>MANAGEMENT CONSOLE</small></span></a>
+<div class="menu-label">工作台</div>
+<nav class="menu" aria-label="管理导航">
+<button type="button" data-view="overview" class="menu-item selected"><span class="symbol">▦</span>应用管理</button>
+<button type="button" data-view="settings" class="menu-item"><span class="symbol">◈</span>软件源设置</button>
+<button type="button" data-view="guide" class="menu-item"><span class="symbol">☷</span>部署与帮助</button>
+</nav>
+<div class="sidebar-bottom"><div class="connection"><span id="connectionDot" class="status-dot"></span><span id="connectionText">安全登录已启用</span></div><div class="sidebar-note">管理员密码仅用于解锁此浏览器保存的加密 GitHub Token。</div><a class="site-back" href="../">↗ 返回商店首页</a></div>
+</aside>
+<main class="main">
+<header class="topbar">
+<div><span class="eyebrow">ZZS CONTROL PANEL</span><h1 id="pageTitle">应用管理</h1><p id="pageSubtitle">上传 IPA、管理版本，实时维护 AltStore Classic 软件源。</p></div>
+<div class="top-actions"><button class="button outline" id="refreshBtn" type="button">↻ 刷新</button><button class="button primary" id="newAppBtn" type="button">＋ 添加应用</button></div>
+</header>
+<div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+<section id="identityPanel" class="identity-panel"><span class="status-dot online"></span><span>已登录 <strong id="accountName">zzsadmin</strong> · GitHub 已授权</span><button class="button outline" id="accountSettingsBtn" type="button">账号设置</button><button class="button outline" id="disconnectBtn" type="button">退出登录</button></section>
+<section id="view-overview" class="view">
+<div class="hero"><div><div class="hero-label">YOUR PERSONAL APP DISTRIBUTION</div><h2>一个控制台，<br>管理所有 IPA。</h2><p>应用、版本与软件源在同一处管理。发布新版本后，AltStore 会在下次检查软件源时发现更新。</p><div class="hero-buttons"><button class="button white" type="button" id="heroNew">＋ 发布应用</button><a class="button glass" target="_blank" rel="noopener noreferrer" href="https://github.com/zrhtop/ZZS-IPA-Store/releases/new">上传大型 IPA ↗</a></div></div><div class="hero-art" aria-hidden="true"><div class="orbit orbit1"></div><div class="orbit orbit2"></div><div class="hero-icon">IPA</div></div></div>
+<div class="stats"><article class="stat"><span>应用数量</span><strong id="appCount">0</strong><small>已上架应用</small></article><article class="stat"><span>版本总数</span><strong id="versionCount">0</strong><small>包含历史版本</small></article><article class="stat"><span>源文件状态</span><strong id="repoStatus" class="state-loading">加载中</strong><small>GitHub Pages · source.json</small></article></div>
+<div class="section-heading"><div><h2>已发布应用</h2><p>你可以编辑应用信息、添加新版本或设置最新版。</p></div><div class="section-actions"><input id="appSearch" type="search" placeholder="搜索应用…" aria-label="搜索应用"><button id="listNew" class="button outline" type="button">＋ 新应用</button></div></div>
+<div id="appList" class="app-list"><div class="empty"><div class="empty-symbol">◇</div><strong>正在加载</strong><p>读取最新的软件源。</p></div></div>
+</section>
+<section id="view-settings" class="view" hidden>
+<div class="section-heading"><div><h2>软件源设置</h2><p>这里保存的是 AltStore 所展示的商店信息。</p></div></div>
+<form id="settingsForm" class="sheet">
+<div class="two"><label>软件源名称 *<input name="name" required maxlength="100"></label><label>副标题<input name="subtitle" maxlength="200"></label></div>
+<label>详细描述<textarea name="description" rows="3"></textarea></label>
+<div class="two"><label>官网 URL<input name="website" type="url" placeholder="https://repo.zrh.jp/"></label><label>商店图标 URL<input name="iconURL" type="url"></label></div>
+<div class="two"><label>主题色<input name="tintColor" type="color" value="#6559e8"></label><div class="field-note">修改后将同步写入 <code>docs/source.json</code>。</div></div>
+<div class="sheet-actions"><button type="submit" class="button primary">保存源信息</button><button type="button" class="button outline" id="downloadJSON">下载 JSON 备份</button></div>
+</form>
+<div class="sheet extra"><div class="section-heading"><div><h3>公开 AltStore 地址</h3><p>在 AltStore Classic 的 Sources 中添加。</p></div><button type="button" class="button outline" id="copySource">复制地址</button></div><code class="address">https://repo.zrh.jp/source.json</code></div>
+</section>
+<section id="view-guide" class="view" hidden>
+<div class="section-heading"><div><h2>如何使用管理后台</h2><p>完全使用 GitHub Pages，不需要 Cloudflare Worker、服务器或数据库。</p></div></div>
+<div class="guides">
+<article class="guide"><span>01 / GITHUB PAGES</span><h3>保留现有 GitHub Pages 设置</h3><p>仓库使用 main 分支的 /docs 文件夹发布，域名继续使用 repo.zrh.jp，无需修改 DNS 或新增服务器。</p><a href="https://github.com/zrhtop/ZZS-IPA-Store/settings/pages" target="_blank" rel="noopener noreferrer">检查 Pages 设置 ↗</a></article>
+<article class="guide"><span>02 / LOCAL LOGIN</span><h3>首次设置自己的密码</h3><p>第一次输入用户名、10–12 位密码和一个 GitHub 访问令牌，之后在同一浏览器只需用户名和密码即可解锁。Token 使用 AES-256-GCM 加密后保存在浏览器。</p><button id="guideAccountBtn" type="button" class="small-btn">管理账户 ↗</button></article>
+<article class="guide"><span>03 / OTHER DEVICES</span><h3>换手机或电脑</h3><p>在已登录设备的账号设置中下载加密账户备份，在另一台设备导入并输入相同密码即可使用。也可用 GitHub Token 在新设备独立配置。</p></article>
+<article class="guide"><span>04 / IPA RELEASES</span><h3>上传 IPA 和历史版本</h3><p>20 MiB 以内的 IPA 可以直接上传到 GitHub 仓库；大型 IPA 请先上传到 GitHub Releases，再粘贴公开的 .ipa 下载链接。系统自动更新 AltStore 的 source.json。</p><a href="https://github.com/zrhtop/ZZS-IPA-Store/releases/new" target="_blank" rel="noopener noreferrer">创建 GitHub Release ↗</a></article>
+</div>
+<div class="warning"><strong>重要安全说明</strong><p>GitHub Pages 无法在服务器端保护 /admin/ 目录。账号密码只能解锁本地加密的 GitHub Token，无法阻止别人查看公开的 HTML 和 JavaScript。GitHub 仍会校验每次仓库写入的 Token 权限。请只授予这个仓库 Contents: Read and write 的权限，并不要使用在聊天中公开过的密码。</p></div>
+</section>
+<footer>ZZS IPA Store · <a href="https://github.com/zrhtop/ZZS-IPA-Store" target="_blank" rel="noopener noreferrer">GitHub Repository ↗</a></footer>
+</main>
+</div>
+<dialog id="editor">
+<form id="editorForm" novalidate>
+<header class="modal-header"><div><span class="eyebrow" id="editorEyebrow">NEW APP</span><h2 id="editorTitle">发布 IPA 应用</h2></div><button id="closeEditor" type="button" class="close" aria-label="关闭">✕</button></header>
+<div class="modal-body">
+<section id="appFields" class="fields">
+<h3>应用资料</h3>
+<div class="two"><label>应用名称 *<input id="appName" required maxlength="140"></label><label>Bundle ID *<input id="bundleID" required placeholder="com.example.myapp" spellcheck="false"></label></div>
+<div class="two"><label>开发者名称 *<input id="developer" value="ZZS" required></label><label>应用分类<select id="category"><option value="utilities">工具</option><option value="developer">开发者</option><option value="entertainment">娱乐</option><option value="games">游戏</option><option value="lifestyle">生活</option><option value="photo-video">照片和视频</option><option value="social">社交</option><option value="other">其他</option></select></label></div>
+<label>一句话介绍<input id="appSubtitle" maxlength="200" placeholder="可选"></label>
+<label>应用详细描述 *<textarea id="description" rows="3" required placeholder="介绍应用功能"></textarea></label>
+<div class="two"><label>图标 HTTPS URL<input type="url" id="iconURL" placeholder="从 IPA 提取，或手动填写"></label><label>主题颜色<input type="color" id="appTint" value="#6559e8"></label></div>
+</section>
+<section id="releaseFields" class="fields">
+<h3>IPA 与版本</h3>
+<div class="drop-area" id="dropZone"><label for="ipaFile"><b>↑ 选择 IPA 文件</b><span>或将 IPA 拖进此区域</span><small>直接上传最大 40 MiB，大文件请使用 GitHub Releases。</small></label><input type="file" id="ipaFile" accept=".ipa,application/octet-stream"></div>
+<div id="ipaResult" class="ipa-result">选择 IPA 后会自动尝试读取名称、Bundle ID、版本、图标和权限信息。</div>
+<label>也可以粘贴现有 IPA 的 HTTPS 下载地址<input id="downloadURL" type="url" placeholder="https://github.com/.../releases/download/.../app.ipa"></label>
+<div class="two"><label>版本号 *<input id="version" required placeholder="1.0.0" spellcheck="false"></label><label>Build Version *<input id="buildVersion" required placeholder="1" spellcheck="false"></label></div>
+<div class="two"><label>发布日期<input id="releaseDate" type="date"></label><label>IPA 大小（字节） *<input id="size" type="number" min="1" required placeholder="选择 IPA 后自动填入"></label></div>
+<label>更新说明<textarea id="releaseNotes" rows="2" placeholder="当前版本的更新内容"></textarea></label>
+<div class="two"><label>最低 iOS 版本<input id="minOS" placeholder="例如 15.0"></label><label>最高 iOS 版本（可留空）<input id="maxOS" placeholder="例如 27.0"></label></div>
+</section>
+<section id="permissionsFields" class="fields">
+<h3>AltStore 权限申明 <small>必须与实际 IPA 一致</small></h3>
+<label>Entitlements（每行一个，含所有扩展）<textarea id="entitlements" rows="4" spellcheck="false" placeholder="com.apple.security.application-groups"></textarea></label>
+<label>Privacy 权限 JSON <textarea id="privacy" rows="4" spellcheck="false" placeholder='{"NSCameraUsageDescription":"用途描述"}'></textarea></label>
+<p class="tip">自动提取主要应用的 Info.plist 隐私说明；签名 Entitlements 或扩展权限可能无法完全提取。保存前请核对签名包，否则 AltStore 可能拒绝安装。</p>
+</section>
+</div>
+<footer class="modal-footer"><button class="button outline" id="cancelEditor" type="button">取消</button><button class="button primary" id="saveEditor" type="submit">发布应用</button></footer>
+</form>
+</dialog>
+
+<dialog id="accountDialog" class="account-dialog">
+  <div class="modal-header"><div><span class="eyebrow">LOCAL ACCOUNT</span><h2>本机管理员账号设置</h2></div><button id="closeAccountBtn" type="button" class="close" aria-label="关闭">✕</button></div>
+  <form id="accountForm">
+    <div class="modal-body">
+      <p class="auth-desc">新用户名和密码将重新加密此浏览器里的 GitHub Token。修改后请用新密码登录。</p>
+      <label>当前登录密码<input id="accountCurrentPassword" type="password" autocomplete="current-password" required></label>
+      <label>新的用户名<input id="accountNewUsername" autocomplete="username" minlength="3" maxlength="32" required></label>
+      <label>新密码（10–12 位）<input id="accountNewPassword" type="password" minlength="10" maxlength="12" autocomplete="new-password" required></label>
+      <label>再次输入新密码<input id="accountConfirmPassword" type="password" minlength="10" maxlength="12" autocomplete="new-password" required></label>
+      <div class="vault-info"><strong>换设备?</strong><p>导出加密备份后可在另一个浏览器导入。备份包含加密 Token，请妥善保存。</p><button type="button" class="small-btn" id="exportVaultBtn">↓ 下载加密账户备份</button></div>
+      <div class="vault-info"><strong>更换 GitHub Token</strong><p>如果 Token 失效，可以清除当前浏览器账户并重新配置。不会影响仓库本身。</p><button type="button" class="small-btn critical" id="resetVaultBtn">清除本机账户并重新配置</button></div>
+    </div>
+    <div class="modal-footer"><button id="cancelAccountBtn" type="button" class="button outline">取消</button><button id="saveAccountBtn" type="submit" class="button primary">修改账号密码</button></div>
+  </form>
+</dialog>
+</body></html>
