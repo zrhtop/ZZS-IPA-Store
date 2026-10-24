@@ -1,0 +1,172 @@
+name: Add IPA from URL
+
+on:
+  workflow_dispatch:
+    inputs:
+      ipa_url:
+        description: 'IPA 公开下载链接（HTTPS），无需上传到自己的 Releases'
+        required: true
+        type: string
+      icon_url:
+        description: '应用图标 HTTPS 地址（可留空，自动查找官方图标或 IPA 内 PNG）'
+        required: false
+        type: string
+      app_name:
+        description: '应用名称（可留空，自动读取 IPA）'
+        required: false
+        type: string
+      developer_name:
+        description: '开发者名称（可留空，GitHub 项目会自动识别）'
+        required: false
+        type: string
+      description:
+        description: '应用介绍（可留空，优先使用上游项目介绍）'
+        required: false
+        type: string
+      release_notes:
+        description: '版本更新说明（可留空，尝试从上游 GitHub Release 提取）'
+        required: false
+        type: string
+      category:
+        description: '分类；auto 表示新应用默认工具，已有应用保留原分类'
+        required: true
+        type: choice
+        default: auto
+        options:
+          - auto
+          - utilities
+          - developer
+          - entertainment
+          - games
+          - lifestyle
+          - photo-video
+          - social
+          - other
+      existing_mode:
+        description: '遇到相同版本和 Build 时的处理方法'
+        required: true
+        type: choice
+        default: skip
+        options:
+          - skip
+          - replace
+      preview_only:
+        description: '仅检查和预览 IPA，不修改任何文件'
+        required: true
+        type: boolean
+        default: false
+      permission_confirm:
+        description: '确认你对该 IPA 的公开分发或链接引用拥有必要的授权'
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: zzs-ipa-store-pages
+  cancel-in-progress: false
+
+jobs:
+  add:
+    name: Inspect and update source
+    runs-on: ubuntu-latest
+    outputs:
+      publish: ${{ steps.importer.outputs.publish }}
+    steps:
+      - name: Verify permission confirmation
+        env:
+          CONFIRMED: ${{ inputs.permission_confirm }}
+        shell: bash
+        run: |
+          if [ "$CONFIRMED" != "true" ]; then
+            echo "::error::请先确认已获得必要的分发或链接引用授权。"
+            exit 1
+          fi
+
+      - name: Checkout ZZS IPA Store
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run URL importer regression tests
+        run: |
+          python -m compileall -q scripts tests
+          python -m unittest discover -s tests -p 'test_add_ipa_url.py' -v
+
+      - name: Download temporary IPA and read metadata
+        id: importer
+        shell: bash
+        env:
+          IPA_URL: ${{ inputs.ipa_url }}
+          ICON_URL: ${{ inputs.icon_url }}
+          APP_NAME: ${{ inputs.app_name }}
+          DEVELOPER_NAME: ${{ inputs.developer_name }}
+          APP_DESCRIPTION: ${{ inputs.description }}
+          RELEASE_NOTES: ${{ inputs.release_notes }}
+          CATEGORY: ${{ inputs.category }}
+          EXISTING_MODE: ${{ inputs.existing_mode }}
+          PREVIEW_ONLY: ${{ inputs.preview_only }}
+        run: |
+          args=(
+            --url "$IPA_URL"
+            --icon-url "$ICON_URL"
+            --name "$APP_NAME"
+            --developer "$DEVELOPER_NAME"
+            --description "$APP_DESCRIPTION"
+            --notes "$RELEASE_NOTES"
+            --category "$CATEGORY"
+            --existing-mode "$EXISTING_MODE"
+          )
+          if [ "$PREVIEW_ONLY" = "true" ]; then
+            args+=(--preview)
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+          python scripts/add_ipa_url.py "${args[@]}"
+
+      - name: Commit source and extracted icon
+        if: steps.importer.outputs.publish == 'true'
+        shell: bash
+        run: |
+          git add docs/source.json
+          if [ -d docs/icons ]; then
+            git add -A docs/icons
+          fi
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Add IPA from approved external URL [skip ci]"
+            git push origin HEAD:main
+          else
+            echo "No changes required"
+          fi
+
+      - name: Configure GitHub Pages
+        if: steps.importer.outputs.publish == 'true'
+        uses: actions/configure-pages@v5
+
+      - name: Upload updated site
+        if: steps.importer.outputs.publish == 'true'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./docs
+
+  deploy:
+    if: needs.add.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    needs: add
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
