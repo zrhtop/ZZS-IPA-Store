@@ -116,6 +116,32 @@ class ImportSourceTests(unittest.TestCase):
                 mode="add-only", bundles={"com.example.doesnotexist"}
             )
 
+    def test_more_than_150_existing_apps_can_expand(self):
+        existing = {"apps": [
+            app(f"com.example.old{i}") for i in range(160)
+        ]}
+        upstream = {"apps": [
+            app(f"com.example.new{i}") for i in range(200)
+        ]}
+        output, report = module.import_apps(
+            existing, upstream, mode="add-only", bundles=set()
+        )
+        self.assertEqual(len(output["apps"]), 360)
+        self.assertEqual(report["added"], 200)
+        self.assertEqual(len(existing["apps"]), 160)
+
+    def test_more_than_2000_apps_import_without_count_cap(self):
+        upstream = {"apps": [
+            app(f"com.example.bulk{i}") for i in range(2105)
+        ]}
+        output, report = module.import_apps(
+            {"apps": []}, upstream, mode="add-only", bundles=set()
+        )
+        self.assertEqual(len(output["apps"]), 2105)
+        self.assertEqual(report["added"], 2105)
+        self.assertEqual(output["apps"][-1]["bundleIdentifier"],
+                         "com.example.bulk2104")
+
 
 if __name__ == "__main__":
     unittest.main()
