@@ -43,6 +43,22 @@ GitHub Actions 提供**自动且短期有效的 \`GITHUB_TOKEN\`**，它由 GitH
 
 **版权/授权：** 公共可下载并不意味着允许重新分发。导入之前确认应用开发者的许可，保留原作者信息，并遵守上游软件源的使用条款。
 
+## 从 IPA 下载链接直接上架（无需重新上传 IPA）
+
+只需拥有本仓库写入权限的 GitHub 账号，不用创建个人 Token 或在本机安装工具。
+
+1. 打开 [管理后台](https://repo.zrh.jp/admin/#add-ipa-link) → **通过 IPA 链接添加应用**，或者直接进入 [Add IPA from URL 工作流](https://github.com/zrhtop/ZZS-IPA-Store/actions/workflows/add-ipa-url.yml)。
+2. 点击 **Run workflow**，在 **ipa_url** 粘贴一个公开可访问的 HTTPS IPA 下载链接。可以使用官方 GitHub Releases 的下载地址，也可以使用其他公开的 HTTPS 直链。
+3. 其余选项可留空：程序会下载 IPA 到 GitHub Actions 的**临时运行环境**（上限 1 GiB），提取名称、Bundle ID、版本、Build、最低 iOS 版本和 Info.plist 隐私说明。
+4. **图标自动识别**：优先尝试读取 IPA 中的独立 PNG 图标；若只有 Assets.car，则对 GitHub Release 链接尝试寻找上游仓库的 AppIcon/Logo。若两者都无法获得，可在 **icon_url** 输入图片 HTTPS URL，确保图标准确。
+5. **app_name / developer_name / description / release_notes** 都是可选字段。GitHub 来源会尝试读取原仓库开发者信息和简短 Release 更新内容；填写的字段优先于自动识别内容。
+6. **category** 默认 auto（新应用设为 utilities，已有应用保留分类）。**existing_mode** 默认 skip，不覆盖相同版本和 Build；可选 replace 主动替换同版本下载链接。
+7. 勾选授权确认 **permission_confirm**。可以先启用 **preview_only** 预览，再运行正式发布。成功后工作流会修改 `docs/source.json`，必要时只保存**小型 PNG 图标**到 `docs/icons/`，随后部署 GitHub Pages。
+
+**IPA 本体不会存入你的 GitHub 仓库或 Releases，也不会消耗 GitHub Pages 网站容量。** IPA 链接必须保持有效；若上游移除文件，则你的 AltStore 源中对应链接也会失效。大多数 iOS 新版应用的图标封装在 Assets.car 内，普通 ZIP 解析不能保证恢复；自动发现上游图标也可能失败，因此保留了填写 `icon_url` 的选项。
+
+**许可和安全**：只发布拥有合法分发或链接引用权限的 IPA。GitHub Actions 对远程 IPA 只做 ZIP/Info.plist 检查，不会执行 IPA 代码或使用你的个人 PAT。Entitlements 可能需要手动核对。管理页是公开的，但只有有仓库写入权限的 GitHub 用户才能真正运行工作流修改软件源。
+
 ## 发布 IPA（直接使用 GitHub 账号）
 
 1. 打开 [管理入口](https://repo.zrh.jp/admin/) 并点击 **使用 GitHub 登录并发布 IPA**。
