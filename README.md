@@ -1,81 +1,84 @@
 # ZZS IPA Store
 
-使用 **GitHub Pages** 托管的 AltStore Classic 软件源与 IPA 管理面板，无需 Cloudflare Worker、D1、服务器、npm 或 GitHub Actions。
+AltStore Classic 的个人 IPA 软件源，托管于 GitHub Pages，采用 **GitHub 原生登录 + Releases + Actions** 管理方式。
 
-- 首页：**https://repo.zrh.jp/**
-- 软件源：**https://repo.zrh.jp/source.json**
-- 管理后台：**https://repo.zrh.jp/admin/**
-- 代码仓库：[zrhtop/ZZS-IPA-Store](https://github.com/zrhtop/ZZS-IPA-Store)
+**无需创建或粘贴 GitHub Personal Access Token。无需 Cloudflare Worker、D1、单独服务器或第二套用户名密码。**
 
-## 初次使用（只需 GitHub）
+| 用途 | 地址 |
+| --- | --- |
+| 公开网站 | https://repo.zrh.jp/ |
+| AltStore 软件源 | https://repo.zrh.jp/source.json |
+| 管理入口 | https://repo.zrh.jp/admin/ |
+| GitHub 发布 IPA | https://github.com/zrhtop/ZZS-IPA-Store/releases/new |
+| 管理已发布版本 | https://github.com/zrhtop/ZZS-IPA-Store/releases |
+| 检查 Actions | https://github.com/zrhtop/ZZS-IPA-Store/actions/workflows/publish.yml |
 
-1. 检查仓库 **Settings → Pages**：选择 **Deploy from a branch**、**main /docs**；Custom domain 填写 **repo.zrh.jp**。保留 GitHub Pages 已生效的 DNS CNAME：**repo → zrhtop.github.io**。
-2. 在 GitHub 创建 [Fine-grained Personal Access Token](https://github.com/settings/personal-access-tokens/new)：
-   - Resource owner：**zrhtop**
-   - Repository access：**Only select repositories → ZZS-IPA-Store**
-   - Repository permissions：**Contents → Read and write**
-   - 尽量设置合理的到期日。**不要向任何人透露 Token。**
-3. 在 **https://repo.zrh.jp/admin/** 第一次打开时，创建本机管理员账户。默认填入的用户名是 **zzsadmin**；密码需自行设置，**10–12 位**，同时包括大写字母、小写字母和数字。为了安全，**不存在写在公开代码里的默认密码**。
-4. 将 GitHub Token 粘贴一次，点击创建账户。网站先验证 GitHub 仓库权限，再用 PBKDF2-SHA256 和 AES-256-GCM 加密 Token，存到 **当前浏览器的 localStorage**。
-5. 以后在同一浏览器只需要输入账号密码，即可解锁 Token 进入应用管理后台。刷新或退出登录后，**明文 Token 不会自动保持在内存里**。
+## 一次性开启自动发布
 
-### 修改密码、更换设备或重设令牌
+1. 打开仓库 [Settings → Pages](https://github.com/zrhtop/ZZS-IPA-Store/settings/pages)。
+2. 在 **Build and deployment → Source** 选择 **GitHub Actions**（不再选择旧的 **Deploy from a branch**）。
+3. 保留自定义域名 **repo.zrh.jp** 和 GitHub Pages 的 HTTPS 配置。
+4. 工作流文件 \`.github/workflows/publish.yml\` 已在仓库中。以后推送代码、发布/修改/删除 Release 或在 Actions 手动运行，都会尝试同步并部署网站。
+5. 必要时，打开 [Actions → Publish ZZS IPA Store](https://github.com/zrhtop/ZZS-IPA-Store/actions/workflows/publish.yml) → **Run workflow** 进行初次部署。
 
-登录后点击 **账号设置**，可修改用户名和密码，或下载包含**加密 Token**的 JSON 备份。第二台设备打开管理后台，点击 **导入加密账户备份**，使用原密码解锁。也可以在每台设备分别绑定 GitHub Token。
+GitHub Actions 提供**自动且短期有效的 \`GITHUB_TOKEN\`**，它由 GitHub 自动生成，与您自己创建、复制或手动保存 Personal Access Token 不同。这个令牌只在工作流中使用，访客浏览器和网站源代码中没有令牌。
 
-**注意：浏览器本地账户不是同步账户。** 在另一台设备直接输入同一用户名和密码、但没有导入加密备份或绑定 GitHub Token，无法登录。清除浏览器站点数据也会删除该设备的本地账户配置；GitHub 软件源和应用数据不受影响。
+如果自动提交 \`docs/source.json\` 被 GitHub 阻止，检查仓库 Settings → Actions → General → Workflow permissions，或是否存在分支保护；工作流显式申请了 \`contents: write\`。不要为了解决此问题建立具有所有仓库权限的 PAT。
 
-## 功能
+## 发布 IPA（直接使用 GitHub 账号）
 
-- IPA 上传：直接上传不超过 **20 MiB** 的 IPA 到 \`docs/ipas/\`。更大的 IPA 可以先放到 [GitHub Releases](https://github.com/zrhtop/ZZS-IPA-Store/releases/new)，再通过其**公开 HTTPS 下载链接**发布。
-- 应用和版本：添加应用、编辑资料、增删历史版本、设置最新版，自动维护 \`docs/source.json\`。
-- 元数据：尽力解析 \`Payload/*.app/Info.plist\` 的应用名称、Bundle ID、版本、最低 iOS 版本、隐私权限说明和可读取的 PNG 图标。
-- 版本更新：AltStore 使用 \`versions\` 数组**第一条**作为最新版。修改源文件后，GitHub Pages 生效可能需要短暂时间。
-- 编辑防冲突：修改前检查 GitHub 文件 SHA，避免直接覆盖已发生的更新。
+1. 打开 [管理入口](https://repo.zrh.jp/admin/) 并点击 **使用 GitHub 登录并发布 IPA**。
+2. 如果尚未登录，GitHub 会要求登录。只有拥有 \`zrhtop/ZZS-IPA-Store\` **写入权限**的 GitHub 用户能发布。
+3. 打开 **Create a new release**。创建唯一的 **Tag**，例如 \`com.example.app-v1.0.0\`。填写 Release title（用于查看）和可选的更新说明。
+4. 在 Release **Attachments** 上传 **恰好一个 .ipa 文件**。也可额外上传一张文件名含 \`icon\` 的 PNG 图片（例如 \`app-icon.png\`），让新应用使用对应图标。
+5. 点击 **Publish release**（不要只点 Save draft）。此时 GitHub Actions 会自动下载 IPA、读取 \`Payload/*.app/Info.plist\`、从 \`CFBundleIdentifier\` 识别应用、用 \`CFBundleShortVersionString\` 和 \`CFBundleVersion\` 识别版本，并将其写入 \`docs/source.json\`。
+6. 工作流完成后，可在 https://repo.zrh.jp/ 查看应用，AltStore 软件源保持地址 https://repo.zrh.jp/source.json 不变。
 
-### 安全边界（务必了解）
+同一 Bundle ID 的新版本会被插在历史版本前面，供 AltStore Classic 判断更新。Release 的唯一 Tag 与 IPA 内部的 Bundle ID / Version 不需要相同，但内部字段必须正确。
 
-**GitHub Pages 不能给某个目录增加真正的服务器登录验证。**
+**请在发布 Release 之前附加 IPA。** 如果后面才上传或替换附件，可能不会触发新的工作流：进入 [Actions 工作流](https://github.com/zrhtop/ZZS-IPA-Store/actions/workflows/publish.yml) 点击 **Run workflow** 进行手动同步即可。
 
-- \`/admin/\` 的 HTML/CSS/JS 及整个 **Public** GitHub 仓库，仍然对互联网公开。页面里的账号密码只用于**本地解锁已加密的 GitHub Token**。
-- 别人在自己的浏览器访问 \`/admin/\` 时也可能看到“首次配置账户”页面，但**没有对本仓库拥有写入权限的 GitHub Token，就不能修改软件源**。
-- GitHub API 会独立验证 Token。你的登录密码**不是** GitHub Token，也不会生成额外的仓库权限。
-- 加密备份一旦外泄，有被离线猜解密码的风险。请使用不可预测的 10–12 位密码，不要把加密备份上传到公开仓库。
-- 不要使用以前在公开聊天记录中出现过的初始密码。该版本**不会**部署任何已公开的默认密码。
-- GitHub Pages 适合公开软件源，不适合分发保密 IPA。已经上传到 \`docs/ipas/\` 的文件是公开可访问的。
-- IPA 里的代码签名 Entitlements 可能不能仅通过 Info.plist 完整读取；上传前需要人工检查 \`appPermissions\`，否则 AltStore 可能拒绝安装。
+## 修改、下架与手工编辑
 
-如需真正让未登录者连 \`/admin/\` 页面源代码都无法读取，必须使用带服务器验证的服务（例如 Cloudflare Access/Worker 或专用后端），这无法由公开 GitHub Pages 单独实现。
+- **更新版本**：创建新的 Release，上传相同 Bundle ID、较新版本号的 IPA。
+- **修改 Release 更新说明**：编辑 GitHub Release，工作流会再次处理发布记录。
+- **下架版本**：删除相应 Release，工作流会重新生成其管理的版本数据。
+- **修改应用名称、介绍、开发者、类别或图标**：登录 GitHub 编辑 [docs/source.json](https://github.com/zrhtop/ZZS-IPA-Store/edit/main/docs/source.json)。对已有应用的展示字段，自动同步通常会保留手动修改的值。
+- **查看发布失败原因**：检查 [Actions 执行记录](https://github.com/zrhtop/ZZS-IPA-Store/actions/workflows/publish.yml)。
+- **手工更新图片**：可在 Release 附件中传入包含 \`icon\` 的 PNG，或者直接编辑已有应用的 \`iconURL\`。
 
-## AltStore Classic
+自动同步会保留非本仓库 Release 管理的版本记录。删除仅用于 Release 的版本后，该版本记录会被移除；GitHub Release 下载链接也将失效。
 
-在 iPhone 打开 AltStore Classic → Sources → **+**，输入：
+## IPA 权限特别提醒
 
-\`\`\`text
-https://repo.zrh.jp/source.json
+GitHub Actions 自动提取应用名称、Bundle ID、版本、最低 iOS 版本、Info.plist 的 Privacy UsageDescription，以及部分可见的 \`.xcent\` 权限文件。**IPA 的真实代码签名 Entitlements 不一定以独立文件存在**，所以脚本**不能保证完整提取全部权限**。
+
+AltStore Classic 可能根据实际签名权限校验 \`appPermissions\`；对于安装失败的应用，需要自行检查签名包里的主应用和扩展的权限，然后手动编辑 \`docs/source.json\` 对应的 \`appPermissions.entitlements\` / \`appPermissions.privacy\`。不能为了绕过验证随意填写虚假权限。
+
+## 安全边界
+
+- \`repo.zrh.jp/admin/\` **只是公开的管理入口页面**，不是受服务器保护的私人网页。只有有仓库权限的 GitHub 账号才能在 GitHub 上创建、编辑和删除 Release。
+- GitHub Pages 是公共静态网站，因此**不能单独实现一个安全的私人用户名/密码数据库**。
+- 源文件、Release 附件及网站内容公开，勿上传需保密的 IPA、个人身份信息或凭据。
+- 不需要先前的浏览器本地密码仓库；本项目已删除老的 \`vault.js\` 和个人 Token 登录管理代码。
+- 尽可能只在你有授权分发的情况下发布 IPA。
+
+## 目录
+
 \`\`\`
-
-此站点只管理 IPA 下载和软件源元数据，不提供 iOS 应用签名、绕过签名限制或应用自动刷新服务。
-
-## 文件结构
-
-\`\`\`text
+.github/workflows/publish.yml      Release 自动同步 + GitHub Pages 部署
+scripts/sync_releases.py           Python IPA / Info.plist 解析和 JSON 自动构建
 docs/
-  CNAME             repo.zrh.jp
-  .nojekyll
-  index.html        公开应用展示
+  CNAME                           repo.zrh.jp
+  source.json                     AltStore Classic 源数据
+  index.html                      公开软件商店
   style.css
   public.js
   icon.svg
-  source.json       AltStore Classic JSON
   admin/
-    index.html      账号设置与登录
+    index.html                    纯 GitHub 管理入口
     admin.css
-    app.js          GitHub 读写及管理 UI
-    vault.js        PBKDF2 + AES-256-GCM 本地加密账户
-    ipa-reader.js   IPA ZIP / plist 元数据解析
-  ipas/             上传 IPA 时创建
-  icons/            提取图标时创建
+    admin.js
 \`\`\`
 
-格式说明：[AltStore 官方 Source 文档](https://faq.altstore.io/developers/make-a-source)。
+[AltStore 官方软件源格式](https://faq.altstore.io/developers/make-a-source) | [GitHub Actions 官方 GITHUB_TOKEN 说明](https://docs.github.com/en/actions/concepts/security/github_token)
