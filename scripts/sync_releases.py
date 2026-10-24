@@ -315,9 +315,11 @@ def generate(current: dict, published: list[dict]) -> dict:
                 if (v.get("version"), v.get("buildVersion")) not in known
             )
         elif manual or not existing.get("versions"):
-            # Preserve apps managed directly by hand; drop apps whose only
-            # historical versions were removed GitHub Releases.
-            kept[bundle] = existing
+            # Keep only versions hosted outside our own Releases. Previously
+            # the entire unfiltered app was copied here, unintentionally
+            # preserving stale download URLs after a local Release was deleted.
+            kept[bundle] = dict(existing)
+            kept[bundle]["versions"] = manual
 
     # Prioritize apps published through this repository's own Releases.
     # Newer releases go first; imported/manual entries keep their order.
