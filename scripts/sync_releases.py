@@ -267,6 +267,16 @@ def generate(current: dict, published: list[dict]) -> dict:
         }
         if meta["minOSVersion"]:
             version_info["minOSVersion"] = meta["minOSVersion"]
+        # A source can deliberately reference an upstream release instead
+        # of copying its IPA into this repository. Keep the upstream URL
+        # during every sync, including while our own release still exists.
+        if isinstance(app_override, dict):
+            external_links = app_override.get("downloadURLs", {})
+            if isinstance(external_links, dict):
+                key = f"{meta['version']}|{meta['buildVersion']}"
+                external_url = external_links.get(key)
+                if isinstance(external_url, str) and external_url.startswith("https://"):
+                    version_info["downloadURL"] = external_url
         versions = app["versions"]
         versions[:] = [
             version for version in versions
