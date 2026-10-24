@@ -274,13 +274,19 @@ def generate(current: dict, published: list[dict]) -> dict:
             # historical versions were removed GitHub Releases.
             kept[bundle] = existing
 
-    ordered_apps = []
-    for bundle in current_apps:
-        if bundle in built:
-            ordered_apps.append(built.pop(bundle))
-        elif bundle in kept:
-            ordered_apps.append(kept[bundle])
-    ordered_apps.extend(built.values())
+    # Prioritize apps published through this repository's own Releases.
+    # Newer releases go first; imported/manual entries keep their order.
+    release_apps = sorted(
+        built.values(),
+        key=lambda app: (
+            str(app["versions"][0].get("date") or ""),
+            app["bundleIdentifier"],
+        ),
+        reverse=True,
+    )
+    ordered_apps = release_apps + [
+        kept[bundle] for bundle in current_apps if bundle in kept
+    ]
 
     output = dict(current)
     output["apps"] = ordered_apps
