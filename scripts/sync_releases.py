@@ -48,14 +48,18 @@ def api_json(path: str) -> object:
         return json.load(response)
 
 def releases() -> list[dict]:
+    # Fetch every page. A fixed 10-page loop previously silently omitted
+    # any Releases after the first 1,000, imposing a hidden catalog limit.
     output = []
-    for page in range(1, 11):
+    page = 1
+    while True:
         batch = api_json(f"/repos/{REPO}/releases?per_page=100&page={page}")
         if not isinstance(batch, list):
             raise RuntimeError("Invalid GitHub Releases response.")
         output.extend(release for release in batch if not release.get("draft"))
         if len(batch) < 100:
             break
+        page += 1
     return output
 
 def fetch_ipa(asset: dict) -> pathlib.Path:
