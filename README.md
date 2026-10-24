@@ -25,6 +25,24 @@ GitHub Actions 提供**自动且短期有效的 \`GITHUB_TOKEN\`**，它由 GitH
 
 如果自动提交 \`docs/source.json\` 被 GitHub 阻止，检查仓库 Settings → Actions → General → Workflow permissions，或是否存在分支保护；工作流显式申请了 \`contents: write\`。不要为了解决此问题建立具有所有仓库权限的 PAT。
 
+## 一键导入其他 AltStore Classic 软件源（无需个人 Token）
+
+已在管理入口的 **「把其他 AltStore 软件源导入进来」** 区域提供跳转，也可直接打开 [Import AltStore Source 工作流](https://github.com/zrhtop/ZZS-IPA-Store/actions/workflows/import-source.yml)。
+
+1. 登录对该 GitHub 仓库有**写入权限**的 GitHub 账号。
+2. 打开 [Actions → Import AltStore Source](https://github.com/zrhtop/ZZS-IPA-Store/actions/workflows/import-source.yml)，点击 **Run workflow**。
+3. 在 `source_url` 粘贴原软件源的完整 HTTPS `source.json` 地址（支持标准 JSON 和 JSON5）。
+4. 默认 `add-only` **只添加不存在的 Bundle ID**，不会覆盖已有应用；选 `merge-versions` 可给已有应用添加尚未出现过的历史版本。已有版本展示顺序不改变。
+5. `bundle_ids` 留空则导入全部；填写 `com.example.app,com.example.other` 则只导入这几个应用。
+6. 勾选 **permission_confirm**，确认有权导入并遵守原项目的许可条款。可勾选 `preview_only` 先预览数量、不修改任何文件。
+7. 点击 **Run workflow**。Actions 将检验格式、处理重复项、更新 `docs/source.json` 并直接部署 GitHub Pages。之后在网站和 AltStore 中查看结果。
+
+**只导入元数据和原始 HTTPS IPA 下载链接，不会复制、下载或重新托管第三方 IPA。** 因此无需额外存储空间，但原地址失效时导入的应用也无法下载。会尽量保留原开发者名称、应用图标、截图、权限和历史版本信息。GitHub Release 生成的 IPA 和手动导入的软件源条目可以同时存在。
+
+为避免无意导入受限制内容，工具默认跳过部分不兼容的 PAL 专用、Patreon 受限和 NSFW 软件源内容，拒绝非 HTTPS 下载链接。每次最多导入 150 个应用，每个应用最多导入 60 个版本。如果 IPA 真实签名权限和原始源的 `appPermissions` 不一致，AltStore 仍可能拒绝安装。
+
+**版权/授权：** 公共可下载并不意味着允许重新分发。导入之前确认应用开发者的许可，保留原作者信息，并遵守上游软件源的使用条款。
+
 ## 发布 IPA（直接使用 GitHub 账号）
 
 1. 打开 [管理入口](https://repo.zrh.jp/admin/) 并点击 **使用 GitHub 登录并发布 IPA**。
