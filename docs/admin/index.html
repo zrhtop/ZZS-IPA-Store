@@ -50,6 +50,20 @@
   </div>
 </section>
 
+<section class="import-section" id="import-source">
+  <div class="import-top">
+    <div><span class="kicker">ONE-CLICK SOURCE IMPORT</span><h2>把其他 AltStore 软件源导入进来</h2><p>不需要逐个下载 IPA。将获得授权的软件源 JSON 地址粘贴到 GitHub Actions，即可批量导入应用和历史版本。</p></div>
+    <a class="button import-button" href="https://github.com/zrhtop/ZZS-IPA-Store/actions/workflows/import-source.yml" target="_blank" rel="noopener noreferrer">开始导入软件源 ↗</a>
+  </div>
+  <div class="import-walkthrough">
+    <div><span>01</span><b>复制对方的软件源地址</b><small>HTTPS 格式，通常以 source.json 结尾</small></div>
+    <span class="import-arrow">→</span>
+    <div><span>02</span><b>点击 Run workflow</b><small>粘贴地址，选择导入全部或指定 Bundle ID</small></div>
+    <span class="import-arrow">→</span>
+    <div><span>03</span><b>GitHub 自动合并发布</b><small>导入源数据并重新发布你的 Pages 软件源</small></div>
+  </div>
+  <p class="import-note">支持 JSON/JSON5；默认只添加新应用，可选合并已有应用的历史版本。保留第三方原始 IPA 下载地址，不复制 IPA 文件。需自行确认转载授权，原链接失效时下载也会失效。</p>
+</section>
 <section class="workspace">
   <div><span class="kicker">QUICK LINKS</span><h2>管理工作台</h2><p>不需要额外配置的三个入口。</p></div>
   <div class="workspace-grid">
