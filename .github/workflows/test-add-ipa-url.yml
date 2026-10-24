@@ -1,4 +1,4 @@
-name: Verify IPA Importers
+name: Verify IPA Store Importers and Sync
 
 on:
   push:
@@ -7,8 +7,10 @@ on:
     paths:
       - scripts/add_ipa_url.py
       - scripts/import_source.py
+      - scripts/sync_releases.py
       - tests/test_add_ipa_url.py
       - tests/test_import_source.py
+      - tests/test_sync_releases.py
       - .github/workflows/add-ipa-url.yml
       - .github/workflows/import-source.yml
       - .github/workflows/test-add-ipa-url.yml
