@@ -18,7 +18,7 @@
     <img src="../icon.svg" alt="" width="46" height="46">
     <span><strong>ZZS IPA Store</strong><small>GITHUB ADMIN PORTAL</small></span>
   </a>
-  <nav class="navlinks"><a href="../">公开商店</a><a href="../source.json">软件源 JSON</a><a class="nav-github" href="https://github.com/zrhtop/ZZS-IPA-Store" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
+  <nav class="navlinks"><a class="nav-import" href="#import-source">一键导入软件源</a><a href="../">公开商店</a><a href="../source.json">软件源 JSON</a><a class="nav-github" href="https://github.com/zrhtop/ZZS-IPA-Store" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
 </header>
 <main>
 <section class="hero">
@@ -29,6 +29,7 @@
     <div class="hero-buttons">
       <a class="button primary" href="https://github.com/zrhtop/ZZS-IPA-Store/releases/new" rel="noopener noreferrer">使用 GitHub 登录并发布 IPA <span>↗</span></a>
       <a class="button secondary" href="https://github.com/zrhtop/ZZS-IPA-Store/releases" rel="noopener noreferrer">管理已发布版本 <span>→</span></a>
+      <a class="button secondary import-hero" href="https://github.com/zrhtop/ZZS-IPA-Store/actions/workflows/import-source.yml" target="_blank" rel="noopener noreferrer">一键导入其他软件源 <span>↗</span></a>
     </div>
     <div class="hero-note"><span class="lock-icon">✓</span> 仅有仓库写入权限的 GitHub 账号才能发布或编辑。无需额外账号、密码或个人 Token。</div>
   </div>
@@ -65,8 +66,9 @@
   <p class="import-note">支持 JSON/JSON5；默认只添加新应用，可选合并已有应用的历史版本。保留第三方原始 IPA 下载地址，不复制 IPA 文件。需自行确认转载授权，原链接失效时下载也会失效。</p>
 </section>
 <section class="workspace">
-  <div><span class="kicker">QUICK LINKS</span><h2>管理工作台</h2><p>不需要额外配置的三个入口。</p></div>
+  <div><span class="kicker">QUICK LINKS</span><h2>管理工作台</h2><p>使用 GitHub 账户完成发布、批量导入和版本管理。</p></div>
   <div class="workspace-grid">
+    <a class="featured-import" href="https://github.com/zrhtop/ZZS-IPA-Store/actions/workflows/import-source.yml" target="_blank" rel="noopener noreferrer"><span class="link-icon">⇩</span><div><b>一键导入其他 AltStore 软件源</b><small>批量导入应用、版本与 IPA 原始下载链接 · GitHub Actions</small></div><span class="arrow">↗</span></a>
     <a href="https://github.com/zrhtop/ZZS-IPA-Store/releases/new"><span class="link-icon">+</span><div><b>发布新应用或新版本</b><small>创建 Release，上传 IPA</small></div><span class="arrow">↗</span></a>
     <a href="https://github.com/zrhtop/ZZS-IPA-Store/releases"><span class="link-icon">☷</span><div><b>编辑 / 删除历史版本</b><small>在 GitHub Releases 中管理</small></div><span class="arrow">↗</span></a>
     <a href="https://github.com/zrhtop/ZZS-IPA-Store/edit/main/docs/source.json"><span class="link-icon">✎</span><div><b>修改应用展示信息</b><small>名称、描述、图标与权限信息</small></div><span class="arrow">↗</span></a>
