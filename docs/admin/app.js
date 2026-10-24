@@ -1,5 +1,6 @@
 "use strict";
 import {inspectIPA} from "./ipa-reader.js";
+import {readVault,createVault,saveVault,decryptVault,exportVault,importVault,clearVault,validateUsername,validatePassword} from "./vault.js";
 
 const REPO = "zrhtop/ZZS-IPA-Store";
 const API = "https://api.github.com";
@@ -7,7 +8,7 @@ const SOURCE_PATH = "docs/source.json";
 const SOURCE_URL = "https://repo.zrh.jp/source.json";
 const SITE_URL = "https://repo.zrh.jp/";
 const DEFAULT_ICON = "https://avatars.githubusercontent.com/u/101614537?v=4";
-const MAX_DIRECT_SIZE = 40 * 1024 * 1024;
+const MAX_DIRECT_SIZE = 20 * 1024 * 1024;
 const CATEGORIES = new Set(["developer","entertainment","games","lifestyle","other","photo-video","social","utilities"]);
 const $ = id => document.getElementById(id);
 const elem = (tag,cls,txt) => {const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=String(txt);return n;};
@@ -108,34 +109,166 @@ async function loadSource(){
     alertUser("读取软件源失败："+e.message,true);
   }
 }
+function authMessage(message,success=false){
+  const notice=$("authMessage");
+  notice.textContent=message;
+  notice.className=success?"auth-alert ok":"auth-alert";
+  notice.hidden=false;
+}
 function setAuthUI(){
-  $("authPanel").hidden=!!token;$("identityPanel").hidden=!token;
-  $("connectionText").textContent=token?"GitHub 已连接":"未连接 GitHub";
-  $("connectionDot").classList.toggle("online",!!token);
-  $("accountName").textContent=actor||"GitHub";
+  const authenticated=!!token;
+  $("appLayout").hidden=!authenticated;
+  $("authPanel").hidden=authenticated;
+  $("identityPanel").hidden=!authenticated;
+  $("connectionText").textContent=authenticated?"GitHub 已验证":"尚未登录";
+  $("connectionDot").classList.toggle("online",authenticated);
+  $("accountName").textContent=actor||"管理员";
+  if(!authenticated){
+    let vault=null;
+    try{vault=readVault();}
+    catch(e){authMessage(e.message);}
+    $("setupView").hidden=!!vault;
+    $("loginView").hidden=!vault;
+    if(vault)$("loginUsername").value=vault.username;
+    if($("loginView").hidden && !vault)$("setupUsername").value="zzsadmin";
+    $("loginPassword").value="";
+  }
   render();
 }
-async function connect(){
-  if(busy)return;
-  const candidate=val("patInput");
-  if(!candidate)return alertUser("请填写 GitHub 访问令牌。",true);
-  busy=true;token=candidate;$("connectBtn").disabled=true;$("connectBtn").textContent="正在验证…";
-  try{
-    const s=await getGithubSource();
-    try{const profile=await api(API+"/user");actor=profile.login||"GitHub";}catch{actor="GitHub";}
-    sourceSHA=s.sha;acceptSource(s.data);
-    $("patInput").value="";setAuthUI();
-    $("repoStatus").textContent="GitHub 已连接";$("repoStatus").className="state-ok";
-    alertUser("连接成功，可以编辑并发布 IPA。");
-  }catch(e){
-    token="";sourceSHA=null;actor="";setAuthUI();
-    alertUser("GitHub 连接失败："+e.message+"。请确认 Token 授权到本仓库且 Contents 为 Read and write。",true);
-  }finally{busy=false;$("connectBtn").disabled=false;$("connectBtn").textContent="验证并连接";}
+async function verifyGitHubAccess(){
+  const [current,repo]=await Promise.all([
+    getGithubSource(),
+    api(API+"/repos/"+REPO)
+  ]);
+  if(repo.full_name!==REPO)throw new Error("GitHub 仓库验证失败。");
+  if(repo.permissions?.push===false)throw new Error("Token 对该仓库没有写入权限。请创建具有 Contents: Read and write 权限的 Fine-grained Token。");
+  return current;
 }
-function disconnect(){token="";actor="";sourceSHA=null;$("patInput").value="";setAuthUI();loadSource();alertUser("已清除当前页面内存里的 Token。");}
+async function setupAccount(event){
+  event.preventDefault();
+  if(busy)return;
+  const username=val("setupUsername"),password=$("setupPassword").value;
+  const confirmation=$("setupConfirm").value,candidate=val("setupToken");
+  let encrypted;
+  try{
+    validateUsername(username);
+    validatePassword(password,username);
+    if(password!==confirmation)throw new Error("两次输入的密码不一致。");
+    if(readVault())throw new Error("本机已经设置过账户，请先登录或重置账户。");
+    if(!candidate)throw new Error("请输入 GitHub 访问令牌。");
+    busy=true;$("setupBtn").disabled=true;$("setupBtn").textContent="正在验证 GitHub…";
+    token=candidate;
+    const current=await verifyGitHubAccess();
+    encrypted=await createVault(username,password,token);
+    saveVault(encrypted);
+    actor=username;sourceSHA=current.sha;acceptSource(current.data);
+    $("setupPassword").value="";$("setupConfirm").value="";$("setupToken").value="";
+    setAuthUI();
+    $("repoStatus").textContent="GitHub 已连接";
+    $("repoStatus").className="state-ok";
+    alertUser("管理员账户已加密保存在此浏览器，可以开始管理 IPA。");
+  }catch(e){
+    token="";actor="";sourceSHA=null;
+    setAuthUI();
+    authMessage("设置失败："+e.message);
+  }finally{busy=false;$("setupBtn").disabled=false;$("setupBtn").textContent="创建本机账户并进入后台 →";}
+}
+async function loginAccount(event){
+  event.preventDefault();
+  if(busy)return;
+  busy=true;$("loginBtn").disabled=true;$("loginBtn").textContent="正在解锁…";
+  try{
+    const vault=readVault();
+    if(!vault)throw new Error("当前浏览器尚未配置管理员账户。");
+    const username=val("loginUsername"),password=$("loginPassword").value;
+    const candidate=await decryptVault(vault,username,password);
+    token=candidate;
+    const current=await verifyGitHubAccess();
+    actor=username;sourceSHA=current.sha;acceptSource(current.data);
+    $("loginPassword").value="";
+    setAuthUI();
+    $("repoStatus").textContent="GitHub 已连接";
+    $("repoStatus").className="state-ok";
+    alertUser("登录成功。");
+  }catch(e){
+    token="";actor="";sourceSHA=null;
+    setAuthUI();
+    authMessage("登录失败："+e.message+"。如 Token 过期，可使用下方的重新绑定功能。");
+  }finally{busy=false;$("loginBtn").disabled=false;$("loginBtn").textContent="解锁并登录 →";}
+}
+function disconnect(){
+  token="";actor="";sourceSHA=null;inspected=null;
+  $("editor").open&&$("editor").close();
+  $("accountDialog").open&&$("accountDialog").close();
+  setAuthUI();
+  authMessage("已退出登录。加密账户仍保存在本浏览器。",true);
+}
 function authorized(){
   if(token)return true;
-  alertUser("请先连接仓库专属 GitHub Token。",true);$("patInput").focus();return false;
+  setAuthUI();authMessage("请先登录管理员账户。");
+  return false;
+}
+function openAccountSettings(){
+  if(!authorized())return;
+  const vault=readVault();
+  $("accountForm").reset();
+  $("accountNewUsername").value=vault.username;
+  $("accountDialog").showModal();
+}
+async function saveAccountSettings(event){
+  event.preventDefault();
+  if(busy)return;
+  const oldPass=$("accountCurrentPassword").value;
+  const username=val("accountNewUsername");
+  const newPass=$("accountNewPassword").value;
+  const repeat=$("accountConfirmPassword").value;
+  busy=true;$("saveAccountBtn").disabled=true;
+  try{
+    const vault=readVault();
+    const recovered=await decryptVault(vault,vault.username,oldPass);
+    if(recovered!==token)throw new Error("当前会话的 GitHub Token 已发生变化，请重新登录。");
+    validateUsername(username);
+    validatePassword(newPass,username);
+    if(newPass!==repeat)throw new Error("两次输入的新密码不一致。");
+    if(newPass===oldPass && username===vault.username)throw new Error("请修改用户名或密码。");
+    const updated=await createVault(username,newPass,token);
+    saveVault(updated);
+    $("accountForm").reset();
+    $("accountDialog").close();
+    disconnect();
+    authMessage("账号或密码已更新，请使用新凭据登录。",true);
+  }catch(e){alertUser("修改失败："+e.message,true);}
+  finally{busy=false;$("saveAccountBtn").disabled=false;}
+}
+function resetAccount(){
+  if(!confirm("确定清除这台设备的管理员配置吗？\n这会删除本地保存的加密 GitHub Token，仓库里的应用不会删除。\n重置后需要再次输入一个有效 GitHub Token。"))return;
+  clearVault();
+  disconnect();
+  authMessage("已清除本机账户，请重新创建账号和绑定 GitHub Token。",true);
+}
+async function importAccount(event){
+  const file=event.target.files?.[0];
+  event.target.value="";
+  if(!file)return;
+  try{
+    const imported=await importVault(file);
+    if(readVault()&&!confirm("本机已配置账户。确定用导入的账户备份替换它吗？"))return;
+    saveVault(imported);
+    disconnect();
+    $("loginUsername").value=imported.username;
+    authMessage("导入成功，请输入该加密备份的原密码登录。",true);
+  }catch(e){authMessage("导入失败："+e.message);}
+}
+function downloadAccountBackup(){
+  try{
+    const blob=exportVault();
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a");
+    a.href=url;a.download="zzs-admin-encrypted-backup.json";
+    document.body.append(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),15000);
+    alertUser("已生成加密账户备份，请妥善保管。");
+  }catch(e){alertUser(e.message,true);}
 }
 function getApp(bundle){return source.apps.find(a=>a.bundleIdentifier===bundle);}
 function button(title,cb,danger=false) {
@@ -302,7 +435,7 @@ async function parseSelection(file){
   $("ipaResult").textContent="正在读取 IPA Info.plist…";scanning=true;
   try{
     if(file.size>MAX_DIRECT_SIZE){
-      $("ipaResult").textContent="文件为 "+(file.size/1048576).toFixed(1)+" MiB，超过 40 MiB 网页上传上限。请使用 GitHub Releases 并清除本地文件选择。";
+      $("ipaResult").textContent="文件为 "+(file.size/1048576).toFixed(1)+" MiB，超过 20 MiB 网页上传上限。请使用 GitHub Releases 并清除本地文件选择。";
       return;
     }
     const data=await inspectIPA(file);
@@ -376,7 +509,7 @@ async function uploadIcon(bundle){
 async function saveEditor(evt){
   evt.preventDefault();if(!authorized()||busy||scanning)return;
   const mode=editor.mode,bundle=editor.bundle,index=editor.index,file=$("ipaFile").files[0]||null;
-  if(file&&file.size>MAX_DIRECT_SIZE)return alertUser("IPA 超过 40 MiB。请先上传到 Releases，清空文件选项后使用下载链接。",true);
+  if(file&&file.size>MAX_DIRECT_SIZE)return alertUser("IPA 超过 20 MiB。请先上传到 Releases，清空文件选项后使用下载链接。",true);
   busy=true;$("saveEditor").disabled=true;$("saveEditor").textContent="正在保存…";
   try{
     await ensureFresh();
@@ -442,9 +575,19 @@ function backup(){
   const a=document.createElement("a");a.href=url;a.download="zzs-source-"+new Date().toISOString().slice(0,10)+".json";document.body.append(a);a.click();a.remove();
   setTimeout(()=>URL.revokeObjectURL(url),1500);
 }
-$("connectBtn").addEventListener("click",connect);
-$("patInput").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();connect();}});
+$("setupForm").addEventListener("submit",setupAccount);
+$("loginForm").addEventListener("submit",loginAccount);
 $("disconnectBtn").addEventListener("click",disconnect);
+$("accountSettingsBtn").addEventListener("click",openAccountSettings);
+$("guideAccountBtn").addEventListener("click",openAccountSettings);
+$("accountForm").addEventListener("submit",saveAccountSettings);
+$("closeAccountBtn").addEventListener("click",()=>!busy&&$("accountDialog").close());
+$("cancelAccountBtn").addEventListener("click",()=>!busy&&$("accountDialog").close());
+$("resetVaultBtn").addEventListener("click",resetAccount);
+$("forgotBtn").addEventListener("click",resetAccount);
+$("exportVaultBtn").addEventListener("click",downloadAccountBackup);
+$("importVaultBtn").addEventListener("click",()=>$("importVaultFile").click());
+$("importVaultFile").addEventListener("change",importAccount);
 $("refreshBtn").addEventListener("click",loadSource);
 for(const id of ["newAppBtn","heroNew","listNew"])$(id).addEventListener("click",()=>openEditor());
 $("appSearch").addEventListener("input",render);
@@ -465,4 +608,4 @@ $("dropZone").addEventListener("drop",e=>{
 });
 document.querySelectorAll(".menu-item[data-view]").forEach(b=>b.addEventListener("click",()=>tab(b.dataset.view)));
 tab(location.hash.replace("#","")||"overview");
-setAuthUI();loadSource();
+setAuthUI();
