@@ -11,7 +11,7 @@
       "bundleIdentifier": "com.suversal.wrappin",
       "developerName": "ZZS",
       "localizedDescription": "• 新增“模拟收藏地点”和“停止并恢复真实位置”快捷指令，支持 Siri、Spotlight 和自动化。\n• 新增 Stash、Egern、Quantumult X、sing-box 隧道跳转。\n• 收藏与历史地点可记住坐标模式，附近新地点沿用最近使用的模式。",
-      "iconURL": "https://avatars.githubusercontent.com/u/101614537?v=4",
+      "iconURL": "https://raw.githubusercontent.com/suversal/WrapPin/main/Design/WrapPin-AppIcon-Light.png",
       "category": "utilities",
       "appPermissions": {
         "entitlements": [],

@@ -236,6 +236,9 @@ def generate(current: dict, published: list[dict]) -> dict:
                     app["subtitle"] = custom_subtitle.strip()
                 else:
                     app.pop("subtitle", None)
+            custom_icon = app_override.get("iconURL")
+            if isinstance(custom_icon, str) and custom_icon.startswith("https://"):
+                app["iconURL"] = custom_icon
         icon_assets = [
             a for a in rel.get("assets", [])
             if str(a.get("name", "")).lower().endswith(".png") and
