@@ -1,96 +1,81 @@
 # ZZS IPA Store
 
-A self-hosted AltStore Classic source and browser-based IPA management dashboard, powered by GitHub Pages. Simplified Chinese interface.
+使用 **GitHub Pages** 托管的 AltStore Classic 软件源与 IPA 管理面板，无需 Cloudflare Worker、D1、服务器、npm 或 GitHub Actions。
 
-**Public website:** https://repo.zrh.jp/  
-**Management page:** https://repo.zrh.jp/admin/  
-**AltStore Classic source:** https://repo.zrh.jp/source.json
+- 首页：**https://repo.zrh.jp/**
+- 软件源：**https://repo.zrh.jp/source.json**
+- 管理后台：**https://repo.zrh.jp/admin/**
+- 代码仓库：[zrhtop/ZZS-IPA-Store](https://github.com/zrhtop/ZZS-IPA-Store)
 
-> The addresses are available once GitHub Pages is enabled and the custom domain resolves. The source begins with zero apps.
+## 初次使用（只需 GitHub）
 
-## Enable publishing
+1. 检查仓库 **Settings → Pages**：选择 **Deploy from a branch**、**main /docs**；Custom domain 填写 **repo.zrh.jp**。保留 GitHub Pages 已生效的 DNS CNAME：**repo → zrhtop.github.io**。
+2. 在 GitHub 创建 [Fine-grained Personal Access Token](https://github.com/settings/personal-access-tokens/new)：
+   - Resource owner：**zrhtop**
+   - Repository access：**Only select repositories → ZZS-IPA-Store**
+   - Repository permissions：**Contents → Read and write**
+   - 尽量设置合理的到期日。**不要向任何人透露 Token。**
+3. 在 **https://repo.zrh.jp/admin/** 第一次打开时，创建本机管理员账户。默认填入的用户名是 **zzsadmin**；密码需自行设置，**10–12 位**，同时包括大写字母、小写字母和数字。为了安全，**不存在写在公开代码里的默认密码**。
+4. 将 GitHub Token 粘贴一次，点击创建账户。网站先验证 GitHub 仓库权限，再用 PBKDF2-SHA256 和 AES-256-GCM 加密 Token，存到 **当前浏览器的 localStorage**。
+5. 以后在同一浏览器只需要输入账号密码，即可解锁 Token 进入应用管理后台。刷新或退出登录后，**明文 Token 不会自动保持在内存里**。
 
-1. Go to [Repository Settings → Pages](https://github.com/zrhtop/ZZS-IPA-Store/settings/pages).
-2. Under **Build and deployment**, choose **Deploy from a branch**, branch **main**, directory **/docs**. Click **Save**.
-3. Under **Custom domain**, verify or enter **repo.zrh.jp**, then click **Save**.
-4. In Cloudflare DNS for \`zrh.jp\`, use a **CNAME** record:
-   - **Name:** \`repo\`
-   - **Target:** \`zrhtop.github.io\`
-   - **Proxy:** initially **DNS only (grey cloud)** to simplify GitHub Pages HTTPS certificate issuance.
-5. Check that **Enforce HTTPS** becomes available, then enable it. DNS and certificate validation can take time.
+### 修改密码、更换设备或重设令牌
 
-GitHub Pages hosts the contents of the \`docs/\` folder at the root of this subdomain; \`docs/CNAME\` declares the custom hostname.
+登录后点击 **账号设置**，可修改用户名和密码，或下载包含**加密 Token**的 JSON 备份。第二台设备打开管理后台，点击 **导入加密账户备份**，使用原密码解锁。也可以在每台设备分别绑定 GitHub Token。
 
-## Manage apps
+**注意：浏览器本地账户不是同步账户。** 在另一台设备直接输入同一用户名和密码、但没有导入加密备份或绑定 GitHub Token，无法登录。清除浏览器站点数据也会删除该设备的本地账户配置；GitHub 软件源和应用数据不受影响。
 
-1. Open **https://repo.zrh.jp/admin/** in Safari or any modern browser.
-2. [Create a fine-grained GitHub Personal Access Token](https://github.com/settings/personal-access-tokens/new) with:
-   - **Resource owner:** \`zrhtop\`
-   - **Repository access:** Only select repositories → \`ZZS-IPA-Store\`
-   - **Repository permissions:** Contents → **Read and write**
-3. Paste the token on the admin page and connect.
-4. Choose **Add app**, upload an IPA (up to **40 MiB** for browser direct uploads), or supply an existing **public HTTPS IPA download URL**, then fill/verify app metadata.
-5. Click **Upload and publish**. The dashboard writes a new version of \`docs/source.json\` to GitHub. It also uploads small IPA files to \`docs/ipas/\`, and any extractable PNG icon to \`docs/icons/\`.
-6. To publish further updates, click **New version** on the existing app. Versions are prepended so AltStore regards the first entry as the latest version.
-7. Version history lets you **edit**, **delete**, or **make a historical version latest**. Removing a listing does not delete uploaded IPA binaries.
+## 功能
 
-### Upload larger IPA files
+- IPA 上传：直接上传不超过 **20 MiB** 的 IPA 到 \`docs/ipas/\`。更大的 IPA 可以先放到 [GitHub Releases](https://github.com/zrhtop/ZZS-IPA-Store/releases/new)，再通过其**公开 HTTPS 下载链接**发布。
+- 应用和版本：添加应用、编辑资料、增删历史版本、设置最新版，自动维护 \`docs/source.json\`。
+- 元数据：尽力解析 \`Payload/*.app/Info.plist\` 的应用名称、Bundle ID、版本、最低 iOS 版本、隐私权限说明和可读取的 PNG 图标。
+- 版本更新：AltStore 使用 \`versions\` 数组**第一条**作为最新版。修改源文件后，GitHub Pages 生效可能需要短暂时间。
+- 编辑防冲突：修改前检查 GitHub 文件 SHA，避免直接覆盖已发生的更新。
 
-GitHub repository files larger than 50 MiB are discouraged, and using the browser Contents API for them is inefficient. The dashboard deliberately caps direct uploads at 40 MiB.
+### 安全边界（务必了解）
 
-For larger IPAs, [create a GitHub Release](https://github.com/zrhtop/ZZS-IPA-Store/releases/new), upload the IPA as a release asset, copy its public \`https://github.com/.../releases/download/.../...ipa\` link, and enter the exact IPA size in bytes. The dashboard then publishes the URL without re-uploading the file.
+**GitHub Pages 不能给某个目录增加真正的服务器登录验证。**
 
-### Metadata and app permissions
+- \`/admin/\` 的 HTML/CSS/JS 及整个 **Public** GitHub 仓库，仍然对互联网公开。页面里的账号密码只用于**本地解锁已加密的 GitHub Token**。
+- 别人在自己的浏览器访问 \`/admin/\` 时也可能看到“首次配置账户”页面，但**没有对本仓库拥有写入权限的 GitHub Token，就不能修改软件源**。
+- GitHub API 会独立验证 Token。你的登录密码**不是** GitHub Token，也不会生成额外的仓库权限。
+- 加密备份一旦外泄，有被离线猜解密码的风险。请使用不可预测的 10–12 位密码，不要把加密备份上传到公开仓库。
+- 不要使用以前在公开聊天记录中出现过的初始密码。该版本**不会**部署任何已公开的默认密码。
+- GitHub Pages 适合公开软件源，不适合分发保密 IPA。已经上传到 \`docs/ipas/\` 的文件是公开可访问的。
+- IPA 里的代码签名 Entitlements 可能不能仅通过 Info.plist 完整读取；上传前需要人工检查 \`appPermissions\`，否则 AltStore 可能拒绝安装。
 
-The IPA inspector attempts to read \`Payload/*.app/Info.plist\` in either XML or binary property-list format. It fills the name, Bundle ID, \`CFBundleShortVersionString\`, \`CFBundleVersion\`, minimum iOS version, \`NS...UsageDescription\` entries, and a PNG icon if available. It can read embedded \`.xcent\` entitlement files when present.
+如需真正让未登录者连 \`/admin/\` 页面源代码都无法读取，必须使用带服务器验证的服务（例如 Cloudflare Access/Worker 或专用后端），这无法由公开 GitHub Pages 单独实现。
 
-**Always verify the application and extension signed entitlements manually before publishing.** A standalone plist does not always expose every entitlement used by a signed IPA. AltStore Classic validates an application's actual entitlements and privacy permissions against the source's \`appPermissions\` metadata and may refuse to install it if they differ. If the icon is compiled in \`Assets.car\`, the reader cannot extract it; set a public PNG HTTPS icon URL manually.
+## AltStore Classic
 
-An uploaded app must match the Bundle ID declared in the IPA to ensure versions belong to the correct app.
-
-## Security and data model
-
-- All source metadata lives in the public \`docs/source.json\`.
-- IPA files and icons uploaded to this repository are **publicly accessible**.
-- The admin page is **publicly reachable** but modification requires a GitHub token with repository write permission.
-- The token is held **in the current page's JavaScript memory only**. It is **never** saved to localStorage, sessionStorage, or a repository file. Refreshing the page clears it.
-- The dashboard checks the current source file SHA to avoid overwriting concurrent changes.
-- An IPA may become **orphaned** in \`docs/ipas/\` if upload succeeds but updating \`source.json\` fails. It can be cleaned up manually in GitHub.
-- To block unauthenticated visitors from opening the admin UI at all, protect the \`/admin/\` path using an edge access service such as Cloudflare Access. **GitHub Pages itself does not provide an authenticated directory**.
-- Only distribute IPA files for which you have permission, and never upload certificates, mobile provisioning secrets, account credentials, or private data.
-
-## AltStore usage
-
-On iPhone, open **AltStore Classic → Sources → +**, paste:
+在 iPhone 打开 AltStore Classic → Sources → **+**，输入：
 
 \`\`\`text
 https://repo.zrh.jp/source.json
 \`\`\`
 
-Then add the source. Adding a source does not remove iOS app signing, installation, or refresh limitations.
+此站点只管理 IPA 下载和软件源元数据，不提供 iOS 应用签名、绕过签名限制或应用自动刷新服务。
 
-## Project files
+## 文件结构
 
 \`\`\`text
 docs/
-  CNAME
+  CNAME             repo.zrh.jp
   .nojekyll
-  index.html            Public store
+  index.html        公开应用展示
   style.css
   public.js
   icon.svg
-  source.json           AltStore Classic JSON
+  source.json       AltStore Classic JSON
   admin/
-    index.html          Protected write access via GitHub token
+    index.html      账号设置与登录
     admin.css
-    app.js
-    ipa-reader.js       Client-side IPA ZIP + plist inspection
-  ipas/                 Uploaded small IPAs, created on first upload
-  icons/                Extracted icons, created when available
+    app.js          GitHub 读写及管理 UI
+    vault.js        PBKDF2 + AES-256-GCM 本地加密账户
+    ipa-reader.js   IPA ZIP / plist 元数据解析
+  ipas/             上传 IPA 时创建
+  icons/            提取图标时创建
 \`\`\`
 
-### Source spec
-
-[Official AltStore source format](https://faq.altstore.io/developers/make-a-source) · [Updating apps](https://faq.altstore.io/developers/updating-apps)
-
-This repository does not contain an app-signing service. It serves publicly accessible IPA downloads and metadata to AltStore Classic.
+格式说明：[AltStore 官方 Source 文档](https://faq.altstore.io/developers/make-a-source)。
