@@ -258,8 +258,8 @@ def icon_location(bundle: str, png: bytes) -> tuple[pathlib.Path, str]:
 
 def merge(source: dict, metadata: dict, version: dict, *,
           app_name: str = "", developer: str = "", description: str = "",
-          icon: str = "", category: str = "auto", existing_mode: str = "skip"
-          ) -> tuple[dict, str]:
+          icon: str = "", category: str = "auto", existing_mode: str = "skip",
+          explicit_icon: bool = False) -> tuple[dict, str]:
     if category not in CATEGORIES or existing_mode not in ("skip", "replace"):
         raise ValueError("Invalid selection")
     if not isinstance(source.get("apps"), list):
@@ -292,7 +292,8 @@ def merge(source: dict, metadata: dict, version: dict, *,
             target["developerName"] = developer.strip()[:160]
         if description.strip():
             target["localizedDescription"] = description.strip()[:3000]
-        if icon:
+        if icon and (explicit_icon or not target.get("iconURL")
+                     or target.get("iconURL") == FALLBACK_ICON):
             target["iconURL"] = icon
         if category != "auto":
             target["category"] = category
@@ -403,10 +404,20 @@ def main() -> None:
     if meta.get("minOSVersion"):
         version["minOSVersion"] = meta["minOSVersion"]
     original = json.loads(SOURCE.read_text(encoding="utf-8"))
+    # Inferred upstream metadata should not override a user's edited
+    # description, developer attribution or custom icon on existing apps.
+    exists = any(a.get("bundleIdentifier") == meta["bundleIdentifier"]
+                 for a in original.get("apps", []) if isinstance(a, dict))
+    if exists:
+        if not args.developer.strip():
+            developer = ""
+        if not args.description.strip():
+            description = ""
     updated, status = merge(
         original, meta, version, app_name=args.name,
         developer=developer, description=description,
-        icon=icon, category=args.category, existing_mode=args.existing_mode
+        icon=icon, category=args.category, existing_mode=args.existing_mode,
+        explicit_icon=bool(custom_icon)
     )
     app = next(a for a in updated["apps"]
                if a["bundleIdentifier"] == meta["bundleIdentifier"])
