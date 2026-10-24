@@ -18,7 +18,7 @@ export function validateUsername(username) {
 export function validatePassword(password, username="") {
   if (password.length<10 || password.length>12) throw new Error("密码必须为 10–12 位（包含 10 和 12）。");
   if (!/[a-z]/.test(password) || !/[A-Z]/.test(password) || !/[0-9]/.test(password)) throw new Error("密码必须包含大写字母、小写字母和数字。");
-  if(password.toLowerCase()===username.toLowerCase() || password==="vm3Ch04omI2") throw new Error("请换一个未公开使用过的新密码。");
+  if(password.toLowerCase()===username.toLowerCase()) throw new Error("请换一个未公开使用过的新密码。");
   return password;
 }
 function validateVault(vault) {
