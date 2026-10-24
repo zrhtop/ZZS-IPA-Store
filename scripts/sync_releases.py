@@ -22,6 +22,7 @@ import zipfile
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "docs" / "source.json"
+OVERRIDES_PATH = ROOT / "scripts" / "release_notes_overrides.json"
 REPO = os.environ.get("GITHUB_REPOSITORY", "zrhtop/ZZS-IPA-Store")
 TOKEN = os.environ.get("GH_TOKEN", "")
 DEFAULT_ICON = "https://avatars.githubusercontent.com/u/101614537?v=4"
@@ -153,7 +154,16 @@ def normalize_date(release: dict) -> str:
     return str(release.get("published_at") or release.get("created_at") or
                dt.datetime.now(dt.timezone.utc).isoformat()).split("T")[0]
 
+def release_overrides() -> dict:
+    if not OVERRIDES_PATH.exists():
+        return {}
+    data = json.loads(OVERRIDES_PATH.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError("Release notes overrides must be a JSON object.")
+    return data
+
 def generate(current: dict, published: list[dict]) -> dict:
+    overrides = release_overrides()
     current_apps = {
         a["bundleIdentifier"]: a
         for a in current.get("apps", [])
@@ -215,6 +225,17 @@ def generate(current: dict, published: list[dict]) -> dict:
             built[bundle] = app
 
         app = built[bundle]
+        app_override = overrides.get(bundle, {})
+        if isinstance(app_override, dict):
+            custom_description = app_override.get("description")
+            if isinstance(custom_description, str) and custom_description.strip():
+                app["localizedDescription"] = custom_description.strip()
+            if "subtitle" in app_override:
+                custom_subtitle = app_override["subtitle"]
+                if isinstance(custom_subtitle, str) and custom_subtitle.strip():
+                    app["subtitle"] = custom_subtitle.strip()
+                else:
+                    app.pop("subtitle", None)
         icon_assets = [
             a for a in rel.get("assets", [])
             if str(a.get("name", "")).lower().endswith(".png") and
@@ -226,6 +247,13 @@ def generate(current: dict, published: list[dict]) -> dict:
             app["iconURL"] = str(icon_assets[0]["browser_download_url"])
 
         change_notes = str(rel.get("body") or "").strip()
+        if isinstance(app_override, dict):
+            overridden_versions = app_override.get("versions", {})
+            if isinstance(overridden_versions, dict):
+                override_key = f"{meta['version']}|{meta['buildVersion']}"
+                manual_notes = overridden_versions.get(override_key)
+                if isinstance(manual_notes, str) and manual_notes.strip():
+                    change_notes = manual_notes.strip()
         version_info = {
             "version": meta["version"],
             "buildVersion": meta["buildVersion"],
