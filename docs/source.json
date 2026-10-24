@@ -162,6 +162,14 @@
       "category": "other",
       "versions": [
         {
+          "version": "6.4.0",
+          "date": "2026-10-24",
+          "downloadURL": "https://github.com/open-ani/animeko/releases/download/v6.4.0/ani-6.4.0.ipa",
+          "size": 48615547,
+          "minOSVersion": "16.0",
+          "buildVersion": "6.4.99"
+        },
+        {
           "version": "6.3.0",
           "date": "2026-10-13",
           "downloadURL": "https://github.com/open-ani/animeko/releases/download/v6.3.0/ani-6.3.0.ipa",
@@ -370,6 +378,15 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/EhPanda/icon.png",
       "category": "other",
       "versions": [
+        {
+          "version": "3.0.0",
+          "date": "2026-08-20",
+          "downloadURL": "https://github.com/EhPanda-Team/EhPanda/releases/download/3.0.0/EhPanda.ipa",
+          "size": 10143094,
+          "minOSVersion": "26.0",
+          "localizedDescription": "Features\n• Offline downloads. Save galleries to your device and read them with no connection. Sort them into folders, and let the app repair a download that got interrupted or update it later. Downloads keep going while the app is in the background and won't get cut off partway.\n• Date Seek. Jump straight to a specific date while paging through a gallery. It works on the Frontpage, Watched and Favorites lists.\n• WebP images are now supported.\n• Redesigned toasts. Progress and status messages (lo",
+          "buildVersion": "158"
+        },
         {
           "version": "2.8.1",
           "date": "2026-07-20",
@@ -2487,6 +2504,14 @@
       "iconURL": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/bf/46/c4/bf46c48e-94bb-c30d-601f-d73ed5a70689/ProductionAppIcon-0-0-1x_U007emarketing-0-8-0-0-0-85-220.png/512x512bb.jpg",
       "category": "other",
       "versions": [
+        {
+          "version": "12.37",
+          "date": "2026-10-24",
+          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/Twitter.v12.37.+.NFB.v7.2.0.ipa",
+          "size": 265803606,
+          "localizedDescription": "• X updated to v12.37",
+          "buildVersion": "28"
+        },
         {
           "version": "12.36",
           "date": "2026-10-21",
