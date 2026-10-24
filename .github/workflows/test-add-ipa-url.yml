@@ -1,0 +1,32 @@
+name: Verify IPA URL Importer
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - scripts/add_ipa_url.py
+      - tests/test_add_ipa_url.py
+      - .github/workflows/add-ipa-url.yml
+      - .github/workflows/test-add-ipa-url.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax checks and offline regression tests
+        run: |
+          python -m compileall -q scripts tests
+          python -m unittest discover -s tests -p 'test_add_ipa_url.py' -v
