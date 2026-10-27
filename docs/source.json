@@ -3559,6 +3559,40 @@
       },
       "subtitle": "A modded Clash Royale server!",
       "tintColor": "#092949"
+    },
+    {
+      "name": "OldOS",
+      "bundleIdentifier": "com.zurac.BudgetBuddy",
+      "developerName": "zzanehip",
+      "localizedDescription": "OldOS recreates a fully functional version of iOS 4 in SwiftUI: the iOS 4 home screen, lock screen and stock apps, rebuilt as a modern iOS app.\n\nNote: the author ships this IPA with the bundle ID com.zurac.BudgetBuddy (taken from the IPA's own Info.plist), and the bundle ID changes between upstream releases, so future upstream releases cannot upgrade this install. Added at the user's request as the current version only, without automatic update tracking.",
+      "iconURL": "https://raw.githubusercontent.com/zzanehip/The-OldOS-Project/master/OldOS/OldOS/Assets.xcassets/AppIcon.appiconset/1024.png",
+      "category": "other",
+      "versions": [
+        {
+          "version": "1.0",
+          "date": "2026-08-22",
+          "downloadURL": "https://github.com/zzanehip/The-OldOS-Project/releases/download/2.0_8/OldOS.ipa",
+          "size": 85139997,
+          "minOSVersion": "16.0",
+          "localizedDescription": "Upstream release 2.0 (8):\n- iOS 4 Keyboard\n- Autocorrect\n- Predictive Touch\n- Text Suggestions\n- Magnifiers\n- Text Selection\n- Cut, Copy & Paste\n- Keyboard Variants\n\nVersion and build are recorded from the IPA's Info.plist (1.0 / 15); upstream labels this release 2.0 build 8.",
+          "buildVersion": "15"
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSAppleMusicUsageDescription": "To view, play, and experience your music in OldOS, please enable access to your music library. ",
+          "NSCameraUsageDescription": "To take photos in OldOS, please enable access to your camera.",
+          "NSContactsUsageDescription": "To view and manage your contacts in OldOS, please enable access to your contacts list.",
+          "NSLocationAlwaysAndWhenInUseUsageDescription": "To enable maps to work properly, and see your current wifi network in Settings, please enable access to your location. Then close and re-open the Maps app.",
+          "NSLocationAlwaysUsageDescription": "To enable maps to work properly, and see your current wifi network in Settings, please enable access to your location. Then close and re-open the Maps app.",
+          "NSLocationWhenInUseUsageDescription": "To enable maps to work properly, and see your current wifi network in Settings, please enable access to your location. Then close and re-open the Maps app.",
+          "NSMicrophoneUsageDescription": "To record your audio while filming a video in OldOS, please in enable microphone access.",
+          "NSPhotoLibraryAddUsageDescription": "To view, manage, and add photos to your photo library in OldOS, please enable access. Then close and re-open the Photos app.",
+          "NSPhotoLibraryUsageDescription": "To view, manage, and add photos to your photo library in OldOS, please enable access. Then close and re-open the Photos app."
+        }
+      },
+      "subtitle": "iOS 4, recreated in SwiftUI"
     }
   ],
   "news": [],
