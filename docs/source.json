@@ -132,6 +132,15 @@
       "category": "other",
       "versions": [
         {
+          "version": "2.6.6",
+          "date": "2026-10-26",
+          "downloadURL": "https://github.com/openAnimeFlow/AnimeFlow/releases/download/v2.6.6/AnimeFlow-ios-2.6.6.ipa",
+          "size": 29290748,
+          "minOSVersion": "15.0",
+          "localizedDescription": "### 🔄 更新内容\n\n## 2.6.6 更新\n\n- 这是热修版本，修复桌面端视频解析时切换视频源出现的闪退问题，具体的更新内容在 设置->关于->更新信息页面查看2.6.5更新信息\n\n---\n\n### 📦 下载\n- 每个设备的安装包后缀: ``苹果手机(.ipa)、 安卓手机(.apk)、windows电脑(.zip或.exe)、mac电脑(.dmg)、linux电脑(.tar.gz或.deb)``\n- android分多个包: ``v7a(32位架构旧手机或TV)、arm64(新手机,推荐用这个)、x86(模拟器) ``\n- windows分多个包: ``.zip(解压直接使用)、.exe(安装后使用，推荐用这个) ``",
+          "buildVersion": "2.6.6"
+        },
+        {
           "version": "2.6.4",
           "date": "2026-10-18",
           "downloadURL": "https://github.com/openAnimeFlow/AnimeFlow/releases/download/v2.6.4/AnimeFlow-ios-2.6.4.ipa",
@@ -199,6 +208,13 @@
       "category": "other",
       "versions": [
         {
+          "version": "4.0.0",
+          "date": "2026-10-25",
+          "downloadURL": "https://github.com/Apollo-Reborn/Apollo-Reborn/releases/download/v1.15.11_4.0.0/Apollo-Reborn-4.0.0-GLASS.ipa",
+          "size": 129151957,
+          "buildVersion": "302"
+        },
+        {
           "version": "3.9.0",
           "date": "2026-10-09",
           "downloadURL": "https://github.com/Apollo-Reborn/Apollo-Reborn/releases/download/v1.15.11_3.9.0/Apollo-Reborn-3.9.0-GLASS.ipa",
@@ -258,6 +274,14 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/BCD/icon.png",
       "category": "other",
       "versions": [
+        {
+          "version": "0.1.611",
+          "date": "2026-10-26",
+          "downloadURL": "https://github.com/thebcd69/bcd-games/releases/download/v0.1.611/BCD.ipa",
+          "size": 182284110,
+          "minOSVersion": "18.0",
+          "buildVersion": "611"
+        },
         {
           "version": "0.1.592",
           "date": "2026-10-23",
@@ -847,12 +871,12 @@
       "versions": [
         {
           "version": "0.0.8",
-          "date": "2026-10-18",
-          "downloadURL": "https://github.com/TarbleFR/RewindBox/releases/download/0.0.8/RewindBox-0.0.8.ipa",
-          "size": 226570105,
+          "date": "2026-10-25",
+          "downloadURL": "https://github.com/TarbleFR/RewindBox/releases/download/0.0.9-fix.1/RewindBox-Build530.ipa",
+          "size": 186305438,
           "minOSVersion": "18.0",
-          "localizedDescription": "> **Project rename — 21 October 2026:** RewindBox is the independent iOS/iPadOS fork maintained by TarbleFR, based on [NeoStation by misobadev](https://github.com/misobadev/neostation-frontend). Please use [RewindBox Issues](https://github.com/TarbleFR/RewindBox/issues) for this fork, not the upstream support server. Original authorship and licenses remain unchanged.\n>\n> This historical release has not been rebuilt. Its title and download filenames now use RewindBox, but the original signed IPA still shows its original installed name and Files folder. All pre-existing binary, source and license asset bytes and SHA-256 digests are unchanged. A new checksum list covers the renamed files; the original checksum record is retained separately.\n\n# RewindBox 0.0.8 🎮\n\nThis update expands cheat support, brings more immersive touch controls and fixes several stability issues.\n\n- **Expanded unified cheat catalogue:** more sources for RetroArch cores, arcade games, PS2, PS3, GameCube and Wii, available through a single catalogue download.\n- **Simpler cheat management:** compatible cheats appear automatically for the detected game, with individual on/off switches and support for importing your own files. Matching takes available region and version identifiers into account.\n- **Faster cheat searches:** improved indexing and duplicate handling. PS2 gameplay cheats are presented separately from graphical patches.\n- **More immersive touch controls:** visible button presses on compatible skins, with improved touch handling and control layouts.\n- **Scraping crash fixed:** reduced memory usage when processing large game files, resolving the reported crash on iPhone 15 Pro Max.\n- **Improved stability:** fixes for game startup, skins, shaders and game closing.\n- **Easier first launch:** skip the initial game-folder selection and add your games later.\n\nCheat availability depends on the game, region and revision. Updated credits and third-party notices are also included.\n\n📦 Download **RewindBox-0.0.8.ipa** below and install it with your usual sideloading tool.\n\n[Source credits](https://github.com/TarbleFR/RewindBox/blob/0.0.8/docs/CHEAT_CATALOG_SOURCES.md) · [Licenses and notices](https://github.com/TarbleFR/RewindBox/releases/download/0.0.8/RewindBox-0.0.8-Licenses-and-Notices.zip) · [Source and packaging details](https://github.com/TarbleFR/RewindBox/blob/0.0.8/docs/RELEASE_0.0.8_SOURCE_MANIFEST.md)\n\n\n<details>\n<summary>Historical asset filename mapping (contents unchanged)</summary>\n\n| Original filename | Current filename |\n|---|---|\n| `NeoStation-0.0.8-Distribution.json` | `RewindBox-0.0.8-Distribution.json` |\n| `NeoStation-0.0.8-Licenses-and-Notices.zip` | `RewindBox-0.0.8-Licenses-and-Notices.zip` |\n| `NeoStation-0.0.8-Packaging.json` | `RewindBox-0.0.8-Packaging.json` |\n| `NeoStation-0.0.8-SHA256SUMS.txt` | `RewindBox-0.0.8-Original-SHA256SUMS.txt` |\n| `NeoStation-0.0.8-Signatures.json` | `RewindBox-0.0.8-Signatures.json` |\n| `NeoStation-0.0.8-Source-Manifest.md` | `RewindBox-0.0.8-Source-Manifest.md` |\n| `NeoStation-0.0.8.ipa` | `RewindBox-0.0.8.ipa` |\n\nOriginal source archives and manifests retain their historical contents and references.\n</details>",
-          "buildVersion": "480"
+          "localizedDescription": "RewindBox build 530 (upstream release 0.0.9-fix.1). Replaces the original 0.0.8 IPA, whose upstream download was removed. Same bundle (com.neogamelab.neostation) and app version 0.0.8, newer build.",
+          "buildVersion": "530"
         }
       ],
       "appPermissions": {
@@ -1233,6 +1257,15 @@
       "category": "other",
       "versions": [
         {
+          "version": "1.6.0",
+          "date": "2026-10-26",
+          "downloadURL": "https://github.com/Suwayomi/Suwayomi-Tsumiru/releases/download/v1.6.0/tsumiru-v1.6.0-ios.ipa",
+          "size": 18262510,
+          "minOSVersion": "15.0",
+          "localizedDescription": "A manga and webtoon reader for your [Suwayomi](https://suwayomi.org/) server.\n\n### ✨ New Features\n\n- Added a desktop layout for Updates, with a grid of covers per day and chapters grouped by series (@aaronbamblett)\n- Added a desktop layout for History, with a filter and right-click menu (@aaronbamblett)\n- Added a desktop layout for Browse, with source and extension cards and a bar for each source's catalogue (@aaronbamblett)\n- Added a desktop layout for Downloads, with selection and reordering in the server queue and On device side by side (@aaronbamblett)\n- Added a desktop layout for Migrate, with sources and their series side by side and one migration window (@aaronbamblett)\n- Added a settings window on desktop, with search and a page list (@aaronbamblett)\n- Added an **Upcoming** calendar with **Week** and **Month** views and past releases (@aaronbamblett)\n- Added custom covers with **Edit cover**, from your sources, AniList, MyAnimeList, Kitsu, MangaUpdates or an image link, shown on all your devices (@aaronbamblett)\n- Added missing server settings, including **Sign-in**, **OPDS**, **Database**, **WebView** and the server image cache (@aaronbamblett)\n- Added series notes and sav",
+          "buildVersion": "5001"
+        },
+        {
           "version": "1.5.1",
           "date": "2026-10-21",
           "downloadURL": "https://github.com/Suwayomi/Suwayomi-Tsumiru/releases/download/v1.5.1/tsumiru-v1.5.1-ios.ipa",
@@ -1349,6 +1382,15 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/ZhihuMinusMinus/icon.png",
       "category": "other",
       "versions": [
+        {
+          "version": "0.9.5",
+          "date": "2026-10-24",
+          "downloadURL": "https://github.com/huamurui/zhihu-minus-minus/releases/download/v0.9.5/zhihu-minus-minus-v0.9.5-unsigned.ipa",
+          "size": 14460451,
+          "minOSVersion": "16.4",
+          "localizedDescription": "* fix: register zhihu URL scheme on iOS by @huamurui in https://github.com/huamurui/zhihu-minus-minus/pull/146\r\n* fix: 修复启动与游客阅读，调整内容过滤默认值 by @huamurui in https://github.com/huamurui/zhihu-minus-minus/pull/145\r\n\r\n\r\n**Full Changelog**: https://github.com/huamurui/zhihu-minus-minus/compare/v0.9.4...v0.9.5",
+          "buildVersion": "1"
+        },
         {
           "version": "0.9.4",
           "date": "2026-10-23",
@@ -2511,15 +2553,6 @@
           "size": 265803606,
           "localizedDescription": "• X updated to v12.37",
           "buildVersion": "28"
-        },
-        {
-          "version": "12.36",
-          "date": "2026-10-21",
-          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/Twitter.v12.36.+.NFB.v7.2.0.ipa",
-          "size": 270082729,
-          "localizedDescription": "• X updated to v12.36",
-          "sha256": "3d1996d0b50149187d5fcfb727dcbe059bfaee93e260a68de9fb0f5ba43edb07",
-          "buildVersion": "32"
         }
       ],
       "appPermissions": {
@@ -2892,13 +2925,12 @@
       "category": "other",
       "versions": [
         {
-          "version": "8.83.0",
-          "date": "2026-10-19",
-          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/SoundCloud.v8.83.0.NexaSC.ipa",
-          "size": 227377895,
-          "localizedDescription": "• SoundCloud updated to v8.83.0",
-          "sha256": "372650e63febf9bd7f5ddf20b7cd7a74d9e038074bcb0fd5928095dd2b21cbb2",
-          "buildVersion": "1262168"
+          "version": "8.83.1",
+          "date": "2026-10-26",
+          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/SoundCloud.v8.83.1.NexaSC.ipa",
+          "size": 227742189,
+          "localizedDescription": "• SoundCloud updated to v8.83.1",
+          "buildVersion": "1262318"
         }
       ],
       "appPermissions": {
