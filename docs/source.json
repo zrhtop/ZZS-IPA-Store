@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.2.2",
+          "buildVersion": "5",
+          "date": "2026-10-28",
+          "localizedDescription": "口袋猫漫画 iOS 移植版 1.2.2（build 5）：修复日夜模式切换不生效、标签图标只剩剪影、圈子头像与分享漫画缩略图不出图。说明见 zrhtop/KoudaiManga 的 v1.2.2 发布。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.2-b5/KoudaiManga-1.2.2.ipa",
+          "size": 14868237,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "1.2.1",
           "buildVersion": "4",
           "date": "2026-10-28",
