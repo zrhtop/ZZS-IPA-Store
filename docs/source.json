@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.2.4",
+          "buildVersion": "7",
+          "date": "2026-10-28",
+          "localizedDescription": "口袋猫漫画 iOS 移植版 1.2.4（build 7）：修复首页快捷入口点不动、广播剧与漫剧卡片误触打开最近阅读的问题。说明见 zrhtop/KoudaiManga 的 v1.2.4 发布。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.4-b7/KoudaiManga-1.2.4.ipa",
+          "size": 14871913,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "1.2.3",
           "buildVersion": "6",
           "date": "2026-10-28",
