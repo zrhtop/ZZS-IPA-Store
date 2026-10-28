@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.2.5",
+          "buildVersion": "8",
+          "date": "2026-10-28",
+          "localizedDescription": "令牌模型与原版对齐：只取一次，存量令牌永远放行，发放停发不再整站不可用\r\n阅读令牌改为原版模型，整个安装周期只取一次并持久化；过期仅影响阅读页图片，可重新获取。修复 1.2.2 与 1.2.4 在令牌发放停发时整站报错的问题。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.5-b8/KoudaiManga-1.2.5.ipa",
+          "size": 14866616,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "1.2.4",
           "buildVersion": "7",
           "date": "2026-10-28",
