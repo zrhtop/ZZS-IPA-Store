@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.2.10",
+          "buildVersion": "13",
+          "date": "2026-10-28",
+          "localizedDescription": "修广播剧更新页空数据解码失败，补齐 150 字与引用上限，主页头像按原版隐藏\r\n\r\n广播剧更新、新剧与漫画时间线在运营方返回空数组时不再解码失败（空数据生成的是 [] 而非 {}，现在视为空表）；发动态、发评论、回复补上原版的 150 字本地上限（动态不含换行计数）；发动态引用漫画或书单补上最多 5 个的上限；用户动态页加载更多失败后保留翻页可重试；评论详情回复在缺主题 id 时给失败提示而非静默；网络层拼地址去掉强制解包；主页搜索框右侧头像按原版隐藏，搜索框改为整行宽度。\r\n\r\nIPA SHA256: afe293600a6a564660efa7b172aeb99179bae14cd740d2aa105fd768f428372b",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.10-b13/KoudaiManga-1.2.10.ipa",
+          "size": 14899126,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "1.2.9",
           "buildVersion": "12",
           "date": "2026-10-28",
