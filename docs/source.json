@@ -7,6 +7,30 @@
   "tintColor": "#6559E8",
   "apps": [
     {
+      "name": "口袋猫漫画",
+      "bundleIdentifier": "com.koudai.manga",
+      "developerName": "ZZS",
+      "subtitle": "在 ZZS IPA Store 发布",
+      "localizedDescription": "口袋猫漫画 iOS 客户端。功能：首页栏目与分组推荐、分类筛选、搜索、详情与章节列表、整章竖向阅读、本地收藏与阅读历史。无广告，无统计追踪。需要 iOS 16 或以上。",
+      "iconURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.0-b1/icon-1024.png",
+      "category": "utilities",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "versions": [
+        {
+          "version": "1.0",
+          "buildVersion": "1",
+          "date": "2026-10-28",
+          "localizedDescription": "口袋猫漫画 iOS 客户端。功能：首页栏目与分组推荐、分类筛选、搜索、详情与章节列表、整章竖向阅读、本地收藏与阅读历史。无广告，无统计追踪。需要 iOS 16 或以上。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.0-b1/KoudaiManga-1.0.ipa",
+          "size": 348642,
+          "minOSVersion": "16.0"
+        }
+      ]
+    },
+    {
       "name": "WrapPin",
       "bundleIdentifier": "com.suversal.wrappin",
       "developerName": "ZZS",
