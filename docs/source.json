@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.1.0",
+          "buildVersion": "2",
+          "date": "2026-10-28",
+          "localizedDescription": "口袋猫漫画 iOS 移植版 1.1.0 完全版：登录与书架同步、讨论区、书单、有声剧，修复图片版本过低提示。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.1-b2/KoudaiManga-1.1.ipa",
+          "size": 1048788,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "1.0",
           "buildVersion": "1",
           "date": "2026-10-28",
