@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.2.11",
+          "buildVersion": "14",
+          "date": "2026-10-28",
+          "localizedDescription": "修尊享线路（百度代理）拼法错误，切过去加载不出来\r\n\r\n原版是把完整的直连图片地址整体编码后塞进百度代理参数，我们之前把相对路径直接拼在代理前缀后面，百度拿到的源地址不完整、抓不到图。现已按原版改回整体编码，并补齐原版代理请求用的 Referer、User-Agent 与 Accept 请求头。切回默认线路不受影响。\r\n\r\nIPA SHA256: 58a775f4d315412b0e44bda8da96f31d873c61070fd620aad95b8a9f5cd4ca00",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.11-b14/KoudaiManga-1.2.11.ipa",
+          "size": 14900622,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "1.2.10",
           "buildVersion": "13",
           "date": "2026-10-28",
