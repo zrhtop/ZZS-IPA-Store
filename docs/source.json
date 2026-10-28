@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.2.9",
+          "buildVersion": "12",
+          "date": "2026-10-28",
+          "localizedDescription": "修圈子与评论区点哪里都乱跳的问题\r\n\r\n圈子与评论区的帖子行此前叠了三个导航链接，点赞、评论、头像都会被随机劫持到引用漫画或动态详情。1.2.9 起每行只保留一个链接，头像进用户动态、引用卡进对应漫画或书单，逐个生效。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.9-b12/KoudaiManga-1.2.9.ipa",
+          "size": 14898005,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "1.2.8",
           "buildVersion": "11",
           "date": "2026-10-28",
