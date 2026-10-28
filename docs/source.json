@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.2.3",
+          "buildVersion": "6",
+          "date": "2026-10-28",
+          "localizedDescription": "口袋猫漫画 iOS 移植版 1.2.3（build 6）：修复阅读令牌领取失败锁死问题（连试 5 次、旧令牌顶用、退避缩短为 60 秒）。说明见 zrhtop/KoudaiManga 的 v1.2.3 发布。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.3-b6/KoudaiManga-1.2.3.ipa",
+          "size": 14869783,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "1.2.2",
           "buildVersion": "5",
           "date": "2026-10-28",
