@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.2.8",
+          "buildVersion": "11",
+          "date": "2026-10-28",
+          "localizedDescription": "修书架收藏点不进详情的问题\r\n收藏与本地收藏改为单元格本身即导航链接，编辑模式勾选不变；历史页同步修复。普通模式下点击收藏的书可正常打开详情。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.8-b11/KoudaiManga-1.2.8.ipa",
+          "size": 14884391,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "1.2.7",
           "buildVersion": "10",
           "date": "2026-10-28",
