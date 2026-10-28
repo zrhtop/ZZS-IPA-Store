@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.2.6",
+          "buildVersion": "9",
+          "date": "2026-10-28",
+          "localizedDescription": "修阅读器占位页无返回键问题，章节图自动重领免费阅读时长\r\n占位页与错误页加返回入口；阅读时长占位时自动重领一次免费令牌并重新加载，手动重试有明确反馈；请求超时收紧，避免发放端挂起时长时间无响应。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.6-b9/KoudaiManga-1.2.6.ipa",
+          "size": 14878063,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "1.2.5",
           "buildVersion": "8",
           "date": "2026-10-28",
