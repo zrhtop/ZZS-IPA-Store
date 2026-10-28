@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.2.1",
+          "buildVersion": "4",
+          "date": "2026-10-28",
+          "localizedDescription": "口袋猫漫画 iOS 移植版 1.2.1（build 4）：修复封面地址双斜杠导致的全部封面不出图，修复标签栏大图素材引起的主界面猫头水印。说明见 zrhtop/KoudaiManga 的 v1.2.1 发布。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.1-b4/KoudaiManga-1.2.1.ipa",
+          "size": 14862835,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "1.2.0",
           "buildVersion": "3",
           "date": "2026-10-28",
