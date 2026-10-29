@@ -21,6 +21,15 @@
       "versions": [
         {
           "version": "0.1.0",
+          "buildVersion": "2",
+          "date": "2026-10-29",
+          "localizedDescription": "开发者：zrhtop\r\n\r\n同一应用的新测试版本：dev.zrhtop.GameHouseMobile，0.1.0 (2)，最低 iOS 17.0。未签名 IPA，由用户自行签名并真机验证。\r\n\r\n本轮：恢复原接关输入面板、原字体/光标和密码编解码；原 PCM 音频读取/准备/起停移到后台串行队列，避免加载阻塞界面。保留全部原图片、音乐和音效字节，不改游戏内 UI，不使用替代 MIDI 音源。\r\n\r\n81 项 Python 测试、35 项 Swift 测试及 iPhoneOS arm64 编译通过；626 项原资源逐一校验。源码提交 caa7a308716c6b82b9881e77ec670b0fe580f357。\r\n\r\n重要：仍是原素材/引擎恢复检查版，不是完整可玩移植。合法密码目前仅解码并显示原 checkpoint，尚未接通完整世界启动；怪物、射击、完整游戏循环及 MIDI 微软音源仍在恢复。iPhone 安装、触控、声音和帧率待用户实测；未运行模拟器。\r\n\r\n大小：37,247,107 字节\r\nSHA256：f595922217ddc83052dbddc65463eb0f4d5dca72ffea1af55a36ff99c8fcce5f",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.GameHouseMobile-v0.1.0-b2/CreativeGameHouse-v0.1.0-b2-iPhone.ipa",
+          "size": 37247107,
+          "minOSVersion": "17.0"
+        },
+        {
+          "version": "0.1.0",
           "buildVersion": "1",
           "date": "2026-10-29",
           "localizedDescription": "创想游戏屋 iPhone / iPad 原素材与关卡检查版，由 zrhtop 开发维护。\r\n\r\n- Phase 1：查看九款游戏原素材、挖金子 38 个原关卡及原精灵图；不是可玩复刻版。\r\n- 保留原图片、音乐、音效文件；本次逐项校验 626 项安全原资源 SHA256。MIDI 音色、循环与全部历史音效解码仍待恢复。\r\n- 真实 iPhoneOS / arm64 编译，最低 iOS 17.0；版本 0.1.0，build 1。\r\n- 未签名 IPA，需要用户自行签名安装；真机安装和运行尚未验证。\r\n\r\nIPA：37,074,341 字节\r\nSHA256：11c62ec6f2cb4a8d9ecad0d6106db4919a9aa0936a58e52b7e427a5c5db6234c\r\n\r\n原素材保留原有版权与授权说明。",
