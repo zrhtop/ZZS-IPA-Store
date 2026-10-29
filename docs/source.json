@@ -29,102 +29,12 @@
           "minOSVersion": "16.0"
         },
         {
-          "version": "1.2.12",
-          "buildVersion": "15",
-          "date": "2026-10-29",
-          "localizedDescription": "修尊享线路陷阱：自动回退默认线路，尊享禁用标注暂未开放，另补六处残项\r\n\r\n百度代理抓图不带应用请求头，图源返回版本提示图而非正文，该线路目前在服务端即不可用；1.2.11 切过去会卡在提示页无处切回。现已自动回退默认线路并在提示页与失败页加切换入口，尊享选项禁用标注“iOS暂未开放”，旧设置启动自动归位。另补齐六处残项：阅读器目录选集分段与到顶/当前/到底快捷钮、书单收藏状态翻页查全、我的书单筛选卡、广播剧全部分类与订阅最近更新排序、消息中心按原版规格重做、云控业务地址覆盖层接通（运营方文件恢复下发时生效）。\r\n\r\nIPA SHA256: cefb177f0d6781e2170f8b38f20b1e6afe81c8ce3962432777549afbe8e764c8",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.12-b15/KoudaiManga-1.2.12.ipa",
-          "size": 14988606,
-          "minOSVersion": "16.0"
-        },
-        {
-          "version": "1.2.11",
-          "buildVersion": "14",
-          "date": "2026-10-28",
-          "localizedDescription": "修尊享线路（百度代理）拼法错误，切过去加载不出来\r\n\r\n原版是把完整的直连图片地址整体编码后塞进百度代理参数，我们之前把相对路径直接拼在代理前缀后面，百度拿到的源地址不完整、抓不到图。现已按原版改回整体编码，并补齐原版代理请求用的 Referer、User-Agent 与 Accept 请求头。切回默认线路不受影响。\r\n\r\nIPA SHA256: 58a775f4d315412b0e44bda8da96f31d873c61070fd620aad95b8a9f5cd4ca00",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.11-b14/KoudaiManga-1.2.11.ipa",
-          "size": 14900622,
-          "minOSVersion": "16.0"
-        },
-        {
           "version": "1.2.10",
           "buildVersion": "13",
           "date": "2026-10-28",
           "localizedDescription": "修广播剧更新页空数据解码失败，补齐 150 字与引用上限，主页头像按原版隐藏\r\n\r\n广播剧更新、新剧与漫画时间线在运营方返回空数组时不再解码失败（空数据生成的是 [] 而非 {}，现在视为空表）；发动态、发评论、回复补上原版的 150 字本地上限（动态不含换行计数）；发动态引用漫画或书单补上最多 5 个的上限；用户动态页加载更多失败后保留翻页可重试；评论详情回复在缺主题 id 时给失败提示而非静默；网络层拼地址去掉强制解包；主页搜索框右侧头像按原版隐藏，搜索框改为整行宽度。\r\n\r\nIPA SHA256: afe293600a6a564660efa7b172aeb99179bae14cd740d2aa105fd768f428372b",
           "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.10-b13/KoudaiManga-1.2.10.ipa",
           "size": 14899126,
-          "minOSVersion": "16.0"
-        },
-        {
-          "version": "1.2.9",
-          "buildVersion": "12",
-          "date": "2026-10-28",
-          "localizedDescription": "修圈子与评论区点哪里都乱跳的问题\r\n\r\n圈子与评论区的帖子行此前叠了三个导航链接，点赞、评论、头像都会被随机劫持到引用漫画或动态详情。1.2.9 起每行只保留一个链接，头像进用户动态、引用卡进对应漫画或书单，逐个生效。",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.9-b12/KoudaiManga-1.2.9.ipa",
-          "size": 14898005,
-          "minOSVersion": "16.0"
-        },
-        {
-          "version": "1.2.8",
-          "buildVersion": "11",
-          "date": "2026-10-28",
-          "localizedDescription": "修书架收藏点不进详情的问题\r\n收藏与本地收藏改为单元格本身即导航链接，编辑模式勾选不变；历史页同步修复。普通模式下点击收藏的书可正常打开详情。",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.8-b11/KoudaiManga-1.2.8.ipa",
-          "size": 14884391,
-          "minOSVersion": "16.0"
-        },
-        {
-          "version": "1.2.7",
-          "buildVersion": "10",
-          "date": "2026-10-28",
-          "localizedDescription": "阅读中提前自动续领免费阅读时长，不再被 20 分钟打断\r\n打开阅读器与阅读过程中每分钟检查一次令牌剩余时间，不足 3 分钟时提前重领换新；发放正常时阅读全程无感，停发时仍有占位页自动重领与手动重试兜底。",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.7-b10/KoudaiManga-1.2.7.ipa",
-          "size": 14880227,
-          "minOSVersion": "16.0"
-        },
-        {
-          "version": "1.2.6",
-          "buildVersion": "9",
-          "date": "2026-10-28",
-          "localizedDescription": "修阅读器占位页无返回键问题，章节图自动重领免费阅读时长\r\n占位页与错误页加返回入口；阅读时长占位时自动重领一次免费令牌并重新加载，手动重试有明确反馈；请求超时收紧，避免发放端挂起时长时间无响应。",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.6-b9/KoudaiManga-1.2.6.ipa",
-          "size": 14878063,
-          "minOSVersion": "16.0"
-        },
-        {
-          "version": "1.2.5",
-          "buildVersion": "8",
-          "date": "2026-10-28",
-          "localizedDescription": "令牌模型与原版对齐：只取一次，存量令牌永远放行，发放停发不再整站不可用\r\n阅读令牌改为原版模型，整个安装周期只取一次并持久化；过期仅影响阅读页图片，可重新获取。修复 1.2.2 与 1.2.4 在令牌发放停发时整站报错的问题。",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.5-b8/KoudaiManga-1.2.5.ipa",
-          "size": 14866616,
-          "minOSVersion": "16.0"
-        },
-        {
-          "version": "1.2.4",
-          "buildVersion": "7",
-          "date": "2026-10-28",
-          "localizedDescription": "口袋猫漫画 iOS 移植版 1.2.4（build 7）：修复首页快捷入口点不动、广播剧与漫剧卡片误触打开最近阅读的问题。说明见 zrhtop/KoudaiManga 的 v1.2.4 发布。",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.4-b7/KoudaiManga-1.2.4.ipa",
-          "size": 14871913,
-          "minOSVersion": "16.0"
-        },
-        {
-          "version": "1.2.3",
-          "buildVersion": "6",
-          "date": "2026-10-28",
-          "localizedDescription": "口袋猫漫画 iOS 移植版 1.2.3（build 6）：修复阅读令牌领取失败锁死问题（连试 5 次、旧令牌顶用、退避缩短为 60 秒）。说明见 zrhtop/KoudaiManga 的 v1.2.3 发布。",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.3-b6/KoudaiManga-1.2.3.ipa",
-          "size": 14869783,
-          "minOSVersion": "16.0"
-        },
-        {
-          "version": "1.2.2",
-          "buildVersion": "5",
-          "date": "2026-10-28",
-          "localizedDescription": "口袋猫漫画 iOS 移植版 1.2.2（build 5）：修复日夜模式切换不生效、标签图标只剩剪影、圈子头像与分享漫画缩略图不出图。说明见 zrhtop/KoudaiManga 的 v1.2.2 发布。",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.2-b5/KoudaiManga-1.2.2.ipa",
-          "size": 14868237,
           "minOSVersion": "16.0"
         },
         {
