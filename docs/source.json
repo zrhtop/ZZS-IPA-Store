@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.2.14",
+          "buildVersion": "17",
+          "date": "2026-10-29",
+          "localizedDescription": "有声书播放页修复：播放控件一屏完整显示，不用再下滑\r\n\r\n此前封面与唱片两个大块固定高度堆叠，整页超高约 110pt，最底部的工具行（倍速、定时、剧集列表、跳过片头片尾、播放设置）要下滑才看得到。现按原版结构改：封面作整页背景，唱片区弹性伸缩，屏幕矮时自动缩小，进度条、播放键与工具行始终一屏内完整显示。\r\n\r\nIPA SHA256: 539711745456cedbe45fa93baa93c46a5a2ba1c566aff5686ad958e5e8ca6519",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.14-b17/KoudaiManga-1.2.14.ipa",
+          "size": 14992042,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "1.2.13",
           "buildVersion": "16",
           "date": "2026-10-29",
