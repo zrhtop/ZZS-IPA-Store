@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.2.12",
+          "buildVersion": "15",
+          "date": "2026-10-29",
+          "localizedDescription": "修尊享线路陷阱：自动回退默认线路，尊享禁用标注暂未开放，另补六处残项\r\n\r\n百度代理抓图不带应用请求头，图源返回版本提示图而非正文，该线路目前在服务端即不可用；1.2.11 切过去会卡在提示页无处切回。现已自动回退默认线路并在提示页与失败页加切换入口，尊享选项禁用标注“iOS暂未开放”，旧设置启动自动归位。另补齐六处残项：阅读器目录选集分段与到顶/当前/到底快捷钮、书单收藏状态翻页查全、我的书单筛选卡、广播剧全部分类与订阅最近更新排序、消息中心按原版规格重做、云控业务地址覆盖层接通（运营方文件恢复下发时生效）。\r\n\r\nIPA SHA256: cefb177f0d6781e2170f8b38f20b1e6afe81c8ce3962432777549afbe8e764c8",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.12-b15/KoudaiManga-1.2.12.ipa",
+          "size": 14988606,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "1.2.11",
           "buildVersion": "14",
           "date": "2026-10-28",
