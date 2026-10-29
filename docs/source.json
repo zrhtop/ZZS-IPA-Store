@@ -7,6 +7,30 @@
   "tintColor": "#6559E8",
   "apps": [
     {
+      "name": "创想游戏屋",
+      "bundleIdentifier": "dev.zrhtop.GameHouseMobile",
+      "developerName": "ZZS",
+      "subtitle": "在 ZZS IPA Store 发布",
+      "localizedDescription": "创想游戏屋 iPhone / iPad 原素材与关卡检查版，由 zrhtop 开发维护。\r\n\r\n- Phase 1：查看九款游戏原素材、挖金子 38 个原关卡及原精灵图；不是可玩复刻版。\r\n- 保留原图片、音乐、音效文件；本次逐项校验 626 项安全原资源 SHA256。MIDI 音色、循环与全部历史音效解码仍待恢复。\r\n- 真实 iPhoneOS / arm64 编译，最低 iOS 17.0；版本 0.1.0，build 1。\r\n- 未签名 IPA，需要用户自行签名安装；真机安装和运行尚未验证。\r\n\r\nIPA：37,074,341 字节\r\nSHA256：11c62ec6f2cb4a8d9ecad0d6106db4919a9aa0936a58e52b7e427a5c5db6234c\r\n\r\n原素材保留原有版权与授权说明。",
+      "iconURL": "https://avatars.githubusercontent.com/u/101614537?v=4",
+      "category": "utilities",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "versions": [
+        {
+          "version": "0.1.0",
+          "buildVersion": "1",
+          "date": "2026-10-29",
+          "localizedDescription": "创想游戏屋 iPhone / iPad 原素材与关卡检查版，由 zrhtop 开发维护。\r\n\r\n- Phase 1：查看九款游戏原素材、挖金子 38 个原关卡及原精灵图；不是可玩复刻版。\r\n- 保留原图片、音乐、音效文件；本次逐项校验 626 项安全原资源 SHA256。MIDI 音色、循环与全部历史音效解码仍待恢复。\r\n- 真实 iPhoneOS / arm64 编译，最低 iOS 17.0；版本 0.1.0，build 1。\r\n- 未签名 IPA，需要用户自行签名安装；真机安装和运行尚未验证。\r\n\r\nIPA：37,074,341 字节\r\nSHA256：11c62ec6f2cb4a8d9ecad0d6106db4919a9aa0936a58e52b7e427a5c5db6234c\r\n\r\n原素材保留原有版权与授权说明。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.GameHouseMobile-v0.1.0-b1/CreativeGameHouse-iPhone.ipa",
+          "size": 37074341,
+          "minOSVersion": "17.0"
+        }
+      ]
+    },
+    {
       "name": "WrapPin",
       "bundleIdentifier": "com.suversal.wrappin",
       "developerName": "ZZS",
