@@ -27,42 +27,6 @@
           "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.14-b17/KoudaiManga-1.2.14.ipa",
           "size": 14992042,
           "minOSVersion": "16.0"
-        },
-        {
-          "version": "1.2.10",
-          "buildVersion": "13",
-          "date": "2026-10-28",
-          "localizedDescription": "修广播剧更新页空数据解码失败，补齐 150 字与引用上限，主页头像按原版隐藏\r\n\r\n广播剧更新、新剧与漫画时间线在运营方返回空数组时不再解码失败（空数据生成的是 [] 而非 {}，现在视为空表）；发动态、发评论、回复补上原版的 150 字本地上限（动态不含换行计数）；发动态引用漫画或书单补上最多 5 个的上限；用户动态页加载更多失败后保留翻页可重试；评论详情回复在缺主题 id 时给失败提示而非静默；网络层拼地址去掉强制解包；主页搜索框右侧头像按原版隐藏，搜索框改为整行宽度。\r\n\r\nIPA SHA256: afe293600a6a564660efa7b172aeb99179bae14cd740d2aa105fd768f428372b",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.10-b13/KoudaiManga-1.2.10.ipa",
-          "size": 14899126,
-          "minOSVersion": "16.0"
-        },
-        {
-          "version": "1.2.1",
-          "buildVersion": "4",
-          "date": "2026-10-28",
-          "localizedDescription": "口袋猫漫画 iOS 移植版 1.2.1（build 4）：修复封面地址双斜杠导致的全部封面不出图，修复标签栏大图素材引起的主界面猫头水印。说明见 zrhtop/KoudaiManga 的 v1.2.1 发布。",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.1-b4/KoudaiManga-1.2.1.ipa",
-          "size": 14862835,
-          "minOSVersion": "16.0"
-        },
-        {
-          "version": "1.2.0",
-          "buildVersion": "3",
-          "date": "2026-10-28",
-          "localizedDescription": "口袋猫漫画 iOS 移植版 1.2.0（build 3）：按安卓原版逐页复刻界面与功能（广告除外），修复阅读令牌持久化。源文件与说明见 zrhtop/KoudaiManga 的 v1.2.0 发布。",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2-b3/KoudaiManga-1.2.ipa",
-          "size": 15330392,
-          "minOSVersion": "16.0"
-        },
-        {
-          "version": "1.1.0",
-          "buildVersion": "2",
-          "date": "2026-10-28",
-          "localizedDescription": "口袋猫漫画 iOS 移植版 1.1.0 完全版：登录与书架同步、讨论区、书单、有声剧，修复图片版本过低提示。",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.1-b2/KoudaiManga-1.1.ipa",
-          "size": 1048788,
-          "minOSVersion": "16.0"
         }
       ]
     },
