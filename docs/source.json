@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.2.13",
+          "buildVersion": "16",
+          "date": "2026-10-29",
+          "localizedDescription": "阅读时长恢复改进：自动多轮重试，续领成功自动恢复阅读\r\n\r\n此前令牌过期又撞上发放端波浪式拒发时，自动重领只有一轮，失败后停在“服务器暂未发放”页，续领后来成功也不会刷新。现在自动多轮重试（3 轮、间隔 10 秒），续领成功立即自动重载章节恢复阅读。发放端的波浪式拒发与断连是运营方服务端现象，本版改的是客户端恢复行为。\r\n\r\nIPA SHA256: 57a96bfe7b476c67bcda73e0aa5abd6d43bcda9578ea347334462dcd238623cb",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/com.koudai.manga-v1.2.13-b16/KoudaiManga-1.2.13.ipa",
+          "size": 14989469,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "1.2.12",
           "buildVersion": "15",
           "date": "2026-10-29",
