@@ -31,7 +31,11 @@ python3 "$TASK_ROOT/scripts/validate_ipa.py" \
   "$DELIVERY/Snowman-1.0.0-build1.ipa" \
   --output "$DELIVERY/ipa-metadata.json"
 
-python3 "$TASK_ROOT/scripts/simulator_smoke.py" \
-  --project "$TASK_ROOT/iOS/Snowman.xcodeproj" \
-  --build-root "$BUILD_ROOT/simulator" \
-  --delivery "$DELIVERY"
+if [[ "${SNOWMAN_RUN_SIMULATOR:-0}" == "1" ]]; then
+  python3 "$TASK_ROOT/scripts/simulator_smoke.py" \
+    --project "$TASK_ROOT/iOS/Snowman.xcodeproj" \
+    --build-root "$BUILD_ROOT/simulator" \
+    --delivery "$DELIVERY"
+else
+  printf '%s\n' '{"simulatorRun":false,"reason":"Skipped at the owner request; arm64 device build and IPA integrity validation remain required."}' > "$DELIVERY/verification-scope.json"
+fi

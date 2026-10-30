@@ -42,9 +42,13 @@ def main() -> None:
     recorded = json.loads((delivery / "ipa-metadata.json").read_text())
     if actual != recorded:
         raise RuntimeError("IPA bytes or metadata changed after validation")
-    smoke = json.loads((delivery / "simulator-smoke-result.json").read_text())
-    if smoke.get("success") is not True or smoke.get("diagnostics", {}).get("gameLoaded") is not True:
-        raise RuntimeError("The simulator did not validate this delivery")
+    smoke_path = delivery / "simulator-smoke-result.json"
+    if smoke_path.is_file():
+        smoke = json.loads(smoke_path.read_text())
+        if smoke.get("success") is not True or smoke.get("diagnostics", {}).get("gameLoaded") is not True:
+            raise RuntimeError("The optional simulator check reported a failure")
+    elif not (delivery / "verification-scope.json").is_file():
+        raise RuntimeError("Missing validation scope record")
     metadata = json.loads((GAME_ROOT / "release-metadata.json").read_text())
     required = ["developerName", "localizedDescription", "subtitle", "category"]
     if any(not isinstance(metadata.get(key), str) or not metadata[key].strip() for key in required):

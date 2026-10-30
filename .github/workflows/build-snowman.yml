@@ -3,7 +3,6 @@ name: Build and verify Christmas Snowman iOS
 on:
   push:
     branches:
-      - codex/snowman-ios
       - main
     paths:
       - games/snowman/**
@@ -35,7 +34,7 @@ jobs:
           python-version: '3.12'
       - name: Prepare pinned offline Flash runtime
         run: python3 games/snowman/scripts/prepare_runtime.py
-      - name: Build device IPA and run iOS Simulator checks
+      - name: Build arm64 IPA and validate its actual payload
         run: bash games/snowman/scripts/build.sh "$RUNNER_TEMP/snowman"
       - name: Preserve build and runtime evidence
         if: always()
