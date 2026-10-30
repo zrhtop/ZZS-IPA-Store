@@ -1,5 +1,6 @@
 import UIKit
 import WebKit
+import CoreFoundation
 
 final class GameViewController: UIViewController, WKNavigationDelegate, WKScriptMessageHandler {
     private var webView: WKWebView!
@@ -9,6 +10,8 @@ final class GameViewController: UIViewController, WKNavigationDelegate, WKScript
     private let smokeMode = ProcessInfo.processInfo.arguments.contains("--snowman-smoke-test")
     private var smokeStarted = false
     private var smokeFinished = false
+    private let controlLayoutDefaultsKey = "snowman.controlLayout.v1"
+    private var savedControlLayoutScript: WKUserScript?
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask { .landscape }
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation { .landscapeRight }
@@ -23,6 +26,7 @@ final class GameViewController: UIViewController, WKNavigationDelegate, WKScript
         configuration.mediaTypesRequiringUserActionForPlayback = []
         configuration.allowsPictureInPictureMediaPlayback = false
         configuration.userContentController.add(WeakScriptHandler(self), name: "snowman")
+        refreshSavedControlLayoutScript(in: configuration.userContentController)
         webView = WKWebView(frame: .zero, configuration: configuration)
         webView.navigationDelegate = self
         webView.isOpaque = false
@@ -114,10 +118,74 @@ final class GameViewController: UIViewController, WKNavigationDelegate, WKScript
     }
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        guard smokeMode, message.frameInfo.isMainFrame,
-              let body = message.body as? [String: Any], body["type"] as? String == "smoke-result",
-              let result = body["result"] as? [String: Any] else { return }
-        writeSmokeResult(result)
+        guard message.frameInfo.isMainFrame, message.webView === webView,
+              let sourceURL = message.frameInfo.request.url,
+              sourceURL.scheme == "http", sourceURL.host == "127.0.0.1",
+              let localURL = localURL, sourceURL.port == localURL.port,
+              let body = message.body as? [String: Any],
+              let type = body["type"] as? String else { return }
+        switch type {
+        case "controls-layout":
+            if body["layout"] is NSNull {
+                UserDefaults.standard.removeObject(forKey: controlLayoutDefaultsKey)
+            } else {
+                guard let layout = validatedControlLayout(body["layout"]),
+                      let data = try? JSONSerialization.data(withJSONObject: layout, options: [.sortedKeys]) else { return }
+                UserDefaults.standard.set(data, forKey: controlLayoutDefaultsKey)
+            }
+            refreshSavedControlLayoutScript(in: userContentController)
+        case "smoke-result":
+            guard smokeMode, let result = body["result"] as? [String: Any] else { return }
+            writeSmokeResult(result)
+        default:
+            break
+        }
+    }
+
+    private func refreshSavedControlLayoutScript(in controller: WKUserContentController) {
+        var json = "null"
+        if let data = UserDefaults.standard.data(forKey: controlLayoutDefaultsKey),
+           let object = try? JSONSerialization.jsonObject(with: data),
+           let layout = validatedControlLayout(object),
+           let normalized = try? JSONSerialization.data(withJSONObject: layout, options: [.sortedKeys]),
+           let value = String(data: normalized, encoding: .utf8) {
+            json = value
+        }
+        if let previous = savedControlLayoutScript {
+            let retained = controller.userScripts.filter { $0 !== previous }
+            controller.removeAllUserScripts()
+            retained.forEach { controller.addUserScript($0) }
+        }
+        let script = WKUserScript(source: "window.SnowmanSavedControlLayout = \(json);",
+                                  injectionTime: .atDocumentStart, forMainFrameOnly: true)
+        controller.addUserScript(script)
+        savedControlLayoutScript = script
+    }
+
+    private func validatedControlLayout(_ value: Any?) -> [String: Any]? {
+        guard let layout = value as? [String: Any],
+              Set(layout.keys) == Set(["version", "buttons"]),
+              finiteControlNumber(layout["version"]) == 1,
+              let buttons = layout["buttons"] as? [String: Any] else { return nil }
+        let allowed = Set(["37", "38", "39", "40", "32", "up-left", "up-right", "down-left", "down-right"])
+        guard Set(buttons.keys).isSubset(of: allowed) else { return nil }
+        var normalized: [String: Any] = [:]
+        for (key, value) in buttons {
+            guard let button = value as? [String: Any],
+                  Set(button.keys) == Set(["x", "y", "size"]),
+                  let x = finiteControlNumber(button["x"]), (0...1).contains(x),
+                  let y = finiteControlNumber(button["y"]), (0...1).contains(y),
+                  let size = finiteControlNumber(button["size"]), (44...120).contains(size) else { return nil }
+            normalized[key] = ["x": x, "y": y, "size": size]
+        }
+        return ["version": 1, "buttons": normalized]
+    }
+
+    private func finiteControlNumber(_ value: Any?) -> Double? {
+        guard let number = value as? NSNumber,
+              CFGetTypeID(number) != CFBooleanGetTypeID() else { return nil }
+        let value = number.doubleValue
+        return value.isFinite ? value : nil
     }
 
     private func writeSmokeResult(_ result: [String: Any]) {

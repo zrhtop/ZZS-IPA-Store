@@ -79,6 +79,7 @@ def main():
                  "height": 400, "frameRate": 30, "language": "ActionScript 2"},
         "changes": ["Combine touch keys with original keyboard input",
                     "Restore life lost through the original damage handler only when cheat is enabled",
+                    "Skip enemy damage only when the independent invincibility option is enabled",
                     "Expose state and test-mode-only probes for runtime verification"],
         "originalTimerRetained": True,
     }

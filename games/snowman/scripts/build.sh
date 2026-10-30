@@ -21,14 +21,17 @@ xcodebuild \
 
 APP_PATH="$BUILD_ROOT/device/Build/Products/Release-iphoneos/Snowman.app"
 test -d "$APP_PATH"
+APP_VERSION="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP_PATH/Info.plist")"
+APP_BUILD="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' "$APP_PATH/Info.plist")"
+IPA_PATH="$DELIVERY/Snowman-${APP_VERSION}-build${APP_BUILD}.ipa"
 mkdir -p "$BUILD_ROOT/package/Payload"
 ditto "$APP_PATH" "$BUILD_ROOT/package/Payload/Snowman.app"
 COPYFILE_DISABLE=1 ditto -c -k --norsrc --keepParent \
-  "$BUILD_ROOT/package/Payload" "$DELIVERY/Snowman-1.0.0-build1.ipa"
+  "$BUILD_ROOT/package/Payload" "$IPA_PATH"
 cp "$TASK_ROOT/icon.png" "$DELIVERY/snowman-icon.png"
 cp "$TASK_ROOT/Web/runtime/runtime-manifest.json" "$DELIVERY/runtime-manifest.json"
 python3 "$TASK_ROOT/scripts/validate_ipa.py" \
-  "$DELIVERY/Snowman-1.0.0-build1.ipa" \
+  "$IPA_PATH" \
   --output "$DELIVERY/ipa-metadata.json"
 
 if [[ "${SNOWMAN_RUN_SIMULATOR:-0}" == "1" ]]; then
