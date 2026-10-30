@@ -1,0 +1,80 @@
+name: Build and verify Christmas Snowman iOS
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - games/snowman/**
+      - .github/workflows/build-snowman.yml
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the verified IPA to the existing store
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: snowman-ios-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 35
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare pinned offline Flash runtime
+        run: python3 games/snowman/scripts/prepare_runtime.py
+      - name: Build arm64 IPA and validate its actual payload
+        run: bash games/snowman/scripts/build.sh "$RUNNER_TEMP/snowman"
+      - name: Preserve build and runtime evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: snowman-ios-${{ github.sha }}
+          path: ${{ runner.temp }}/snowman/delivery/
+          if-no-files-found: error
+          retention-days: 30
+
+  publish:
+    # A branch build only produces reviewable artifacts. Merging the reviewed
+    # change to main is the release decision; a manual run is opt-in.
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || inputs.publish == true)
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      actions: write
+    concurrency:
+      group: zzs-ipa-store-pages
+      cancel-in-progress: false
+    steps:
+      - name: Checkout store
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download this build's verified IPA
+        uses: actions/download-artifact@v4
+        with:
+          name: snowman-ios-${{ github.sha }}
+          path: snowman-delivery
+      - name: Publish IPA, synchronize metadata, and request Pages deployment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SNOWMAN_BUILD_SHA: ${{ github.sha }}
+        run: python3 games/snowman/scripts/publish.py snowman-delivery
