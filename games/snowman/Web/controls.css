@@ -20,14 +20,29 @@ ruffle-player{display:block;width:100%;height:100%;outline:none}
 .settings{position:absolute;right:10px;top:12px;display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:#191e29;border:1px solid #ffffff42;border-radius:50%;font-size:24px;line-height:1}
 #cheat-indicator{position:absolute;bottom:10px;font-size:11px;color:#ffdf8e;white-space:nowrap}
 [hidden]{display:none!important}
-dialog{border:1px solid #ffffff4d;border-radius:20px;background:#1c2230;color:#fff;width:min(340px,85vw);padding:22px;box-shadow:0 16px 80px #0009;touch-action:manipulation}
+dialog{border:1px solid #7e96b14d;border-radius:20px;background:#151e2d;color:#fff;width:min(420px,calc(100vw - 32px));padding:18px;box-shadow:0 16px 80px #0009;touch-action:manipulation}
 dialog::backdrop{background:#0008}
-dialog h1{font-size:20px;margin:0 0 22px}dialog p{font-size:13px;line-height:1.6;color:#bcc5d5;margin:16px 0 22px}
-.cheat-option{display:flex;align-items:center;justify-content:space-between;font-size:17px;gap:25px}
-#cheat-switch{width:48px;height:28px;accent-color:#66b788}
-#close-settings{display:block;width:100%;padding:12px;border-radius:12px;border:1px solid #ffffff46;background:#33415c;font-size:16px}
+.settings-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.settings-heading h1{font-size:20px;line-height:24px;margin:0;font-weight:650}
+.settings-heading>span{font-size:11px;line-height:18px;color:#a4b4c7;white-space:nowrap}
+.cheat-options{display:grid;grid-auto-rows:1fr;gap:10px}
+.cheat-option{display:grid;grid-template-columns:minmax(0,1fr) 52px;align-items:center;gap:14px;min-height:76px;padding:12px 14px;border:1px solid #53678259;border-radius:13px;background:#25314599;cursor:pointer;touch-action:manipulation}
+.option-copy{display:flex;flex-direction:column;gap:5px;min-width:0}
+.option-title{font-size:17px;line-height:23px;font-weight:600;color:#f0f5fc}
+.option-description{font-size:12px;line-height:18px;color:#acbbce}
+.switch-control{display:block;position:relative;width:52px;height:30px;flex:none}
+.switch-control input{position:absolute;inset:0;z-index:1;width:52px;height:30px;margin:0;opacity:0;cursor:pointer;touch-action:manipulation}
+.switch-track{display:block;position:absolute;inset:0;border:1px solid #71809880;border-radius:999px;background:#46536a;pointer-events:none;transition:background .16s,border-color .16s}
+.switch-track::before{content:"";position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#f8fbff;box-shadow:0 1px 4px #0005;transition:transform .16s}
+.switch-control input:checked+.switch-track{background:#53ac88;border-color:#75cba6}
+.switch-control input:checked+.switch-track::before{transform:translateX(22px)}
+.switch-control input:focus-visible+.switch-track{outline:2px solid #9ed7ff;outline-offset:3px}
+.switch-control input:disabled+.switch-track{opacity:.45}
+.settings-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.settings-actions button{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;padding:10px 8px;border:1px solid #617c9d99;border-radius:10px;background:#283a51;color:#eaf2fd;font-size:14px;line-height:20px}
+.settings-actions #close-settings{background:#345b7b;border-color:#709cc0}
 #fatal-error{position:fixed;inset:20%;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#fff;background:#271c25;border:1px solid #a86472;border-radius:16px;white-space:pre-wrap;z-index:5}
-@media(max-height:320px){.rail{padding-bottom:6px}.dpad{max-width:138px}.control{min-height:44px}.settings{top:4px}.fire{margin-bottom:6px}dialog{padding:16px}dialog h1{margin-bottom:12px}dialog p{margin:10px 0}}
+@media(max-height:320px){.rail{padding-bottom:6px}.dpad{max-width:138px}.control{min-height:44px}.settings{top:4px}.fire{margin-bottom:6px}dialog{padding:16px}.settings-heading{margin-bottom:12px}.settings-actions{margin-top:12px}}
 
 dialog:not([open]){display:none}
 #settings-backdrop{position:fixed;inset:0;background:#0008;z-index:3}
@@ -37,10 +52,6 @@ dialog.dialog-fallback{position:fixed;left:50%;top:50%;transform:translate(-50%,
 .editing-controls .control{z-index:5;cursor:move;touch-action:none}
 .control.layout-selected{outline:3px solid #8acfff;outline-offset:3px}
 .settings{z-index:3}
-.layout-setting{border-top:1px solid #ffffff29;padding-top:12px;margin:0 0 16px}
-.layout-setting h2{font-size:16px;margin:0}
-.layout-setting p{margin:8px 0 10px}
-#adjust-controls{width:100%;min-height:42px;border:1px solid #819bb3;background:#263e56;border-radius:10px}
 button:disabled{opacity:.45}
 dialog{max-height:calc(100% - 24px);overflow-y:auto;touch-action:pan-y;-webkit-overflow-scrolling:touch}
 #layout-editor{position:fixed;top:max(8px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:min(640px,calc(100% - 24px));z-index:6;padding:12px 16px;border:1px solid #8acfff73;border-radius:16px;background:#162236f5;box-shadow:0 8px 40px #0009;touch-action:manipulation}
@@ -57,5 +68,4 @@ dialog{max-height:calc(100% - 24px);overflow-y:auto;touch-action:pan-y;-webkit-o
 .editor-actions{display:flex;gap:8px;margin-top:8px;justify-content:flex-end}
 .editor-actions button{border:1px solid #ffffff42;border-radius:8px;min-height:34px;padding:4px 16px;background:#2a354a}
 .editor-actions #save-layout{background:#336a53;border-color:#a6dfc2}
-.invincible-option{margin-top:16px}
 @media(max-height:360px){#layout-editor{padding:8px 12px}.editor-heading span{font-size:11px}.control-picker{margin:5px 0}.editor-actions{margin-top:5px}}
