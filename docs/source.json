@@ -7,6 +7,30 @@
   "tintColor": "#6559E8",
   "apps": [
     {
+      "name": "过关斩将2",
+      "bundleIdentifier": "jp.zrh.guoguan2",
+      "developerName": "朱志强（小小，原作） · ZRH（iOS 适配）",
+      "subtitle": "小小火柴人格斗 · 自由触控布局",
+      "localizedDescription": "《过关斩将2》（Fight Man / 小小 No.9）iOS 离线适配版。保留原作的画面、菜单、战斗、动画和音效，加入八方向以及攻击、跳跃、防御虚拟按键。每个按键均可调整大小和位置并保存，设置中可独立开启无限生命与无敌，默认关闭。",
+      "iconURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/jp.zrh.guoguan2-v1.0.0-b1/guoguan2-icon.png",
+      "category": "games",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "buildVersion": "1",
+          "date": "2026-10-30",
+          "localizedDescription": "《过关斩将2》（Fight Man / 小小 No.9）iOS 离线适配版。保留原作的画面、菜单、战斗、动画和音效，加入八方向以及攻击、跳跃、防御虚拟按键。每个按键均可调整大小和位置并保存，设置中可独立开启无限生命与无敌，默认关闭。\n\n首次发布：原 SWF 离线运行，八方向移动，Z 攻击、X 跳跃、C 防御；全部虚拟按键可调整和保存。无限生命与无敌分别开关，使用统一大小的作弊选项卡片。沿用文字选择与长按默认行为防护，减少移动键长按唤出放大镜的问题。补齐原作 GB2312 中文菜单、帮助与作者信息的离线显示。\n\n安装方式：在 AltStore Classic 中添加 https://repo.zrh.jp/source.json 并重签安装。IPA 未使用开发者证书预签。\n\n源代码提交：5271ab9cdd5000d5842bad9b1e697ac2b353d36e\nIPA SHA-256：bea956e3ee91785baae24f77431c693d3474818dc74b744404e67582530b849c",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/jp.zrh.guoguan2-v1.0.0-b1/Guoguan2-1.0.0-build1.ipa",
+          "size": 11713260,
+          "minOSVersion": "15.0"
+        }
+      ]
+    },
+    {
       "name": "圣诞雪球人",
       "bundleIdentifier": "jp.zrh.snowmanchristmas",
       "developerName": "Miniclip（原作） · ZRH（iOS 适配）",
