@@ -89,6 +89,12 @@
   }
   function bindControls() {
     document.querySelectorAll('.control[data-control]').forEach(button=>{
+      // Cancel WebKit's native long-press handling without replacing pointer input.
+      // Keep these listeners on game keys so settings scrolling/sliders still work.
+      for(const name of ['touchstart','touchmove'])button.addEventListener(name,event=>{
+        event.preventDefault();
+      },{passive:false});
+      button.addEventListener('selectstart',event=>event.preventDefault());
       const keys=String(button.dataset.keys || button.dataset.key).split(',').map(Number);
       button.addEventListener('pointerdown',event=>{
         event.preventDefault();if(!bridgeReady || !active || window.SnowmanControlLayout?.isEditing())return;

@@ -22,6 +22,8 @@ final class GameViewController: UIViewController, WKNavigationDelegate, WKScript
         super.viewDidLoad()
         view.backgroundColor = .black
         let configuration = WKWebViewConfiguration()
+        // Game controls must not begin WebKit text-selection/loupe gestures.
+        configuration.preferences.isTextInteractionEnabled = false
         configuration.allowsInlineMediaPlayback = true
         configuration.mediaTypesRequiringUserActionForPlayback = []
         configuration.allowsPictureInPictureMediaPlayback = false
