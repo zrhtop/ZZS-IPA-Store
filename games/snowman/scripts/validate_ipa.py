@@ -20,7 +20,7 @@ def inspect(path: Path) -> dict:
         if len(infos) != 1:
             raise ValueError("IPA must contain exactly one main application")
         info = plistlib.loads(archive.read(infos[0]))
-        expected = {"CFBundleIdentifier": BUNDLE_ID, "CFBundleShortVersionString": "1.0.1", "CFBundleVersion": "2"}
+        expected = {"CFBundleIdentifier": BUNDLE_ID, "CFBundleShortVersionString": "1.0.2", "CFBundleVersion": "3"}
         for key, value in expected.items():
             if str(info.get(key)) != value:
                 raise ValueError(f"Unexpected {key}: {info.get(key)!r}")

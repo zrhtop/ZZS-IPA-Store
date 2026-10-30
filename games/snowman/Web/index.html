@@ -34,17 +34,24 @@
   </main>
   <div id="settings-backdrop" hidden></div>
   <dialog id="cheat-dialog" aria-labelledby="cheat-title">
-    <h1 id="cheat-title">辅助设置</h1>
-    <label class="cheat-option"><span>无限生命</span><input id="cheat-switch" type="checkbox" role="switch"></label>
-    <p>默认关闭。开启后，受伤不会消耗生命。</p>
-    <label class="cheat-option invincible-option"><span>无敌</span><input id="invincible-switch" type="checkbox" role="switch"></label>
-    <p>默认关闭。免疫敌人伤害，并保留道具强化。</p>
-    <div class="layout-setting">
-      <h2>虚拟按键</h2>
-      <p>每个按键都可拖动位置、单独调整大小。</p>
-      <button id="adjust-controls">调整按键布局</button>
+    <header class="settings-heading">
+      <h1 id="cheat-title">辅助设置</h1>
+      <span>默认关闭 · 独立开关</span>
+    </header>
+    <div class="cheat-options">
+      <label class="cheat-option">
+        <span class="option-copy"><span class="option-title">无限生命</span><span class="option-description">受伤不扣生命，强化仍会重置。</span></span>
+        <span class="switch-control"><input id="cheat-switch" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span></span>
+      </label>
+      <label class="cheat-option">
+        <span class="option-copy"><span class="option-title">无敌</span><span class="option-description">免疫敌人伤害，并保留强化。</span></span>
+        <span class="switch-control"><input id="invincible-switch" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span></span>
+      </label>
     </div>
-    <button id="close-settings">返回游戏</button>
+    <div class="settings-actions">
+      <button id="adjust-controls">调整按键布局</button>
+      <button id="close-settings">返回游戏</button>
+    </div>
   </dialog>
   <section id="layout-editor" aria-label="按键布局编辑" hidden>
     <div class="editor-heading"><strong>调整按键</strong><span>拖动位置 · 点选后调整大小</span></div>
