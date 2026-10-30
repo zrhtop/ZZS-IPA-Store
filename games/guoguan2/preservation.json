@@ -1,0 +1,28 @@
+{
+  "originalVersion": 5,
+  "patchedVersion": 5,
+  "originalSHA256": "2a26f54d3ede5e716eec060e7afdb2530f0d2423d651aea0f2844ba600be6e0b",
+  "patchedSHA256": "acb7d667edbc6b5d536f894b599ca5d10c72aafd91ad90a01a75b855f6a520eb",
+  "helperVersion": 8,
+  "helperSHA256": "78ce3c62fec771276ed83a1531b78c0116b2c7043ae97216a287d86159982330",
+  "menuFontSHA256": "a003685d56a0df792c3c0703068001d06b0f2e0a1002d22cc824d07969e4d186",
+  "originalTagCount": 1546,
+  "patchedTagCount": 1547,
+  "allOriginalTagsByteIdentical": true,
+  "injectedRootFrame": 3,
+  "bootstrapSHA256": "28fae5547b1a246168ba5ecd830214891ac1bb6b82aa6f3ad4d50f9d8a12933b",
+  "game": {
+    "title": "Fight Man / 过关斩将 II",
+    "author": "朱志强（小小）",
+    "width": 500,
+    "height": 300,
+    "frameRate": 18
+  },
+  "changes": [
+    "Map virtual keys to the original rebindable controls",
+    "Optional Flash 5 reserve-life write protection",
+    "Optional Flash 5 player hurtbox and health write protection",
+    "Separate Flash 8 interface with original gameplay remaining Flash 5",
+    "Repair original GB2312 display text and provide an offline CJK device font"
+  ]
+}

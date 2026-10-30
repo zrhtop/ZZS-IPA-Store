@@ -1,0 +1,81 @@
+name: Build and verify Guoguan2 iOS
+
+on:
+  push:
+    branches:
+      - main
+      - codex/guoguan2-ios
+    paths:
+      - games/guoguan2/**
+      - .github/workflows/build-guoguan2.yml
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the verified IPA to the existing store
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: guoguan2-ios-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 35
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare pinned offline Flash runtime
+        run: python3 games/guoguan2/scripts/prepare_runtime.py
+      - name: Build arm64 IPA and validate its actual payload
+        run: bash games/guoguan2/scripts/build.sh "$RUNNER_TEMP/guoguan2"
+      - name: Preserve build and runtime evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: guoguan2-ios-${{ github.sha }}
+          path: ${{ runner.temp }}/guoguan2/delivery/
+          if-no-files-found: error
+          retention-days: 30
+
+  publish:
+    # A branch build only produces reviewable artifacts. Merging the reviewed
+    # change to main is the release decision; a manual run is opt-in.
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || inputs.publish == true)
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      actions: write
+    concurrency:
+      group: zzs-ipa-store-pages
+      cancel-in-progress: false
+    steps:
+      - name: Checkout store
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download this build's verified IPA
+        uses: actions/download-artifact@v4
+        with:
+          name: guoguan2-ios-${{ github.sha }}
+          path: guoguan2-delivery
+      - name: Publish IPA, synchronize metadata, and request Pages deployment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GUOGUAN2_BUILD_SHA: ${{ github.sha }}
+        run: python3 games/guoguan2/scripts/publish.py guoguan2-delivery

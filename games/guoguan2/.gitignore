@@ -1,0 +1,7 @@
+Web/runtime/
+Web/guoguan2.swf
+Web/guoguan2-bridge.swf
+Web/menu-font.swf
+iOS/Assets.xcassets/AppIcon.appiconset/AppIcon-*.png
+__pycache__/
+*.pyc

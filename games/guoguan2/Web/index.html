@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>过关斩将2</title>
+  <link rel="stylesheet" href="controls.css">
+  <script>window.RufflePlayer={config:{autoplay:'on',unmuteOverlay:'hidden',splashScreen:false,showSwfDownload:false,contextMenu:'off',allowScriptAccess:true,letterbox:'on',logLevel:'error',quality:'high',scale:'showAll',forceScale:true,preferredRenderer:'webgl',fontSources:['menu-font.swf']}};</script>
+  <script src="runtime/ruffle.js" defer></script>
+  <script src="controls-layout.js" defer></script>
+  <script src="host.js" defer></script>
+</head>
+<body>
+  <main id="play-area" aria-label="过关斩将2游戏">
+    <aside class="rail left-rail" aria-label="方向控制">
+      <div class="dpad">
+        <button class="control up-left" data-control="up-left" data-keys="37,38" aria-label="左上">↖</button>
+        <button class="control up" data-control="38" data-key="38" aria-label="向上移动">▲</button>
+        <button class="control up-right" data-control="up-right" data-keys="39,38" aria-label="右上">↗</button>
+        <button class="control left" data-control="37" data-key="37" aria-label="向左移动">◀</button>
+        <button class="control right" data-control="39" data-key="39" aria-label="向右移动">▶</button>
+        <button class="control down-left" data-control="down-left" data-keys="37,40" aria-label="左下">↙</button>
+        <button class="control down" data-control="40" data-key="40" aria-label="向下移动">▼</button>
+        <button class="control down-right" data-control="down-right" data-keys="39,40" aria-label="右下">↘</button>
+      </div>
+    </aside>
+    <div id="stage-area"><div id="game" aria-label="原版游戏画面"></div></div>
+    <aside class="rail right-rail" aria-label="动作和辅助控制">
+      <button id="settings" class="settings" aria-label="辅助设置" title="辅助设置">⚙</button>
+      <div class="action-pad">
+        <button class="control action-button attack" data-control="90" data-key="90" aria-label="攻击（Z）"><span>攻击</span><small>Z</small></button>
+        <button class="control action-button jump" data-control="88" data-key="88" aria-label="跳跃（X）"><span>跳跃</span><small>X</small></button>
+        <button class="control action-button guard" data-control="67" data-key="67" aria-label="防御（C）"><span>防御</span><small>C</small></button>
+      </div>
+      <span id="cheat-indicator" aria-live="polite" hidden>无限生命</span>
+    </aside>
+  </main>
+  <div id="settings-backdrop" hidden></div>
+  <dialog id="cheat-dialog" aria-labelledby="cheat-title">
+    <header class="settings-heading">
+      <h1 id="cheat-title">辅助设置</h1>
+      <span>默认关闭 · 独立开关</span>
+    </header>
+    <div class="cheat-options">
+      <label class="cheat-option">
+        <span class="option-copy"><span class="option-title">无限生命</span><span class="option-description">生命次数不会减少。</span></span>
+        <span class="switch-control"><input id="cheat-switch" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span></span>
+      </label>
+      <label class="cheat-option">
+        <span class="option-copy"><span class="option-title">无敌</span><span class="option-description">免疫敌人的伤害。</span></span>
+        <span class="switch-control"><input id="invincible-switch" type="checkbox" role="switch"><span class="switch-track" aria-hidden="true"></span></span>
+      </label>
+    </div>
+    <div class="settings-actions">
+      <button id="adjust-controls">调整按键布局</button>
+      <button id="close-settings">返回游戏</button>
+    </div>
+  </dialog>
+  <section id="layout-editor" aria-label="按键布局编辑" hidden>
+    <div class="editor-heading"><strong>调整按键</strong><span>拖动位置 · 点选后调整大小</span></div>
+    <div class="control-picker" aria-label="选择按键">
+      <button data-select-control="up-left" aria-label="选择左上">↖</button>
+      <button data-select-control="38" aria-label="选择上移">▲</button>
+      <button data-select-control="up-right" aria-label="选择右上">↗</button>
+      <button data-select-control="37" aria-label="选择左移">◀</button>
+      <button data-select-control="39" aria-label="选择右移">▶</button>
+      <button data-select-control="down-left" aria-label="选择左下">↙</button>
+      <button data-select-control="40" aria-label="选择下移">▼</button>
+      <button data-select-control="down-right" aria-label="选择右下">↘</button>
+      <button data-select-control="90" aria-label="选择攻击">Z 攻击</button>
+      <button data-select-control="88" aria-label="选择跳跃">X 跳跃</button>
+      <button data-select-control="67" aria-label="选择防御">C 防御</button>
+    </div>
+    <div class="size-setting">
+      <span id="selected-control-name"></span>
+      <button id="control-smaller" aria-label="缩小选中的按键">−</button>
+      <input id="control-size" type="range" min="44" max="120" step="1" aria-label="选中按键大小">
+      <button id="control-larger" aria-label="放大选中的按键">＋</button>
+      <output id="control-size-value" for="control-size"></output>
+    </div>
+    <div class="editor-actions">
+      <button id="reset-selected-position">当前键归位</button>
+      <button id="reset-layout">恢复默认</button>
+      <button id="cancel-layout">取消</button>
+      <button id="save-layout">保存布局</button>
+    </div>
+  </section>
+  <div id="fatal-error" role="alert" hidden></div>
+</body>
+</html>
