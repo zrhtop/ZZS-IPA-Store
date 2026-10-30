@@ -12,13 +12,22 @@
       "developerName": "Miniclip（原作） · ZRH（iOS 适配）",
       "subtitle": "经典圣诞冰冻冒险 · 触屏操作",
       "localizedDescription": "《圣诞雪球人》（Deep Freeze）iOS 离线适配版。保留原 SWF 的标题、说明、关卡、角色、动画与音效，提供八方向虚拟按键和射击按钮，可自由调整大小和位置并保存布局。设置中可分别开启无限生命与无敌，默认均关闭。",
-      "iconURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/jp.zrh.snowmanchristmas-v1.0.1-b2/snowman-icon.png",
+      "iconURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/jp.zrh.snowmanchristmas-v1.0.2-b3/snowman-icon.png",
       "category": "games",
       "appPermissions": {
         "entitlements": [],
         "privacy": {}
       },
       "versions": [
+        {
+          "version": "1.0.2",
+          "buildVersion": "3",
+          "date": "2026-10-30",
+          "localizedDescription": "《圣诞雪球人》（Deep Freeze）iOS 离线适配版。保留原 SWF 的标题、说明、关卡、角色、动画与音效，提供八方向虚拟按键和射击按钮，可自由调整大小和位置并保存布局。设置中可分别开启无限生命与无敌，默认均关闭。\n\n统一无限生命与无敌选项的卡片高度、文字对齐和滑动开关尺寸；整理辅助菜单间距与底部按钮，横屏无需滚动即可操作。游戏、道具、按键布局和两项辅助功能保持不变。\n\n安装方式：在 AltStore Classic 中添加 https://repo.zrh.jp/source.json 并重签安装。IPA 未使用开发者证书预签。\n\n源代码提交：a77574ab92bd2235854c57614098017da7a7ff56\nIPA SHA-256：d00d1f3b80b29d09a0cc2580f218ad57aa080a22df232b2fa8f1c7ef3b4f8828",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/jp.zrh.snowmanchristmas-v1.0.2-b3/Snowman-1.0.2-build3.ipa",
+          "size": 16429173,
+          "minOSVersion": "15.0"
+        },
         {
           "version": "1.0.1",
           "buildVersion": "2",
