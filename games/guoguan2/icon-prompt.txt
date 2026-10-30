@@ -1,0 +1,2 @@
+Tool: built-in imagegen. Reference: original Fight Man title screenshot.
+Create a square iOS app icon for Fight Man / 过关斩将2: black round-headed stickman with thick limbs in a dynamic martial-arts stance, grey/white graph-paper grid, simple original Flash aesthetic, sweeping attack motion, subtle shadow, high small-size contrast. Full-bleed opaque 1024×1024 square, no baked rounded corners, text, border, watermark, or extra objects.
