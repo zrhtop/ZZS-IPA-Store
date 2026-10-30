@@ -1,0 +1,24 @@
+{
+  "sourceSHA256": "03874a0451d37ef0148a8cb7fb27e0b7ec4077977ec8426d8983e53a9dadb947",
+  "patchedSHA256": "5f3ade2d35c12986ceceda1b1411acd806cd6f993f214605b1dd3bc656162e72",
+  "adapterSHA256": "68949efc23834d2052205c0a4c9c23ab88ecce49aa089680f6ead938430c4401",
+  "originalTagCount": 1154,
+  "patchedTagCount": 1155,
+  "allOriginalTagsByteIdentical": true,
+  "injectedRootFrame": 19,
+  "bridgeActionBytes": 3488,
+  "game": {
+    "title": "Deep Freeze",
+    "publisher": "Miniclip",
+    "width": 550,
+    "height": 400,
+    "frameRate": 30,
+    "language": "ActionScript 2"
+  },
+  "changes": [
+    "Combine touch keys with original keyboard input",
+    "Restore life lost through the original damage handler only when cheat is enabled",
+    "Expose state and test-mode-only probes for runtime verification"
+  ],
+  "originalTimerRetained": true
+}

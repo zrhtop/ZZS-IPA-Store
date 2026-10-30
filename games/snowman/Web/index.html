@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>圣诞雪球人</title>
+  <link rel="stylesheet" href="controls.css">
+  <script>window.RufflePlayer={config:{autoplay:'on',unmuteOverlay:'hidden',splashScreen:false,showSwfDownload:false,contextMenu:'off',allowScriptAccess:true,letterbox:'on',logLevel:'error',quality:'high',scale:'showAll',forceScale:true,preferredRenderer:'webgl'}};</script>
+  <script src="runtime/ruffle.js" defer></script>
+  <script src="host.js" defer></script>
+</head>
+<body>
+  <main id="play-area" aria-label="圣诞雪球人游戏">
+    <aside class="rail left-rail" aria-label="方向控制">
+      <div class="dpad">
+        <button class="control up" data-key="38" aria-label="向上跳跃">▲</button>
+        <button class="control left" data-key="37" aria-label="向左移动">◀</button>
+        <button class="control right" data-key="39" aria-label="向右移动">▶</button>
+        <button class="control down" data-key="40" aria-label="向下穿过平台">▼</button>
+      </div>
+    </aside>
+    <div id="stage-area"><div id="game" aria-label="原版游戏画面"></div></div>
+    <aside class="rail right-rail" aria-label="射击和辅助控制">
+      <button id="settings" class="settings" aria-label="辅助设置" title="辅助设置">⚙</button>
+      <button class="control fire" data-key="32" aria-label="按住射击">射击</button>
+      <span id="cheat-indicator" aria-live="polite" hidden>无限生命</span>
+    </aside>
+  </main>
+  <div id="settings-backdrop" hidden></div>
+  <dialog id="cheat-dialog" aria-labelledby="cheat-title">
+    <h1 id="cheat-title">辅助设置</h1>
+    <label class="cheat-option"><span>无限生命</span><input id="cheat-switch" type="checkbox" role="switch"></label>
+    <p>默认关闭。开启后，受伤不会消耗生命。</p>
+    <button id="close-settings">返回游戏</button>
+  </dialog>
+  <div id="fatal-error" role="alert" hidden></div>
+</body>
+</html>

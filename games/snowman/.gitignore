@@ -1,0 +1,6 @@
+Web/runtime/
+Web/snowman.swf
+iOS/Assets.xcassets/AppIcon.appiconset/*.png
+__pycache__/
+*.xcuserstate
+xcuserdata/
