@@ -2,6 +2,9 @@
 if (_root.__snowmanCheat == undefined) {
     _root.__snowmanCheat = false;
 }
+if (_root.__snowmanInvincible == undefined) {
+    _root.__snowmanInvincible = false;
+}
 _root.__snowmanKeys = new Array();
 function SnowmanIsDown(code) {
     return (code == _root.Acode && _root.__snowmanKeys[37] == true)
@@ -17,6 +20,7 @@ _root.create_player = function() {
     var santa = _root.bg.santa;
     santa.__snowmanOriginalToDie = santa.to_die;
     santa.to_die = function() {
+        if (_root.__snowmanInvincible) { return; }
         var before = _root.game_life;
         this.__snowmanOriginalToDie();
         if (_root.__snowmanCheat && _root.game_life < before) {
@@ -93,6 +97,7 @@ function SnowmanGetState() {
         playerX:santa._x, playerY:santa._y, playerFrame:santa._currentframe,
         playerUnbreak:santa.unbreak, playing:santa != undefined,
         paused:_root.game_paused, cheat:_root.__snowmanCheat,
+        invincible:_root.__snowmanInvincible, power:_root.game_power, range:_root.game_range, speed:_root.game_speed,
         level:_root.game_level, stage:_root.game_stage, time:_root.game_time,
         score:_root.game_score, music:_root.game_music, attackCount:_root.__snowmanAttackCount};
 }
@@ -109,6 +114,10 @@ function SnowmanReleaseKeys() {
 function SnowmanSetCheat(enabled) {
     _root.__snowmanCheat = enabled == true;
     return _root.__snowmanCheat;
+}
+function SnowmanSetInvincible(enabled) {
+    _root.__snowmanInvincible = enabled == true;
+    return _root.__snowmanInvincible;
 }
 function SnowmanStartGame() {
     if (_root.testMode != "1") { return false; }
@@ -130,6 +139,7 @@ flash.external.ExternalInterface.addCallback("SnowmanGetState", _root, SnowmanGe
 flash.external.ExternalInterface.addCallback("SnowmanSetKey", _root, SnowmanSetKey);
 flash.external.ExternalInterface.addCallback("SnowmanReleaseKeys", _root, SnowmanReleaseKeys);
 flash.external.ExternalInterface.addCallback("SnowmanSetCheat", _root, SnowmanSetCheat);
+flash.external.ExternalInterface.addCallback("SnowmanSetInvincible", _root, SnowmanSetInvincible);
 flash.external.ExternalInterface.addCallback("SnowmanStartGame", _root, SnowmanStartGame);
 flash.external.ExternalInterface.addCallback("SnowmanTestDamage", _root, SnowmanTestDamage);
 trace("SNOWMAN_BRIDGE_READY");
