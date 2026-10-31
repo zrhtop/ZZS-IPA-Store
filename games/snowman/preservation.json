@@ -1,12 +1,12 @@
 {
   "sourceSHA256": "03874a0451d37ef0148a8cb7fb27e0b7ec4077977ec8426d8983e53a9dadb947",
-  "patchedSHA256": "5a764bc471b806c607b587cf624b88ded40024f1a11f03246f30481927274220",
-  "adapterSHA256": "8eb717f22b7598e3055437c8ff9cb3fcc008adf4c93161b58c4b58e1e49329d4",
+  "patchedSHA256": "8743990edd4fa07f60f5de565efefaebb2f602bc7c97c07af9df951b15a6c21f",
+  "adapterSHA256": "40e6b9b16397a624962dffb9afa634e457adec2811131273071e38702b0652b0",
   "originalTagCount": 1154,
   "patchedTagCount": 1155,
   "allOriginalTagsByteIdentical": true,
   "injectedRootFrame": 19,
-  "bridgeActionBytes": 3830,
+  "bridgeActionBytes": 4306,
   "game": {
     "title": "Deep Freeze",
     "publisher": "Miniclip",
@@ -19,7 +19,8 @@
     "Combine touch keys with original keyboard input",
     "Restore life lost through the original damage handler only when cheat is enabled",
     "Skip enemy damage only when the independent invincibility option is enabled",
-    "Expose state and test-mode-only probes for runtime verification"
+    "Expose state and test-mode-only probes for runtime verification",
+    "Rescue a cleared stage when simultaneous snowball explosions lose the original mission countdown"
   ],
   "originalTimerRetained": true
 }

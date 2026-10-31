@@ -80,7 +80,8 @@ def main():
         "changes": ["Combine touch keys with original keyboard input",
                     "Restore life lost through the original damage handler only when cheat is enabled",
                     "Skip enemy damage only when the independent invincibility option is enabled",
-                    "Expose state and test-mode-only probes for runtime verification"],
+                    "Expose state and test-mode-only probes for runtime verification",
+                    "Rescue a cleared stage when simultaneous snowball explosions lose the original mission countdown"],
         "originalTimerRetained": True,
     }
     (ROOT / "preservation.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")

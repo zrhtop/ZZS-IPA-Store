@@ -135,6 +135,35 @@ function SnowmanTestDamage() {
     santa.to_die();
     return SnowmanGetState();
 }
+// Stage-clear watchdog: repairs a softlock in the original game logic.
+// A stage normally advances only when the last rolling snowball's explode()
+// observes monsters_exist <= 1 and arms the mission countdown on its splash
+// clip. A rolling snowball is removed 13 frames later by its iceball frame
+// script, so if the final two or more snowballs explode inside that window,
+// every explode() still sees the others counted, none arms the countdown,
+// monsters_exist reaches 0 and the stage never advances. The stage timer
+// also stops while no monsters exist, so the stage cannot time out either.
+// This watcher calls next_game() once a live, unpaused stage has had zero
+// monsters for 240 frames (8 seconds) with no transition already running.
+// The slowest normal clear finishes in about 175 frames, so the watchdog
+// never fires during a normal clear.
+if (_root.__snowmanClearFrames == undefined) {
+    _root.__snowmanClearFrames = 0;
+}
+_root.createEmptyMovieClip("__snowmanClearWatchdog", 9999);
+_root.__snowmanClearWatchdog.onEnterFrame = function() {
+    if (_root.bg == undefined || _root.bg.santa == undefined
+        || _root.game_paused || _root.next_stage != undefined
+        || _root.monsters_exist == undefined || _root.monsters_exist > 0) {
+        _root.__snowmanClearFrames = 0;
+        return;
+    }
+    _root.__snowmanClearFrames++;
+    if (_root.__snowmanClearFrames >= 240) {
+        _root.__snowmanClearFrames = 0;
+        _root.next_game();
+    }
+};
 flash.external.ExternalInterface.addCallback("SnowmanGetState", _root, SnowmanGetState);
 flash.external.ExternalInterface.addCallback("SnowmanSetKey", _root, SnowmanSetKey);
 flash.external.ExternalInterface.addCallback("SnowmanReleaseKeys", _root, SnowmanReleaseKeys);
