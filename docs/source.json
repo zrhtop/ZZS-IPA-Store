@@ -7,6 +7,48 @@
   "tintColor": "#6559E8",
   "apps": [
     {
+      "name": "创想游戏屋",
+      "bundleIdentifier": "dev.zrhtop.GameHouseMobile",
+      "developerName": "zrhtop",
+      "subtitle": "原关卡与素材检查版 · 未签名",
+      "localizedDescription": "创想游戏屋 iPhone / iPad 高保真复刻工程的 Phase 1 检查版。保留原图片、音乐和音效，可查看九款游戏原素材及挖金子 38 个原关卡；目前不是可玩复刻版。\n\niOS 17.0 起，未签名 IPA，需自行签名安装。MIDI 音色、循环与全部历史音效仍待验证，真机测试由用户进行。",
+      "iconURL": "https://avatars.githubusercontent.com/u/101614537?v=4",
+      "category": "utilities",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "versions": [
+        {
+          "version": "0.1.0",
+          "buildVersion": "3",
+          "date": "2026-11-01",
+          "localizedDescription": "开发者：zrhtop\r\n\r\n同一应用的新测试候选：dev.zrhtop.GameHouseMobile，0.1.0 (3)，最低 iOS 17.0。未签名 IPA，由用户自行签名和真机验收。当前只推进《挖金子》；其他八款尚未完成，不能把素材检查入口当作移植完成。\r\n\r\n### 本轮接线\r\n- 接入真实原生 Session、原关卡/规则/AI、原菜单与原图片/字体/动画模块；保留原 640×480 和 800×600 画布，不重画或近似改写玩法。\r\n- 画布外按钮可逐键拖动、独立调整 44–88 点大小；横竖方向布局、保存/取消/重置及重启恢复源码已接。无敌与无限生命独立、默认关闭，不随布局保存。\r\n- 使用收到的 Windows 微软音源离线 WAV 和原音效，不用 iOS 默认 MIDI/通用 SoundFont 替代，不包含 gm.dls 或系统 DLL。WinMM/wdmaud 整波形、硬件电平和自然时序抖动完全一致仍未证明。\r\n- 音乐设备中断/配置变化使用同 ticket、已知精确位置和回调代隔离；这是源码及纯/fake 测试通过，不是硬件恢复验收。\r\n\r\n### 实际本地验证\r\n- 完整 Core：914 项通过。完整 Python：1087 项，其中 1081 通过、6 项因历史/外部参考条件明确跳过，零失败。\r\n- 原 C JPEG 桥专项 7 项通过，实际验证 9 张原 JPEG 和两种预览尺寸。真实 iPhoneOS arm64 编译、628 项安全原资源、43 个音乐文件及 IPA 字节/CRC 校验通过。\r\n- Mac 全程静音，未启动游戏、模拟器或 AV 音频输出；没有真机安装/视听结果。\r\n\r\n### 首轮请验收\r\n原菜单→新游戏/接关→移动/射击→暂停/死亡/换关→返回/退出；640/800、逐键布局重启、声音和切后台/来电恢复。部分原窗口回调、键盘/字符集、16 位显示等价仍有待验证边界。请反馈具体路径、设备/iOS 和异常画面；签名不需要把证书或密码发来。\r\n\r\n完整 UI、声音和整局尚未真机验收，不称整款完成或 100%。源码、Windows 原件和交接包继续私有。\r\n\r\n大小：143443989 字节\r\nSHA256：fe2ccffdb89c5094504ca42deca880a1b937f62e64143d2c0f64de9224bfc57a",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.GameHouseMobile-v0.1.0-b3/CreativeGameHouse-v0.1.0-b3-iPhone.ipa",
+          "size": 143443989,
+          "minOSVersion": "17.0"
+        },
+        {
+          "version": "0.1.0",
+          "buildVersion": "2",
+          "date": "2026-10-29",
+          "localizedDescription": "开发者：zrhtop\r\n\r\n同一应用的新测试版本：dev.zrhtop.GameHouseMobile，0.1.0 (2)，最低 iOS 17.0。未签名 IPA，由用户自行签名并真机验证。\r\n\r\n本轮：恢复原接关输入面板、原字体/光标和密码编解码；原 PCM 音频读取/准备/起停移到后台串行队列，避免加载阻塞界面。保留全部原图片、音乐和音效字节，不改游戏内 UI，不使用替代 MIDI 音源。\r\n\r\n81 项 Python 测试、35 项 Swift 测试及 iPhoneOS arm64 编译通过；626 项原资源逐一校验。源码提交 caa7a308716c6b82b9881e77ec670b0fe580f357。\r\n\r\n重要：仍是原素材/引擎恢复检查版，不是完整可玩移植。合法密码目前仅解码并显示原 checkpoint，尚未接通完整世界启动；怪物、射击、完整游戏循环及 MIDI 微软音源仍在恢复。iPhone 安装、触控、声音和帧率待用户实测；未运行模拟器。\r\n\r\n大小：37,247,107 字节\r\nSHA256：f595922217ddc83052dbddc65463eb0f4d5dca72ffea1af55a36ff99c8fcce5f",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.GameHouseMobile-v0.1.0-b2/CreativeGameHouse-v0.1.0-b2-iPhone.ipa",
+          "size": 37247107,
+          "minOSVersion": "17.0"
+        },
+        {
+          "version": "0.1.0",
+          "buildVersion": "1",
+          "date": "2026-10-29",
+          "localizedDescription": "创想游戏屋 iPhone / iPad 原素材与关卡检查版，由 zrhtop 开发维护。\r\n\r\n- Phase 1：查看九款游戏原素材、挖金子 38 个原关卡及原精灵图；不是可玩复刻版。\r\n- 保留原图片、音乐、音效文件；本次逐项校验 626 项安全原资源 SHA256。MIDI 音色、循环与全部历史音效解码仍待恢复。\r\n- 真实 iPhoneOS / arm64 编译，最低 iOS 17.0；版本 0.1.0，build 1。\r\n- 未签名 IPA，需要用户自行签名安装；真机安装和运行尚未验证。\r\n\r\nIPA：37,074,341 字节\r\nSHA256：11c62ec6f2cb4a8d9ecad0d6106db4919a9aa0936a58e52b7e427a5c5db6234c\r\n\r\n原素材保留原有版权与授权说明。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.GameHouseMobile-v0.1.0-b1/CreativeGameHouse-iPhone.ipa",
+          "size": 37074341,
+          "minOSVersion": "17.0"
+        }
+      ]
+    },
+    {
       "name": "圣诞雪球人",
       "bundleIdentifier": "jp.zrh.snowmanchristmas",
       "developerName": "Miniclip（原作） · ZRH（iOS 适配）",
@@ -87,39 +129,6 @@
           "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/jp.zrh.guoguan2-v1.0.0-b1/Guoguan2-1.0.0-build1.ipa",
           "size": 11713260,
           "minOSVersion": "15.0"
-        }
-      ]
-    },
-    {
-      "name": "创想游戏屋",
-      "bundleIdentifier": "dev.zrhtop.GameHouseMobile",
-      "developerName": "zrhtop",
-      "subtitle": "原关卡与素材检查版 · 未签名",
-      "localizedDescription": "创想游戏屋 iPhone / iPad 高保真复刻工程的 Phase 1 检查版。保留原图片、音乐和音效，可查看九款游戏原素材及挖金子 38 个原关卡；目前不是可玩复刻版。\n\niOS 17.0 起，未签名 IPA，需自行签名安装。MIDI 音色、循环与全部历史音效仍待验证，真机测试由用户进行。",
-      "iconURL": "https://avatars.githubusercontent.com/u/101614537?v=4",
-      "category": "utilities",
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "versions": [
-        {
-          "version": "0.1.0",
-          "buildVersion": "2",
-          "date": "2026-10-29",
-          "localizedDescription": "开发者：zrhtop\r\n\r\n同一应用的新测试版本：dev.zrhtop.GameHouseMobile，0.1.0 (2)，最低 iOS 17.0。未签名 IPA，由用户自行签名并真机验证。\r\n\r\n本轮：恢复原接关输入面板、原字体/光标和密码编解码；原 PCM 音频读取/准备/起停移到后台串行队列，避免加载阻塞界面。保留全部原图片、音乐和音效字节，不改游戏内 UI，不使用替代 MIDI 音源。\r\n\r\n81 项 Python 测试、35 项 Swift 测试及 iPhoneOS arm64 编译通过；626 项原资源逐一校验。源码提交 caa7a308716c6b82b9881e77ec670b0fe580f357。\r\n\r\n重要：仍是原素材/引擎恢复检查版，不是完整可玩移植。合法密码目前仅解码并显示原 checkpoint，尚未接通完整世界启动；怪物、射击、完整游戏循环及 MIDI 微软音源仍在恢复。iPhone 安装、触控、声音和帧率待用户实测；未运行模拟器。\r\n\r\n大小：37,247,107 字节\r\nSHA256：f595922217ddc83052dbddc65463eb0f4d5dca72ffea1af55a36ff99c8fcce5f",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.GameHouseMobile-v0.1.0-b2/CreativeGameHouse-v0.1.0-b2-iPhone.ipa",
-          "size": 37247107,
-          "minOSVersion": "17.0"
-        },
-        {
-          "version": "0.1.0",
-          "buildVersion": "1",
-          "date": "2026-10-29",
-          "localizedDescription": "创想游戏屋 iPhone / iPad 原素材与关卡检查版，由 zrhtop 开发维护。\r\n\r\n- Phase 1：查看九款游戏原素材、挖金子 38 个原关卡及原精灵图；不是可玩复刻版。\r\n- 保留原图片、音乐、音效文件；本次逐项校验 626 项安全原资源 SHA256。MIDI 音色、循环与全部历史音效解码仍待恢复。\r\n- 真实 iPhoneOS / arm64 编译，最低 iOS 17.0；版本 0.1.0，build 1。\r\n- 未签名 IPA，需要用户自行签名安装；真机安装和运行尚未验证。\r\n\r\nIPA：37,074,341 字节\r\nSHA256：11c62ec6f2cb4a8d9ecad0d6106db4919a9aa0936a58e52b7e427a5c5db6234c\r\n\r\n原素材保留原有版权与授权说明。",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.GameHouseMobile-v0.1.0-b1/CreativeGameHouse-iPhone.ipa",
-          "size": 37074341,
-          "minOSVersion": "17.0"
         }
       ]
     },
