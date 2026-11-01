@@ -20,21 +20,21 @@
       },
       "versions": [
         {
+          "version": "1.0.3",
+          "buildVersion": "13",
+          "date": "2026-11-01",
+          "localizedDescription": "开发者：zrhtop\n本次将性能优化和手机操作改进合并交付：\n- 优化现代第七关大地图的批内像素写入，减少重复整图复制；保留原怪物、子弹、规则、AI、游戏速度与音乐音效。\n- 编辑键位时直接显示前台工具栏，可选键、调大小、保存、取消和重置；运行中的游戏先进入原暂停，退出编辑后可用原“继续”恢复。\n- 设置新增方向按键／四向摇杆切换；保留独立尺寸、拖动布局和原按键输入语义，默认仍为按键模式。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.GameHouseMobile-v1.0.3-b13/Digger-v1.0.3-b13-iPhone.ipa",
+          "size": 148859175,
+          "minOSVersion": "17.0"
+        },
+        {
           "version": "1.0.2",
           "buildVersion": "11",
           "date": "2026-11-01",
           "localizedDescription": "六键常驻与更大画面：上下左右、Space、Pause，其余功能收进菜单。保留当前按钮大小、拖动及保存／取消逻辑，不再为隐藏按键预留区域。玩法、AI、速度、音乐音效与图标未改。iPhone／iPad横屏，iOS17+；未签名，需自行签名安装。",
           "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.GameHouseMobile-v1.0.2-b11/Digger-v1.0.2-b11-iPhone.ipa",
           "size": 148806692,
-          "minOSVersion": "17.0"
-        },
-        {
-          "version": "1.0.3",
-          "buildVersion": "13",
-          "date": "2026-11-01",
-          "localizedDescription": "开发者：zrhtop\r\n\r\n本次将性能优化和手机操作改进合并交付：\r\n- 优化现代第七关大地图的批内像素写入，减少重复整图复制；保留原怪物、子弹、规则、AI、游戏速度与音乐音效。\r\n- 编辑键位时直接显示前台工具栏，可选键、调大小、保存、取消和重置；运行中的游戏先进入原暂停，退出编辑后可用原“继续”恢复。\r\n- 设置新增方向按键／四向摇杆切换；保留独立尺寸、拖动布局和原按键输入语义，默认仍为按键模式。\r\n- 保留横屏大画面、六个常驻游戏键及菜单入口；正式构建不显示调试功能。\r\n\r\n已完成本地相关测试、真实 iPhoneOS Release 编译及 IPA 文件核验；离线原关卡对照不是手机 FPS。新版第七关流畅度和操作体验仍需实际安装反馈。\r\n\r\nBundle ID：dev.zrhtop.GameHouseMobile\r\n最低 iOS：17.0；iPhone／iPad 横屏。未签名 IPA，由用户自行签名安装。\r\nIPA SHA256：e1433cb7ce386f5a32d02c5780cf7f86e1780a65c6a1fe6dcee2a780cc0d9c8b",
-          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.GameHouseMobile-v1.0.3-b13/Digger-v1.0.3-b13-iPhone.ipa",
-          "size": 148859175,
           "minOSVersion": "17.0"
         },
         {
