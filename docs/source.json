@@ -12,13 +12,22 @@
       "developerName": "zrhtop",
       "subtitle": "原关卡与素材检查版 · 未签名",
       "localizedDescription": "创想游戏屋 iPhone / iPad 高保真复刻工程的 Phase 1 检查版。保留原图片、音乐和音效，可查看九款游戏原素材及挖金子 38 个原关卡；目前不是可玩复刻版。\n\niOS 17.0 起，未签名 IPA，需自行签名安装。MIDI 音色、循环与全部历史音效仍待验证，真机测试由用户进行。",
-      "iconURL": "https://avatars.githubusercontent.com/u/101614537?v=4",
+      "iconURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.GameHouseMobile-v0.1.0-b4/AppIcon-1024.png",
       "category": "utilities",
       "appPermissions": {
         "entitlements": [],
         "privacy": {}
       },
       "versions": [
+        {
+          "version": "0.1.0",
+          "buildVersion": "4",
+          "date": "2026-11-01",
+          "localizedDescription": "开发者：zrhtop\r\n\r\n同一 Bundle ID dev.zrhtop.GameHouseMobile，0.1.0 (4)，最低 iOS 17.0；未签名，由用户自行签名。当前条目改为独立《挖金子》，其余游戏以后分别提供独立 App。\r\n\r\n本轮根据 iPhone 16 Pro Max / iOS 27.0.1 的反馈：\r\n- 默认横屏，直接进入原游戏；不再先开游戏屋/素材浏览器。加入取材于原角色与金币袋的新图标，不改游戏内画面。\r\n- 默认只保留一套游戏方向键；文字光标键按输入场景显示。横屏优先两侧布局，大小可调，新安装默认56点，旧保存布局保留。\r\n- 优化真实640/800呈现的逐像素数组改写，并缓存同一实帧的图片/几何，避免无关UI元数据反复重建；不改规则、GameSpeed、原绘制次数或RNG。受控三轮288帧的像素、完整状态与RNG摘要一致；Mac present段由2.08–3.65ms降至0.09–0.29ms，不等于iPhone实测帧率。\r\n- 音乐/音效沿用已由用户确认听感还原Windows的原字节，不盲改音频格式或音色。无敌与无限生命独立、默认关闭。\r\n\r\n实际本地：Core959项（958通过、1项性能测试需显式启用而跳过；另有Release性能专项），Python1097项（1091通过、6项外部/历史条件跳过），零失败；真实arm64 iPhoneOS编译与680文件IPA校验通过。Mac未启动游戏/AV/模拟器，未播放或录音。\r\n\r\n仍请真机复测：开局、死亡/复活、持续游玩的卡顿与键位舒适度。怪物抓人前犹豫仍在核查，未擅改原AI或难度；能抓人/作弊恢复的Core回归不代表完整追踪等价。此为优化测试候选，不称整款最终验收或九款完成；源码/Windows原件继续私有。\r\n\r\n大小：148583995 字节\r\nSHA256：aebd773972685ff6940a3e55b6fa5deceac3a85af9c15b6d56d7c71e3307991d",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.GameHouseMobile-v0.1.0-b4/Digger-v0.1.0-b4-iPhone.ipa",
+          "size": 148583995,
+          "minOSVersion": "17.0"
+        },
         {
           "version": "0.1.0",
           "buildVersion": "3",
