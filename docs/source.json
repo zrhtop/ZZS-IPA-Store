@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.0.1",
+          "buildVersion": "10",
+          "date": "2026-11-01",
+          "localizedDescription": "开发者：zrhtop\r\n\r\n《挖金子》1.0.1 (10) 正式界面整理。\r\n\r\n移除移植端本地性能诊断等调试入口；取消两条常驻底栏，原版 F5／Tab／亮度快捷键默认直接显示。无敌、无限生命和按键布局编辑收进一个外置“辅助”按钮弹窗，编辑工具也不再挤压游戏画布。两项辅助独立，进入新会话默认关闭。\r\n\r\n极窄或软键盘状态保留紧凑输入，部分快捷键仍可从辅助弹窗操作。原版 Tab 帧率功能保留；没有改动已验收的玩法、AI、速度、音频、原素材或图标。\r\n\r\n沿用 dev.zrhtop.GameHouseMobile 原条目，署名 zrhtop。iPhone／iPad 横屏、iOS 17+；未签名 IPA，需自行签名安装。源码与 Windows 原件保持私有。\r\n\r\n大小：148782764 字节\r\nSHA256：b56563eb760dfa0f455c8476f535ceed8948f5f546af3fa7406efab23a44767c",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.GameHouseMobile-v1.0.1-b10/Digger-v1.0.1-b10-iPhone.ipa",
+          "size": 148782764,
+          "minOSVersion": "17.0"
+        },
+        {
           "version": "1.0.0",
           "buildVersion": "9",
           "date": "2026-11-01",
