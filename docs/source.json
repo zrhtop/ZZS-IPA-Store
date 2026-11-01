@@ -29,6 +29,15 @@
           "minOSVersion": "17.0"
         },
         {
+          "version": "1.0.2",
+          "buildVersion": "11",
+          "date": "2026-11-01",
+          "localizedDescription": "开发者：zrhtop\r\n\r\n《挖金子》1.0.2 (11) · 六键常驻与更大画面。\r\n\r\n正常游戏只保留上下左右、Space、Pause，另一个外置菜单入口。Ctrl、Esc、Enter、文字工具、系统键盘、F5、Tab和亮度等收进菜单；不再为隐藏按键预留大块区域，原640×480／800×600画面保持比例、不裁切。\r\n\r\n保留当前按钮大小及每键44…88点调整、拖动、保存／取消逻辑。旧位置与新画面冲突时只修编辑草稿，保存前不覆盖原数据。极小或键盘压缩窗口采用同尺寸菜单备用，收起键盘恢复正常游戏键，不偷偷缩小按钮。\r\n\r\n沿用原App条目、Bundle ID dev.zrhtop.GameHouseMobile、署名zrhtop及已采用图标。玩法、AI、速度和音乐音效未改；无敌／无限生命独立且新会话默认关闭，正式版无开发诊断入口。\r\n\r\niPhone／iPad 横屏，iOS 17+。IPA未签名，需自行签名安装；本版新界面体验待真机确认。源码与Windows原件保持私有。\r\n\r\n大小：148806692 字节\r\nSHA256：b7edf61c882310f9904372f20d0b9a6c29c56406c2c414fcfd1de614b456f2bd",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.GameHouseMobile-v1.0.2-b11/Digger-v1.0.2-b11-iPhone.ipa",
+          "size": 148806692,
+          "minOSVersion": "17.0"
+        },
+        {
           "version": "1.0.0",
           "buildVersion": "9",
           "date": "2026-11-01",
