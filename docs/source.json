@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.0.0",
+          "buildVersion": "9",
+          "date": "2026-11-01",
+          "localizedDescription": "开发者：zrhtop\r\n\r\n《挖金子》1.0.0 (9) 正式版。基于已由用户真机验收的游戏代码生成；此次仅更新版本标识，不再调整玩法、AI、节奏、触控、素材或音频。\r\n\r\n保留原版现代／经典玩法、640×480 与 800×600、原 UI 及音乐音效。iPhone／iPad 横屏；可调触控，无敌与无限生命默认关闭。钱袋落入单条矿道时会按原版自动打开下一格。\r\n\r\n沿用 dev.zrhtop.GameHouseMobile 原条目及已采用图标，源码保持私有。iOS 17+；IPA 未签名，需自行签名安装。\r\n\r\n大小：148774067 字节\r\nSHA256：be35e6697788898ded6e64b2608958f3705491c24b1d9b2cb61381989e5fd4a6",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.GameHouseMobile-v1.0.0-b9/Digger-v1.0.0-b9-iPhone.ipa",
+          "size": 148774067,
+          "minOSVersion": "17.0"
+        },
+        {
           "version": "0.1.0",
           "buildVersion": "8",
           "date": "2026-11-01",
