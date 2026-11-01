@@ -7,11 +7,11 @@
   "tintColor": "#6559E8",
   "apps": [
     {
-      "name": "创想游戏屋",
+      "name": "挖金子",
       "bundleIdentifier": "dev.zrhtop.GameHouseMobile",
       "developerName": "zrhtop",
-      "subtitle": "原关卡与素材检查版 · 未签名",
-      "localizedDescription": "创想游戏屋 iPhone / iPad 高保真复刻工程的 Phase 1 检查版。保留原图片、音乐和音效，可查看九款游戏原素材及挖金子 38 个原关卡；目前不是可玩复刻版。\n\niOS 17.0 起，未签名 IPA，需自行签名安装。MIDI 音色、循环与全部历史音效仍待验证，真机测试由用户进行。",
+      "subtitle": "原版移植 · 横屏测试",
+      "localizedDescription": "《挖金子2000》独立 iPhone / iPad 移植测试版。采用原图片、关卡、规则与音频，保留640×480和800×600画布，默认横屏、画布外可调触控，无敌与无限生命独立且默认关闭。音频听感已获用户确认；流畅度、操作和完整游戏体验仍在真机验收。最低iOS17，未签名，需要自行签名。",
       "iconURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.GameHouseMobile-v0.1.0-b4/AppIcon-1024.png",
       "category": "utilities",
       "appPermissions": {
