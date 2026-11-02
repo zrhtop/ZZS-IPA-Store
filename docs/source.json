@@ -424,6 +424,13 @@
       "category": "other",
       "versions": [
         {
+          "version": "4.0.1",
+          "date": "2026-10-30",
+          "downloadURL": "https://github.com/Apollo-Reborn/Apollo-Reborn/releases/download/v1.15.11_4.0.1/Apollo-Reborn-4.0.1-GLASS.ipa",
+          "size": 129202414,
+          "buildVersion": "303"
+        },
+        {
           "version": "4.0.0",
           "date": "2026-10-25",
           "downloadURL": "https://github.com/Apollo-Reborn/Apollo-Reborn/releases/download/v1.15.11_4.0.0/Apollo-Reborn-4.0.0-GLASS.ipa",
@@ -490,6 +497,14 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/BCD/icon.png",
       "category": "other",
       "versions": [
+        {
+          "version": "0.1.626",
+          "date": "2026-11-01",
+          "downloadURL": "https://github.com/thebcd69/bcd-games/releases/download/v0.1.626/BCD.ipa",
+          "size": 185050286,
+          "minOSVersion": "18.0",
+          "buildVersion": "626"
+        },
         {
           "version": "0.1.623",
           "date": "2026-10-29",
@@ -694,6 +709,15 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Husk/icon.png",
       "category": "other",
       "versions": [
+        {
+          "version": "3.3",
+          "date": "2026-11-01",
+          "downloadURL": "https://github.com/Leviidev/Husk/releases/download/3.3/Husk.ipa",
+          "size": 142239082,
+          "minOSVersion": "15.5",
+          "localizedDescription": "## Play without JIT\nMore games convert and sign their libraries on the device. One library that cannot convert no longer stops the rest. Certificates from SideStore, AltStore, or a `.p12` import more reliably, and converted libraries are signed again after this update.\n\n## More Android apps\nJava apps pick up missing platform classes from AOSP when `framework.jar` is bundled. Jobs and boot receivers actually start, and Wi-Fi, location, and settings answer as a running phone would.\n\n## Importing files\nThe in-app file picker for Android apps can be used more than once in a session.\n\n## 32-bit ARM apps\nAPKs that only ship `armeabi-v7a` libraries are translated to arm64. This path is still incomplete (Minecraft PE is the current test case).\n\n## Fixes\nCertificate import, leftover store passwords on a `.p12`, the file picker after the first pick, game pages on iOS 15, and StikDebug when Husk is inside a container app.\n",
+          "buildVersion": "148"
+        },
         {
           "version": "3.1.0",
           "date": "2026-10-27",
@@ -962,6 +986,14 @@
       "category": "other",
       "versions": [
         {
+          "version": "0.9.95",
+          "date": "2026-11-01",
+          "downloadURL": "https://github.com/kodjodevf/mangayomi/releases/download/v0.9.95/Mangayomi-v0.9.95-ios.ipa",
+          "size": 115450399,
+          "localizedDescription": "## Why 0.9.95 and not 1.0.0?\r\n\r\nThis release has almost everything planned for 1.0.0: a new design, a rebuilt player and hundreds of fixes. But so much has changed that it needs testing on more devices and libraries than we can cover ourselves.\r\n\r\nSo 0.9.95 is the last step before 1.0.0. The goal now is stability, not new features. If something breaks or looks wrong, please [open an issue](https://github.com/kodjodevf/mangayomi/issues) with your device and app version. 1.0.0 will come once this version has proven solid.\r\n\r\n## Highlights\r\n\r\n* **Shiori, a new design for the whole app:** every screen has been redrawn on one design system, with new navigation, transitions and an ergonomic pass throughout (#1077).\r\n* **A rebuilt video player:** new controls on phone, desktop and TV, plus video filters, audio delay, and volume, brightness and fit kept between episodes.\r\n* **A tracker with no account:** follow your status, progress, score and dates on the device alone (#1121).\r\n* **Work that keeps going on Android:** downloads, library updates, restores and syncs continue in the background, under one notification (#1092).\r\n* **More control over downloads and updates:** download ahead while reading, download new chapters automatically, and choose which series a library update skips (#1091).\r\n\r\n**Before updating:** this is a large release that also touches how your library is stored, so make a backup first (More > Backup and restore).\r\n\r\n## Reader\r\n\r\n* Zoom with Ctrl (⌘ on macOS) and the mouse wheel; the wheel alone moves a zoomed page.\r\n* With \"Navigate to pan\" on, tall pages are read row by row before the page turns.\r\n* Split tall images into slices in webtoon mode.\r\n* Choose which chapters next and previous skip: read, filtered or duplicate.\r\n* Rebind the reader's keyboard shortcuts.\r\n* Separate icons for crop borders on and off.\r\n* Pages and zooms follow your finger more closely, and the webtoon strip glides after a fling.\r\n* Decoded images now have a memory limit, so long chapters no longer keep growing in memory.\r\n* Fixed: lost decoded pages for the next chapter when closing the reader, and chapter list rows with a scanlator failing to lay out.\r\n\r\n## Video player\r\n\r\n* New controls on phone, desktop and TV, with episodes reachable from the top bar and lock and skip under the timeline on mobile.\r\n* **Video filters:** brightness, contrast, saturation, gamma and hue, kept for the next episodes. Gamma is hidden where the video output cannot apply it.\r\n* **Audio delay:** from -5 to +5 seconds.\r\n* Remember volume and brightness between episodes, and keep the fit from one episode to the next.\r\n* New \"Turn subtitles on\" switch, so episodes can start without subtitles.\r\n* \"Use my subtitle style\" now really gives the default style back when turned off.",
+          "buildVersion": "128"
+        },
+        {
           "version": "0.9.9",
           "date": "2026-10-12",
           "downloadURL": "https://github.com/kodjodevf/mangayomi/releases/download/v0.9.9/Mangayomi-v0.9.9-ios.ipa",
@@ -1061,6 +1093,15 @@
       "category": "other",
       "versions": [
         {
+          "version": "1.3.0",
+          "date": "2026-10-30",
+          "downloadURL": "https://github.com/singleton-altman/MoviePilotLite/releases/download/release-v1.3.0-2026-10-30/ios-v1.3.0-2026-10-30.ipa",
+          "size": 37444749,
+          "minOSVersion": "15.0",
+          "localizedDescription": "MoviePilot Release\n\n- Version: 1.3.0\n- Build Date: 2026-10-30\n- Android: Signed universal APK\n- Android: Signed arm64-v8a APK\n- iOS: Unsigned IPA\n\niOS 安装说明：\n- IPA 为未签名包\n- 请使用自己的 Apple Developer 账号通过 AltStore、Sideloadly 或 Xcode 进行签名安装\n\n\n## What's Changed\n* fix(dashboard): 首页媒体库卡片去掉重复信息，改单图封面 by @singleton-altman in https://github.com/singleton-altman/MoviePilotLite/pull/146\n* feat(android): 新增订阅日历桌面小组件 by @singleton-altman in https://github.com/singleton-altman/MoviePilotLite/pull/157\n* chore(version): update version to 1.3.0 in pubspec.yaml by @singleton-altman in https://github.com/singleton-altman/MoviePilotLite/pull/160\n\n\n**Full Changelog**: https://github.com/singleton-altman/MoviePilotLite/compare/release-v1.2.7-2026-10-30...release-v1.3.0-2026-10-30",
+          "buildVersion": "39"
+        },
+        {
           "version": "1.2.6",
           "date": "2026-10-23",
           "downloadURL": "https://github.com/singleton-altman/MoviePilotLite/releases/download/release-v1.2.6-2026-10-23/ios-v1.2.6-2026-10-23.ipa",
@@ -1150,6 +1191,15 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Novella/icon.png",
       "category": "other",
       "versions": [
+        {
+          "version": "2.7.0",
+          "date": "2026-10-31",
+          "downloadURL": "https://github.com/celia-sh/Novella/releases/download/v2.7.0/Novella-2.7.0-release.ipa",
+          "size": 29786138,
+          "minOSVersion": "16.4",
+          "localizedDescription": "## Highlights\r\n\r\nWrite community posts in Markdown with a preview. Keep your preferred community sort order between launches. Change your username with a rename card.\r\n\r\n## Fixes\r\n\r\n- Reader title bar now hides with the controls (#213).\r\n- Status bar hides correctly after toast messages (#213).\r\n- Chapter title and page number remain visible with controls hidden (#213).\r\n- Fixed title bar animation on the Duo inner display (#213).\r\n- Fixed layout shifts when opening pages on Duo (#214).\r\n- Post italics, underlines and strikethroughs render correctly (#214).\r\n- Chinese text now displays in italics (#214).\r\n- Post images stay within their table cells (#217).\r\n- Large page titles collapse correctly when scrolling (#216).\r\n\r\n## Other changes\r\n\r\n- Added human verification when requesting registration and password-reset codes (#215).\r\n- Updated shop item usage to follow server availability and results (#215).\r\n- Updated CELIA branding.\r\n\r\n<details>\r\n<summary>Full changelog</summary>\r\n\r\nhttps://github.com/celia-sh/Novella/compare/v2.6.0...v2.7.0\r\n\r\n</details>\r\n",
+          "buildVersion": "476"
+        },
         {
           "version": "2.6.0",
           "date": "2026-10-20",
@@ -1448,12 +1498,12 @@
       "category": "other",
       "versions": [
         {
-          "version": "3.1.15",
-          "date": "2026-10-15",
-          "downloadURL": "https://github.com/StikDebug/StikDebug/releases/download/3.1.15/StikDebug-3.1.15.ipa",
-          "size": 13543234,
+          "version": "3.2.0",
+          "date": "2026-10-30",
+          "downloadURL": "https://github.com/StikDebug/StikDebug/releases/download/3.2.0/StikDebug-3.2.0.ipa",
+          "size": 16818331,
           "minOSVersion": "17.4",
-          "localizedDescription": "**Full Changelog**: https://github.com/StikDebug/StikDebug/compare/3.1.14...3.1.15\r\nAttempt to fix ServiceNotFound errors, add debugging",
+          "localizedDescription": "## What's Changed\r\n* Adds on-device pairing file creation and management for the local device, as well as external devices (Apple TV included)\r\n* Error cleanup\r\n* Fixes some connection issues\r\n* Prevent stale legacy pairing files overriding fresh imports by @mvanhorn in https://github.com/StikDebug/StikDebug/pull/479\r\n* Revert \"Prevent stale legacy pairing files overriding fresh imports\" by @CelloSerenity in https://github.com/StikDebug/StikDebug/pull/486\r\n* fix: release the route when playback finishes so a new spot can be set by @OpenUmar in https://github.com/StikDebug/StikDebug/pull/490\r\n* more prob\r\n\r\n## New Contributors\r\n* @mvanhorn made their first contribution in https://github.com/StikDebug/StikDebug/pull/479",
           "buildVersion": "1"
         }
       ],
@@ -1507,6 +1557,15 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Suwayomi-Tsumiru/icon.png",
       "category": "other",
       "versions": [
+        {
+          "version": "1.6.3",
+          "date": "2026-10-30",
+          "downloadURL": "https://github.com/Suwayomi/Suwayomi-Tsumiru/releases/download/v1.6.3/tsumiru-v1.6.3-ios.ipa",
+          "size": 18404468,
+          "minOSVersion": "15.0",
+          "localizedDescription": "A manga and webtoon reader for your [Suwayomi](https://suwayomi.org/) server.\n\n### ⚙️ Changes\n\n- Changed the Android signing key, and updates still install without a reinstall (@aaronbamblett)\n- Added a weekly reminder to switch away from Basic Auth, which is deprecated (@aaronbamblett)\n\n### 🚀 Improvements\n\n- Added support for AVIF images on Linux (@aaronbamblett)\n- Made **Custom brightness** in the reader work on desktop and web (@aaronbamblett)\n- Moved the sign-in, **Incognito mode** and **Updating library…** banners beside the sidebar on wide screens, so they no longer push it down (@aaronbamblett)\n- Removed the Flatpak's NetworkManager permission by reading network status from the desktop portal (@aaronbamblett)\n\n### 🧩 Fixes\n\n- Fixed the source toolbar missing the first time you open a source on desktop (@aaronbamblett)\n- Fixed the macOS app crashing while you resize the window (@aaronbamblett)\n- Fixed banners covering the top bar on macOS (@aaronbamblett)\n- Fixed Library showing **No visible categories** and an empty top bar after your session expires (@aaronbamblett)\n- Fixed a fresh install showing **Session expired. Sign in again.** before setup is finished (@aaronbamblett)",
+          "buildVersion": "5004"
+        },
         {
           "version": "1.6.2",
           "date": "2026-10-28",
@@ -1642,6 +1701,15 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/ZhihuMinusMinus/icon.png",
       "category": "other",
       "versions": [
+        {
+          "version": "0.9.8",
+          "date": "2026-11-01",
+          "downloadURL": "https://github.com/huamurui/zhihu-minus-minus/releases/download/v0.9.8/zhihu-minus-minus-v0.9.8-unsigned.ipa",
+          "size": 14501451,
+          "minOSVersion": "16.4",
+          "localizedDescription": "进一步处理闪烁跳动；ios26+ 放了更多的液态玻璃🎉\r\n### changes\r\n* feat(ios): 统一 iOS 26 Liquid Glass 导航与悬浮控件 by @huamurui in https://github.com/huamurui/zhihu-minus-minus/pull/172\r\n* fix(animation): 稳定正文渐显与标题接力，减少页面切换闪烁 by @huamurui in https://github.com/huamurui/zhihu-minus-minus/pull/174\r\n* fix(list): 稳定分页与卡片复用，完善个人主页交互 by @huamurui @NobetaSena in https://github.com/huamurui/zhihu-minus-minus/pull/175\r\n\r\n\r\n**Full Changelog**: https://github.com/huamurui/zhihu-minus-minus/compare/v0.9.7...v0.9.8",
+          "buildVersion": "1"
+        },
         {
           "version": "0.9.5",
           "date": "2026-10-24",
@@ -2864,7 +2932,7 @@
         {
           "version": "585.0.0",
           "date": "2026-10-28",
-          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/Facebook.v585.0.0.iQFace.ipa",
+          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/Facebook.v585.0.0.+.iQFace.ipa",
           "size": 244950580,
           "localizedDescription": "• Facebook updated to v585.0.0",
           "buildVersion": "1101557913"
@@ -2933,7 +3001,7 @@
         {
           "version": "47.5.0",
           "date": "2026-10-27",
-          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/TikTok.v47.5.0.RXTikTok.2.0.4.ipa",
+          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/TikTok.v47.5.0.+.RXTikTok.v2.0.4.ipa",
           "size": 531863321,
           "localizedDescription": "• TikTok updated to v47.5.0",
           "buildVersion": "475038"
@@ -2993,10 +3061,9 @@
         {
           "version": "448.0.0",
           "date": "2026-10-01",
-          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/com.burbn.instagram.v448.0.0.regram.6.3.sl.patched.ipa",
+          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/Instagram.v448.0.0.+.regram.6.3.sl.patched.ipa",
           "size": 320779297,
           "localizedDescription": "• Instagram updated to v448.0.0",
-          "sha256": "bbf0b827464b4d61504692eb56bde4ca26d957e938de3f44c86de317cdf53cbd",
           "buildVersion": "1072661960"
         }
       ],
@@ -3185,7 +3252,7 @@
         {
           "version": "8.84.0",
           "date": "2026-10-27",
-          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/SoundCloud.v8.84.0.NexaSC.ipa",
+          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/SoundCloud.v8.84.0.+.NexaSC.ipa",
           "size": 227577628,
           "localizedDescription": "• SoundCloud updated to v8.84.0",
           "buildVersion": "1262316"
@@ -3339,10 +3406,9 @@
         {
           "version": "584.0.0",
           "date": "2026-10-17",
-          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/Messenger.v584.0.0.Flow.ipa",
+          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/Messenger.v584.0.0.+.Flow.ipa",
           "size": 125027873,
           "localizedDescription": "• Messenger updated to v584.0.0",
-          "sha256": "c4e97e93781e2fc6abbfa415d9d8610ab17c13bd403df816626ee3b3e184404c",
           "buildVersion": "1093507478"
         }
       ],
@@ -3590,11 +3656,10 @@
         {
           "version": "8.1.0",
           "date": "2026-10-20",
-          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/unc0ver.Release.v8.1.0.ipa",
+          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/Unc0ver.Jailbreak.v8.1.0.ipa",
           "size": 54475719,
           "minOSVersion": "11.0",
           "localizedDescription": "• unc0ver updated to v8.1.0",
-          "sha256": "c7c68d0b74de3b91633f63f39f140f41bb1c5f28bef475d6066ee5af380ea649",
           "buildVersion": "1"
         }
       ],
