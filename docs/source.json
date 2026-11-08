@@ -230,6 +230,15 @@
       },
       "versions": [
         {
+          "version": "1.0.21",
+          "buildVersion": "71",
+          "date": "2026-11-07",
+          "localizedDescription": "• 新增 iOS 18–26 的电脑配对流程和 iPad 支持，最低系统调整为 iOS/iPadOS 18.0。\n• 优化地图面板：iPad 横屏双栏布局，竖屏与窄窗口操作卡片贴底，横竖屏都留出更多地图空间。\n• 面板交互与地图提示改进，提示条会按卡片高度和侧栏位置避让，减少遮挡。",
+          "downloadURL": "https://github.com/suversal/WrapPin/releases/download/v1.0.21/WrapPin-Standard-1.0.21-build71-unsigned.ipa",
+          "size": 6914083,
+          "minOSVersion": "18.0"
+        },
+        {
           "version": "1.0.20",
           "buildVersion": "66",
           "date": "2026-10-28",
@@ -498,6 +507,14 @@
       "category": "other",
       "versions": [
         {
+          "version": "0.1.634",
+          "date": "2026-11-06",
+          "downloadURL": "https://github.com/thebcd69/bcd-games/releases/download/v0.1.634/BCD.ipa",
+          "size": 193977007,
+          "minOSVersion": "18.0",
+          "buildVersion": "634"
+        },
+        {
           "version": "0.1.630",
           "date": "2026-11-04",
           "downloadURL": "https://github.com/thebcd69/bcd-games/releases/download/v0.1.630/BCD.ipa",
@@ -718,6 +735,15 @@
       "category": "other",
       "versions": [
         {
+          "version": "3.4",
+          "date": "2026-11-05",
+          "downloadURL": "https://github.com/Leviidev/Husk/releases/download/3.4/Husk.ipa",
+          "size": 142303569,
+          "minOSVersion": "15.5",
+          "localizedDescription": "## What's new?\n\n3.4 is a compatibility release. About 97% of the 472 F-Droid apps we test now run, up from 85%. On the 169 Play Store apps we test, about 90% run, not counting apps with anti-tamper or fraud protection, which Husk doesn't try to bypass. All of these numbers are from testing on a Mac.\n\n### More Android apps\n- Microsoft Word opens (Excel and PowerPoint share its libraries)\n- Slack, Gmail, Teams, Deezer, Flipboard and Picsart get past the crashes that stopped them\n- More engines and frameworks start: React Native's new architecture, Qt 6 / QML, and apps using JavaScriptCore\n- libGDX and other OpenGL apps draw again (3.3 broke these)\n- Apps that keep secrets in Android's secure key store work better\n- Apps with big bundled databases open\n- UPnP and network discovery apps can start\n- Apps that declare their launch screen in a split APK can start\n\n### Looks better\n- Rounded buttons are proper pills instead of ellipses\n- Toolbars, window backgrounds and more color formats behave like they do on a phone\n\n### Less \"out of memory\"\n- Fewer `OutOfMemoryError: pthread_create` crashes on installs without extended address space\n- Unity games use less address space on sideloaded installs, and keep their frame rate up\n- New in Settings -> Performance: see whether Increased Memory Limit and Extended Address Space are on for your install\n\n### Also\n- Japanese, thanks to @Yuki-1018\n- Fixed Husk crashing when importing a `.p12`, or at launch with one saved on iOS 27 (#220)\n- The Remove and Uninstall dialogs open next to their buttons on iPad (#218)\n- Winlator's Settings page no longer crashes\n- Husk builds with Xcode 27 and the iOS 27 SDK\n\n## Known Issues\n- Without JIT, Minecraft, some Flutter apps and some LÖVE games can fail. Use StikJIT for those for now\n- Browsers (Firefox, Brave, Opera) don't run yet because they need separate helper processes\n- Husk's Java runtime still has no garbage collector, so big apps can run out of memory in long sessions (#191)\n- Touch doesn't work yet in Godot 3 games (#200)\n- Apps with anti-tamper still won't run, and neither will apps that need Google Play services or a Google account\n- Winlator containers don't run\n- Full Android is still slow. Use the translation layer for games\n\n## Thanks\nThanks to @BartolomeoRusso9, @Dey410 and @Yuki-1018 for their pull requests, and to everyone who sent logs. Crash reports are what made this release possible ❤️\n\n## Links\n- Website: https://itslevii.dev\n",
+          "buildVersion": "149"
+        },
+        {
           "version": "3.3",
           "date": "2026-11-01",
           "downloadURL": "https://github.com/Leviidev/Husk/releases/download/3.3/Husk.ipa",
@@ -934,6 +960,15 @@
       "category": "other",
       "versions": [
         {
+          "version": "3.8.12",
+          "date": "2026-11-07",
+          "downloadURL": "https://github.com/LiveContainer/LiveContainer/releases/download/nightly/LiveContainer%2BSideStore.ipa",
+          "size": 23733566,
+          "minOSVersion": "15.0",
+          "localizedDescription": "**Commit:** [ea79dc9e115643c0c9d40592c744522fc5df1def](https://github.com/LiveContainer/LiveContainer/commit/ea79dc9e115643c0c9d40592c744522fc5df1def)\n**Message:** fix build\n\nThis is a nightly release [created automatically with GitHub Actions workflow](https://github.com/LiveContainer/LiveContainer/actions/runs/42394972907/attempts/1).",
+          "buildVersion": "3.8.12"
+        },
+        {
           "version": "3.8.11",
           "date": "2026-10-17",
           "downloadURL": "https://github.com/LiveContainer/LiveContainer/releases/download/nightly/LiveContainer%2BSideStore.ipa",
@@ -1088,6 +1123,15 @@
       "category": "other",
       "versions": [
         {
+          "version": "1.7.0",
+          "date": "2026-11-07",
+          "downloadURL": "https://github.com/ResistanceTo/MiniWatts/releases/download/v1.7.0/MiniWatts-unsigned.ipa",
+          "size": 3374224,
+          "minOSVersion": "17.0",
+          "localizedDescription": "Unsigned build — sign it with your own Apple ID before installing.\nhttps://github.com/ResistanceTo/MiniWatts#install\n\n## 改进\n\n- **温度可以显示为华氏度。** 设置 → 单位 里可选\"自动 / °C / °F\"。\"自动\"跟随系统地区，以及\"设置 › 通用 › 语言与地区\"里的\"温度\"选项，所以地区使用华氏度的用户升级后会直接看到 °F。App 各页、图表、热力图、悬浮读数、实时活动和小组件都按所选单位显示；原始数据仍显示传感器给出的 °C。(#25)\n- **充电预估。** 充电时，功率页会显示充到 80% 和充到 100% 还要多久，以及大约几点。时间根据电量实际上升的速度推算，不依赖电池能量设置；要等电量变化两次才会出现，通常需要几分钟。80% 以后按典型充电曲线估算，只是近似值。(#27)\n- **显示版本号。** 设置 → 关于 里显示当前版本，原始数据导出的第一行也带上了版本号。(#27)\n- **iPad 布局。** iPad 横屏和 13 英寸竖屏时，各页分成两栏；窄屏时仍是一栏。历史记录里单次充电的详情页在 iPad 上不再横向铺满。(#22)\n- **iPad 热力图。** 在 iPad 上，发热页画的是 iPad 的轮廓，各区域按 iPad Pro 11 英寸的内部布局放置：主板在中间，两侧是电芯，充电芯片在 USB-C 接口旁。设备页和设置里的图标也换成了 iPad。(#13, #22)\n\n## 修复\n\n- 发热：CPU 簇（`pACC`、`eACC`）和图像处理器（`ISP`）等传感器以前被归入\"其他传感器\"，现在算作 SoC，SoC 区域的温度也会把它们算进去。iPhone 11 上 `FrontCameraDie`、`BCMLBSkin` 这类名字连写的传感器以前会被分错区（比如前摄像头被当成机身），现在会先拆词再归类。(#13, #14)\n- 适配器页里\"单次采样\"那段说明以前在中文界面下一直显示英文，现在已有中文。\n\n## 注意\n\n- iPad 相关的改动只在模拟器里验证过，我手上没有 iPad。如果在 iPad 上看到问题，请从 设置 → 原始数据 复制导出并反馈。\n- iPad 上\"来自充电器\"的功率偏低（#13）这次还没有修：要确认其余的输入由哪个传感器测量，需要一份**充电时**导出的原始数据。有 iPad 的话，请在充电时从 设置 → 原始数据 复制导出，贴到 #13。\n- 充电预估无法知道是否开启了充电上限或优化电池充电。如果开着，电池会在上限前停下，\"充到 100%\"的时间就不准。\n\n---\n\n## Improvements\n\n- **Temperatures can be shown in Fahrenheit.** Settings → Units offers Automatic, °C or °F. Automatic follows your region and the Temperature option under Settings › General › Language & Region, so if your region uses Fahrenheit you will see °F straight after updating. Every page, the charts, the heat map, the floating meter, the Live Activity and the widget follow the setting; Raw data still shows the sensors' own °C. (#25)\n- **Charge forecast.** While charging, the Power page shows how long until 80% and until 100%, and roughly when. It is worked out from how fast the battery level is actually rising, so it does not depend on the battery energy setting; it appears once the level has moved twice, usually within a few minutes. Past 80% it follows a typical charging curve and is approximate. (#27)\n- **Version number.** Settings → About shows the installed version, and the first line of the Raw data dump includes it. (#27)\n- **iPad layout.** On an iPad in landscape, and a 13-inch in portrait, every page uses two columns; narrower windows keep one. A session's detail page in History no longer stretches edge to edge on an iPad. (#22)\n- **iPad heat map.** On an iPad the Thermal page draws an iPad, with the zones placed as in an iPad Pro 11-inch: logic board down the middle, a battery cell either side, the charge IC by the USB-C port. The Devices page and Settings use iPad icons too. (#13, #22)\n\n## Fixes\n\n- Thermal: the CPU-cluster (`pACC`, `eACC`) and image-processor (`ISP`) sensors used to land under \"Other sensors\"; they now count as the SoC, and the SoC zone's temperature includes them. On an iPhone 11, run-together sensor names such as `FrontCameraDie` and `BCMLBSkin` were filed in the wrong zone (the front camera as chassis); names are now split into words before they are matched. (#13, #14)\n- Adapter: the one-sample note always showed in English in the Chinese interface; it is now translated.\n\n## Notes\n\n- The iPad changes were checked in the simulator only — I do not have an iPad. If something looks wrong on yours, copy the dump from Settings → Raw data and report it.\n- The low \"from charger\" reading on an iPad (#13) is not fixed yet: finding which sensor carries the rest of the input needs a Raw data dump taken **while charging**. If you have an iPad, please copy one from Settings → Raw data while it charges and post it on #13.\n- The charge forecast cannot tell whether a charge limit or Optimized Battery Charging is on. If one is, the battery stops short and the time to 100% will be wrong.\n\n**Full Changelog**: https://github.com/ResistanceTo/MiniWatts/compare/v1.6.0...v1.7.0\n",
+          "buildVersion": "22"
+        },
+        {
           "version": "1.6.0",
           "date": "2026-10-27",
           "downloadURL": "https://github.com/ResistanceTo/MiniWatts/releases/download/v1.6.0/MiniWatts-unsigned.ipa",
@@ -1127,6 +1171,15 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/MoviePilotLite/icon.png",
       "category": "other",
       "versions": [
+        {
+          "version": "1.3.1",
+          "date": "2026-11-06",
+          "downloadURL": "https://github.com/singleton-altman/MoviePilotLite/releases/download/release-v1.3.1-2026-11-06/ios-v1.3.1-2026-11-06.ipa",
+          "size": 37490597,
+          "minOSVersion": "15.0",
+          "localizedDescription": "MoviePilot Release\n\n- Version: 1.3.1\n- Build Date: 2026-11-06\n- Android: Signed universal APK\n- Android: Signed arm64-v8a APK\n- iOS: Unsigned IPA\n\niOS 安装说明：\n- IPA 为未签名包\n- 请使用自己的 Apple Developer 账号通过 AltStore、Sideloadly 或 Xcode 进行签名安装\n\n\n## What's Changed\n* fix(android): 订阅日历小组件去除重复时间文案并适配更多尺寸 by @singleton-altman in https://github.com/singleton-altman/MoviePilotLite/pull/163\n* 适配 MoviePilot v3 与多服务器:信封按形状解封、设置原生类型、媒体库按可用服务器加载 by @anlan-home in https://github.com/singleton-altman/MoviePilotLite/pull/154\n* Dev by @singleton-altman in https://github.com/singleton-altman/MoviePilotLite/pull/164\n\n\n**Full Changelog**: https://github.com/singleton-altman/MoviePilotLite/compare/release-v1.3.0-2026-11-06...release-v1.3.1-2026-11-06",
+          "buildVersion": "40"
+        },
         {
           "version": "1.3.0",
           "date": "2026-10-30",
@@ -1216,36 +1269,6 @@
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/NeoStation/images/intro.png",
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/NeoStation/images/library.png",
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/NeoStation/images/settings.png"
-      ]
-    },
-    {
-      "name": "Novella",
-      "bundleIdentifier": "sh.celia.novella",
-      "developerName": "CELIA",
-      "localizedDescription": "使用 React Native 构建的轻书架第三方客户端，面向 iOS、iPadOS。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Novella/icon.png",
-      "category": "other",
-      "versions": [
-        {
-          "version": "2.7.0",
-          "date": "2026-10-31",
-          "downloadURL": "https://github.com/celia-sh/Novella/releases/download/v2.7.0/Novella-2.7.0-release.ipa",
-          "size": 29786138,
-          "minOSVersion": "16.4",
-          "localizedDescription": "## Highlights\r\n\r\nWrite community posts in Markdown with a preview. Keep your preferred community sort order between launches. Change your username with a rename card.\r\n\r\n## Fixes\r\n\r\n- Reader title bar now hides with the controls (#213).\r\n- Status bar hides correctly after toast messages (#213).\r\n- Chapter title and page number remain visible with controls hidden (#213).\r\n- Fixed title bar animation on the Duo inner display (#213).\r\n- Fixed layout shifts when opening pages on Duo (#214).\r\n- Post italics, underlines and strikethroughs render correctly (#214).\r\n- Chinese text now displays in italics (#214).\r\n- Post images stay within their table cells (#217).\r\n- Large page titles collapse correctly when scrolling (#216).\r\n\r\n## Other changes\r\n\r\n- Added human verification when requesting registration and password-reset codes (#215).\r\n- Updated shop item usage to follow server availability and results (#215).\r\n- Updated CELIA branding.\r\n\r\n<details>\r\n<summary>Full changelog</summary>\r\n\r\nhttps://github.com/celia-sh/Novella/compare/v2.6.0...v2.7.0\r\n\r\n</details>\r\n",
-          "buildVersion": "476"
-        }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "subtitle": "轻书架第三方客户端",
-      "tintColor": "#2E2E2E",
-      "screenshots": [
-        "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Novella/images/home.png",
-        "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Novella/images/shelf.png",
-        "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Novella/images/detail.png"
       ]
     },
     {
@@ -1532,6 +1555,15 @@
       "category": "other",
       "versions": [
         {
+          "version": "3.2.1",
+          "date": "2026-11-07",
+          "downloadURL": "https://github.com/StikDebug/StikDebug/releases/download/3.2.1/StikDebug-3.2.1.ipa",
+          "size": 16924629,
+          "minOSVersion": "17.4",
+          "localizedDescription": "- More error cleanup\r\n- Chinese (Simplified) localization\r\n- Kill processes via name via url scheme\r\n- FYI- StikDebug now requires Xcode 27+\n\n## What's Changed\n* Added Chinese localization by @jlj1102 in https://github.com/StikDebug/StikDebug/pull/494\n\n## New Contributors\n* @jlj1102 made their first contribution in https://github.com/StikDebug/StikDebug/pull/494\n\n**Full Changelog**: https://github.com/StikDebug/StikDebug/compare/3.2.0...3.2.1",
+          "buildVersion": "1"
+        },
+        {
           "version": "3.2.0",
           "date": "2026-10-30",
           "downloadURL": "https://github.com/StikDebug/StikDebug/releases/download/3.2.0/StikDebug-3.2.0.ipa",
@@ -1744,6 +1776,15 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/ZhihuMinusMinus/icon.png",
       "category": "other",
       "versions": [
+        {
+          "version": "0.9.10",
+          "date": "2026-11-06",
+          "downloadURL": "https://github.com/huamurui/zhihu-minus-minus/releases/download/v0.9.10/zhihu-minus-minus-v0.9.10-unsigned.ipa",
+          "size": 14833319,
+          "minOSVersion": "16.4",
+          "localizedDescription": "### What's Changed\r\n* 统一首页导航与内容操作栏外观 by @huamurui in https://github.com/huamurui/zhihu-minus-minus/pull/187\r\n* 调整 Android 页面进入和返回转场 by @huamurui in https://github.com/huamurui/zhihu-minus-minus/pull/186\r\n* 优化文章与想法详情首屏和操作栏 by @huamurui in https://github.com/huamurui/zhihu-minus-minus/pull/188\r\n\r\n<img height=\"500\" alt=\"telegram-cloud-photo-size-5-6296309837490493137-w\" src=\"https://github.com/user-attachments/assets/bbed6e50-bf62-4205-a4ef-65cc71fd9174\" />\r\n\r\n<img height=\"500\" alt=\"telegram-cloud-photo-size-5-6298716015608665964-w\" src=\"https://github.com/user-attachments/assets/99226fd4-0af5-47a7-b3aa-5aae9ac0b929\" />\r\n\r\n**Full Changelog**: https://github.com/huamurui/zhihu-minus-minus/compare/v0.9.9...v0.9.10",
+          "buildVersion": "1"
+        },
         {
           "version": "0.9.8",
           "date": "2026-11-01",
@@ -2972,6 +3013,14 @@
       "iconURL": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7f/72/b7/7f72b76a-5865-3da5-8dc3-71a2b75551e9/Icon-Production-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/512x512bb.jpg",
       "category": "other",
       "versions": [
+        {
+          "version": "586.0.0",
+          "date": "2026-11-05",
+          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/Facebook.v586.0.0.+.iQFace.ipa",
+          "size": 248198767,
+          "localizedDescription": "• Facebook updated to v586.0.0",
+          "buildVersion": "1106861720"
+        },
         {
           "version": "585.0.0",
           "date": "2026-10-28",
