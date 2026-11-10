@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.1.1",
+          "buildVersion": "3",
+          "date": "2026-11-10",
+          "localizedDescription": "WardWords 1.1.1 (build 3)\r\n修复顶栏被 iPhone 状态栏（信号栏）遮挡、顶部按钮点不到的问题：顶栏会自动避开状态栏与刘海区域，侧边栏同样处理。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/jp.zrh.wardwords-v1.1.1-b3/WardWords-1.1.1.ipa",
+          "size": 242066,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "1.1.0",
           "buildVersion": "2",
           "date": "2026-11-10",
