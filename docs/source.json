@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "1.1.0",
+          "buildVersion": "2",
+          "date": "2026-11-10",
+          "localizedDescription": "WardWords 1.1.0 (build 2)\r\n新增日间/夜间模式：默认跟随系统外观自动切换，顶栏按钮可手动切换日间或夜间，设置页可固定模式，选择保存在本机。深色样式覆盖全部页面。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/jp.zrh.wardwords-v1.1.0-b2/WardWords-1.1.0.ipa",
+          "size": 241950,
+          "minOSVersion": "16.0"
+        },
+        {
           "version": "1.0",
           "buildVersion": "1",
           "date": "2026-11-10",
