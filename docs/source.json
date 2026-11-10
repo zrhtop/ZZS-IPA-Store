@@ -4058,6 +4058,106 @@
         }
       },
       "subtitle": "iOS 4, recreated in SwiftUI"
+    },
+    {
+      "name": "GestaltX",
+      "bundleIdentifier": "com.huami.gestultx",
+      "developerName": "huamidev",
+      "localizedDescription": "GestaltX 是一款免越狱的 MobileGestalt 编辑工具，基于 worse_query 沙盒逃逸（支持 iOS 26.0–26.7.2 与 27.0–27.2，最低系统 iOS 26.0）。\n\nMobileGestalt 是 iOS 内部记录设备特性的系统配置。它可以修改地区代码、套用其他机型的设备预设，调整灵动岛、全天候显示、充电上限、Apple Intelligence 相关开关等特性，还能直接搜索和编辑配置字段。改动前会自动备份原配置，每个预设也可以单独恢复。\n\n注意：修改系统配置有白苹果等风险，官方要求使用前先备份设备，不要改动不熟悉的字段。",
+      "iconURL": "https://raw.githubusercontent.com/huamidev/GestaltX/main/GestaltX/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
+      "category": "utilities",
+      "versions": [
+        {
+          "version": "1.0.4",
+          "buildVersion": "11101436",
+          "date": "2026-11-10",
+          "localizedDescription": "1.0.4（build 11101436）。基于 worse_query 的 MobileGestalt 编辑工具，免越狱修改地区代码与设备特性，自带配置备份与恢复。",
+          "downloadURL": "https://github.com/huamidev/GestaltX/releases/download/v1.0.4/GestaltX_1.0.4.ipa",
+          "size": 2865180,
+          "minOSVersion": "26.0"
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "subtitle": "免越狱 MobileGestalt 编辑器：改地区代码与设备特性"
+    },
+    {
+      "name": "Erosion",
+      "bundleIdentifier": "com.jbdotparty.Erosion",
+      "developerName": "jailbreakdotparty",
+      "localizedDescription": "Erosion 是一款免越狱的 iOS 系统定制工具箱，基于 worse_query 沙盒逃逸，把以往需要越狱才能做的系统个性化集中到一个应用里，包括 MobileGestalt 类特性调整、壁纸与系统界面定制、应用数据管理等。\n\n支持范围：iOS 27.0–27.2.1 功能完整；iOS 26.0–26.6.2 为受限支持（例如不能写 MobileGestalt，相关调整不可用）；另支持 iOS 27.3 beta 1。最低系统 iOS 26.0。\n\n注意：官方明确要求使用前先给设备做完整备份。这类工具会改动系统与应用容器文件，存在数据丢失风险，不要在存有钱包助记词等敏感信息的设备上使用。",
+      "iconURL": "https://raw.githubusercontent.com/jailbreakdotparty/Erosion/main/PreviewIcon.png",
+      "category": "utilities",
+      "versions": [
+        {
+          "version": "0.3.1",
+          "buildVersion": "1",
+          "date": "2026-11-10",
+          "localizedDescription": "0.3.1（build 1）。基于 worse_query 的系统定制工具箱，iOS 27 功能完整，iOS 26 为受限支持。使用前请先备份设备。",
+          "downloadURL": "https://github.com/jailbreakdotparty/Erosion/releases/download/0.3.1/Erosion_v0.3.1.ipa",
+          "size": 2415476,
+          "minOSVersion": "26.0"
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "subtitle": "免越狱系统定制工具箱（worse_query）"
+    },
+    {
+      "name": "WQ Files",
+      "bundleIdentifier": "cz.kolbi.wqfiles",
+      "developerName": "kolbicz",
+      "localizedDescription": "WQ Files 是一款免越狱文件管理器，基于 worse_query 沙盒逃逸，面向 iOS 26 与 27（最低系统 iOS 26.0）。\n\n普通应用只能访问自己的沙盒，它可以直接打开其他应用的数据容器、App Group 共享容器、扩展和系统守护进程的容器，以及部分系统数据目录，按应用名和图标列出，不用再对着 UUID 文件夹猜。功能包括浏览和管理文件，备份与恢复单个应用的数据，清除应用数据，以及清理缓存和崩溃日志。\n\niOS 26 上为初步支持：系统数据和系统组目录不可用，缓存清理少了崩溃日志一节，其余主要功能可用。注意：能读写其他应用的数据同样意味着风险，不要删除不认识的文件，重要数据先备份。",
+      "iconURL": "https://raw.githubusercontent.com/kolbicz/WQFiles/main/icons/AppIcon1024.png",
+      "category": "utilities",
+      "versions": [
+        {
+          "version": "0.8",
+          "buildVersion": "34",
+          "date": "2026-11-10",
+          "localizedDescription": "0.8（build 34）。免越狱文件管理器，可浏览其他应用的容器数据，支持应用数据备份恢复与缓存清理。",
+          "downloadURL": "https://github.com/kolbicz/WQFiles/releases/download/v0.8/WQFiles.ipa",
+          "size": 320067,
+          "minOSVersion": "26.0"
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "subtitle": "免越狱文件管理器：跨应用容器浏览与数据备份"
+    },
+    {
+      "name": "Filza-wq",
+      "bundleIdentifier": "com.filza.wq",
+      "developerName": "MchinaMd57764",
+      "localizedDescription": "Filza-wq 是第三方把 Filza 文件管理器重打包的版本（原版 Filza 由 tigisoftware 开发，本版本与 tigisoftware 无关），面向未越狱的 iOS 27.0.x。\n\n它借助 worse_query 的容器访问能力，打开普通应用进不去的位置：配置描述文件目录、MobileGestalt 缓存、系统数据容器、各应用的 App Group 共享容器，加上应用自己的文档目录，可以浏览、读取、复制和删除其中的文件。超出可访问范围的路径会自动跳回目录主页。\n\n注意：这是非官方重打包，并非 tigisoftware 发布；能删除系统文件同样意味着风险，不要在主力机和存有钱包助记词的设备上使用。IPA 里写的最低系统版本沿用原版 Filza 的 7.0，但实际容器访问功能需要 iOS 27.0.x。",
+      "iconURL": "https://github.com/MchinaMd57764.png",
+      "category": "utilities",
+      "versions": [
+        {
+          "version": "4.0",
+          "buildVersion": "0",
+          "date": "2026-11-09",
+          "localizedDescription": "4.0（build 0）。Filza 的 worse_query 重打包版，免越狱浏览系统容器与 App Group 共享容器，非官方发布。",
+          "downloadURL": "https://raw.githubusercontent.com/MchinaMd57764/filza-wq/main/Filza-wq.ipa",
+          "size": 13387367,
+          "minOSVersion": "7.0"
+        }
+      ],
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSFaceIDUsageDescription": "Filza uses Face ID to authenticate",
+          "NSPhotoLibraryAddUsageDescription": "To save photos and videos to photo library.",
+          "NSPhotoLibraryUsageDescription": "To save photos and videos to photo library."
+        }
+      },
+      "subtitle": "Filza 重打包版：免越狱浏览系统容器（非官方）"
     }
   ],
   "news": [],
