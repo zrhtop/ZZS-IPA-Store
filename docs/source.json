@@ -7,6 +7,30 @@
   "tintColor": "#6559E8",
   "apps": [
     {
+      "name": "WardWords",
+      "bundleIdentifier": "jp.zrh.wardwords",
+      "developerName": "ZZS",
+      "subtitle": "在 ZZS IPA Store 发布",
+      "localizedDescription": "WardWords 1.0 (build 1)\r\n临床社工英语词汇训练：145 个双语词汇、6 个主题词包、间隔复习与临床交班听力练习。为澳大利亚医院社会工作实习预习设计，内容离线内置。",
+      "iconURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/jp.zrh.wardwords-v1.0-b1/icon-1024.png",
+      "category": "utilities",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "versions": [
+        {
+          "version": "1.0",
+          "buildVersion": "1",
+          "date": "2026-11-10",
+          "localizedDescription": "WardWords 1.0 (build 1)\r\n临床社工英语词汇训练：145 个双语词汇、6 个主题词包、间隔复习与临床交班听力练习。为澳大利亚医院社会工作实习预习设计，内容离线内置。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/jp.zrh.wardwords-v1.0-b1/WardWords-1.0.ipa",
+          "size": 239979,
+          "minOSVersion": "16.0"
+        }
+      ]
+    },
+    {
       "name": "挖金子",
       "bundleIdentifier": "dev.zrhtop.GameHouseMobile",
       "developerName": "zrhtop",
