@@ -4185,6 +4185,34 @@
           "minOSVersion": "15.0"
         }
       ]
+    },
+    {
+      "name": "SideInstaller",
+      "bundleIdentifier": "com.frizzlem.sideinstaller",
+      "developerName": "FrizzleM",
+      "subtitle": "无需电脑的侧载安装器，还能帮别人的 iPhone 装应用",
+      "localizedDescription": "SideInstaller 是一款开源的 iOS 侧载安装器，由 FrizzleM 维护。它在 iPhone 本机完成配对、Apple ID 签名与安装，可安装 SideStore、LiveContainer+SideStore、AltStore Classic 等应用，无需电脑参与安装过程（iOS 27 可在设备上自配对；iOS 17.4 至 26 需要先用电脑生成一次配对文件）。Tools 页的 Side by Side 功能可以从你的 iPhone 无线为另一台 iPhone 安装上述应用：iOS 27 的目标机从其设置中配对；iOS 27 以下的目标机可通过局域网配对（需要知道其 IP 地址），但 iOS 26.4 至 26.7 的目标机安装 SideStore 或 LiveContainer+SideStore 仍需要电脑生成的 remote pairing 文件。Side by Side 使用对方自己的 Apple ID 签名，安装成功后不会在本机保留对方的签名密钥。",
+      "iconURL": "https://raw.githubusercontent.com/FrizzleM/SideInstaller/main/app-icon.png",
+      "category": "utilities",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSLocalNetworkUsageDescription": "SideInstaller advertises an on-device pairing service so this iPhone can pair with it, and connects to the local lockdown daemon to install apps.",
+          "NSLocationAlwaysAndWhenInUseUsageDescription": "SideInstaller can use location to keep running while you approve pairing in Settings.",
+          "NSLocationWhenInUseUsageDescription": "SideInstaller can use location to keep running while you approve pairing in Settings."
+        }
+      },
+      "versions": [
+        {
+          "version": "2.0.1",
+          "buildVersion": "1",
+          "date": "2026-11-12",
+          "localizedDescription": "SideInstaller 2.0.1 (build 1)\n本版主要是界面配色调整：2.0.0 引入的灰色系改回蓝色系。功能与 2.0.0 相同：Install 页与 Side by Side 新增 AltStore Classic，Side by Side 可为别人的 iPhone 安装 AltStore、SideStore 或 LiveContainer+SideStore（Stable 或 Nightly）。",
+          "downloadURL": "https://github.com/FrizzleM/SideInstaller/releases/download/v2.0.1/SideInstaller.ipa",
+          "size": 10770716,
+          "minOSVersion": "17.4"
+        }
+      ]
     }
   ],
   "news": [],
