@@ -4158,6 +4158,33 @@
         }
       },
       "subtitle": "Filza 重打包版：免越狱浏览系统容器（非官方）"
+    },
+    {
+      "name": "小浣熊阅读",
+      "bundleIdentifier": "com.epiboly.legado",
+      "developerName": "Aminark",
+      "subtitle": "兼容阅读书源的 iOS 阅读器：多源搜书、书架、本地 TXT / EPUB",
+      "localizedDescription": "小浣熊阅读是一款优先兼容 Legado（开源阅读）书源的 iOS 阅读器，由 Aminark 维护（GPL-3.0 开源）。支持书源 JSON、文件、URL 与二维码导入，多书源并发搜索与同书多源合并，书架管理与换源，阅读排版与日夜主题，替换净化，本地 TXT / EPUB 阅读，语音朗读与 RSS 订阅。本应用不提供书源或在线书库，书源需由用户自行导入；复杂 JavaScript、登录、验证码与 WebView 类书源可能存在兼容差异。",
+      "iconURL": "https://raw.githubusercontent.com/Aminark/legado-ios/main/App/Assets.xcassets/AppIcon.appiconset/AppIcon-1024.png",
+      "category": "other",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSCameraUsageDescription": "用于扫描书源和净化规则的导入二维码。",
+          "NSPhotoLibraryAddUsageDescription": "用于保存阅读页面中的图片到照片图库。"
+        }
+      },
+      "versions": [
+        {
+          "version": "0.1.14",
+          "buildVersion": "20",
+          "date": "2026-10-29",
+          "localizedDescription": "小浣熊阅读 0.1.14 (build 20)\n修复规则订阅自动更新期间删除订阅导致的崩溃；修复书签、阅读记录、书源与净化规则保存互相覆盖的问题；修复 RSS 搜索与订阅刷新问题；目录或正文分页失败时保留完整缓存与阅读进度，换源时排除不完整的候选结果；修复 HTTP TTS 更换声音配置后误用旧音频缓存的问题。",
+          "downloadURL": "https://github.com/Aminark/legado-ios/releases/download/v0.1.14/legado-ios-v0.1.14-build20-unsigned.ipa",
+          "size": 15722798,
+          "minOSVersion": "15.0"
+        }
+      ]
     }
   ],
   "news": [],
