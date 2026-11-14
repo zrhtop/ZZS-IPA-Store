@@ -272,6 +272,15 @@
       },
       "versions": [
         {
+          "version": "1.0.22",
+          "buildVersion": "74",
+          "date": "2026-11-12",
+          "localizedDescription": "• 优化定位维持和断线后的恢复：前台开始定位时提前启动后台保活，可重试的连接错误以 1、2、4 秒间隔最多重连三次并沿用最新坐标，重连期间冻结路线进度，恢复后保留原有暂停状态。\n• 主动停止、重置和恢复真实位置会取消重连；认证错误及上次启动留下的未确认会话仍需手动处理。\n• 注意：Build 74 的真机长时间锁屏和后台效果仍待回测。",
+          "downloadURL": "https://github.com/suversal/WrapPin/releases/download/v1.0.22/WrapPin-Standard-1.0.22-build74-unsigned.ipa",
+          "size": 6923608,
+          "minOSVersion": "18.0"
+        },
+        {
           "version": "1.0.21",
           "buildVersion": "71",
           "date": "2026-11-07",
@@ -519,6 +528,15 @@
       "category": "other",
       "versions": [
         {
+          "version": "2.6.0-nightly.20261113.0426",
+          "date": "2026-11-13",
+          "downloadURL": "https://github.com/ARMSX2/ARMSX2/releases/download/nightly-20261113/ARMSX2-nightly-20261113-37ed35b88f-iOS-arm64.ipa",
+          "size": 40715589,
+          "minOSVersion": "17.4",
+          "localizedDescription": "Automated nightly build for community testing (unsigned).\n\nEvery download is named `ARMSX2-nightly-DATE-COMMIT-PLATFORM`, so builds\nfrom different nights stay distinguishable after you have downloaded them.\n\n- macOS arm64: macOS-arm64.tar.xz\n- Linux arm64: Linux-arm64-4K-pages.AppImage on most distros, or the 16K one on Asahi Linux and other Apple Silicon kernels (run getconf PAGESIZE if unsure)\n- Windows arm64: Windows-arm64.zip\n- RetroArch on Linux arm64: Linux-arm64-libretro-core.tar.zst, a 4K-page build\n- Bare-display kmsdrm handhelds: Linux-arm64-SDL-handheld.tar.zst, a 4K-page build (Rocknix and Batocera run compositors, so use the Qt AppImage there instead)\n- Android: Android-arm64.apk (installs as ARMSX2 Nightly, alongside the stable app)\n- iOS: iOS-arm64.ipa, unsigned, sideload it (installs as ARMSX2 Nightly, alongside the stable app)\n\nComing from an old nightly? Nightlies are now a separate app, ARMSX2 Nightly, next to stable.\n\n- Android: stable cannot install over an old nightly. Back up your saves and memory cards, uninstall the old nightly, then install the stable APK.\n- iOS: your old nightly is the ARMSX2 iOS app and still has your saves. Copy them into ARMSX2 Nightly with the Files app.\n\n## What's new\n- microVU0: compute the VU1 register window's address at run time\n- Tests: a persisted VU0 program that uses the window onto VU1's registers\n- Android: link the core with emulated TLS when the minimum API is below 29\n- iOS: give the layout editor and the manifest skin their own views\n- iOS: split the patch and skin library stores by their own sections\n- iOS: split navigation and gameplay views into one file per view\n- iOS: split the controls and skin files along their types\n- iOS: split the dynamic backgrounds into one file per background\n\nFull changelog: https://github.com/ARMSX2/ARMSX2/compare/nightly-20261112...37ed35b88fe9a0164369c8042f2c9aa707e33667",
+          "buildVersion": "260"
+        },
+        {
           "version": "2.6.0-nightly.20261023.1332",
           "date": "2026-10-23",
           "downloadURL": "https://github.com/ARMSX2/ARMSX2/releases/download/nightly-20261023/ARMSX2-nightly-20261023-90126bdfea-iOS-arm64.ipa",
@@ -548,6 +566,14 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/BCD/icon.png",
       "category": "other",
       "versions": [
+        {
+          "version": "0.1.653",
+          "date": "2026-11-11",
+          "downloadURL": "https://github.com/thebcd69/bcd-games/releases/download/v0.1.653/BCD.ipa",
+          "size": 194520705,
+          "minOSVersion": "18.0",
+          "buildVersion": "653"
+        },
         {
           "version": "0.1.634",
           "date": "2026-11-06",
@@ -708,6 +734,15 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/EhPanda/icon.png",
       "category": "other",
       "versions": [
+        {
+          "version": "3.0.0",
+          "date": "2026-11-12",
+          "downloadURL": "https://github.com/EhPanda-Team/EhPanda/releases/download/3.0.0/EhPanda-AltStore.ipa",
+          "size": 18858405,
+          "minOSVersion": "27.0",
+          "localizedDescription": "EhPanda 3.0 is rebuilt with a new look.\r\n\r\n- Download galleries to read offline, sort them into folders, and keep downloading in the background.\r\n- Jump to galleries around any date with Seek to Date.\r\n- Log in with your username and password again, even behind a Cloudflare check.\r\n- Report comments, see a warning before posting, and block users.\r\n- Larger text, VoiceOver and Voice Control now work across the app.\r\n- Every screen rotates with your device, so the Enables landscape setting is gone.\r\n- The Auto-Lock setting is gone. To lock EhPanda, touch and hold its icon, then choose Require Face ID or Require Touch ID.\r\n- On first launch, you confirm you're an adult and choose how much anonymous usage data to share.\r\n- WebP images now display, and many bugs are fixed.\r\n\r\nhttps://ehpanda.app\r\n\r\n<details>\r\n<summary>Deutsch</summary>\r\n\r\nEhPanda 3.0 ist neu gebaut, mit neuem Design.\r\n\r\n- Lade Galerien zum Offline-Lesen herunter, sortiere sie in Ordner und lade im Hintergrund weiter.\r\n- Mit „Zu Datum springen“ gelangst du zu Galerien rund um ein beliebiges Datum.\r\n- Melde dich wieder mit Benutzername und Passwort an, auch hinter einer Cloudflare-Prüfung.\r\n- Du kannst Kommentare melden, vor dem Posten einen Hinweis sehen und Personen blockieren.\r\n- Größere Schrift, VoiceOver und Sprachsteuerung funktionieren jetzt in der ganzen App.\r\n- Jeder Bildschirm dreht sich mit deinem Gerät, daher entfällt die Einstellung „Enables landscape“.\r\n- Die Einstellung „Auto-Lock“ entfällt. Um EhPanda zu sperren, halte das Symbol gedrückt und wähle „Face ID anfordern“ oder „Touch ID anfordern“.\r\n- Beim ersten Start bestätigst du, dass du erwachsen bist, und wählst, wie viele anonyme Nutzungsdaten du teilst.\r\n- WebP-Bilder werden jetzt angezeigt, dazu viele Fehlerbehebungen.\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>日本語</summary>\r\n\r\nEhPanda 3.0 は新しいデザインで生まれ変わりました。\r\n\r\n- ギャラリーをダウンロードしてオフラインで読めます。フォルダで整理でき、バックグラウンドでもダウンロードが続きます。\r\n- 「日付へ移動」で、指定した日付前後のギャラリーに移動できます。\r\n- Cloudflare の確認がある場合でも、ユーザー名とパスワードで再びログインできるようになりました。\r\n- コメントの通報、投稿前の注意表示、ユーザーのブロックに対応しました。\r\n- 大きな文字サイズ、VoiceOver、音声コントロールがアプリ全体で使えるようになりました。\r\n- すべての画面がデバイスの向きに合わせて回転するため、「横向きを有効」の設定は廃止しました。\r\n- 「自動ロック」の設定は廃止しました。EhPanda をロックするには、アイコンを長押しして「Face IDを必要にする」または「Touch IDを必要にする」を選んでください。\r\n- 初回起動時に、成人であることの確認と、匿名の利用データをどこまで共有するかの選択を行います。\r\n- WebP 画像に対応し、多数の不具合を修正しました。\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>한국어</summary>\r\n\r\nEhPanda 3.0이 새로운 디자인으로 다시 만들어졌습니다.\r\n\r\n- 갤러리를 다운로드해 오프라인으로 읽고, 폴더로 정리하고, 백그라운드에서도 계속 다운로드할 수 있습니다.\r\n- '날짜로 이동'으로 원하는 날짜 전후의 갤러리로 이동할 수 있습니다.\r\n- Cloudflare 확인이 있어도 다시 사용자 이름과 비밀번호로 로그인할 수 있습니다.\r\n- 댓글 신고, 게시 전 경고, 사용자 차단을 지원합니다.\r\n- 더 큰 텍스트, VoiceOver, 음성 제어를 이제 앱 전체에서 사용할 수 있습니다.\r\n- 모든 화면이 기기 방향에 맞춰 회전하므로 'Enables landscape' 설정이 제거되었습니다.\r\n- '앱 자동 잠금' 설정이 제거되었습니다. EhPanda를 잠그려면 아이콘을 길게 터치한 다음 'Face ID 요구' 또는 'Touch ID 요구'를 선택하세요.\r\n- 처음 실행할 때 성인인지 확인하고, 익명 사용 데이터를 얼마나 공유할지 선택합니다.\r\n- WebP 이미지를 지원하고 여러 문제를 수정했습니다.\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>简体中文</summary>\r\n\r\nEhPanda 3.0 全新打造，焕然一新。\r\n\r\n- 下载画廊离线阅读，整理到文件夹，切到后台也能继续下载。\r\n- 使用“跳转到日期”，前往任意日期前后的画廊。\r\n- 即使遇到 Cloudflare 验证，也能再次使用用户名和密码登录。\r\n- 可以举报评论，发布前会看到提醒，还可以屏蔽用户。\r\n- 更大字体、旁白和语音控制现已适用于整个应用。\r\n- 所有页面都会随设备旋转，因此移除了“启用横屏”设置。\r\n- “自动锁定”设置已移除。如需锁定 EhPanda，请按住图标，然后选择“需要面容 ID”或“需要触控 ID”。\r\n- 首次启动时，需确认你已成年，并选择分享多少匿名使用数据。\r\n- 支持 WebP 图片，并修复了许多问题。\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>繁體中文</summary>\r\n\r\nEhPanda 3.0 全新打造，煥然一新。\r\n\r\n- 下載畫廊離線閱讀、整理到資料夾，切到背景也能繼續下載。\r\n- 使用「前往日期」，前往任何日期前後的畫廊。\r\n- 即使遇到 Cloudflare 驗證，也能再次使用使用者名稱和密碼登入。\r\n- 可以檢舉留言，發布前會看到提醒，也可以封鎖使用者。\r\n- 更大的文字、旁白和語音控制現在適用於整個 App。\r\n- 所有畫面都會隨裝置旋轉，因此移除了「啟用橫向顯示」設定。\r\n- 「自動鎖定」設定已移除。如需鎖定 EhPanda，請按住圖像，然後選擇「需要 Face ID」或「需要 Touch ID」。\r\n- 首次啟動時，需要確認你已成年，並選擇要分享多少匿名使用資料。\r\n- 支援 WebP 圖片，並修正了許多問題。\r\n\r\n</details>\r\n",
+          "buildVersion": "163"
+        },
         {
           "version": "3.0.0",
           "date": "2026-08-20",
@@ -891,6 +926,15 @@
       "category": "other",
       "versions": [
         {
+          "version": "2.4.4",
+          "date": "2026-11-12",
+          "downloadURL": "https://github.com/Predidit/Kazumi/releases/download/2.4.4/Kazumi_ios_2.4.4_no_sign.ipa",
+          "size": 30341213,
+          "minOSVersion": "15.0",
+          "localizedDescription": "- 适配 flutter 3.50",
+          "buildVersion": "20404"
+        },
+        {
           "version": "2.4.3",
           "date": "2026-11-04",
           "downloadURL": "https://github.com/Predidit/Kazumi/releases/download/2.4.3/Kazumi_ios_2.4.3_no_sign.ipa",
@@ -1001,6 +1045,15 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/master/apps/LiveContainer+SideStore/icon.png",
       "category": "other",
       "versions": [
+        {
+          "version": "3.8.13",
+          "date": "2026-11-08",
+          "downloadURL": "https://github.com/LiveContainer/LiveContainer/releases/download/nightly/LiveContainer%2BSideStore.ipa",
+          "size": 23752778,
+          "minOSVersion": "15.0",
+          "localizedDescription": "**Commit:** [9d6ea09b05afa2c8fc537c372795a294db631311](https://github.com/LiveContainer/LiveContainer/commit/9d6ea09b05afa2c8fc537c372795a294db631311)\n**Message:** Support for built-in jit enablers, ram donors, helper process etc\n\nThis is a nightly release [created automatically with GitHub Actions workflow](https://github.com/LiveContainer/LiveContainer/actions/runs/42464599105/attempts/2).",
+          "buildVersion": "3.8.13"
+        },
         {
           "version": "3.8.12",
           "date": "2026-11-07",
@@ -1213,6 +1266,15 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/MoviePilotLite/icon.png",
       "category": "other",
       "versions": [
+        {
+          "version": "1.3.3",
+          "date": "2026-11-13",
+          "downloadURL": "https://github.com/singleton-altman/MoviePilotLite/releases/download/release-v1.3.3-2026-11-13/ios-v1.3.3-2026-11-13.ipa",
+          "size": 37758540,
+          "minOSVersion": "15.0",
+          "localizedDescription": "MoviePilot Release\n\n- Version: 1.3.3\n- Build Date: 2026-11-13\n- Android: Signed universal APK\n- Android: Signed arm64-v8a APK\n- iOS: Unsigned IPA\n\niOS 安装说明：\n- IPA 为未签名包\n- 请使用自己的 Apple Developer 账号通过 AltStore、Sideloadly 或 Xcode 进行签名安装\n\n\n## What's Changed\n* fix(push): iOS 设置 JPush Alias 报 6002 超时且提示原始异常串 by @singleton-altman in https://github.com/singleton-altman/MoviePilotLite/pull/166\n* feat: 适配 Vue 插件（PVE 守护神 / 爱快路由 / 豆瓣档案 / 夸克网盘 / 随机图床） by @xijin285 in https://github.com/singleton-altman/MoviePilotLite/pull/167\n* feat(media_detail): 豆瓣评论与详情页 UI 优化 by @singleton-altman in https://github.com/singleton-altman/MoviePilotLite/pull/169\n* feat(media_detail): 完善豆瓣评论列表 by @singleton-altman in https://github.com/singleton-altman/MoviePilotLite/pull/175\n* release: v1.3.2 by @singleton-altman in https://github.com/singleton-altman/MoviePilotLite/pull/176\n* style(download): 重设计下载资源弹窗 by @singleton-altman in https://github.com/singleton-altman/MoviePilotLite/pull/180\n* feat(widget): 订阅日历小组件支持多尺寸并修复 ColorOS 尺寸错乱 by @xijin285 in https://github.com/singleton-altman/MoviePilotLite/pull/181\n* release: v1.3.3 by @singleton-altman in https://github.com/singleton-altman/MoviePilotLite/pull/183\n\n\n**Full Changelog**: https://github.com/singleton-altman/MoviePilotLite/compare/release-v1.3.1-2026-11-06...release-v1.3.3-2026-11-13",
+          "buildVersion": "42"
+        },
         {
           "version": "1.3.1",
           "date": "2026-11-06",
@@ -1597,6 +1659,15 @@
       "category": "other",
       "versions": [
         {
+          "version": "3.2.2",
+          "date": "2026-11-08",
+          "downloadURL": "https://github.com/StikDebug/StikDebug/releases/download/3.2.2/StikDebug-3.2.2.ipa",
+          "size": 16924687,
+          "minOSVersion": "17.4",
+          "localizedDescription": "- Fix Utsuro, Henge, and \"MeloCafe\"\n\n**Full Changelog**: https://github.com/StikDebug/StikDebug/compare/3.2.1...3.2.2",
+          "buildVersion": "1"
+        },
+        {
           "version": "3.2.1",
           "date": "2026-11-07",
           "downloadURL": "https://github.com/StikDebug/StikDebug/releases/download/3.2.1/StikDebug-3.2.1.ipa",
@@ -1665,6 +1736,15 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Suwayomi-Tsumiru/icon.png",
       "category": "other",
       "versions": [
+        {
+          "version": "1.6.5",
+          "date": "2026-11-07",
+          "downloadURL": "https://github.com/Suwayomi/Suwayomi-Tsumiru/releases/download/v1.6.5/tsumiru-v1.6.5-ios.ipa",
+          "size": 17346615,
+          "minOSVersion": "15.0",
+          "localizedDescription": "A manga and webtoon reader for your [Suwayomi](https://suwayomi.org/) server.\n\n### ✨ New Features\n\n- Added **Per-category settings for sort and filters** to the Library, including changes made offline (@aaronbamblett)\n- Added notifications when a new Tsumiru or server version is out, with **Remind later** and **Ignore** (@aaronbamblett)\n- Added **Offset double spreads** to the paged reader for spreads that start on an odd page (@PainTownblue)\n\n### ⚙️ Changes\n\n- Made long strip taps and keys scroll by **Scroll distance** instead of a whole page (@aaronbamblett)\n- Changed **Keep screen on** to off by default (@aaronbamblett)\n- Added Up and Down page turns in horizontal paged mode and N and P to change chapter (@aaronbamblett)\n\n### 🚀 Improvements\n\n- Hid empty category tabs while searching or filtering the library, with **Show empty categories during search/filtering** to keep them (@aaronbamblett)\n- Moved **Create registration code** to **Manage users** and added an **Edit** button to user rows (@aaronbamblett)\n\n### 🧩 Fixes\n\n- Fixed the offline library not opening when Tsumiru starts without a connection (@aaronbamblett)\n- Fixed **Something went wrong** showing on every page while reading offline (@aaronbamblett)\n- Fixed library covers going blank in Safari after scrolling them off screen and back (@aaronbamblett)\n- Fixed the paged reader restoring an old zoom when you return to a page (@aaronbamblett)\n- Fixed saved searches from older WebUI versions not loading (@aaronbamblett)\n\n*Thanks to our Weblate translators: Damien O'Neil for French, Kisnov for Catalan, Andrei Stepanov for Russian and PainTownblue for Chinese.*\n\n## Install\n\nYou'll need a running Suwayomi server. See [Getting started](https://tsumiru.app/docs/guides/getting-started).\n\n### Mobile\n\n**Android:** download the universal APK below and open it to install. Smaller APKs for specific chip types are also attached.\n\n**iOS:** the `…-ios.ipa` below is unsigned and has to be sideloaded. Add `https://tsumiru.app/apps.json` as a source in [SideStore](https://sidestore.io/) or [AltStore](https://altstore.io/) to install it and get later releases as updates.\n\n<details>\n<summary>Which sideloading tool should I use?</summary>\n\n- **[SideStore](https://sidestore.io/)** signs and refreshes the app on the device itself, with no computer needed after setup. Best for most people.\n- **[AltStore](https://altstore.io/)** expires every 7 days and only refreshes while a computer running AltServer is switched on and on the same Wi-Fi as your phone.\n- **[TrollStore](https://ios.cfw.guide/installing-trollstore/)** installs permanently with no expiry, but only works on older iPhones and iOS versions with the required vulnerability.\n\nWith SideStore or AltStore the app is re-signed periodically, which those tools automate. There is no App Store build.\n</details>\n\n### Desktop\n\n**Windows:** download `…-windows-x64.zip`, extract it anywhere, and run `tsumiru.exe`.\n\n**macOS:** download `…-macos-universal.zip`, extract it, and move the app to Applications. If macOS blocks the first launch, approve it under System Settings → Privacy & Security.\n\n**Linux:** the Flatpak is recommended and auto-updates.\n\n```sh\nflatpak remote-add --if-not-exists tsumiru https://flatpak.tsumiru.app/index.flatpakrepo\nflatpak install tsumiru app.tsumiru.Tsumiru\n```\n\nExisting Flatpak installs keep receiving updates under `io.github.aaronbamblett.tsumiru`; no data, settings or logins move. AppImage/deb also keep that ID.\n\nFor a portable option, download `…-linux-x86_64.AppImage`, mark it executable with `chmod +x`, and run it.\n\n### Web\n\nDownload `…-web.zip` and serve its contents with any static web server.\n\n[Full documentation](https://tsumiru.app/)\n",
+          "buildVersion": "5006"
+        },
         {
           "version": "1.6.4",
           "date": "2026-11-02",
@@ -1789,6 +1869,15 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/YouProEXTRA/icon.png",
       "category": "other",
       "versions": [
+        {
+          "version": "21.45.4",
+          "date": "2026-11-08",
+          "downloadURL": "https://github.com/mrdrvt99/YouProEXTRA/releases/download/youproextra-ipa2/YouProExtra_21.45.4_1.3.1.ipa",
+          "size": 133320959,
+          "buildVersion": "21.45.4",
+          "minOSVersion": "17.0",
+          "localizedDescription": "### Latest Release, ENJOY!!\r\n> [!NOTE]\r\n> - if you're signed out you can sign in manually. \r\n> - no iSponsorBlock and YouSlider. (unstable in newer builds)\r\n> - Downloads working partially. depending on hardware codecs. \r\n> - Liquid Glass Support\r\n> \r\n> - - -\r\n> #### Extra Tweaks:\r\n> - `YouPip` `YTweaks` `YouSpeed` `YouMute` `YouLoop` `YTABConfig` `YouQuality` `YouChooseQuality`  `YouGetCaption` \r\n> -  `Return-YouTube-Dislikes` `DontEatMyContent` `Open in YouTube (Safari Extension)` `Gonerino` \r\n\r\n> [!WARNING]\r\n> - 21.34.3+ builds require iOS 17+ now.\r\n"
+        },
         {
           "version": "21.44.4",
           "date": "2026-11-03",
@@ -3001,6 +3090,14 @@
       "category": "other",
       "versions": [
         {
+          "version": "12.43",
+          "date": "2026-11-12",
+          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/X.v12.43.+.NFB.v7.3.1.ipa",
+          "size": 309251326,
+          "localizedDescription": "• X updated to v12.43",
+          "buildVersion": "23"
+        },
+        {
           "version": "12.37",
           "date": "2026-10-24",
           "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/Twitter.v12.37.+.NFB.v7.2.0.ipa",
@@ -3055,6 +3152,14 @@
       "iconURL": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7f/72/b7/7f72b76a-5865-3da5-8dc3-71a2b75551e9/Icon-Production-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/512x512bb.jpg",
       "category": "other",
       "versions": [
+        {
+          "version": "587.0.0",
+          "date": "2026-11-11",
+          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/Facebook.v587.0.0.+.iQFace.ipa",
+          "size": 251133088,
+          "localizedDescription": "• Facebook updated to v587.0.0",
+          "buildVersion": "1110946418"
+        },
         {
           "version": "586.0.0",
           "date": "2026-11-05",
@@ -3132,6 +3237,14 @@
       "iconURL": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/50/70/42/50704260-89c4-2aa4-7740-4a6a621af5db/TikTok_AppIcon26-0-0-1x_U007epad-0-1-0-85-220.png/512x512bb.jpg",
       "category": "other",
       "versions": [
+        {
+          "version": "47.6.0",
+          "date": "2026-11-03",
+          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/TikTok.v47.6.0.+.gtok.v2.5.ipa",
+          "size": 521461976,
+          "localizedDescription": "• TikTok updated to v47.6.0",
+          "buildVersion": "476038"
+        },
         {
           "version": "47.5.0",
           "date": "2026-10-27",
@@ -3383,6 +3496,14 @@
       "iconURL": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/22/f9/36/22f936bd-f61d-d1e1-8227-7352688e9367/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/512x512bb.jpg",
       "category": "other",
       "versions": [
+        {
+          "version": "8.86.0",
+          "date": "2026-11-09",
+          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/SoundCloud.v8.86.0.+.NexaSC-b5.ipa",
+          "size": 214716051,
+          "localizedDescription": "• SoundCloud updated to v8.86.0",
+          "buildVersion": "1262503"
+        },
         {
           "version": "8.85.0",
           "date": "2026-11-04",
@@ -4068,6 +4189,15 @@
       "category": "utilities",
       "versions": [
         {
+          "version": "1.1.1",
+          "buildVersion": "11140102",
+          "date": "2026-11-13",
+          "localizedDescription": "1.1.1（build 11140102）。基于 worse_query 的 MobileGestalt 编辑工具，免越狱修改地区代码与设备特性，自带配置备份与恢复。新增应用音频库，可替换应用的通知声音；新增配对与设备连接功能，用于获取所需路径。",
+          "downloadURL": "https://github.com/huamidev/GestaltX/releases/download/v1.1.1/GestaltX_1.1.1.ipa",
+          "size": 6774794,
+          "minOSVersion": "26.0"
+        },
+        {
           "version": "1.0.4",
           "buildVersion": "11101436",
           "date": "2026-11-10",
@@ -4115,6 +4245,15 @@
       "iconURL": "https://raw.githubusercontent.com/kolbicz/WQFiles/main/icons/AppIcon1024.png",
       "category": "utilities",
       "versions": [
+        {
+          "version": "0.9.6",
+          "buildVersion": "81",
+          "date": "2026-11-13",
+          "localizedDescription": "0.9.6（build 81）。免越狱文件管理器，可浏览其他应用的容器数据，支持应用数据备份恢复与缓存清理。新增文件夹内搜索、最大文件列表和文件详情查看。",
+          "downloadURL": "https://github.com/kolbicz/WQFiles/releases/download/v0.9.6/WQFiles.ipa",
+          "size": 780279,
+          "minOSVersion": "26.0"
+        },
         {
           "version": "0.8",
           "buildVersion": "34",
@@ -4175,6 +4314,15 @@
         }
       },
       "versions": [
+        {
+          "version": "0.1.15",
+          "buildVersion": "21",
+          "date": "2026-11-13",
+          "localizedDescription": "小浣熊阅读 0.1.15 (build 21)\n更新发现页、书架空状态、书源管理、阅读记录和阅读统计的布局与插画；书源多选支持批量删除；漫画图片支持按顺序阅读、失败重试和位置恢复；完善搜索与发现的分页和请求隔离，支持 yuedu 导入链接；完善书架分组排序、追更过滤和换源保存；支持 TXT 重新分章与单书段落重排；修复目录和阅读进度在失败或并发操作时互相覆盖的问题。",
+          "downloadURL": "https://github.com/Aminark/legado-ios/releases/download/v0.1.15/legado-ios-v0.1.15-build21-unsigned.ipa",
+          "size": 16291029,
+          "minOSVersion": "15.0"
+        },
         {
           "version": "0.1.14",
           "buildVersion": "20",
