@@ -562,15 +562,6 @@
           "minOSVersion": "17.4",
           "localizedDescription": "Automated nightly build for community testing (unsigned).\n\nEvery download is named `ARMSX2-nightly-DATE-COMMIT-PLATFORM`, so builds\nfrom different nights stay distinguishable after you have downloaded them.\n\n- macOS arm64: macOS-arm64.tar.xz\n- Linux arm64: Linux-arm64-4K-pages.AppImage on most distros, or the 16K one on Asahi Linux and other Apple Silicon kernels (run getconf PAGESIZE if unsure)\n- Windows arm64: Windows-arm64.zip\n- RetroArch on Linux arm64: Linux-arm64-libretro-core.tar.zst, a 4K-page build\n- Bare-display kmsdrm handhelds: Linux-arm64-SDL-handheld.tar.zst, a 4K-page build (Rocknix and Batocera run compositors, so use the Qt AppImage there instead)\n- Android: Android-arm64.apk (installs as ARMSX2 Nightly, alongside the stable app)\n- iOS: iOS-arm64.ipa, unsigned, sideload it (installs as ARMSX2 Nightly, alongside the stable app)\n\nComing from an old nightly? Nightlies are now a separate app, ARMSX2 Nightly, next to stable.\n\n- Android: stable cannot install over an old nightly. Back up your saves and memory cards, uninstall the old nightly, then install the stable APK.\n- iOS: your old nightly is the ARMSX2 iOS app and still has your saves. Copy them into ARMSX2 Nightly with the Files app.\n\n## What's new\n- microVU0: compute the VU1 register window's address at run time\n- Tests: a persisted VU0 program that uses the window onto VU1's registers\n- Android: link the core with emulated TLS when the minimum API is below 29\n- iOS: give the layout editor and the manifest skin their own views\n- iOS: split the patch and skin library stores by their own sections\n- iOS: split navigation and gameplay views into one file per view\n- iOS: split the controls and skin files along their types\n- iOS: split the dynamic backgrounds into one file per background\n\nFull changelog: https://github.com/ARMSX2/ARMSX2/compare/nightly-20261112...37ed35b88fe9a0164369c8042f2c9aa707e33667",
           "buildVersion": "260"
-        },
-        {
-          "version": "2.6.0-nightly.20261023.1332",
-          "date": "2026-10-23",
-          "downloadURL": "https://github.com/ARMSX2/ARMSX2/releases/download/nightly-20261023/ARMSX2-nightly-20261023-90126bdfea-iOS-arm64.ipa",
-          "size": 40376158,
-          "minOSVersion": "17.4",
-          "localizedDescription": "Automated nightly build for community testing (unsigned).\n\nEvery download is named `ARMSX2-nightly-DATE-COMMIT-PLATFORM`, so builds\nfrom different nights stay distinguishable after you have downloaded them.\n\n- macOS arm64: macOS-arm64.tar.xz\n- Linux arm64: Linux-arm64-4K-pages.AppImage on most distros, or the 16K one on Asahi Linux and other Apple Silicon kernels (run getconf PAGESIZE if unsure)\n- Windows arm64: Windows-arm64.zip\n- RetroArch on Linux arm64: Linux-arm64-libretro-core.tar.zst, a 4K-page build\n- Bare-display kmsdrm handhelds: Linux-arm64-SDL-handheld.tar.zst, a 4K-page build (Rocknix and Batocera run compositors, so use the Qt AppImage there instead)\n- Android: Android-arm64.apk (installs as ARMSX2 Nightly, alongside the stable app)\n- iOS: iOS-arm64.ipa, unsigned, sideload it (installs as ARMSX2 Nightly, alongside the stable app)\n\nComing from an old nightly? Nightlies are now a separate app, ARMSX2 Nightly, next to stable.\n\n- Android: stable cannot install over an old nightly. Back up your saves and memory cards, uninstall the old nightly, then install the stable APK.\n- iOS: your old nightly is the ARMSX2 iOS app and still has your saves. Copy them into ARMSX2 Nightly with the Files app.\n\n## What's new\n- Android: ARMSX2_BUILD_EERUNNER requires ENABLE_RECOMPILER_TEST_HOOKS\n- Android: add the USE_PERF_JITDUMP build option\n- Android: make pcsx2-eerunner buildable as an NDK executable\n- Android: regenerate the PGO profile on the Adreno 722 source\n- Android PGO: record internal-linkage functions by file name, not build path\n- GS: trim one native pixel off each edge when upscaling 2x or more\n- GameDB: nativeCounterDraws for Shadow of the Colossus\n- GS: nativeCounterDraws, draw colour-wrap counter draws at native resolution\n- GameDB: OPHFlagHack for Shadow of the Colossus, as NetherSX2 has it\n\nFull changelog: https://github.com/ARMSX2/ARMSX2/compare/nightly-20261022...90126bdfea7a3ffb1fd288b2f7f0ae0b033af2d6",
-          "buildVersion": "260"
         }
       ],
       "appPermissions": {
@@ -787,15 +778,6 @@
           "minOSVersion": "27.0",
           "localizedDescription": "EhPanda 3.0 is rebuilt with a new look.\r\n\r\n- Download galleries to read offline, sort them into folders, and keep downloading in the background.\r\n- Jump to galleries around any date with Seek to Date.\r\n- Log in with your username and password again, even behind a Cloudflare check.\r\n- Report comments, see a warning before posting, and block users.\r\n- Larger text, VoiceOver and Voice Control now work across the app.\r\n- Every screen rotates with your device, so the Enables landscape setting is gone.\r\n- The Auto-Lock setting is gone. To lock EhPanda, touch and hold its icon, then choose Require Face ID or Require Touch ID.\r\n- On first launch, you confirm you're an adult and choose how much anonymous usage data to share.\r\n- WebP images now display, and many bugs are fixed.\r\n\r\nhttps://ehpanda.app\r\n\r\n<details>\r\n<summary>Deutsch</summary>\r\n\r\nEhPanda 3.0 ist neu gebaut, mit neuem Design.\r\n\r\n- Lade Galerien zum Offline-Lesen herunter, sortiere sie in Ordner und lade im Hintergrund weiter.\r\n- Mit „Zu Datum springen“ gelangst du zu Galerien rund um ein beliebiges Datum.\r\n- Melde dich wieder mit Benutzername und Passwort an, auch hinter einer Cloudflare-Prüfung.\r\n- Du kannst Kommentare melden, vor dem Posten einen Hinweis sehen und Personen blockieren.\r\n- Größere Schrift, VoiceOver und Sprachsteuerung funktionieren jetzt in der ganzen App.\r\n- Jeder Bildschirm dreht sich mit deinem Gerät, daher entfällt die Einstellung „Enables landscape“.\r\n- Die Einstellung „Auto-Lock“ entfällt. Um EhPanda zu sperren, halte das Symbol gedrückt und wähle „Face ID anfordern“ oder „Touch ID anfordern“.\r\n- Beim ersten Start bestätigst du, dass du erwachsen bist, und wählst, wie viele anonyme Nutzungsdaten du teilst.\r\n- WebP-Bilder werden jetzt angezeigt, dazu viele Fehlerbehebungen.\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>日本語</summary>\r\n\r\nEhPanda 3.0 は新しいデザインで生まれ変わりました。\r\n\r\n- ギャラリーをダウンロードしてオフラインで読めます。フォルダで整理でき、バックグラウンドでもダウンロードが続きます。\r\n- 「日付へ移動」で、指定した日付前後のギャラリーに移動できます。\r\n- Cloudflare の確認がある場合でも、ユーザー名とパスワードで再びログインできるようになりました。\r\n- コメントの通報、投稿前の注意表示、ユーザーのブロックに対応しました。\r\n- 大きな文字サイズ、VoiceOver、音声コントロールがアプリ全体で使えるようになりました。\r\n- すべての画面がデバイスの向きに合わせて回転するため、「横向きを有効」の設定は廃止しました。\r\n- 「自動ロック」の設定は廃止しました。EhPanda をロックするには、アイコンを長押しして「Face IDを必要にする」または「Touch IDを必要にする」を選んでください。\r\n- 初回起動時に、成人であることの確認と、匿名の利用データをどこまで共有するかの選択を行います。\r\n- WebP 画像に対応し、多数の不具合を修正しました。\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>한국어</summary>\r\n\r\nEhPanda 3.0이 새로운 디자인으로 다시 만들어졌습니다.\r\n\r\n- 갤러리를 다운로드해 오프라인으로 읽고, 폴더로 정리하고, 백그라운드에서도 계속 다운로드할 수 있습니다.\r\n- '날짜로 이동'으로 원하는 날짜 전후의 갤러리로 이동할 수 있습니다.\r\n- Cloudflare 확인이 있어도 다시 사용자 이름과 비밀번호로 로그인할 수 있습니다.\r\n- 댓글 신고, 게시 전 경고, 사용자 차단을 지원합니다.\r\n- 더 큰 텍스트, VoiceOver, 음성 제어를 이제 앱 전체에서 사용할 수 있습니다.\r\n- 모든 화면이 기기 방향에 맞춰 회전하므로 'Enables landscape' 설정이 제거되었습니다.\r\n- '앱 자동 잠금' 설정이 제거되었습니다. EhPanda를 잠그려면 아이콘을 길게 터치한 다음 'Face ID 요구' 또는 'Touch ID 요구'를 선택하세요.\r\n- 처음 실행할 때 성인인지 확인하고, 익명 사용 데이터를 얼마나 공유할지 선택합니다.\r\n- WebP 이미지를 지원하고 여러 문제를 수정했습니다.\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>简体中文</summary>\r\n\r\nEhPanda 3.0 全新打造，焕然一新。\r\n\r\n- 下载画廊离线阅读，整理到文件夹，切到后台也能继续下载。\r\n- 使用“跳转到日期”，前往任意日期前后的画廊。\r\n- 即使遇到 Cloudflare 验证，也能再次使用用户名和密码登录。\r\n- 可以举报评论，发布前会看到提醒，还可以屏蔽用户。\r\n- 更大字体、旁白和语音控制现已适用于整个应用。\r\n- 所有页面都会随设备旋转，因此移除了“启用横屏”设置。\r\n- “自动锁定”设置已移除。如需锁定 EhPanda，请按住图标，然后选择“需要面容 ID”或“需要触控 ID”。\r\n- 首次启动时，需确认你已成年，并选择分享多少匿名使用数据。\r\n- 支持 WebP 图片，并修复了许多问题。\r\n\r\n</details>\r\n\r\n<details>\r\n<summary>繁體中文</summary>\r\n\r\nEhPanda 3.0 全新打造，煥然一新。\r\n\r\n- 下載畫廊離線閱讀、整理到資料夾，切到背景也能繼續下載。\r\n- 使用「前往日期」，前往任何日期前後的畫廊。\r\n- 即使遇到 Cloudflare 驗證，也能再次使用使用者名稱和密碼登入。\r\n- 可以檢舉留言，發布前會看到提醒，也可以封鎖使用者。\r\n- 更大的文字、旁白和語音控制現在適用於整個 App。\r\n- 所有畫面都會隨裝置旋轉，因此移除了「啟用橫向顯示」設定。\r\n- 「自動鎖定」設定已移除。如需鎖定 EhPanda，請按住圖像，然後選擇「需要 Face ID」或「需要 Touch ID」。\r\n- 首次啟動時，需要確認你已成年，並選擇要分享多少匿名使用資料。\r\n- 支援 WebP 圖片，並修正了許多問題。\r\n\r\n</details>\r\n",
           "buildVersion": "163"
-        },
-        {
-          "version": "3.0.0",
-          "date": "2026-08-20",
-          "downloadURL": "https://github.com/EhPanda-Team/EhPanda/releases/download/3.0.0/EhPanda.ipa",
-          "size": 10143094,
-          "minOSVersion": "26.0",
-          "localizedDescription": "Features\n• Offline downloads. Save galleries to your device and read them with no connection. Sort them into folders, and let the app repair a download that got interrupted or update it later. Downloads keep going while the app is in the background and won't get cut off partway.\n• Date Seek. Jump straight to a specific date while paging through a gallery. It works on the Frontpage, Watched and Favorites lists.\n• WebP images are now supported.\n• Redesigned toasts. Progress and status messages (lo",
-          "buildVersion": "158"
         },
         {
           "version": "2.8.1",
@@ -3208,14 +3190,6 @@
           "size": 309251326,
           "localizedDescription": "• X updated to v12.43",
           "buildVersion": "23"
-        },
-        {
-          "version": "12.37",
-          "date": "2026-10-24",
-          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/Twitter.v12.37.+.NFB.v7.2.0.ipa",
-          "size": 265803606,
-          "localizedDescription": "• X updated to v12.37",
-          "buildVersion": "28"
         }
       ],
       "appPermissions": {
@@ -3271,14 +3245,6 @@
           "size": 251133088,
           "localizedDescription": "• Facebook updated to v587.0.0",
           "buildVersion": "1110946418"
-        },
-        {
-          "version": "586.0.0",
-          "date": "2026-11-05",
-          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/Facebook.v586.0.0.+.iQFace.ipa",
-          "size": 248198767,
-          "localizedDescription": "• Facebook updated to v586.0.0",
-          "buildVersion": "1106861720"
         },
         {
           "version": "585.0.0",
@@ -3365,14 +3331,6 @@
           "size": 521461976,
           "localizedDescription": "• TikTok updated to v47.6.0",
           "buildVersion": "476038"
-        },
-        {
-          "version": "47.5.0",
-          "date": "2026-10-27",
-          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/TikTok.v47.5.0.+.RXTikTok.v2.0.4.ipa",
-          "size": 531863321,
-          "localizedDescription": "• TikTok updated to v47.5.0",
-          "buildVersion": "475038"
         }
       ],
       "appPermissions": {
