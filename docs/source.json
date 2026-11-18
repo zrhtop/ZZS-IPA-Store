@@ -272,6 +272,15 @@
       },
       "versions": [
         {
+          "version": "1.0.23",
+          "buildVersion": "75",
+          "date": "2026-11-16",
+          "localizedDescription": "• 优化本机配对和重新配对：新配对使用随机主机身份并与新密钥保持一致，已有正常配对在普通启动和定位重连时保持不变；配对端口同时支持 IPv4 和 IPv6。\n• 重置流程等待旧配对、记录保存/导入和定位停止完成后再删除并核验本地记录，防止旧任务恢复已配对状态。\n• 修复迟到的广播回调可能隐藏配对码、启动前取消请求丢失的问题，增加配对超时和阶段诊断。\n• 在系统设置发起配对后，请返回 WrapPin 查看配对码，再回设置输入。",
+          "downloadURL": "https://github.com/suversal/WrapPin/releases/download/v1.0.23/WrapPin-Standard-1.0.23-build75-unsigned.ipa",
+          "size": 6936160,
+          "minOSVersion": "18.0"
+        },
+        {
           "version": "1.0.22",
           "buildVersion": "74",
           "date": "2026-11-12",
@@ -4457,6 +4466,15 @@
         }
       },
       "versions": [
+        {
+          "version": "2.1.0",
+          "buildVersion": "1",
+          "date": "2026-11-16",
+          "localizedDescription": "SideInstaller 2.1.0 (build 1)\n新增签名团队选择：Apple 账号属于多个开发者团队时（付费 Apple Developer Program 或公司团队，除每个账号都有的免费团队外），首次会询问用哪个团队签名，并按 Apple ID 记住选择，用于安装、刷新、证书与权限管理；在 Settings › Account 滑动 Apple ID 点 Team 可重新选择。",
+          "downloadURL": "https://github.com/FrizzleM/SideInstaller/releases/download/v2.1.0/SideInstaller.ipa",
+          "size": 10860622,
+          "minOSVersion": "17.4"
+        },
         {
           "version": "2.0.1",
           "buildVersion": "1",
