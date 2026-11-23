@@ -11848,6 +11848,226 @@
           "localizedDescription": "Added Apple TV wireless pairing."
         }
       ]
+    },
+    {
+      "name": "Cloudn",
+      "bundleIdentifier": "com.mengangs.Cloudn",
+      "developerName": "mengangs",
+      "subtitle": "网盘分享与短视频高速解析下载",
+      "localizedDescription": "粘贴分享链接，浏览并高速下载网盘文件与短视频，所有解析在手机本地完成，无服务器不收集数据。",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Cloudn/icon.png",
+      "tintColor": "#B4532F",
+      "category": "utilities",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSPhotoLibraryAddUsageDescription": "用于把下载的图片和视频保存到相册"
+        }
+      },
+      "versions": [
+        {
+          "version": "1.4.2",
+          "buildVersion": "15",
+          "date": "2026-11-14",
+          "downloadURL": "https://github.com/mengangs/Cloudn/releases/download/v1.4.2/Cloudn-v1.4.2.ipa",
+          "size": 9034290,
+          "minOSVersion": "17.0",
+          "localizedDescription": "# Cloudn 1.4.2\n\n这一版新增 SideStore / AltStore 侧载软件源支持，修复 Instagram 网页登录点「完成」卡住的问题，并带来多项稳定性、解析与性能优化。\n\n## 新增与改进\n\n- **SideStore / AltStore 软件源**：新增 [altstore.json](https://raw.githubusercontent.com/mengangs/Cloudn/main/altstore.json) 订阅源并在发版时自动更新；在「设置 › 更新 › 添加侧载软件源」中可一键添加到 SideStore / AltStore 或复制源地址。\n- **Instagram 网页登录修复**：支持从 `sessionid` 提取用户 ID 并补全 `ds_user_id`，实时合并页面 `document.cookie`，放宽非登录页重定向时的校验误判，并在未检测到登录态或校验失败时弹出明确提示。\n- **并发与稳定性优化**：加强下载与解析任务防重入保护、完善各网盘/视频解析器与分享扩展边界处理，提升列表滚动、实时活动与无障碍体验。\n\n## 安装\n\n推荐通过 SideStore / AltStore 订阅本仓库软件源直接接收更新；也可下载下方附件里的 `Cloudn-v1.4.2.ipa` 自行签名后安装（需要 iOS 17 及以上）。"
+        }
+      ]
+    },
+    {
+      "name": "Dartotsu",
+      "bundleIdentifier": "ani.aayush262.dartotsu",
+      "developerName": "aayush2622",
+      "subtitle": "Multiplatform anime and manga tracking client",
+      "localizedDescription": "A Flutter rewrite of Dantotsu: track and manage your anime, manga and novel lists across AniList, MyAnimeList, Simkl, Kitsu, MangaBaka and MangaUpdates, on Android, iOS, Windows, Linux and macOS.",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Dartotsu/icon.png",
+      "tintColor": "#20C0F0",
+      "category": "other",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSCameraUsageDescription": "The camera scans a book barcode to find the manga or novel.",
+          "NSFaceIDUsageDescription": "Unlock the app with Face ID.",
+          "NSLocalNetworkUsageDescription": "Dartotsu looks for TVs and Chromecasts on your network to cast videos to them."
+        }
+      },
+      "versions": [
+        {
+          "version": "1.2.1",
+          "buildVersion": "1.2.1",
+          "date": "2026-11-10",
+          "downloadURL": "https://github.com/aayush2622/Dartotsu/releases/download/v1.2.1/Dartotsu-iOS-v1.2.1.ipa",
+          "size": 86846398,
+          "minOSVersion": "15.0",
+          "localizedDescription": "### 🎉 New Features\n* [4ac32da0](https://github.com/aayush2622/Dartotsu/commit/4ac32da0): feat: editable keyboard shortcuts for the app, player and reader with a settings screen and per group switches\n* [51b1a2d7](https://github.com/aayush2622/Dartotsu/commit/51b1a2d7): feat: community lists, disable skips, hoster grouping, Simkl movies & series mode\n* [5d387f41](https://github.com/aayush2622/Dartotsu/commit/5d387f41): feat: add Anime-Planet service, private-aware list sync and prequel/sequel cards\n* [5a5a3731](https://github.com/aayush2622/Dartotsu/commit/5a5a3731): feat: finished videos move into the chosen folder and play through a file descriptor\n* [00421b14](https://github.com/aayush2622/Dartotsu/commit/00421b14): feat: ask for a folder whenever something needs saving and no storage permission or folder is set\n* [6ef84d60](https://github.com/aayush2622/Dartotsu/commit/6ef84d60): feat: pick a storage folder with the system picker instead of all-files access, finished downloads, back"
+        }
+      ]
+    },
+    {
+      "name": "Fladder",
+      "bundleIdentifier": "nl.jknaapen.fladder",
+      "developerName": "DonutWare",
+      "subtitle": "A cross-platform Jellyfin frontend built on Flutter",
+      "localizedDescription": "A cross-platform Jellyfin frontend built on top of Flutter, for iOS. Stream or sync media locally, switch between multiple servers and profiles, and download items with their progress kept in sync.",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Fladder/icon.webp",
+      "tintColor": "#F04040",
+      "category": "other",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "versions": [
+        {
+          "version": "0.12.1",
+          "buildVersion": "884",
+          "date": "2026-11-20",
+          "downloadURL": "https://github.com/DonutWare/Fladder/releases/download/v0.12.1/Fladder-iOS-0.12.1.ipa",
+          "size": 36768050,
+          "minOSVersion": "15.0",
+          "localizedDescription": "## 📋 What's Changed\n\n>INFO\n0.12.1 is a hot-fix for Linux users, specifically those using Nvidia gpus. Flutter contained a bug causing the screen to render at 1/4 of the actual window size. Other platforms remain the same as 0.12.0\n\nThis was supposed to be a small release that improves performance for low-end devices I swear.\n\n## Performance Improvements\nFladder now checks the device available RAM and adjusts accordingly disabling things that might overfill the memory, all of this can be tweaked later on by the user in Settings -> Fladder.\nThere where also a lot of small performance improvements throughout the app no matter the device or settings.\n<img width=\"1017\" height=\"78\" alt=\"image\" src=\"https://github.com/user-attachments/assets/04030c2b-b5c2-47ba-82ba-9f47998f5e56\" />\n\n## Improved library filters\n - Library filters can now be added to the home-screen and/or side \n - Filter settings sync to your Jellyfin account so they are shared between devices\n - Small bugfixes to how the filt"
+        }
+      ]
+    },
+    {
+      "name": "iRAM+",
+      "bundleIdentifier": "novadev.iram-plus",
+      "developerName": "NexSideloading",
+      "subtitle": "Enable Increased Memory Limit for sideloaded apps on device",
+      "localizedDescription": "Grant sideloaded apps the Increased Memory Limit and Extended Virtual Addressing entitlements directly on device: sign in with the Apple Account that signed them, pick an app and add the entitlement, then reinstall it. Works only with apps signed by an Apple account, not with enterprise certificates.",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/iRAM-Plus/icon.png",
+      "tintColor": "#64BE7E",
+      "category": "utilities",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "versions": [
+        {
+          "version": "1.3.1",
+          "buildVersion": "7",
+          "date": "2026-09-18",
+          "downloadURL": "https://github.com/NexSideloading/iRAM-Plus/releases/download/v1.3.1/iRAM-Plus.ipa",
+          "size": 4562979,
+          "minOSVersion": "16.0",
+          "localizedDescription": "Hey everyone,\nSorry for not working on or updating this app in a while, but this release fixes the -80045 sign in issue and other bugs!"
+        }
+      ]
+    },
+    {
+      "name": "MD3Music",
+      "bundleIdentifier": "com.md3music.md3music",
+      "developerName": "EPXiaohua",
+      "subtitle": "基于酷狗音乐 API 的 Material 3 音乐播放器",
+      "localizedDescription": "基于酷狗音乐 API 的 Flutter 音乐播放器，内置嵌入式 Rust API 服务器，无需外部服务器即可使用。提供 MD3 与 Apple Music 风格播放页、逐字歌词与多种音频输出能力。",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/MD3Music-iOS/icon.png",
+      "tintColor": "#4F7BCF",
+      "category": "other",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSCameraUsageDescription": "需要访问相机以拍摄歌单截图",
+          "NSLocalNetworkUsageDescription": "需要访问本地网络以使用 DLNA 投屏和局域网封面共享功能",
+          "NSMicrophoneUsageDescription": "需要访问麦克风以使用录音功能",
+          "NSPhotoLibraryAddUsageDescription": "需要保存图片到相册",
+          "NSPhotoLibraryUsageDescription": "需要访问相册以导入歌单截图"
+        }
+      },
+      "versions": [
+        {
+          "version": "6.2.0",
+          "buildVersion": "53",
+          "date": "2026-11-09",
+          "downloadURL": "https://github.com/EPXiaohua/MD3Music-iOS/releases/download/v6.2.0%2B53/MD3Music-3D-unsigned.ipa",
+          "size": 59561466,
+          "minOSVersion": "15.0",
+          "localizedDescription": "## 已知问题\n\n- **切歌无声 / 上一首残留问题仍存在**：本版已尝试根治（原生层播放/暂停去早退、切歌意图确立后立即静音旧源、挂起后死亡播放器自愈），真机实测概率性仍可复现——后续版本继续排查\n\n## 上游 6.2.0 移植\n\n- 版本号与上游对齐（6.2.0+53），全量同步上游 md3Music 6.2.0：播放链路重构（本地 API 服务器新增响度参数与预热、媒体会话收敛）、依赖更新（m3_expressive、ort_dart、image、sqflite_common_ffi 等）、桌面小组件服务调整与全部上游修复\n- just_audio 播放内核同步至上游版本，iOS fork 补丁（音频焦点中断转发、均衡器挂载、辅助播放器）全部保留并适配新接口\n\n## iOS 修复\n\n- **iOS 26 桌面小组件按钮全部无响应修复**：iOS 26 弃用了在 extension 中设置 `openAppWhenRun` 的行为（点击 intent 根本不执行）；按钮 intent 改为双 target 共享 + 新 `supportedModes` 属性。播放控制类按钮（播放/暂停、上下曲、FM 控制等）现走系统后台执行协议——**点组件直接切歌，不再跳转打开 app**\n- **短暂挂起回前台后播放不了修复**：挂起会触发系统媒体服务重置，播放器实例死亡但应用状态未更新，点播放走快路径无声无错。新增前台死亡观察：播放中但进度 10 秒不动的判定为死播放器，自动重建并恢复到原进度（锁屏/切后台几分钟后回来自动恢复）\n- **挂起恢复后搜索/解析全部失败修复**：挂起后本地 API 服务器工作线程死亡而监听端口残留，旧探测方式被内核代答误判「服务正常」且永不自愈；探测改为真实 HTTP 请求，回前台主动健康检查并按需重建服务\n- **3D 封面系列修复**：iOS 缓存目录异常曾导致推理链路完全静默失败（不推理也无提示），失败原因现已对用户可见；脏缓存条目（索引在、文件丢）被误判为「设备不支持 shader」导致全进程降级多层视差的问题修复——缓存命中增加完整性校验，缺失自动重新推理\n- **歌词画中画修复**：双行布局在较大字号下上下顶边裁切（行距超界），改为按剩余空间三等分居中——任何字号、单双行都完整居中\n- **显示大小**：调整后未点「保留」就杀后"
+        }
+      ]
+    },
+    {
+      "name": "Rich4Renew",
+      "bundleIdentifier": "pro.areu.rich4",
+      "developerName": "iam567",
+      "subtitle": "大富翁4 高清重制版，新增歌舞伎町地图与大富豪模式",
+      "localizedDescription": "《大富翁4》的高清重制版：Vite + TypeScript 重写的游戏本体，Capacitor 打包成 iOS App，规则依原版反组译还原，并加入新玩法「大富豪模式」与新地图「歌舞伎町」。支持 iPhone 与 iPad，iOS 15.0 及以上。",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Rich4Renew/icon.webp",
+      "tintColor": "#F0D020",
+      "category": "games",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSLocalNetworkUsageDescription": "派對模式需要連到同一個 Wi-Fi 裡朋友的手機或電腦，一起玩同一局。",
+          "NSPhotoLibraryAddUsageDescription": "把遊戲結算畫面儲存到相簿。"
+        }
+      },
+      "versions": [
+        {
+          "version": "1.2.4",
+          "buildVersion": "55",
+          "date": "2026-11-16",
+          "downloadURL": "https://github.com/iam567/rich4-renew-app/releases/download/v1.2.4/rich4-1.2.4-unsigned.ipa",
+          "size": 1445804612,
+          "minOSVersion": "15.0",
+          "localizedDescription": "## 谢谢大家\n谢谢每一位在玩、在报 bug、在评论区出主意的朋友，是大家的支持让这个重制版一路更新到现在。\n\n这个重制版一开始只是我用公司给的无限 token，自己做着自己玩的；没想到承蒙大家喜爱，被大家无私地越传越广。**这个游戏属于每一位喜欢大富翁4的玩家：永远不收任何费用，也不做任何商业用途，大家尽管拿去玩就好。**\n\n**1.3 的新地图正在制作中**，工作量比较大，下一个版本要隔比较长的一段时间才会发布。这段时间里，1.2.4 就是大家的主力版本：\n\n- **遇到 bug 或小问题**：可以直接在 [Issues](https://github.com/iam567/rich4-renew-app/issues) 提交，也可以在 B 站 UP 主 **TrustBox**、**阿姆西_MC** 发布的大富翁4 重制版视频下面留言。各个评论区我都会看，能修的一定会修。\n- **在线更新很慢或失败**：这个我暂时没办法解决。在国内提供下载需要办理备案，我个人没办法申请，所以国内的朋友在线更新时请先开代理；或者直接下载这个页面的安装包覆盖安装，效果一样，存档也会保留。\n\n再次感谢大家，我们 1.3 见！\n\n> **1.2.4 是 1.2 之后几个小版本的合集，这次最大的新功能是「排行榜」。** 已经装了 1.2.x 的玩家，在游戏里在线更新就能升到 1.2.4，不用重新下载；新玩家、或者在线更新一直不成功的，直接下载下面的安装包覆盖安装就行，存档、设置都会保留（保险起见，可以先在「游戏设置 → 存档备份」导出一份）。\n\n## v1.2.4 更新内容\n\n- **新增：排行榜。** 标题画面「图鉴」下面多了「排行榜」按钮：\n  - 四个榜：最富榜（通关时资产最多）、最快榜（通关用时最短）、最狠榜、最惨榜；每张地图、每个难度各自排名，显示前 50 名，自己的最好成绩固定在最下面。\n  - 「开始游戏」里 1 个玩家打 3 个电脑、让所有电脑破产，就可能上榜。打进前 50 名会跳出「新纪录」：填名字，选地区（各省、香港、澳门、台湾，海外可以再选国家），还可以留一个社交账号（抖音、B站、YouTube 等，最多 16 个字），显示在排行榜上让大家来找你挑战。上榜后名字、地区和账号都不能再修改。\n  - 最狠榜和最惨榜怎么算分，排行榜里按「怎么算分」可以看。\n  - 为了"
+        }
+      ]
+    },
+    {
+      "name": "Simple Live",
+      "bundleIdentifier": "com.xycz.simple-live",
+      "developerName": "June6699",
+      "subtitle": "支持弹幕与 IPTV 的开源多平台直播聚合播放器",
+      "localizedDescription": "简简单单的看直播（Simple Live）是一款使用 Flutter 开发的开源多平台直播聚合播放器，支持虎牙、斗鱼、哔哩哔哩、抖音、快手等平台的直播与弹幕，并内置公开的 IPTV 直播源。支持关注、标签、历史与弹幕屏蔽词，配置可导入导出，并可通过房间服务、局域网或 WebDAV 同步。",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/SimpleLive/icon.png",
+      "tintColor": "#24A7EB",
+      "category": "other",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {
+          "NSCameraUsageDescription": "用于扫描二维码",
+          "NSLocalNetworkUsageDescription": "用于在同一局域网内发现并连接其他 Simple Live 设备进行数据同步",
+          "NSPhotoLibraryAddUsageDescription": "保存直播截图至相册",
+          "NSPhotoLibraryUsageDescription": "保存图片至相册"
+        }
+      },
+      "versions": [
+        {
+          "version": "1.13.3",
+          "buildVersion": "11303",
+          "date": "2026-11-08",
+          "downloadURL": "https://github.com/June6699/dart_simple_live/releases/download/v1.13.3/ios_no_sign.ipa",
+          "size": 35414735,
+          "minOSVersion": "13.0",
+          "localizedDescription": "# Simple Live v1.13.3 更新速览\n\n发布日期：2026-10-25\n\n本版主题：发热优化、Windows 退出修复、桌面端快捷键中文输入法适配、B站弹幕缺失修复与虎牙 4K 断流调查结论。2026-11-01 追加全屏四角时钟（#160），2026-11-02 追加音量增强与音量手势修复（#161），2026-11-03 修复抖音部分房间登录墙导致进不去、关注页刷不出，2026-11-08 追加 iOS 系统画中画、取消关注不再触发全量刷新（#163）与 WebDAV 恢复 500 根因修复（#164）。\n\n经过19次构建，终于解决了，连media_kit都没解决的iOS PIP问题，在一个PR中，获得了思路，经过一些修复，与我们项目实现了兼容。\n\n在此，感谢各位提供日志的用户：@laobai95 等等多位用户（请在群内提供git用户名）。\n## 省电模式（新增，默认关闭）\n\n- 针对安卓端观看时发热严重的反馈，新增一键「省电模式」（设置 → 直播间设置 → 播放器，置于首位）：视频缩放降档（均衡 → bilinear、画质 → spline36）、弹幕限 60 帧、关闭弹幕描边、放宽安卓播放检测频率、多开上限 4 个且压至最低清晰度。\n- 默认关闭，关闭时所有行为与 v1.13.2 完全一致；打开后进入下一个直播间生效。全端开关一致可见（iOS 上为弹幕部分生效）。\n\n## 弹幕渲染降耗\n\n- 弹幕描边开关（默认开）：关闭后每条弹幕少一次整段文本绘制，弹幕越密越省。\n- 帧率上限（默认跟随屏幕）：高刷屏可限 60 帧，视觉无差异、GPU 负担约减半。\n- 修复「描边宽度」设置从未生效的问题（渲染侧此前硬编码为 2）。\n- 弹幕层透明度改为逐条并入颜色 alpha，去掉整层离屏合成（视觉不变）。\n\n## 性能与修复\n\n- 高热房间 CPU：屏蔽词正则从「每条消息每个词重新编译」改为编译一次缓存，消息量越大收益越明显。\n- Windows 退出修复：关闭应用时偶发的「快速异常检测失败」fast-fail 弹窗与进程挂死；本地 fork media_kit_video Windows 部分，纹理与 mpv render context 释放改为同步等待，退出时等待 mpv 关停。\n- 关闭窗口弹「Unknown Hard Error」：装有搜狗输入法"
+        }
+      ]
+    },
+    {
+      "name": "WQManager",
+      "bundleIdentifier": "mumu.pduola.WQManager",
+      "developerName": "hseons",
+      "subtitle": "无需越狱的 App 数据备份与缓存清理工具",
+      "localizedDescription": "一款面向 iOS 26+ 的开源 App 数据管理、备份与单应用缓存清理工具，无需越狱。可把某个 App 的数据目录打包成可校验的备份并写回原 App，也能只清理所选 App 的缓存与临时目录。所有数据都在本机处理，没有账号、没有统计、没有云端。",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/WQManager/icon.png",
+      "tintColor": "#242529",
+      "category": "utilities",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "versions": [
+        {
+          "version": "0.5",
+          "buildVersion": "1",
+          "date": "2026-11-18",
+          "downloadURL": "https://github.com/hseons/WQManager/releases/download/v0.5.0/WQManager-0.5-build1-unsigned.ipa",
+          "size": 952702,
+          "minOSVersion": "26.0",
+          "localizedDescription": "显示版本 **0.5**，构建 **1**；内部发布修订 **0.5.0**。\n\n这个版本的主题是「找得到、看得懂、拿得走」：\n\n- **全局文件搜索**：跨 App 搜索用户文件，结果边扫边出；支持文件名 / 相对路径 / App 名、类型与最小大小筛选、路径 / 大小 / 最新排序。结果可原地预览或打开所在目录，扫描中可取消。\n- **空间变化**：按「较上次 / 近 7 天 / 近 30 天」比较，按增长排序并显示合计占用与净变化；新增全部 App 合计趋势图，单 App 详情保留当前大小、较上次、近 7 天与扫描历史。\n- **文件审计与导出**：大文件 / 重复文件按 App 分组，重复项经 SHA-256 确认；清理时每个 App 至少保留一份，删除进入空间透镜回收站。导出中心可分享或存储到「文件」，目标写入完成才记成功，取消 / 失败会清理临时目录。\n- **安全与一致性**：跨 App 的相同文件不再被当成可互相替代；重复清理不能选中某个 App 的最后一份；上次中断的导出在重开后显示「已中断」；清理 14 个无用本地化 key，中英文 813 个 key 对齐。\n- **界面**：修复空间变化页底部被悬浮 Tab Bar 遮挡；补充全局搜索、空间趋势、导出选择面板的中英文文案。\n\n验证：23 个本地测试程序、9 条模拟器 UI 流程、Debug 模拟器与 Release arm64 构建、`xcodebuild analyze` 全部通过，编译警告 0 条。\n\n已知边界：本轮 IPA 未签名，未在真机安装；超大 App 的冷扫描耗时、App Group 签名、分享 / 存储到「文件」以及强制中断场景仍需真机验收。空间趋势样本不足时显示「—」，这是预期行为。\n\n**遇到问题或有建议，欢迎到 [GitHub Issues](https://github.com/hseons/WQManager/issues) 提出**。请尽量附上系统版本、App 名称、复现步骤和截图；崩溃日志可配合附件中的 dSYM 定位。\n\n附件为**未签名 IPA**、SHA-256 和 dSYM，请按项目说明保留 App Group 权限重新签名后安装。"
+        }
+      ]
     }
   ],
   "news": [],
