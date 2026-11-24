@@ -6286,6 +6286,7 @@
       "name": "PokeMMO",
       "bundleIdentifier": "eu.pokemmo.client",
       "developerName": "PokeMMO",
+      "iconURL": "https://forums.pokemmo.com/uploads/monthly_2022_03/apple-touch-icon-180x180.png",
       "localizedDescription": "PokeMMO is a free to play mmorpg, come join a growing community as you level up and discover new monsters. Available now on PC, Android, iOS, Mac, and Linux.",
       "tintColor": "73ACE2",
       "screenshotURLs": [
@@ -6484,6 +6485,7 @@
       "name": "VCMI",
       "bundleIdentifier": "eu.vcmi.vcmiclient",
       "developerName": "VCMI Team",
+      "iconURL": "https://github.com/vcmi/vcmi/raw/develop/clientapp/icons/vcmiclient.512x512.png",
       "subtitle": "Heroes of Might & Magic III engine",
       "localizedDescription": "VCMI is a open source cross-platform HoMM3 engine written from scratch. \n\nYou need data copied from original game to play. \nFollow instructions from https://wiki.vcmi.eu/Installation_on_iOS",
       "tintColor": "CD8526",
