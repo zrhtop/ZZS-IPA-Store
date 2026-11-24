@@ -6760,8 +6760,7 @@
           "NSMicrophoneUsageDescription": "Alarmy needs this to record your alarm sound.",
           "NSMotionUsageDescription": "Alarmy mission needs your motion data.",
           "NSPhotoLibraryAddUsageDescription": "By allowing access to your photo library, you can save and load photos you took.",
-          "NSPhotoLibraryUsageDescription": "By allowing access to your photo library, you can save and load photos you took.",
-          "NSUserTrackingUsageDescription": ""
+          "NSPhotoLibraryUsageDescription": "By allowing access to your photo library, you can save and load photos you took."
         }
       },
       "versions": [
@@ -7428,11 +7427,7 @@
       "category": "other",
       "appPermissions": {
         "entitlements": [],
-        "privacy": {
-          "NSCameraUsageDescription": "",
-          "NSMicrophoneUsageDescription": "",
-          "NSPhotoLibraryUsageDescription": ""
-        }
+        "privacy": {}
       },
       "versions": [
         {
@@ -7585,7 +7580,6 @@
       "appPermissions": {
         "entitlements": [],
         "privacy": {
-          "NSLocationWhenInUseUsageDescription": "",
           "NSPhotoLibraryAddUsageDescription": "We need to access to your Photo library to view videos.",
           "NSPhotoLibraryUsageDescription": "We need to access to your Photo library to view videos.",
           "NSUserTrackingUsageDescription": "This identifier will be used to deliver personalized ads to you."
@@ -7745,7 +7739,6 @@
         "entitlements": [],
         "privacy": {
           "NSCameraUsageDescription": "Nothing to see here.",
-          "NSLocationAlwaysUsageDescription": "",
           "NSLocationWhenInUseUsageDescription": "&gt;",
           "NSMicrophoneUsageDescription": "Fortnite needs microphone access for voice chat.",
           "NSPhotoLibraryAddUsageDescription": "This app saves screen captures to the photo library."
@@ -7841,11 +7834,9 @@
       "appPermissions": {
         "entitlements": [],
         "privacy": {
-          "NSLocationAlwaysUsageDescription": "",
           "NSCameraUsageDescription": "NSCameraUsageDescription",
           "NSUserTrackingUsageDescription": "NSUserTrackingUsageDescription",
           "NSPhotoLibraryAddUsageDescription": "NSPhotoLibraryAddUsageDescription",
-          "NSLocationWhenInUseUsageDescription": "",
           "NSPhotoLibraryUsageDescription": "NSPhotoLibraryUsageDescription"
         }
       },
@@ -7942,7 +7933,6 @@
       "appPermissions": {
         "entitlements": [],
         "privacy": {
-          "NSLocationAlwaysUsageDescription": "",
           "NSLocationWhenInUseUsageDescription": ">",
           "NSMicrophoneUsageDescription": "Fortnite needs microphone access for voice chat."
         }
@@ -8184,7 +8174,6 @@
           "NSBluetoothPeripheralUsageDescription": "Advertisement would like to use BlueTooth",
           "NSCameraUsageDescription": "VR would like to use camera",
           "NSLocationWhenInUseUsageDescription": "Your location is required for personalized ads  benefits for you",
-          "NSPhotoLibraryAddUsageDescription": "",
           "NSPhotoLibraryUsageDescription": "Advertisement would like to store a photo.",
           "NSUserTrackingUsageDescription": "App would like to access IDFA for tracking purpose"
         }
@@ -8218,7 +8207,6 @@
           "NSBluetoothPeripheralUsageDescription": "Advertisement would like to use BlueTooth",
           "NSCameraUsageDescription": "VR would like to use camera",
           "NSLocationWhenInUseUsageDescription": "Your location is required for personalized ads  benefits for you",
-          "NSPhotoLibraryAddUsageDescription": "",
           "NSPhotoLibraryUsageDescription": "Advertisement would like to store a photo.",
           "NSUserTrackingUsageDescription": "האפליקציה מבקשת לאפשר גישה למזהה המשמש מפרסמים לצרכי מעקב"
         }
@@ -8248,7 +8236,6 @@
       "appPermissions": {
         "entitlements": [],
         "privacy": {
-          "NSLocationWhenInUseUsageDescription": "",
           "NSPhotoLibraryAddUsageDescription": "We need to access to your Photo library to view videos.",
           "NSPhotoLibraryUsageDescription": "We need to access to your Photo library to view videos.",
           "NSUserTrackingUsageDescription": "This identifier will be used to deliver personalized ads to you."
@@ -9384,7 +9371,6 @@
           "NSPhotoLibraryUsageDescription": "NSPhotoLibraryUsageDescription",
           "NSLocationWhenInUseUsageDescription": "NSLocationWhenInUseUsageDescription",
           "NSCameraUsageDescription": "NSCameraUsageDescription",
-          "NSLocationAlwaysUsageDescription": "",
           "NSMicrophoneUsageDescription": "NSMicrophoneUsageDescription",
           "NSAppleMusicUsageDescription": "NSAppleMusicUsageDescription"
         }
@@ -10564,7 +10550,6 @@
           "NSCalendarsUsageDescription": "Advertisement would like to create a calendar event.",
           "NSCameraUsageDescription": "Cardboard would like to use Camera.",
           "NSLocationWhenInUseUsageDescription": "Your location is required for personalized ads  benefits for you",
-          "NSPhotoLibraryAddUsageDescription": "",
           "NSPhotoLibraryUsageDescription": "Advertisement would like to store a photo.",
           "NSUserTrackingUsageDescription": "האפליקציה מבקשת לאפשר גישה למזהה המשמש מפרסמים לצרכי מעקב"
         }
