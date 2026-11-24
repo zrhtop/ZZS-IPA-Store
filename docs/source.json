@@ -7024,7 +7024,7 @@
           "date": "2025-08-29",
           "downloadURL": "https://ipa.cypwn.xyz/ipas/BazaartPremium_10.8.0.ipa",
           "size": 71842594,
-          "minOSVersion": 10.0
+          "minOSVersion": "10.0"
         }
       ]
     },
@@ -7411,7 +7411,7 @@
           "date": "2026-07-07",
           "downloadURL": "https://ipa.cypwn.xyz/ipas/CloverPit-1.4.8.ipa",
           "size": 146330883,
-          "minOSVersion": 10.0
+          "minOSVersion": "10.0"
         }
       ]
     },
@@ -9269,7 +9269,7 @@
           "date": "2025-05-17",
           "downloadURL": "https://ipa.cypwn.xyz/ipas/Pokecut_4.4.2.ipa",
           "size": 184536473,
-          "minOSVersion": 10.0
+          "minOSVersion": "10.0"
         }
       ]
     },
@@ -10182,6 +10182,7 @@
       "name": "Stremio",
       "bundleIdentifier": "com.stremio.pal",
       "developerName": "CyPwn",
+      "localizedDescription": "Watch videos, movies, TV series and live TV in one app, with add-ons for extra content.",
       "iconURL": "https://ipa.cypwn.xyz/serve/icons/Stremio-2.0.6.png",
       "tintColor": "FFC300",
       "screenshotURLs": [
@@ -10199,7 +10200,7 @@
           "date": "2026-07-23",
           "downloadURL": "https://ipa.cypwn.xyz/ipas/Stremio-2.0.6.ipa",
           "size": 77175328,
-          "minOSVersion": 10.0
+          "minOSVersion": "10.0"
         }
       ]
     },
@@ -10397,6 +10398,7 @@
       "name": "Sync.ME VIP",
       "bundleIdentifier": "com.ultimake.smartsync",
       "developerName": "CyPwn",
+      "localizedDescription": "Identify unknown callers, block spam calls, and sync your contacts with photos and details.",
       "iconURL": "https://ipa.cypwn.xyz/serve/icons/Sync.ME_VIP_11.17.3.png",
       "tintColor": "FFC300",
       "screenshotURLs": [
@@ -10698,7 +10700,7 @@
           "date": "2025-12-14",
           "downloadURL": "https://ipa.cypwn.xyz/ipas/True_Skate_1.5.102.ipa",
           "size": 121515485,
-          "minOSVersion": 10.0
+          "minOSVersion": "10.0"
         }
       ]
     },
