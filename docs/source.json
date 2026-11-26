@@ -332,7 +332,7 @@
       "bundleIdentifier": "app.aidoku.Aidoku",
       "developerName": "Skitty",
       "localizedDescription": "A free and open source manga reading application for iOS and iPadOS.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Aidoku/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Aidoku/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -362,7 +362,7 @@
       "bundleIdentifier": "com.mak5er.aircard",
       "developerName": "Mak5er",
       "localizedDescription": "Customize Apple Wallet card artwork, lock screen passcode dialers and PosterBoard wallpapers directly on device, without a jailbreak. Requires iOS 27 or newer, LocalDevVPN running in loopback mode, and Developer Mode pairing.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/AirCard/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/AirCard/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -392,7 +392,7 @@
       "bundleIdentifier": "ani.baka",
       "developerName": "AniBakaBaka",
       "localizedDescription": "AniBaka 是一个基于 Flutter 的跨平台番剧聚合与媒体播放客户端，支持多番剧源、弹幕、字幕、离线缓存与本地媒体库，并提供动漫实时超分辨率画质增强。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/AniBaka/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/AniBaka/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -431,7 +431,7 @@
       "bundleIdentifier": "com.ligg.anime_flow",
       "developerName": "openAnimeFlow",
       "localizedDescription": "AnimeFlow 是一个跨平台动漫视频播放应用，支持 Android、iOS、Windows、macOS 与 Linux。内置多数据源与自定义 XPath 爬虫配置，支持基于 Anime4K 的实时视频 4K 超分辨率，对接 Bangumi 同步收藏与追番数据，并支持多平台弹幕源与丰富的弹幕设置。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/AnimeFlow/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/AnimeFlow/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -470,7 +470,7 @@
       "bundleIdentifier": "org.animeko.animeko",
       "developerName": "open-ani",
       "localizedDescription": "Animeko 是一个 Kotlin/Compose Multiplatform 打造的一站式弹幕追番平台，集找番、追番、看番于一体，支持 Bangumi 云同步观看记录、多视频数据源聚合（含 BitTorrent、Jellyfin、Emby）、离线缓存与弹幕云过滤。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Animeko/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Animeko/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -516,7 +516,7 @@
       "bundleIdentifier": "com.christianselig.Apollo",
       "developerName": "Christian Selig (& Apollo-Reborn contributors)",
       "localizedDescription": "Apollo-Reborn is the community-maintained Apollo sideload build powered by the Apollo-Reborn tweak.\n\nIt restores custom API support, media fixes, uploads, inline media, translation, saved categories, Home Screen and Lock Screen widgets, Liquid Glass support on iOS 26+, and the rest of the project’s ongoing fixes and enhancements.\n\nThese sources are intended for AltStore Classic, SideStore, and Feather. Apollo-Reborn is not compatible with AltStore PAL.\n\nChoose the source variant that matches how you sideload:\n\n• Standard: full app bundle with Apollo’s working extensions plus Apollo-Reborn widgets\n• No Extensions: strips app extensions, including widgets, to reduce App ID usage on free Apple IDs\n• GLASS: adds the Liquid Glass iOS 26 patch and bundled Liquid Glass icon catalog\n• No Extensions + GLASS: combines both options\n\nThe extension-bearing builds (Standard and GLASS) register about 7 App IDs, one per bundled app extension. A free Apple ID can register 10 App IDs per 7 days, so a clean single install fits, but it is easy to exceed if you install under more than one bundle ID, reinstall within the same week, or sideload other extension-bearing apps. If an install fails with an App ID error, use a No Extensions build (1 App ID) or wait for older App IDs to expire. A paid Apple Developer account has a much higher cap.\n\nThis project is not affiliated with Apollo or Christian Selig.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Apollo-Reborn/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Apollo-Reborn/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -569,7 +569,7 @@
       "bundleIdentifier": "com.armsx2.ios.nightly",
       "developerName": "ARMSX2",
       "localizedDescription": "A free and open-source PlayStation 2 (PS2) emulator based on PCSX2, with native ARM64 JIT recompilers. Play PS2 games on your phone, PC, or gaming handheld.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/ARMSX2/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/ARMSX2/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -599,7 +599,7 @@
       "bundleIdentifier": "com.thebcd69.bcd",
       "developerName": "thebcd69",
       "localizedDescription": "A fast, controller-friendly launcher that runs Windows games on iOS and iPadOS with Steam and GOG built in, powered by Wine, FEX and Metal via DXMT.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/BCD/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/BCD/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -695,7 +695,7 @@
       "bundleIdentifier": "com.naine.doer",
       "developerName": "moliango",
       "localizedDescription": "A native iOS client for Linux.do — UIKit + Swift, no SwiftUI in the main app.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Doer/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Doer/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -734,7 +734,7 @@
       "bundleIdentifier": "me.oatmealdome.DolphiniOS-njb-patreon-beta",
       "developerName": "OatmealDome",
       "localizedDescription": "Dolphin for iOS, reborn. A GameCube and Wii emulator for iPhone and iPad.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/DolphiniOS/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/DolphiniOS/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -764,7 +764,7 @@
       "bundleIdentifier": "com.mafty.dukex",
       "developerName": "Manic EMU Development Team",
       "localizedDescription": "DukeX is an experimental iOS-focused frontend for xemu. It embeds the xemu core in a native Swift shell and presents the Vulkan renderer through MoltenVK and native Metal.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/DukeX/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/DukeX/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -794,7 +794,7 @@
       "bundleIdentifier": "app.ehpanda",
       "developerName": "EhPanda-Team",
       "localizedDescription": "EhPanda is an unofficial E-Hentai app for iOS & iPadOS built with SwiftUI & TCA. It supports almost all E-Hentai gallery categories, gallery browsing with filters, gallery details with tags & related galleries, posting / editing / replying to comments, H@H archiving, torrent listing, E-Hentai settings, and SNI-bypass (domain fronting) for restricted networks. Localization is built in and the app icon and accent color are customizable.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/EhPanda/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/EhPanda/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -833,7 +833,7 @@
       "bundleIdentifier": "app.fathom.emulator",
       "developerName": "Leviidev",
       "localizedDescription": "An x86-64 PC emulator for iOS. Fathom runs x86-64 Linux programs on an iPhone or iPad by translating them to ARM64 as they execute, using FEXCore - the dynamic recompiler behind FEX-Emu - with a native SwiftUI front end.\n\nImport a statically linked x86-64 Linux executable, open it, press Run. Fathom maps it into a guest address space, hands its instructions to FEXCore's JIT, answers its Linux syscalls, and shows you its output.\n\nJIT requires StikDebug to attach to the process and service the executable-memory traps; Fathom asks for this automatically on launch when it is missing.\n\nPlease note: only statically linked, position-independent executables (-static-pie) run today. Dynamically linked binaries and 32-bit x86 are not supported yet, and threads are not implemented, so a guest runs single-threaded.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Fathom/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Fathom/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -862,7 +862,7 @@
       "bundleIdentifier": "com.husk.app",
       "developerName": "Leviidev",
       "localizedDescription": "Run Android apps on iOS: drop in an APK, tap it, and the Android app opens full-screen on a QEMU guest with hardware-accelerated display and audio. Needs JIT plus a debugger attached at runtime, so it requires a sideloading setup that can provide get-task-allow rather than a plain re-sign.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Husk/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Husk/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -918,7 +918,7 @@
       "bundleIdentifier": "software.iridium",
       "developerName": "intraducine",
       "localizedDescription": "An experimental iPhone and iPad Windows-game runtime, with a native game library and touch, keyboard, mouse, and controller integration. Requires iOS 18+, JIT, and your own game files; compatibility varies by game and device.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Iridium/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Iridium/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -946,7 +946,7 @@
       "bundleIdentifier": "com.xitrix.iTorrent2",
       "developerName": "XITRIX",
       "localizedDescription": "iTorrent is an ordinary torrent client for iOS with Files app support and much more.\n\nWhat can this app do:\n\n• Download in the background\n• Live Activity and Dynamic Island progress bar\n• Downloading on external drives\n• Sequential download (use VLC to watch films while loading)\n• Add torrent files from Share menu (Safari and other apps)\n• Add magnet links directly from Safari\n• Store files in Files app\n• File sharing directly from app\n• Download torrent by url\n• Download torrent by magnet\n• Send notification on torrent downloaded\n• Web/WebDav Server\n• Select files download priority\n• Change UI to dark theme\n• Color personalization\n• RSS Feed",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/iTorrent/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/iTorrent/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -976,7 +976,7 @@
       "bundleIdentifier": "com.example.kazumi",
       "developerName": "Predidit",
       "localizedDescription": "使用 Flutter 开发的基于自定义规则的番剧采集与在线观看程序。使用最多五行基于 Xpath 语法的选择器构建自己的规则，支持规则导入与规则分享，支持基于 Anime4K 的实时超分辨率。\n\n其他特性：番剧目录与搜索、分集播放、番剧弹幕、追番列表、历史记录、倍速播放、多视频源支持、配色方案等。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Kazumi/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Kazumi/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1036,7 +1036,7 @@
       "bundleIdentifier": "com.macxk.KMusic",
       "developerName": "Mac-XK",
       "localizedDescription": "基于 SwiftUI 开发的多源音乐聚合播放器，支持 iOS/macOS。内置酷我、酷狗、QQ 音乐、网易云、咪咕等多平台音源，支持 LRC 歌词同步、全局搜索、后台播放与深色主题，并可通过 JS 脚本导入自定义音源。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/KMusic/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/KMusic/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1066,7 +1066,7 @@
       "bundleIdentifier": "sb.moe.kumone",
       "developerName": "missuo",
       "localizedDescription": "Kumone（雲の音）— native NetEase Cloud Music client for iOS. Talks directly to NetEase's real API with no third-party server: QR-code login, gray-track unblocking, synced lyrics with translation, immersive artwork-tinted now-playing, and playlist management.\n\nSupports English and Simplified Chinese localization.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Kumone/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Kumone/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1105,7 +1105,7 @@
       "bundleIdentifier": "com.kdt.livecontainer",
       "developerName": "LiveContainer Team",
       "localizedDescription": "An app launcher that runs iOS apps without actually installing them. This build of LiveContainer comes with a built-in SideStore for refreshing your apps.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/master/apps/LiveContainer+SideStore/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/master/apps/LiveContainer+SideStore/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1171,7 +1171,7 @@
       "bundleIdentifier": "com.willfaust.madeora",
       "developerName": "Will Faust",
       "localizedDescription": "Madeira runs unmodified x86-64 Windows PC games inside a single jailed iOS app: FEX-Emu translates the game's x86 code to ARM64 as it runs, Wine 11.4 built for ARM64EC provides Windows itself, and DXMT plus Madeira's own Direct3D 12 runtime draw Direct3D 9, 10, 11 and 12 through Metal. Games come with a library, Steam sign-in and installs, controller and touch controls, and keyboard, mouse and trackpad input. Requires an iPhone on iOS 26 or later with JIT enabled through StikDebug.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Madeira/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Madeira/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1210,7 +1210,7 @@
       "bundleIdentifier": "com.kodjodevf.mangayomi",
       "developerName": "Moustapha Kodjo Amadou",
       "localizedDescription": "Mangayomi is an open-source Flutter app for reading manga, novels, and watching anime across multiple platforms.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Mangayomi/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Mangayomi/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1265,7 +1265,7 @@
       "bundleIdentifier": "com.aoshuang.manicemu",
       "developerName": "Manic EMU Development Team",
       "localizedDescription": "All-in-one retro game emulator for iOS, bringing console, arcade, computer, and mobile Java systems into one clean app with saves, cheats, custom skins, RetroAchievements, and more.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/ManicEMU/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/ManicEMU/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1304,7 +1304,7 @@
       "bundleIdentifier": "org.zhaohe.MiniWatts",
       "developerName": "ResistanceTo",
       "localizedDescription": "An iPhone battery and charging monitor built on Apple's private APIs: the charger's real watts, how much of that reaches the cell, where the rest goes as heat, and every temperature sensor in the phone. No network code — nothing it reads leaves your phone.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/MiniWatts/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/MiniWatts/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1353,7 +1353,7 @@
       "bundleIdentifier": "com.altman.moviepilot",
       "developerName": "singleton-altman",
       "localizedDescription": "基于 MoviePilot 的 Flutter 跨端客户端，对接 MoviePilot v2 API，在手机上完成订阅、搜索、下载、整理与系统运维等常用操作。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/MoviePilotLite/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/MoviePilotLite/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1410,7 +1410,7 @@
       "bundleIdentifier": "com.dddevid.musly",
       "developerName": "dddevid",
       "localizedDescription": "Musly is a free Navidrome client and Subsonic music player with an Apple Music-inspired interface. Stream your self-hosted library from Navidrome, Subsonic, or Airsonic servers on iOS, Android, desktop, and more.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Musly/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Musly/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1440,7 +1440,7 @@
       "bundleIdentifier": "com.neogamelab.neostation",
       "developerName": "TarbleFR",
       "localizedDescription": "An independently maintained iOS/iPadOS fork of NeoStation, with embedded Dolphin, ARMSX2, RPCS3, Dusklight and KartPad runtimes alongside RetroArch and MeloNX integration, JIT workflows and mobile-friendly game and session management.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/NeoStation/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/RewindBox/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1479,7 +1479,7 @@
       "bundleIdentifier": "com.verback.YTLite",
       "developerName": "verback2308",
       "localizedDescription": "A lightweight YouTube client with SponsorBlock, Return YouTube Dislike, and up to 1080p playback. No ads, no tracking, no dependencies.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Opaline/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Opaline/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1509,7 +1509,7 @@
       "bundleIdentifier": "com.makr.orchard",
       "developerName": "MakrSas",
       "localizedDescription": "Boots a real arm64 macOS Ventura guest on iPhone through Apple's own chain (AVPBooter, iBoot and XNU) on QEMU's apple-vm machine, with the GPU drawn through Metal by reims-vgpu. Requires JIT, a signing tool that adds the increased memory limit, and a macOS VM you make yourself. It is slow — light scenes reach 30–40 fps at best.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Orchard/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Orchard/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1537,7 +1537,7 @@
       "bundleIdentifier": "com.example.piliplus",
       "developerName": "bggRGjQaUbCoE",
       "localizedDescription": "使用Flutter开发的BiliBili第三方客户端",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/PiliPlus/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/PiliPlus/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1576,7 +1576,7 @@
       "bundleIdentifier": "org.eu.eslzzyl.Pixiv-SwiftUI",
       "developerName": "Eslzzyl",
       "localizedDescription": "基于 SwiftUI 开发的 Pixiv 第三方客户端，支持 iOS/iPadOS/macOS。提供插画、漫画与小说的推荐、排行榜、搜索与收藏，内置评论系统、批量下载、数据导入导出、深色模式与主题自定义。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Pixiv-SwiftUI/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Pixiv-SwiftUI/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1606,7 +1606,7 @@
       "bundleIdentifier": "dev.playport.app",
       "developerName": "playportdev",
       "localizedDescription": "Playport runs Windows games, 64-bit and 32-bit, on a stock, non-jailbroken iPhone: install a game from your library onto the phone, pick up a controller and press Play. The game runs on the phone's own CPU and GPU — no PC, no cloud, no stream. Requires iOS 26 or later with JIT enabled through LocalDevVPN or StikDebug.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Playport/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Playport/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1643,7 +1643,7 @@
       "bundleIdentifier": "com.miguel.psx3ios",
       "developerName": "xmiguel911x",
       "localizedDescription": "A PlayStation 3 emulator for iPhone and iPad, built on RPCS3. Real games boot and play — the whole emulator core is exposed, with community game patches, trophies, play time, save data and 14 languages. Works with or without JIT.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/PSX3IOS/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/PSX3IOS/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1673,7 +1673,7 @@
       "bundleIdentifier": "com.mystyle.purelive.liu",
       "developerName": "liuchuancong",
       "localizedDescription": "纯粹直播（Pure Live）是一款基于 Flutter 的开源第三方多平台直播聚合播放器，支持 Bilibili、虎牙、斗鱼、快手、抖音、网易 CC、Twitch 等平台，以及自定义 M3U/M3U8 直播源。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/PureLive/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/PureLive/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1703,7 +1703,7 @@
       "bundleIdentifier": "com.roamcontrol",
       "developerName": "seanhowarthdev",
       "localizedDescription": "Set a fixed reported location, preview and simulate Apple Maps walking routes, and save favourites and history — all from one map. Requires iOS 27 or newer, and guided LocalDevVPN-compatible sessions for Wi-Fi and mobile data.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Roam-Control/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/seanhowarthdev/Roam-Control/main/Documentation/Images/RoamControl-AppIcon-v2-source.png",
       "category": "other",
       "versions": [
         {
@@ -1733,7 +1733,7 @@
       "bundleIdentifier": "app.scenebox.SceneBox",
       "developerName": "donbytyqi",
       "localizedDescription": "Torrent streaming client for iOS, iPadOS, tvOS and Mac (Catalyst), written in SwiftUI. Streams come from Stremio-compatible addons and play through a vendored libtorrent engine feeding VLC.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/SceneBox/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/SceneBox/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1763,7 +1763,7 @@
       "bundleIdentifier": "com.stik.stikdebug",
       "developerName": "StikDebug",
       "localizedDescription": "An on-device debugger and developer toolbox for iOS versions 17.4+ powered by idevice. Note: requires LocalDevVPN and cannot be used inside LiveContainer to enable JIT for that same LiveContainer.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/StikDebug/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/StikDebug/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1811,7 +1811,7 @@
       "bundleIdentifier": "dev.infinityf4p.tiebapure",
       "developerName": "infinityf4p",
       "localizedDescription": "原生 SwiftUI 构建的非官方贴吧 iOS 客户端。未登录访客即可浏览首页推荐、进吧与吧内列表、帖子详情与楼中楼、搜索、图片缩放与视频播放；登录后支持消息、关注与粉丝、收藏帖子（与官方客户端同步）、每日签到、点赞与发帖回复。另有关键词/用户/贴吧屏蔽、浏览历史与阅读位置恢复、iPad 双栏布局，以及 `tiebapure://` 深链接。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/TiebaPure/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/TiebaPure/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1841,7 +1841,7 @@
       "bundleIdentifier": "com.suwayomi.tachideskSorayomi",
       "developerName": "Suwayomi",
       "localizedDescription": "Tsumiru is a native client for reading manga & manhwa from a Suwayomi-Server instance, built for long webtoon binges. Offline downloads with an on-device catalog, a rebuilt continuous-scroll webtoon reader, incognito mode, and 13 built-in themes.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Suwayomi-Tsumiru/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Suwayomi-Tsumiru/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1915,7 +1915,7 @@
       "bundleIdentifier": "com.utmapp.UTM",
       "developerName": "osy",
       "localizedDescription": "UTM is a full featured virtual machine host for iOS. In short, it allows you to run Windows, Android, and more on your iPhone and iPad.\n\nThis version requires using AltJIT. Install UTM SE for slower emulation without JIT.\n\nMore information at https://getutm.app/\n\nFeatures:\n\n• Emulate any Processor\n30+ processors supported by qemu including x86_64, ARM64, and RISC-V\n• Run any Operating System\nWindows, Linux, and more natively and securely on iOS within an App\n• Fast Emulation\nPara-virtualization with SPICE and JIT compilation with TCG\n• High Compatibility\niOS 14+ supported. Works on iPhone and iPad. No jailbreak needed\n• Free and Open Source\nUTM and its dependencies are all free and open source\n• Easy to Use\nConfigure and customize your VM in a native UI",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/UTM/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/UTM/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -1953,7 +1953,7 @@
       "bundleIdentifier": "com.github.cyrilpeng.veneranext",
       "developerName": "CyrilPeng",
       "localizedDescription": "基于 Flutter 的跨平台漫画阅读器，支持本地漫画、WebDAV 漫画源与第三方网络漫画源，支持 Android、iOS、Windows、Linux、macOS 平台。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Venera-Next/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Venera-Next/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -2034,7 +2034,7 @@
       "bundleIdentifier": "com.huamu013.ZhihuMinusMinus",
       "developerName": "huamurui",
       "localizedDescription": "基于 React Native (Expo) 构建的轻量级第三方知乎客户端，无广告，支持多账号切换、游客模式、全局主题色自定义与深色模式，可查看热榜、推荐、回答、文章、想法与评论区，并支持从 GitHub Releases 自动更新。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/ZhihuMinusMinus/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/ZhihuMinusMinus/icon.webp",
       "category": "other",
       "versions": [
         {
@@ -4829,7 +4829,7 @@
       "developerName": "Riley & Shane",
       "subtitle": "Sideload non-notarized apps with AltServer.",
       "localizedDescription": "AltStore Classic allows you to sideload non-notarized .ipa files with AltServer on a Mac or PC.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/AltStore/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/AltStore/icon.webp",
       "tintColor": "#018084",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/AltStore/images/myapps.png",
@@ -4864,7 +4864,7 @@
       "developerName": "Sle2p",
       "subtitle": "支持超分辨率的在线动漫弹幕播放器",
       "localizedDescription": "支持超分辨率、多平台、多番剧源与多弹幕的在线动漫播放应用，高清无广告。提供番剧索引与搜索、倍速播放、观看记录、追番管理、弹幕过滤与举报、分集评论和离线缓存。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/AniCh/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/AniCh/icon.webp",
       "tintColor": "#F0E0D0",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/AniCh/images/home.jpg",
@@ -4898,7 +4898,7 @@
       "developerName": "openAnimeFlow",
       "subtitle": "跨平台动漫视频播放器，支持多数据源、实时 4K 超分辨率与弹幕",
       "localizedDescription": "AnimeFlow 是一个跨平台动漫视频播放应用，支持 Android、iOS、Windows、macOS 与 Linux。内置多数据源与自定义 XPath 爬虫配置，支持基于 Anime4K 的实时视频 4K 超分辨率，对接 Bangumi 同步收藏与追番数据，并支持多平台弹幕源与丰富的弹幕设置。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/AnimeFlow/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/AnimeFlow/icon.webp",
       "tintColor": "#124EB3",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/AnimeFlow/images/home.png",
@@ -4932,7 +4932,7 @@
       "developerName": "Lakr233",
       "subtitle": "The ultimate multi-region App Store manager",
       "localizedDescription": "Manage multiple Apple IDs across App Store regions: switch stores instantly, browse and download official IPAs from anywhere, and keep a searchable IPA library with older versions — no signing out of your device required.\n\nDownloads go through Apple's servers with your own Apple ID. Because the underlying protocol is the same one ipatool uses, a secondary or burner account is strongly recommended.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Asspp/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Asspp/icon.webp",
       "tintColor": "#3060D0",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Asspp/images/search.jpeg",
@@ -4964,7 +4964,7 @@
       "developerName": "deretame",
       "subtitle": "使用 Flutter 开发的插件化漫画阅读器",
       "localizedDescription": "使用 Flutter 构建的跨平台漫画阅读器，漫画源以插件形式提供，内置插件商店，支持本地与云收藏。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Breeze/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Breeze/icon.webp",
       "tintColor": "#E03030",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Breeze/images/home.jpeg",
@@ -5006,7 +5006,7 @@
       "developerName": "Ahmed Bafkir",
       "subtitle": "Download, install and share App Store IPAs",
       "localizedDescription": "An iOS app inspired by ipatool. Sign in with your Apple ID to search the App Store, download any app as an IPA, including older versions, and install or share it without a jailbreak.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/DLiPA/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/DLiPA/icon.webp",
       "tintColor": "#27A0F4",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/DLiPA/images/search.png",
@@ -5038,7 +5038,7 @@
       "developerName": "Samara",
       "subtitle": "On-device signing application",
       "localizedDescription": "Free on-device iOS/iPadOS application manager and installer. Feather uses certificates from the Apple Developer Program to sign and install ipas on stock iOS, with built-in app management.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Feather/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Feather/icon.webp",
       "tintColor": "#848ef9",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Feather/images/home.png",
@@ -5069,7 +5069,7 @@
       "developerName": "pookjw",
       "subtitle": "Enable Hermès Watch Faces on any Apple Watch",
       "localizedDescription": "Enable Hermès and Ultra watch faces on any Apple Watch, along with display, sensor, and Siri tweaks backed by MobileGestalt changes and automatic backups. Requires watchOS 27.0 through 27.3 beta 1 and a paid Apple Developer account.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/HermesEnabler/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/HermesEnabler/icon.webp",
       "tintColor": "#70C0F0",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/HermesEnabler/images/watch.jpg"
@@ -5097,7 +5097,7 @@
       "developerName": "kuscholar",
       "subtitle": "Steam Big Picture on iPhone and iPad",
       "localizedDescription": "Run Valve’s Steam client in Big Picture and compatible Windows PC games locally on iPhone and iPad through Madeira, Wine, FEX and Metal. Experimental; requires iOS 26+, JIT, and user-provided Steam files.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/iDeck/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/iDeck/icon.webp",
       "tintColor": "#50D0F0",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/iDeck/images/configuration.png",
@@ -5128,7 +5128,7 @@
       "developerName": "mengangs",
       "subtitle": "下载 App Store 的历史版本与已下架应用",
       "localizedDescription": "在 iPhone 与 iPad 上搜索、下载并安装你已拥有的应用——包括历史版本与已下架应用，支持区域价格比较与原生安装。支持 iPhone、iPad、Apple TV 与 Mac 应用，提供 11 种语言。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/iPadn/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/iPadn/icon.webp",
       "tintColor": "#111111",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/iPadn/images/search.png",
@@ -5179,7 +5179,7 @@
       "developerName": "LinkPass888",
       "subtitle": "基于自定义规则的番剧采集APP，支持流媒体在线观看、弹幕与实时超分辨率，使用 SwiftUI 实现。",
       "localizedDescription": "基于自定义规则的番剧采集与在线观看客户端，带弹幕。原生 SwiftUI 实现，界面使用 iOS 26 的液态玻璃材质，随系统外观与辅助功能设置变化。\n\n内置 mpv 播放内核与 Anime4K 实时超分辨率，支持弹弹play 弹幕、Bangumi 追番绑定、时间表、下载与 WebDAV 备份。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Kazumi-Swift/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Kazumi-Swift/icon.webp",
       "tintColor": "#45A992",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Kazumi-Swift/images/01-recommend.jpeg",
@@ -5230,7 +5230,7 @@
       "developerName": "missuo",
       "subtitle": "原生 NetEase Cloud Music iOS 客户端（雲の音）",
       "localizedDescription": "Kumone（雲の音）— native NetEase Cloud Music client for iOS. Talks directly to NetEase's real API with no third-party server: QR-code login, gray-track unblocking, synced lyrics with translation, immersive artwork-tinted now-playing, and playlist management.\n\nSupports English and Simplified Chinese localization.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Kumone/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Kumone/icon.webp",
       "tintColor": "#EC4949",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Kumone/images/home.png",
@@ -5262,7 +5262,7 @@
       "developerName": "LightNovelShelf",
       "subtitle": "轻书架官方 Flutter 客户端",
       "localizedDescription": "轻书架官方 Flutter 客户端，面向 iOS、iPadOS 与 Android，支持书架管理、在线阅读、翻页动画、双页阅读与自动更新。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/LightNovelShelf/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/LightNovelShelf/icon.webp",
       "tintColor": "#4E4592",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/LightNovelShelf/images/home.jpeg",
@@ -5294,7 +5294,7 @@
       "developerName": "Leminos",
       "subtitle": "Run ARM64 Linux apps and desktops on iOS",
       "localizedDescription": "Run ARM64 Linux applications and desktop environments on iOS without a jailbreak, virtual machine, or JIT.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/LinuxRunner/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/LinuxRunner/icon.webp",
       "tintColor": "#60B0F0",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/LinuxRunner/images/home.png",
@@ -5329,7 +5329,7 @@
       "developerName": "lpfoj",
       "subtitle": "Open-source PS4/PS5 emulator",
       "localizedDescription": "An open-source PlayStation 4/5 emulator for Android and iOS. The current iOS build supports PS4 gameplay and requires iOS 26+ with JIT.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/LSX4/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/LSX4/icon.webp",
       "tintColor": "#C09050",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/LSX4/images/home.png",
@@ -5359,7 +5359,7 @@
       "developerName": "youshen2",
       "subtitle": "使用 SwiftUI 开发的网易云音乐第三方客户端",
       "localizedDescription": "面向 iPhone、iPad 与 Apple Watch 的原生网易云音乐客户端，使用 SwiftUI 构建，参考 Apple Music 的 Liquid Glass 设计，支持逐字歌词、文字 PV 歌词、全屏天际歌词等特色功能。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/MeloX/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/MeloX/icon.webp",
       "tintColor": "#E01F2D",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/MeloX/images/home.png",
@@ -5392,7 +5392,7 @@
       "developerName": "zarzet",
       "subtitle": "Hi-res music player with downloads",
       "localizedDescription": "Mornye is a Flutter and Rust music app with a full-screen player, hi-res and bit-perfect output, synced word-by-word lyrics, and installable extensions for metadata and audio downloads. Downloads and your own music folders share one local library, and SMB, WebDAV, HTTP or Subsonic servers can stream straight to the phone.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Mornye/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Mornye/icon.webp",
       "tintColor": "#1E4E4F",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Mornye/images/nowplaying.png",
@@ -5428,7 +5428,7 @@
       "developerName": "jxxghp",
       "subtitle": "MoviePilot 的 iOS 原生客户端",
       "localizedDescription": "MoviePilot 的 iOS 客户端，使用系统原生导航、搜索与快捷面板，业务页面、弹窗和插件界面复用 MoviePilot-Frontend，支持 iOS 26+ 的 Liquid Glass、侧滑返回、卡片长按菜单与前后台恢复。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/MoviePilot-App/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/MoviePilot-App/icon.webp",
       "tintColor": "#8844F6",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/MoviePilot-App/images/home.png",
@@ -5473,7 +5473,7 @@
       "developerName": "nekohasekai",
       "subtitle": "Remote desktop client optimized for Mac screen sharing",
       "localizedDescription": "Open Screen Sharing is a free and open-source remote desktop client optimized for Mac screen sharing and public networks, while also offering first-class support for standard VNC and RDP.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/OpenScreenSharing/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/OpenScreenSharing/icon.webp",
       "tintColor": "#1060F0",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/OpenScreenSharing/images/session.png"
@@ -5513,7 +5513,7 @@
       "developerName": "hugeBlack",
       "subtitle": "Open Parsec client for iOS/iPadOS",
       "localizedDescription": "An open-source Parsec client for iOS/iPadOS with mouse, keyboard, and touch-screen support.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/OpenParsec/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/OpenParsec/icon.webp",
       "tintColor": "#BB01F0",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/OpenParsec/images/login.png"
@@ -5541,7 +5541,7 @@
       "developerName": "ekomlenovic",
       "subtitle": "Slide the cars, free the red one.",
       "localizedDescription": "A free sliding-block traffic puzzle: slide the cars and trucks along their lanes to drive the red car out. 700+ campaign levels, daily and weekly challenges, a level creator and optional self-hosted multiplayer — no ads, no in-app purchases, no tracking.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/RushHours/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/RushHours/icon.webp",
       "tintColor": "#E5A019",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/RushHours/images/gameplay.png",
@@ -5575,7 +5575,7 @@
       "developerName": "SideStore Team",
       "subtitle": "Untethered alternative app store for iOS",
       "localizedDescription": "SideStore is an untethered, community-driven alternative app store for non-jailbroken iOS devices. It resigns and installs .ipa files with your personal Apple ID and refreshes them in the background, so sideloading no longer requires AltServer.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/SideStore/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/SideStore/icon.webp",
       "tintColor": "#A405FA",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/SideStore/images/apps.png",
@@ -5606,7 +5606,7 @@
       "developerName": "akinal5765-byte",
       "subtitle": "面向 iPhone 与 iPad 的原生胶片与印相模拟器",
       "localizedDescription": "一张照片要经历相机输入、胶片、显影、放印与扫描。选好胶片与相纸，再用曝光、显影反差、滤镜与画幅尺寸塑造影像，颗粒、光晕与片边都在同一条成像管线中生成。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Silverphase/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Silverphase/icon.webp",
       "tintColor": "#FF9F0A",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Silverphase/images/canvas.png",
@@ -5638,7 +5638,7 @@
       "developerName": "ishtiaq156",
       "subtitle": "Your Mac's activity, at a glance",
       "localizedDescription": "View your Mac's system activity on iPhone over a local encrypted connection. A native, local-first system monitor with a lightweight Mac companion and a mobile dashboard.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Stats/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Stats/icon.webp",
       "tintColor": "#2090F0",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Stats/images/link.jpeg"
@@ -5669,7 +5669,7 @@
       "developerName": "nekohasekai",
       "subtitle": "The universal iOS automation platform",
       "localizedDescription": "Swipt automates this iPhone or iPad with JavaScript swiplets. It bundles a TypeScript SDK built on CoreDevice and the accessibility services, plus an MCP-compatible API for driving and debugging swiplets from your computer.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Swipt/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Swipt/icon.webp",
       "tintColor": "#455A64",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Swipt/images/swiplets.jpeg",
@@ -5702,7 +5702,7 @@
       "developerName": "vrcm-team",
       "subtitle": "Bring your VRChat social life to your phone",
       "localizedDescription": "VRCM is a cross-platform VRChat companion focused on social connection and convenience. Explore your social circles, remember time spent together, and move smoothly from shared links to worlds, interactions, and real-world meetups.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/VRCM/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/VRCM/icon.webp",
       "tintColor": "#6451f1",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/VRCM/images/Feature-Friend-Network.png",
@@ -5735,7 +5735,7 @@
       "developerName": "Kianuni",
       "subtitle": "iOS 沙盒越权检测与侧载 IPA 审查工具",
       "localizedDescription": "面向 iOS 26.2+ / iOS 27.x 的零依赖、100% 物理只读沙盒逃逸检测引擎、Mach-O 静态二进制审计与多端固件 CVE 防护系统",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/WQGuard/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/WQGuard/icon.webp",
       "tintColor": "#00C7A5",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/WQGuard/images/dashboard.jpeg",
@@ -5776,7 +5776,7 @@
       "developerName": "MchinaMd57764",
       "subtitle": "File browser and maintenance panel for your own app containers",
       "localizedDescription": "An iOS toolkit built on an App Group container-query primitive: browse, clean and inspect your own app data containers without a jailbreak. Includes a file browser, cache scan, device info, a MobileGestalt cache panel and data lenses, with a bilingual UI and iPhone/iPad layouts.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/WQToolkit/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/WQToolkit/icon.webp",
       "tintColor": "#6090D0",
       "screenshotURLs": [
         "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/WQToolkit/images/files.jpeg",
@@ -11844,7 +11844,7 @@
       "developerName": "mengangs",
       "subtitle": "网盘分享与短视频高速解析下载",
       "localizedDescription": "粘贴分享链接，浏览并高速下载网盘文件与短视频，所有解析在手机本地完成，无服务器不收集数据。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Cloudn/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Cloudn/icon.webp",
       "tintColor": "#B4532F",
       "category": "utilities",
       "appPermissions": {
@@ -11871,7 +11871,7 @@
       "developerName": "aayush2622",
       "subtitle": "Multiplatform anime and manga tracking client",
       "localizedDescription": "A Flutter rewrite of Dantotsu: track and manage your anime, manga and novel lists across AniList, MyAnimeList, Simkl, Kitsu, MangaBaka and MangaUpdates, on Android, iOS, Windows, Linux and macOS.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Dartotsu/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/Dartotsu/icon.webp",
       "tintColor": "#20C0F0",
       "category": "other",
       "appPermissions": {
@@ -11925,7 +11925,7 @@
       "developerName": "NexSideloading",
       "subtitle": "Enable Increased Memory Limit for sideloaded apps on device",
       "localizedDescription": "Grant sideloaded apps the Increased Memory Limit and Extended Virtual Addressing entitlements directly on device: sign in with the Apple Account that signed them, pick an app and add the entitlement, then reinstall it. Works only with apps signed by an Apple account, not with enterprise certificates.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/iRAM-Plus/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/iRAM-Plus/icon.webp",
       "tintColor": "#64BE7E",
       "category": "utilities",
       "appPermissions": {
@@ -11950,7 +11950,7 @@
       "developerName": "EPXiaohua",
       "subtitle": "基于酷狗音乐 API 的 Material 3 音乐播放器",
       "localizedDescription": "基于酷狗音乐 API 的 Flutter 音乐播放器，内置嵌入式 Rust API 服务器，无需外部服务器即可使用。提供 MD3 与 Apple Music 风格播放页、逐字歌词与多种音频输出能力。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/MD3Music-iOS/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/MD3Music-iOS/icon.webp",
       "tintColor": "#4F7BCF",
       "category": "other",
       "appPermissions": {
@@ -12009,7 +12009,7 @@
       "developerName": "June6699",
       "subtitle": "支持弹幕与 IPTV 的开源多平台直播聚合播放器",
       "localizedDescription": "简简单单的看直播（Simple Live）是一款使用 Flutter 开发的开源多平台直播聚合播放器，支持虎牙、斗鱼、哔哩哔哩、抖音、快手等平台的直播与弹幕，并内置公开的 IPTV 直播源。支持关注、标签、历史与弹幕屏蔽词，配置可导入导出，并可通过房间服务、局域网或 WebDAV 同步。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/SimpleLive/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/SimpleLive/icon.webp",
       "tintColor": "#24A7EB",
       "category": "other",
       "appPermissions": {
@@ -12039,7 +12039,7 @@
       "developerName": "hseons",
       "subtitle": "无需越狱的 App 数据备份与缓存清理工具",
       "localizedDescription": "一款面向 iOS 26+ 的开源 App 数据管理、备份与单应用缓存清理工具，无需越狱。可把某个 App 的数据目录打包成可校验的备份并写回原 App，也能只清理所选 App 的缓存与临时目录。所有数据都在本机处理，没有账号、没有统计、没有云端。",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/WQManager/icon.png",
+      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/WQManager/icon.webp",
       "tintColor": "#242529",
       "category": "utilities",
       "appPermissions": {
