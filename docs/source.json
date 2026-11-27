@@ -7,11 +7,11 @@
   "tintColor": "#6559E8",
   "apps": [
     {
-      "name": "七巧板·试玩",
+      "name": "七巧板",
       "bundleIdentifier": "dev.zrhtop.Tangram2000",
-      "developerName": "ZZS",
-      "subtitle": "在 ZZS IPA Store 发布",
-      "localizedDescription": "开发者：zrhtop\r\n\r\n《七巧板2000》独立 iPhone / iPad 首次公开试玩版 0.1.0 (2)。\r\n\r\n- 原游戏主界面、关卡选择、拼块操作、胜利结算与继续下一局流程已接通；沿用原图片、规则及音频资源。\r\n- 独立 App：dev.zrhtop.Tangram2000，使用本款专用图标；不替换《挖金子》。\r\n- 已通过本地有界玩法流程测试和真实 iPhoneOS arm64 Release 编译；这些不是手机验收或屏幕帧率证据。\r\n\r\n测试提示：新建玩家请先用短英文字母或数字（如 TG1234）；中文、输入法和过长名称尚未完整支持。当前不是正式保真验收版，全部菜单、全部关卡以及手机上的触控、音频、流畅度、切后台和存档重开仍需实际反馈。\r\n\r\niOS 17.0+；横屏，iPhone / iPad。IPA 未签名，需要自行签名安装。源码、Windows 原件和交接材料保持私有。\r\n\r\n大小：272141323 字节\r\nSHA256：cf9ec46b51de0b511d3cad952fe9aec432f4271ba18e5a0d80d6859041fc01a7",
+      "developerName": "zrhtop",
+      "subtitle": "原版移植 · 试玩版",
+      "localizedDescription": "《七巧板2000》独立 iPhone／iPad 移植试玩版，保留原图片、关卡、规则与音频资源。已接通选关、拼块、结算及继续下一局流程；iOS 17+、横屏。未签名，需自行签名安装，真机体验仍待反馈。新建玩家请先用短英文字母或数字；中文、输入法及过长名称尚未完整支持。",
       "iconURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.Tangram2000-v0.1.0-b2/Tangram-AppIcon-1024-v1.png",
       "category": "utilities",
       "appPermissions": {
