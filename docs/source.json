@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "0.1.1",
+          "buildVersion": "3",
+          "date": "2026-11-27",
+          "localizedDescription": "开发者：zrhtop\r\n\r\n《七巧板》0.1.1 (3) · 启动黑屏修复测试版\r\n\r\n修正 0.1.0 (2) 真机启动时的 unsafeNode(File.data) 路径校验阻断。App 自带只读资源现在以实际 Bundle 根为校验边界，兼容系统容器祖先目录别名；资源内部链接限制、文件身份、字节上限和 SHA 校验继续保留。\r\n\r\n不清除存档、不改变存档路径；玩法、音频、图片、关卡、触控和图标未改。已在本地复现旧策略拒绝，通过13项定向测试及真实 iPhoneOS arm64 Release 编译。此为修复候选，仍需真机启动复验，不把编译或本地测试冒充手机通过。\r\n\r\n请更新后确认能否进入原主界面并开始一局。新建玩家请先用短英文字母或数字；中文、输入法及过长名字尚未完整支持。\r\n\r\niOS 17.0+，iPhone/iPad 横屏。IPA 未签名，需自行签名安装。源码、Windows 原件与交接资料保持私有。\r\n\r\n大小：272147126 字节\r\nSHA256：799c36bbf6fcdfd2daf1216483042b20793fbfc15ec48c3b1b1a5abbf579fe53",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.Tangram2000-v0.1.1-b3/Tangram2000-0.1.1-b3-playtest51.ipa",
+          "size": 272147126,
+          "minOSVersion": "17.0"
+        },
+        {
           "version": "0.1.0",
           "buildVersion": "2",
           "date": "2026-11-27",
