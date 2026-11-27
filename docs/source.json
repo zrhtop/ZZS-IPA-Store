@@ -272,6 +272,15 @@
       },
       "versions": [
         {
+          "version": "1.0.26",
+          "buildVersion": "96",
+          "date": "2026-11-24",
+          "localizedDescription": "## WrapPin 1.0.26（Build 96）\n\n- **当前模拟目标** · 固定模拟时，地图单独标出当前目标。选中其他地点后，点「查看模拟位置」可以回到当前目标。#57\n- **精确选点** · 打开地图上的准星按钮，拖动地图或用摇杆微调。点「确认选点」后，再点「开始模拟定位」或「更换模拟位置」应用坐标。#58 #59\n- **选点面板** · 地点标题、收藏和清除按钮固定在面板上方。空间不足时可以滚动下方选项。\n- **收藏重命名** · 在「收藏与历史」里点收藏旁的铅笔，改名后保留原坐标和地址。#61\n\n### 安装\n\n- **Standard** · 使用 SideStore 等工具签装，运行时使用兼容的外部设备隧道。\n- **Tunnel** · 主 App 和内置扩展都需要支持 Packet Tunnel 的签名配置。\n\n两版均为未签名 IPA，支持 iOS/iPadOS 18.0 及以上。覆盖升级时使用原版本类型和签名身份。[安装说明](https://github.com/suversal/WrapPin/blob/v1.0.26/Documentation/Installation.zh-CN.md)\n\n[简体中文更新说明](https://github.com/suversal/WrapPin/blob/v1.0.26/Documentation/Release-1.0.26.zh-CN.md) · [English release notes](https://github.com/suversal/WrapPin/blob/v1.0.26/Documentation/Release-1.0.26.md)",
+          "downloadURL": "https://github.com/suversal/WrapPin/releases/download/v1.0.26/WrapPin-Standard-1.0.26-build96-unsigned.ipa",
+          "size": 7161177,
+          "minOSVersion": "18.0"
+        },
+        {
           "version": "1.0.25",
           "buildVersion": "93",
           "date": "2026-11-18",
@@ -565,36 +574,6 @@
       ]
     },
     {
-      "name": "ARMSX2",
-      "bundleIdentifier": "com.armsx2.ios.nightly",
-      "developerName": "ARMSX2",
-      "localizedDescription": "A free and open-source PlayStation 2 (PS2) emulator based on PCSX2, with native ARM64 JIT recompilers. Play PS2 games on your phone, PC, or gaming handheld.",
-      "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/ARMSX2/icon.webp",
-      "category": "other",
-      "versions": [
-        {
-          "version": "2.6.0-nightly.20261113.0426",
-          "date": "2026-11-13",
-          "downloadURL": "https://github.com/ARMSX2/ARMSX2/releases/download/nightly-20261113/ARMSX2-nightly-20261113-37ed35b88f-iOS-arm64.ipa",
-          "size": 40715589,
-          "minOSVersion": "17.4",
-          "localizedDescription": "Automated nightly build for community testing (unsigned).\n\nEvery download is named `ARMSX2-nightly-DATE-COMMIT-PLATFORM`, so builds\nfrom different nights stay distinguishable after you have downloaded them.\n\n- macOS arm64: macOS-arm64.tar.xz\n- Linux arm64: Linux-arm64-4K-pages.AppImage on most distros, or the 16K one on Asahi Linux and other Apple Silicon kernels (run getconf PAGESIZE if unsure)\n- Windows arm64: Windows-arm64.zip\n- RetroArch on Linux arm64: Linux-arm64-libretro-core.tar.zst, a 4K-page build\n- Bare-display kmsdrm handhelds: Linux-arm64-SDL-handheld.tar.zst, a 4K-page build (Rocknix and Batocera run compositors, so use the Qt AppImage there instead)\n- Android: Android-arm64.apk (installs as ARMSX2 Nightly, alongside the stable app)\n- iOS: iOS-arm64.ipa, unsigned, sideload it (installs as ARMSX2 Nightly, alongside the stable app)\n\nComing from an old nightly? Nightlies are now a separate app, ARMSX2 Nightly, next to stable.\n\n- Android: stable cannot install over an old nightly. Back up your saves and memory cards, uninstall the old nightly, then install the stable APK.\n- iOS: your old nightly is the ARMSX2 iOS app and still has your saves. Copy them into ARMSX2 Nightly with the Files app.\n\n## What's new\n- microVU0: compute the VU1 register window's address at run time\n- Tests: a persisted VU0 program that uses the window onto VU1's registers\n- Android: link the core with emulated TLS when the minimum API is below 29\n- iOS: give the layout editor and the manifest skin their own views\n- iOS: split the patch and skin library stores by their own sections\n- iOS: split navigation and gameplay views into one file per view\n- iOS: split the controls and skin files along their types\n- iOS: split the dynamic backgrounds into one file per background\n\nFull changelog: https://github.com/ARMSX2/ARMSX2/compare/nightly-20261112...37ed35b88fe9a0164369c8042f2c9aa707e33667",
-          "buildVersion": "260"
-        }
-      ],
-      "appPermissions": {
-        "entitlements": [],
-        "privacy": {}
-      },
-      "subtitle": "PlayStation 2 emulator for ARM64",
-      "tintColor": "#3CAEFF",
-      "screenshots": [
-        "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/ARMSX2/images/game.png",
-        "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/ARMSX2/images/list.png",
-        "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/ARMSX2/images/settings.png"
-      ]
-    },
-    {
       "name": "BCD",
       "bundleIdentifier": "com.thebcd69.bcd",
       "developerName": "thebcd69",
@@ -602,6 +581,15 @@
       "iconURL": "https://raw.githubusercontent.com/bebound/AltGallery/refs/heads/master/apps/BCD/icon.webp",
       "category": "other",
       "versions": [
+        {
+          "version": "0.1.721",
+          "date": "2026-11-25",
+          "downloadURL": "https://github.com/thebcd69/bcd-games/releases/download/v0.1.721/BCD.ipa",
+          "size": 231480629,
+          "minOSVersion": "18.0",
+          "buildVersion": "721",
+          "localizedDescription": "**BCD is in alpha:** an early stage of development, before beta. Many games run, many do not yet, and things can break between builds. When a game fails, please send a log.\n\n> **Everything new in this release is experimental and has been tried on only a few devices so far.** It may work great on yours, or it may not work at all. Either way, a log helps a lot.\n\n> **Tried a game on an earlier build? Reset its settings first.** On the game's page: **Options › Recommended settings › Reset to Recommended**. The recommended list changed for 17 games in this release.\n\nThis build brings everything since 0.1.712:\n- a fix for the launch crash on the iOS 27.2 beta;\n- Steam Cloud saves that games could not see;\n- a round of fixes from the logs you sent and from the #game-reports channel;\n- LiveContainer 3.8.14 support for the built-in JIT helper;\n- live logs over Wi-Fi;\n- an option to see the game's cursor in Mouse-look;\n- a fix for bcd.cfg losing every setting over one odd character, fixes for vi"
+        },
         {
           "version": "0.1.686",
           "date": "2026-11-23",
@@ -1957,6 +1945,15 @@
       "category": "other",
       "versions": [
         {
+          "version": "1.18.5",
+          "date": "2026-11-25",
+          "downloadURL": "https://github.com/CyrilPeng/Venera-Next/releases/download/v1.18.5/VeneraNext-ios-1.18.5%2B254.ipa",
+          "size": 21685908,
+          "buildVersion": "254",
+          "minOSVersion": "14.0",
+          "localizedDescription": "### 正式发布与鸿蒙下载\n\n- 发布 `1.18.5+254`，鸿蒙与 Android 手机／TV、Windows、macOS、iOS、Linux 从同一正式标签重新构建，统一在 GitHub Releases 提供安装包；鸿蒙取消 Beta 分类，用户可从公开发布页直接取得 HAP，应用内稳定更新检查可识别同版本的 HAP 和 manifest。\n- 鸿蒙采用 `distribution: bundled`、`channel: harmonyos` 与可选真机报告，HAP、来源 manifest 和 SHA-256 随 Release 长期提供，四种语言 README 与安装指南同步统一下载入口。保持现有包名、桌面名称及递增构建号，覆盖升级仍需沿用用户原签名密钥。\n- 构建、源码、版本、原生库及原始包摘要核验仍为发布前置条件；HAP 继续如实记录 `signed: false`、`runtime_verified: false` 和已知平台能力限制。缺少真机报告不阻止发布，主动提供的无效或失败报告仍会被拒绝；历史标签读取原提交的分发、渠道和验收策略。\n\n### 新增语言\n\n- 新增德语和日语各 1067 条界面翻译，覆盖设置、阅读器、收藏、导入导出、备份恢复和错误提示；语言设置、系统语言匹配、Flutter 组件及 JS `APP.locale` 同步支持 `de_DE`、`ja_JP`，德语不同地区与日语无地区设置均能识别，保留已有语言选择和系统默认策略。\n- 补充 Apple 平台支持语言声明，日语桌面显示优先使用日文字体；语言菜单的「系统」随界面语言翻译，德日继续保留英文未知文案回退和第三方标签原文，新增实际资源、语言切换以及真实字体下的手机／横屏／桌面与两倍字号设置、菜单、覆盖确认回归。\n- 设置选择器限制长选项的占宽，为标题保留空间；确认窗口的长标题支持换行，操作按钮在空间不足时改为纵向排列，避免德语、日语及大字号下布局失败、省略关键标题或挤出确认操作。\n- GitHub 全平台正式构建和手动构建在实际安装包中核对翻译词典与来源提交一致，避免漏打包或携带旧版译文；继续使用指定 commit 的工作流产物验证新增语言。\n\n### 语言与翻译修复\n\n- 补齐下载备份覆盖本地修改确认提示的繁体翻译，以及漫画源更新取消提示的简繁翻译；润色阅读器横／竖屏图片数量"
+        },
+        {
           "version": "1.18.3",
           "date": "2026-11-07",
           "downloadURL": "https://github.com/CyrilPeng/Venera-Next/releases/download/v1.18.3/VeneraNext-ios-1.18.3%2B249.ipa",
@@ -2018,6 +2015,15 @@
         }
       },
       "versions": [
+        {
+          "version": "21.47.6",
+          "buildVersion": "21.47.6",
+          "date": "2026-11-26",
+          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/YouTube.v21.47.6.+.YTPlus.6.0.base.ipa",
+          "size": 172278702,
+          "minOSVersion": "17.0",
+          "localizedDescription": "• YouTube updated to v21.47.6"
+        },
         {
           "version": "21.46.3",
           "buildVersion": "21.46.3",
@@ -3220,21 +3226,21 @@
       "category": "other",
       "versions": [
         {
+          "version": "12.46",
+          "date": "2026-11-26",
+          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/X.v12.46.+.NFB.v7.3.1.ipa",
+          "size": 322425556,
+          "localizedDescription": "• X updated to v12.46",
+          "buildVersion": "28",
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "12.45.1",
           "date": "2026-11-23",
           "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/X.v12.45.1.+.NFB.v7.3.1.ipa",
           "size": 317414110,
           "localizedDescription": "• X updated to v12.45.1",
           "buildVersion": "1",
-          "minOSVersion": "15.0"
-        },
-        {
-          "version": "12.44",
-          "date": "2026-11-14",
-          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/X.v12.44.+.NFB.v7.3.1.ipa",
-          "size": 314822223,
-          "localizedDescription": "• X updated to v12.44",
-          "buildVersion": "22",
           "minOSVersion": "15.0"
         }
       ],
@@ -3291,15 +3297,6 @@
           "size": 256777664,
           "localizedDescription": "• Facebook updated to v588.1.0",
           "buildVersion": "1119078847",
-          "minOSVersion": "15.1"
-        },
-        {
-          "version": "588.0.0",
-          "date": "2026-11-18",
-          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/Facebook.v588.0.0.+.iQFace.v1.2.ipa",
-          "size": 256841637,
-          "localizedDescription": "• Facebook updated to v588.0.0",
-          "buildVersion": "1116845274",
           "minOSVersion": "15.1"
         },
         {
@@ -4358,6 +4355,15 @@
       "category": "utilities",
       "versions": [
         {
+          "version": "1.0.7",
+          "buildVersion": "32",
+          "date": "2026-11-25",
+          "localizedDescription": "## Erosion-CN v1.0.7 (Build 32)\n\n> [!IMPORTANT]\n> **System Compatibility / 系统兼容性提示**  \n> - **Supported / 完整支持**：`iOS / iPadOS 27.0 – 27.2.1` and `27.3 beta 1` (`24C503*`).  \n> - **Patched / 已封堵**：Apple patched `worse_query` starting in **`iOS 27.3 beta 2` (`24C5049d+`)**. Do **NOT** update past `27.3 beta 1` if you rely on Erosion-CN.\n\n---\n\n### What's New / 更新内容\n\n1. **Expanded Built-In Splash Ad Blocker Paths (`AdCacheBlockerView`) / 扩充主流应用内置开屏广告路径识别** *(Thanks to [@oooasis](https://github.com/oooasis) and [@itmubai](https://github.com/itmubai) for testing and sharing in [#58](https://github.com/Kianuni/Erosion-CN/issues/58) / 感谢 [@oooasis](https://github.com/oooasis) 与 [@itmubai](https://github.com/itmubai) 在 [#58](https://github.com/Kianuni/Erosion-CN/issues/58) 实测分享)*\n   - Added curated per-app splash/ad cache paths strictly scoped to 7 popular app containers (excluding generic WebView/networking caches, with full one-tap restore and whitelist support):\n     - **Taobao (`com.taobao.",
+          "downloadURL": "https://github.com/Kianuni/Erosion-CN/releases/download/v1.0.7/Erosion_v1.0.7_Bilingual.ipa",
+          "size": 6948364,
+          "minOSVersion": "26.0"
+        },
+        {
           "version": "1.0.6",
           "buildVersion": "31",
           "date": "2026-11-19",
@@ -4487,6 +4493,15 @@
       },
       "versions": [
         {
+          "version": "0.1.16",
+          "buildVersion": "30",
+          "date": "2026-11-23",
+          "localizedDescription": "小浣熊阅读 0.1.16 正式版（构建 30），支持 iOS / iPadOS 15.0 及以上。\n\n- **在线小说续读和切章**　书架和书籍详情页会提前准备上次读到的正文。已缓存的章节可以离线打开，来回切换时会复用相邻章节的正文和排版。\n- **后台缓存**　阅读时默认静默缓存后面 5 章，往后读会继续补齐。接近目录末尾时，会为允许更新的书籍检查新章节。\n- **目录和排版**　目录改为全屏，未下载的章节右侧有云图标。章节标题与正文的间距更宽，阅读设置中的文字统一左对齐。支持的书源可查看本章评论。\n- **EPUB 与字体**　可以选择默认使用原书排版或文字阅读模式。原书目录支持折叠，改善章节跳转、阅读位置恢复和自定义字体导入。\n\n下载附件中的 IPA，使用自己的签名工具安装。可用同页的 SHA256SUMS 校验下载文件。此版本已在模拟器验证缓存续读与前后切章，尚未进行真机安装验证。应用不附带书源或在线书库，在线阅读需自行导入书源。",
+          "downloadURL": "https://github.com/Aminark/legado-ios/releases/download/v0.1.16/legado-ios-v0.1.16-build30-unsigned.ipa",
+          "size": 16507334,
+          "minOSVersion": "15.0"
+        },
+        {
           "version": "0.1.15",
           "buildVersion": "21",
           "date": "2026-11-13",
@@ -4523,6 +4538,15 @@
         }
       },
       "versions": [
+        {
+          "version": "2.2.0",
+          "buildVersion": "1",
+          "date": "2026-11-24",
+          "localizedDescription": "# Added\n\n* JIT. Please keep SideInstaller in the background to keep JIT running\n* Sources. Add an AltStore-format source as an https link, an altstore:// or sidestore:// link, or a .json file. Thanks to @TinusTK (#143).\n* Shortcuts actions, such as location spoofing, app installing and app refreshing.\n* Pairing compatibility with ARMSX3\n\n\n# Fixed\n\n* Sign-in reports a current Mac again. 2.1.1 signed in as a Mac on macOS 10.15.7. Apple sometimes answers that Mac with a text-message code it never sends, or with -22410 or -23782. SideInstaller now signs in as the macOS 26.6 Mac it used up to 2.1.0, spelled \\\"Mac OS X\\\", and that Mac gets the code on trusted devices. The first sign-in with a password makes a new anisette identity, so Apple may ask for a code one more time.\n* SideStore gets client info Apple lets through. Since 20 November Apple has answered SideStore's default client info with HTTP 503 (SideStore #1745). After installing SideStore, SideInstaller now sets it to the same Mac,",
+          "downloadURL": "https://github.com/FrizzleM/SideInstaller/releases/download/v2.2.0/SideInstaller.ipa",
+          "size": 11642855,
+          "minOSVersion": "17.4"
+        },
         {
           "version": "2.1.0",
           "buildVersion": "1",
@@ -4811,15 +4835,6 @@
           "size": 6152820,
           "minOSVersion": "17.0",
           "localizedDescription": "Updated to v1.0.11."
-        },
-        {
-          "version": "1.0.9",
-          "buildVersion": "3",
-          "date": "2026-11-02",
-          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/TendieMaker.v1.0.9.ipa",
-          "size": 3697748,
-          "minOSVersion": "17.0",
-          "localizedDescription": "App icon fix."
         }
       ]
     },
@@ -4915,6 +4930,15 @@
         }
       },
       "versions": [
+        {
+          "version": "2.7.0",
+          "buildVersion": "2.7.0",
+          "date": "2026-11-22",
+          "downloadURL": "https://github.com/openAnimeFlow/AnimeFlow/releases/download/v2.7.0/AnimeFlow-ios-2.7.0.ipa",
+          "size": 29735422,
+          "minOSVersion": "15.0",
+          "localizedDescription": "### 🔄 更新内容\n\n## 2.7.0 更新\n\n## 新增\n\n- 在数据源弹窗右上角点击文件按钮支持导入播放本地视频进行播放\n- android(ExoPlayer)、ios(AVPlayer)原生播放器支持超分辨效率挡\n- 字体库支持多线路下载资源\n\n## 优化\n\n- 优化播放器亮度、音量调节ui效果\n\n## 修复\n\n- 修复切换播放源时没有立即结束当前正在播放的视频\n- 修复播放器亮度、音量调节ui抖动问题\n- 修复Linux平台在NVIDIA上窗口画面偏移问题\n\n---\n\n### 📦 下载\n- 每个设备的安装包后缀: ``苹果手机(.ipa)、 安卓手机(.apk)、windows电脑(.zip或.exe)、mac电脑(.dmg)、linux电脑(.tar.gz或.deb)``\n- android分多个包: ``v7a(32位架构旧手机或TV)、arm64(新手机,推荐用这个)、x86(模拟器) ``\n- windows分多个包: ``.zip(解压直接使用)、.exe(安装后使用，推荐用这个) ``"
+        },
         {
           "version": "2.6.8",
           "buildVersion": "2.6.8",
@@ -5145,6 +5169,15 @@
       },
       "versions": [
         {
+          "version": "2.3.5",
+          "buildVersion": "41",
+          "date": "2026-11-23",
+          "downloadURL": "https://github.com/mengangs/ipadn/releases/download/v2.3.5/iPadn-2.3.5-lite-unsigned.ipa",
+          "size": 49971723,
+          "minOSVersion": "16.0",
+          "localizedDescription": "## iPadn 2.3.5\n\n**目录 / Contents**：[简体中文](#-核心修复与优化) · [TestFlight 说明与免责](#-testflight-实验性说明与免责声明) · [English](#english) · [TestFlight Notice](#testflight-experimental-notice--disclaimer)\n\n本次为 **v2.3.5** 稳定性修复与体验升级版：根治 **iOS 16.0–16.2 强链接符号闪退**、**iOS 27.2 beta 2 历史版本加载闪退** 与 **iPadOS 全屏/专业模式导航栏异常**；**TestFlight 现支持切换下载 Apple TV 等多平台测试包**并统一展示单色客户端标识，同时修复大型/多变体游戏误报「产物校验失败，已清理」及详情页顶部虚化异常；在「设置 › 外观与图标」开放**自定义全部 177 个 Apple 商店地区**（支持搜索筛选、勾选、拖拽排序与国旗展示）；并修复 FairPlay 高熵插件误拒、登录 `5020`/2FA 提示、未购免费应用首次获取旧版报错与「应用包」批量导入打断问题。安装包均未签名，请使用自用签名工具签名后安装。\n\n### 🔧 核心修复与优化\n\n- **修复 iOS 16/27 闪退与 iPadOS 专业模式导航异常**\n  - 移除强链接 iOS 17+/18+ 的 `UnevenRoundedRectangle` 与全部 `.onGeometryChange` 调用，改用向后兼容路径与几何读取实现，根治 iOS 16.0 / 16.0.2 / 16.2 打开界面或卡片时因动态符号缺失导致的闪退。\n  - 修复 iOS 27.2 beta 2 在应用详情页加载历史版本时偶发崩溃的问题（修正版本行布局优先级与骨架屏几何回调防抖阈值）。\n  - 修复 iPadOS 全屏及开启「专业模式」后导航栏切换错乱、标题丢失与工具栏按钮跨标签泄露的问题，改为按当前活动标签隔离独立导航栈。\n- **TestFlight 支持 Apple TV 多平台下载、校验修复与顶部优化**\n  - TestFlight 详情页新增多平台切换（如 `iOS` / `Apple TV`），支持直接下载 Apple TV（tvOS）测试包，并与同一"
+        },
+        {
           "version": "2.3.4",
           "buildVersion": "40",
           "date": "2026-11-23",
@@ -5196,6 +5229,15 @@
       },
       "versions": [
         {
+          "version": "3.1.3",
+          "buildVersion": "30103",
+          "date": "2026-11-25",
+          "downloadURL": "https://github.com/LinkPass888/Kazumi-Swift/releases/download/v3.1.3/Kazumi_ios_v3.1.3_no_sign.ipa",
+          "size": 21572090,
+          "minOSVersion": "26.0",
+          "localizedDescription": "### 修复\n\n- 修复点全屏后画面有时缩到左下角并越出边界、必须退出再进一次才恢复的问题\n- 修复在 Bangumi 上标记单集看过失败时只说一句「失败」、看不出原因的问题，现在会说明是令牌失效、单集不存在还是番剧未收藏\n- 修复时间表滑到底后大量过滤或切换排序时整页空白的问题\n- 修复番剧详情页的验证码弹窗在大字号或横屏下撑满整屏的问题，现在限制在半屏高度、内容可滚动\n- 修复截图偶发失败：`screenshot-raw` 取不到帧时先在 GPU 侧按片源分辨率读回，不再为此切换解码器\n\n### 优化\n\n- 横屏播放页的进度条改用独立布局，与时间显示对齐更整齐\n- 弹幕：屏蔽规则预编译复用、轨道判定提速，无弹幕时段降低刷新频率，高密度弹幕下更省电\n- 追番页只按需加载可视区封面，之后 15 张提前预取，滚动更顺\n- 下载重试改为 0.5 秒 → 1.5 秒 → 3 秒的退避；App 被强杀后重开也能按已下载的分片恢复进度\n- 云同步内容没有变化时不再重复上传，上传过程中的提示会分阶段显示进度\n- 更新提醒的封面改为复用同一张图，不再为每条提醒重复准备\n- 图片搜索选图后改为后台压缩再上传，选择大图时不再卡顿\n- 日志缓冲改为固定容量的环形结构，长时间使用后内存占用更稳定\n\n### 已知问题\n\n- 部分番剧的详情页侧滑退出无法打断，按钮悬空慢淡出。这是 SwiftUI 原生转场机制的限制，暂时没有优化计划\n\n**安装：** 在 AltStore / SideStore / Feather 中添加软件源 `https://linkpass888.github.io/Sideload/source.json`，即可直接安装与更新，无需手动下载 IPA。入口页 <https://linkpass888.github.io/Sideload/>"
+        },
+        {
           "version": "3.1.1",
           "buildVersion": "30101",
           "date": "2026-11-21",
@@ -5246,6 +5288,15 @@
       },
       "versions": [
         {
+          "version": "0.3.38",
+          "buildVersion": "470",
+          "date": "2026-11-22",
+          "downloadURL": "https://github.com/missuo/kumone/releases/download/v0.3.38/Kumone-iOS-0.3.38.ipa",
+          "size": 4420454,
+          "minOSVersion": "16.0",
+          "localizedDescription": "### Added\n\n- **macOS**: an Add to Playlist button next to the heart in the player bar saves the playing song to one of your playlists in one click (#232, thanks @WillowBranch127).\n- **iOS**: a Swipe Left from Lyrics for Comments switch in Settings turns the swipe off for anyone who triggers it by accident; View Comments stays in the now-playing menu (#225).\n\n### Fixed\n\n- **iOS**: skipping to another song now stops the previous one straight away, instead of letting it play on for a few seconds under the new song's title and lyrics (#221).\n- **Now playing**: after a relaunch, the restored song's lyrics load right away instead of spinning until you press play (#219).\n- **macOS 26**: with Liquid Glass, the page no longer covers part of the floating sidebar; a gap now runs between them, also with the window inactive (#229).\n- **macOS**: opening Roam with a song loaded no longer pushes the sidebar up under the window buttons (#227).\n- **macOS**: dragging the desktop lyrics no longer brings a"
+        },
+        {
           "version": "0.3.37",
           "buildVersion": "454",
           "date": "2026-11-14",
@@ -5277,6 +5328,15 @@
         }
       },
       "versions": [
+        {
+          "version": "1.13.3",
+          "buildVersion": "27",
+          "date": "2026-11-25",
+          "downloadURL": "https://github.com/LightNovelShelf/Flutter/releases/download/v1.13.3/app-ios-unsigned.ipa",
+          "size": 11911212,
+          "minOSVersion": "15.0",
+          "localizedDescription": "**Full Changelog**: https://github.com/LightNovelShelf/Flutter/compare/v1.13.2...v1.13.3"
+        },
         {
           "version": "1.13.2",
           "buildVersion": "26",
@@ -5412,6 +5472,15 @@
       },
       "versions": [
         {
+          "version": "5.4.5",
+          "buildVersion": "171",
+          "date": "2026-11-24",
+          "downloadURL": "https://github.com/mornyeapp/Mornye/releases/download/v5.4.5/Mornye-v5.4.5-ios-unsigned.ipa",
+          "size": 34972605,
+          "minOSVersion": "16.0",
+          "localizedDescription": "## What's New\n\n### Added\n\n- **Parametric Equalizer**: Switch between Graphic and Parametric modes with up to 20 custom filters (peak, low shelf, and high shelf; 20 Hz to 20 kHz, +/-24 dB, Q 0.1 to 20), exact numeric entry, and import/export of plain-text AutoEQ-style filter lists (`Preamp` and `Filter` lines). Supported on Desktop, iOS, and Android (via the new playback engine DSP).\n- **Personal Home & Dedicated Search Tab**: Home is now always your personal page in both Material and Mornye styles, while Search becomes its own tab/destination opening directly on the extension feed (*Search feed*). On Material Home, the old gray search prompt row was removed so the greeting leads straight into your sections, with a one-time tooltip for existing installs.\n- **Recommended for You**: Added a daily cached *\"Recommended for you\"* shelf on Home suggesting tracks outside your Library based on your most played, recently added, and loved songs.\n- **Expanded Home Mixes**: Added **Deep Cuts** and "
+        },
+        {
           "version": "5.4.0",
           "buildVersion": "169",
           "date": "2026-11-17",
@@ -5447,6 +5516,15 @@
         }
       },
       "versions": [
+        {
+          "version": "2.0.2",
+          "buildVersion": "1",
+          "date": "2026-11-23",
+          "downloadURL": "https://github.com/jxxghp/MoviePilot-App/releases/download/v2.0.2/MoviePilot-2.0.2-unsigned.ipa",
+          "size": 35107401,
+          "minOSVersion": "16.0",
+          "localizedDescription": "MoviePilot iOS 2.0.2 全面适配 **iPad**（竖屏、横屏、分屏与原生侧边栏工作台）与 **iPhone Duo**（系统竖向侧边操作区），带来跨设备形态一致且充分利用大屏与侧边交互区的原生体验。\n\n### 2.0.2 新增与优化\n\n- **iPhone Duo 系统竖向侧边操作区全面适配**：彻底移除传统底部导航栏样式，将「发现 / 探索 / 我的 / 设置 / 更多功能 / 智能助手」与动态主动作/全局搜索原生承载至 iPhone Duo 系统竖向侧边操作区（`axisBehavior(.verticalPreferred)`）；子页面自动保留返回、页面工具与更多入口，全屏视频播放按系统建议自动关闭竖向侧栏以呈现完整宽银幕画面，发现页与详情页沉浸头图无缝延展至侧边透明玻璃后方且前景内容严格避让安全区。\n- **iPad 原生侧边栏与自适应大屏布局**：iPadOS 18+ 启用 `sidebarAdaptable` 顶部浮动胶囊 + 可展开原生侧边栏，工作台（我的订阅、订阅日历、站点资源、下载、文件管理、整理历史、工作流、插件）与快捷工具（音乐、消息中心、智能助手）可一键直达，弹窗自动采用宽敞的 `page` 尺寸。\n- **全页面响应式栅格与 Bento 仪表盘**：\n  - 仪表盘在 iPad 宽屏下升级为 4 列媒体库统计 + 双列 Bento 模块排布，显著降低纵向滚动距离。\n  - 发现页主视觉高宽比、海报/横幅卡尺寸与分类列数按实时容器宽度自适应，兼容全屏、分屏与侧边栏展开态。\n  - 探索、媒体库浏览、订阅广场、音乐探索按实时宽度在 3~6 列（方卡 2~5 列）平滑切换；订阅、下载、站点、工作流、插件列表与剧集分季在宽屏下自动升级为双列卡片网格。\n  - 影视与媒体库详情页在宽屏下居中控宽、操作栏单行均衡排布，播放器支持 iPad 全四向旋转。\n- **三端交互与稳定性优化（iPhone / iPad / iPhone Duo 同步）**：\n  - **播放器顶栏精简**：视频播放界面右上角统一精简为「小屏播放」与「更多（`…`）」两个玻璃按钮，字幕、音轨、画面比例、播放速度全部收纳至「`…`」实时下拉菜单。\n  - **设置页版本号展示**：设置页面底部居中展示当前 App 版本号。\n  - **后台重启会话失效自动退回登"
+        },
         {
           "version": "1.2.6",
           "buildVersion": "1",
@@ -5488,6 +5566,15 @@
       },
       "versions": [
         {
+          "version": "1.0.10",
+          "buildVersion": "79",
+          "date": "2026-11-24",
+          "downloadURL": "https://github.com/nekohasekai/open-screen-sharing/releases/download/v1.0.10/OpenScreenSharing.ipa",
+          "size": 11765704,
+          "minOSVersion": "15.0",
+          "localizedDescription": "* Replace floating toolbar handle with assistive ball\n* Fixes and improvements"
+        },
+        {
           "version": "1.0.8",
           "buildVersion": "75",
           "date": "2026-11-23",
@@ -5524,6 +5611,15 @@
         "privacy": {}
       },
       "versions": [
+        {
+          "version": "2.0.0",
+          "buildVersion": "273",
+          "date": "2026-11-20",
+          "downloadURL": "https://github.com/NearFrame/OpenParsec/releases/download/nightly/OpenParsec.ipa",
+          "size": 4453850,
+          "minOSVersion": "14.0",
+          "localizedDescription": "This is a nightly release [created automatically with GitHub Actions workflow](https://github.com/NearFrame/OpenParsec/actions/runs/44652700372/attempts/1)."
+        },
         {
           "version": "2.0.0",
           "buildVersion": "262",
@@ -5685,6 +5781,15 @@
         }
       },
       "versions": [
+        {
+          "version": "0.1.0",
+          "buildVersion": "95",
+          "date": "2026-11-25",
+          "downloadURL": "https://github.com/swipt-automation/swipt/releases/download/nightly/Swipt.ipa",
+          "size": 48264471,
+          "minOSVersion": "16.4",
+          "localizedDescription": "* Stop forwarding SIGSTOP to the iOS JIT process\n* Remove 1-minute timeout from iOS JIT debugserver session\n* Add iOS JIT support to device, gRPC, JS API, and CLI\n* Discover wireless Android devices over mDNS\n* Fix secrets context in release_android job condition\n* Add Android release build and CI workflow\n* Support Android in sideload, setup, and dev commands\n* Add Android app and build tooling\n* Add Android core, device layer, graphics backend, and local app RPCs\n* Support multi-platform swiplet builds and availability checks in CLI\n* Split automation runtime and host by target OS with API level 4\n* Unify internal/graphics with event-driven Darwin cancellation\n* Extract api.Publish and api.Device\n* Extract tailscale.Controller and rename login Wait to Complete\n* Extract internal/fault, internal/screen, and internal/selector\n* Avoid redundant SpringBoard reads when dismissing setup alerts\n* Fix sideload setup stalling on permission alerts and reopening Settings\n* Discover vphone virtu"
+        },
         {
           "version": "0.1.0",
           "buildVersion": "83",
@@ -11683,6 +11788,15 @@
       },
       "versions": [
         {
+          "version": "32.2",
+          "buildVersion": "263241857361451067",
+          "date": "2026-11-26",
+          "downloadURL": "https://github.com/WuXu1/WuXu1.github.io/releases/download/Latest/Twitch.v32.2.+.TwitchAdBlock.v0.1.24.ipa",
+          "size": 196595031,
+          "minOSVersion": "13.0",
+          "localizedDescription": "• Twitch updated to v32.2"
+        },
+        {
           "version": "9.3.1",
           "buildVersion": "201921558486846722",
           "date": "2020-07-15",
@@ -11794,6 +11908,15 @@
       },
       "versions": [
         {
+          "version": "2.0.0",
+          "buildVersion": "278",
+          "date": "2026-10-31",
+          "downloadURL": "https://github.com/yattee/yattee/releases/download/2.0.0-beta.278/Yattee-2.0.0-iOS.ipa",
+          "size": 39795855,
+          "minOSVersion": "14.0",
+          "localizedDescription": "## What's Changed\n\n### Bug fixes\n* Log and alert when hardware decoding falls back to software mid-playback\n* Reload the avfoundation audio output when it restarts while paused\n* Keep the display link paused while the app is in the background\n* Open SwiftData and TipKit stores after didFinishLaunching on iOS"
+        },
+        {
           "version": "1.3.5",
           "buildVersion": "25",
           "date": "2022-08-17",
@@ -11883,6 +12006,15 @@
         }
       },
       "versions": [
+        {
+          "version": "1.2.2",
+          "buildVersion": "1.2.2",
+          "date": "2026-11-24",
+          "downloadURL": "https://github.com/aayush2622/Dartotsu/releases/download/v1.2.2/Dartotsu-iOS-v1.2.2.ipa",
+          "size": 88947089,
+          "minOSVersion": "15.0",
+          "localizedDescription": "### 🎉 New Features\n* [7a7659c7](https://github.com/aayush2622/Dartotsu/commit/7a7659c7): feat: custom download amount and bulk select in the episode and chapter list\n* [a06bdbd4](https://github.com/aayush2622/Dartotsu/commit/a06bdbd4): feat: animated SVGs play in a web view layer so SMIL, CSS animations and external images work\n* [f6933146](https://github.com/aayush2622/Dartotsu/commit/f6933146): feat(mangabaka): add recommended section to home layout (#193)\n* [9e8a9275](https://github.com/aayush2622/Dartotsu/commit/9e8a9275): feat: Simkl home rows split into anime and movies & series, restore the Trakt strings lost in the merge\n* [905b8b93](https://github.com/aayush2622/Dartotsu/commit/905b8b93): feat: own sign-in channel replaces flutter_web_auth_2 (Android Custom Tab with a callback activity, ASWebAuthenticationSession on iOS and macOS, sturdier desktop loopback)\n* [89c93af7](https://github.com/aayush2622/Dartotsu/commit/89c93af7): feat: Simkl list shows anime, shows and movies with"
+        },
         {
           "version": "1.2.1",
           "buildVersion": "1.2.1",
@@ -11992,6 +12124,15 @@
         }
       },
       "versions": [
+        {
+          "version": "1.3.0",
+          "buildVersion": "63",
+          "date": "2026-11-25",
+          "downloadURL": "https://github.com/iam567/rich4-renew-app/releases/download/v1.3.0/rich4-1.3.0-unsigned.ipa",
+          "size": 1698625747,
+          "minOSVersion": "15.0",
+          "localizedDescription": "## 谢谢大家\n说好的 1.3 来了。谢谢每一位在玩、在报 bug、在评论区出主意的朋友，这一版等得比较久，谢谢大家的耐心。\n\n1.3 最大的心血是两张古代大地图：大唐长安的「开元盛世」，和北宋汴京的「清明上河」——还有八百里水泊梁山。城墙、楼阁、路人、音乐、小报、小游戏，一样一样全是重新做的。\n\n**这个游戏属于每一位喜欢大富翁4的玩家：永远不收任何费用，也不做任何商业用途，大家尽管拿去玩、拿去分享。**\n\n- **想玩两张新地图，请下载这个页面的 1.3.0 安装包覆盖安装**，存档会保留（保险起见，可以先在「游戏设置 → 存档备份」导出一份）。游戏内更新到的是「1.3.0 simple」版：只有几 MB，不含这两张地图，其他功能（私服、联机等）跟完整版一样，可以和完整版的玩家一起玩。iPhone 要连私服，需要装 1.3.0 安装包。\n- **国内下载慢**：在国内提供下载需要备案，我个人没办法申请，建议挂梯子下载，或者等网盘版。\n- **遇到 bug 或小问题**：可以在 [Issues](https://github.com/iam567/rich4-renew-app/issues) 提交，也可以在 B 站 UP 主 **TrustBox**、**阿姆西_MC** 发布的大富翁4 重制版视频下面留言，各个评论区我都会看，能修的一定会修。\n\n祝大家玩得开心，梁山见！\n\n## v1.3 更新内容\n\n- **两张全新的古代大地图，都在「自制地图」里，音乐、界面、开场动画、小报和卦肆（新闻、命运）、路人全是自己的一套，钱也用「文」：**\n  - **开元盛世（大唐长安）**：贡院答题考状元、斗鸡场下注、驿站快马、博戏坊押大小、发配所，路上还有几十个「小事件」格子，踩上去随机前进后退。\n  - **清明上河（北宋汴京）**：城墙、虹桥、樊楼、大相国寺都立起来了。城外是水泊梁山——坐汴河漕运的船过去，打虎、射野猪、跟燕青摔跤、十字坡看碗，抽 108 张「梁山令」，凑齐一组好汉到聚义厅换奖励。\n  - 清明上河的企业各有各的用处：汴河漕运把人送上梁山，东京车坊收加油费，将作监帮你加盖，官窑卖瓷器，常平仓卖保险；当上董事长还有专属好处。\n- **新增「私服」：想自己架一台给朋友玩的人，可以下载「私服架设包」，一条命令装好。** 派对模式的「局域网房间」改成了「私服房间」"
+        },
         {
           "version": "1.2.4",
           "buildVersion": "55",
