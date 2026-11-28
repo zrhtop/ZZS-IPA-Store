@@ -20,6 +20,15 @@
       },
       "versions": [
         {
+          "version": "0.1.2",
+          "buildVersion": "4",
+          "date": "2026-11-28",
+          "localizedDescription": "修复选择玩家、添加姓名时触控导致的中断，并修复顶栏左右的浅色方框。保留原界面、素材及游戏规则。\r\n\r\n本地 59 项针对性回归及 iPhoneOS arm64 Release 构建通过；真机仍请复测。中文姓名/输入法和完整 Native 等价仍有明确边界。\r\n\r\n未预签名 IPA，请按既有方式重签并覆盖安装，勿删除存档。iOS 适配署名：zrhtop。",
+          "downloadURL": "https://github.com/zrhtop/ZZS-IPA-Store/releases/download/dev.zrhtop.Tangram2000-v0.1.2-b4/Tangram2000-0.1.2-b4-playtest52.ipa",
+          "size": 272191200,
+          "minOSVersion": "17.0"
+        },
+        {
           "version": "0.1.1",
           "buildVersion": "3",
           "date": "2026-11-27",
